@@ -2,6 +2,8 @@ const path = require('path');
 
 const express=require('express');
 
+const server= express();
+const port= 3000;
 
 //Einstellungen
 server.use(express.urlencoded({ extended: false }))
@@ -25,4 +27,8 @@ server.get("/register", (req,res) =>{
 //login
 server.get("/login", (req,res) =>{
     res.sendFile('login.html', { root: path.join(__dirname, 'view') });
+});
+
+server.listen(port, () =>{
+    console.log("Server listen to Port " +port);
 });

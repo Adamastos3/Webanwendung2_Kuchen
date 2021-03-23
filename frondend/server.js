@@ -1,13 +1,18 @@
 const path = require('path');
 
 const express=require('express');
+const session = require('express-session');
 
 const server= express();
 const port= 3000;
 
 //Einstellungen
 server.use(express.urlencoded({ extended: false }))
-
+server.use(session({
+    secret: "test",
+    resave: false,
+    saveUninitialized: false
+  }))
 
 //middleware
 //uebergabe static files

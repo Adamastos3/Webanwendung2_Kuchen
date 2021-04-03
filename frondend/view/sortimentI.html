@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indiwiduelles Sortiment</title>
+    <script src="../public/js/sortimentI.js" defer></script>
 </head>
 <body>
     <header>
@@ -54,37 +55,26 @@
     </div>
 
     <div>
-        <form >
+        <form id="form">
             <table>
                 <tr>
                     <td colspan="2"><label for="">1. Boden</label></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><select name="" id="">
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
+                    <td colspan="2"><select name="" id="select1">
+                        <option value="1"><p>Standart 25</p></option>
+                        <option value="2">Standart</option>
+                        <option value="3">Standart</option>
+                        <option value="4">Standart</option>
+                        <option value="5">Standart</option>
                     </select></td>
                 </tr>
                 <tr>
                     <td colspan="2"><label for="">1. Boden</label></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><select name="" id="">
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                    </select></td>
-                </tr>
-
-                <tr>
-                    <td colspan="2"><label for="">1. Boden</label></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><select name="" id="">
-                        <option>Standart</option>
+                    <td colspan="2"><select name="" id="select2">
+                        <option>Standart 25</option>
                         <option>Standart</option>
                         <option>Standart</option>
                         <option>Standart</option>
@@ -95,8 +85,20 @@
                     <td colspan="2"><label for="">1. Boden</label></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><select name="" id="">
+                    <td colspan="2"><select name="" id="select3">
+                        <option>Standart 25</option>
                         <option>Standart</option>
+                        <option>Standart</option>
+                        <option>Standart</option>
+                    </select></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><label for="">1. Boden</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><select name="" id="select4">
+                        <option>Standart 25</option>
                         <option>Standart</option>
                         <option>Standart</option>
                         <option>Standart</option>
@@ -105,7 +107,9 @@
 
                 <tr></tr>
                 <tr>
-                    <td><p>Summe: 0,00</p></td>
+                    <td><p id="summe">Summe: 0,00</p></td>
+                    <td><p id="mehrwert"></p></td>
+                    <td><p id="gesamtsumme"></p></td>
                     <td><button type="submit">Bestellen</button></td>
                 </tr>
             </table>

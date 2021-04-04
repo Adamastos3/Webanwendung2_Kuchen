@@ -17,3 +17,4 @@ function sendOn(a) {
         location.href="/sortimentI"
     }
 }
+

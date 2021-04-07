@@ -1,12 +1,17 @@
-const form = document.getElementById("form")
+
 
 //prototyp
-form.addEventListener("submit", (e)=>{
+document.addEventListener("keyup", (e)=>{
     
-    e.preventDefault();
-    sessionStorage.setItem("login", 1)
+
+    if(e.keyCode===13){
+
+        e.preventDefault();
+        sessionStorage.setItem("login", 1)
     
-    location.href="account.html"
+        location.href="account.html"
+    };
+  
 })
 
 

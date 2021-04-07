@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrierung</title>
+  <script src="../public/js/allgemein.js" defer></script>
+  <script src="../public/js/registrieren.js" defer></script>
+  <link href="CSS/SSMain.css" rel="stylesheet">
+  <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="CSS/SSTables.css" rel="stylesheet">
+  <link href="CSS/SSFieldset.css" rel="stylesheet">
+  <link href="CSS/SSButtons.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="login.html" id="user">Account</a>
+    </nav>
+  </header>
+
+
+
+  <h1>Registrierung</h1>
+  <div class="containerSmallCenter">
+    <div>
+      <form action="login.html" method="post" class="inputField1 inputField1ED" id="form" name="formular">
+        <table class="tableLogin tableLoginED">
+          <!--Z1-->
+          <tr>
+            <td><label for="email">E-Mail</label></td>
+            <td><label for="username">Username</label></td>
+          </tr>
+          <!--Z2-->
+          <tr>
+            <td><input type="email" required id="email"></td>
+            <td><input type="text" required id="username"></td>
+          </tr>
+
+          <!--Z1-->
+          <tr>
+            <td><label for="pass1">Password</label></td>
+            <td><label for="pass2">Password wiederholen</label></td>
+          </tr>
+          <!--Z2-->
+          <tr>
+            <td><input type="password" required id="pass1"></td>
+            <td><input type="password" required id="pass2"></td>
+          </tr>
+
+          
+          <!--Z3-->
+          <tr>
+            <td><label for="herr">Anrede</label></td>
+            <td><label for="plz">PLZ</label></td>
+          </tr>
+          <!--Z4-->
+          <tr>
+            <td id="tableLoginEDalign">
+              <table>
+                <tr>
+                  <td>
+                    <label for="herr">Herr</label>
+                  </td>
+                  <td>
+                    <input type="radio" name="Herr" id="herr" onclick="changeRadion('herr')"></input>
+                  </td>
+                  <td>
+                    <label for="frau" >Frau</label>
+                  </td>
+                  <td>
+                    <input type="radio" name="Frau" id="frau" onclick="changeRadion('frau')"></input>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+            <td><input type="text" required id="plz" size="5"></td>
+          </tr>
+          
+          <!--Z5-->
+          <tr>
+            <td><label for="vorname">Vorname</label></td>
+            <td><label for="stadt">Stadt</label></td>
+          </tr>
+          <!--Z6-->
+          <tr>
+            <td><input type="text" required id="vorname"></td>
+            <td><input type="text" required id="stadt"></td>
+          </tr>
+          
+          <!--Z7-->
+          <tr>
+            <td><label for="nachname">Nachname</label></td>
+            <td><label for="straße">Straße</label></td>
+          </tr>
+          <!--Z8-->
+          <tr>
+            <td><input type="text" required id=nachname></td>
+            <td><input type="text" required id="straße"></td>
+          </tr>
+          <!--Z9-->
+          <tr>
+            <td><label for="geb">Geburtstag</label></td>
+            <td><label for="hausnr">Hausnummer</label></td>
+          </tr>
+          <!--Z10-->
+          <tr>
+            <td><input type="date" required id="geb"></td>
+            <td><input type="text" required id="hausnr"></td>
+          </tr>
+
+          <tr><td colspan="2"><button type="submit" class="tableLogin tableLoginED ButtonConfirm">
+            Registrieren</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      &copy;
+      Copyright 2021
+      Kuchen AG
+    </div>
+
+    <div class="footerDiv">
+      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="kontakt.html">Kontaktformular</a>
+    </div>
+
+
+
+  </footer>
+
+
+</body>
+</html>

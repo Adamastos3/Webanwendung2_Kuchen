@@ -15,7 +15,7 @@ storeAnzeigen()
 function storeAnzeigen() {
     let anzahlR=0
     let anzahlI=0
-    let w = document.getElementById("zahl");
+    let w = document.getElementById("warenkorb");
     let r = sessionStorage.getItem("regular")
     let i= sessionStorage.getItem("individual");
     try {
@@ -44,7 +44,7 @@ function storeAnzeigen() {
     
     let anzahl = anzahlI+anzahlR;
     if (anzahl >0) {
-        w.innerHTML=" ("+anzahl+")"
+        w.innerHTML="Warenkorb ("+anzahl+")"
     }
 }
 

@@ -4,7 +4,7 @@ const form = document.getElementById("form")
 form.addEventListener("submit", (e)=>{
     
     e.preventDefault();
-    sessionStorage.setItem("login", 1)
+    sessionStorage.setItem("login", 0)
     
     location.href="login.html"
 })

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anmeldung</title>
+    <script src="../public/js/allgemein.js" defer></script>
+    <script src="../public/js/login.js" defer></script>
     <link href="CSS/SSMain.css" rel="stylesheet">
     <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
     <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -17,8 +19,8 @@
         <img src="../public/Cake.png" alt="" id="logo">
         <a href="start.html">Startseite</a>
         <a href="shop.html">Shop</a>
-        <a href="warenkorb.html">Warenkorb</a>
-        <a href="account.html">Account</a>
+        <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+        <a href="registrieren.html" id="user">Account</a>
       </nav>
     </header>
 
@@ -27,19 +29,19 @@
 
 <div class="containerSmallCenter">
   <div>
-    <form action="" method="post" class="inputField1">
-    <table class="tableLogin">
+    <form method="post" class="inputField1" id="form">
+      <table class="tableLogin">
 
-            <tr><td><label for="">Email</label></td></tr>
+            <tr><td><label for="">Username</label></td></tr>
             <tr><td><input type="text"></td></tr>
             <tr><td><label for="">Kennwort</label></td></tr>
             <tr><td><input type="password" name="" id=""></td></tr>
             <tr><td><a href="passwortVergessen.html">Kennwort vergessen?</a></td></tr>
 
-        </table>
-        </form>
+      </table>
+    </form>
         <p>Noch kein Konto?</p>
-        <button class="button2 button2login"><a href="">jetzt Registrieren</a></button>
+        <button class="button2 button2login"><a href="registrieren.html">jetzt Registrieren</a></button>
 
   </div>
 </div>

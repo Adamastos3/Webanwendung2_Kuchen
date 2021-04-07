@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anmeldung</title>
+    <script src="../public/js/allgemein.js"></script>
+    <script src="../public/js/passwordChange.js"></script>
     <link href="CSS/SSMain.css" rel="stylesheet">
     <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
     <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -17,8 +19,8 @@
       <img src="../public/Cake.png" alt="" id="logo">
       <a href="start.html">Startseite</a>
       <a href="shop.html">Shop</a>
-      <a href="warenkorb.html">Warenkorb</a>
-      <a href="account.html">Account</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="login.html" id="user">Account</a>
     </nav>
   </header>
 
@@ -27,7 +29,7 @@
     <h1>Passwort Ändern</h1>
     <div class="containerSmallCenter">
       <div>
-        <form class="inputField1">
+        <form class="inputField1" action="login.html">
         <table class="tableLogin tableLoginNewPW">
             <tr><td><label for="passwordOld">Ihr aktuelles Passwort</label></td></tr>
             <tr><td><input type="password" name="" id="passwordOld"></td></tr>

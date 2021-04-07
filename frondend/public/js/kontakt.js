@@ -6,7 +6,7 @@ form.addEventListener("submit", (e)=>{
     e.preventDefault();
     window.alert("Danke, dass Sie uns kontaktiert haben")
     
-    location.href="/start"
+    location.href="start.html"
 })
 
 

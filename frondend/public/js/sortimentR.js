@@ -5,7 +5,7 @@ function store(a) {
     let regular = sessionStorage.getItem("regular").split(",")
     regular.push(elem);
     sessionStorage.setItem("regular", regular)
-    console.log(sessionStorage)
+    //console.log(sessionStorage)
     storeAnzeigen()
     
 }

@@ -6,6 +6,7 @@
   border: 2px solid rgba(0,0,0,0.2);
   font-size: 20px;
   align-items: center;
+  background-color: #333;
 }
 
 .fieldset1 table {
@@ -68,7 +69,7 @@
   border: none;
   border-bottom: 2px solid #ffffff;
   background: rgba(0,0,0,0);
-  width: 200px;
+  width: auto;
   color: #ffffff;
   font-size: 22px;
 }

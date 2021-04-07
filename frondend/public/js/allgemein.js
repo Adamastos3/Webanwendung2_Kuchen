@@ -5,7 +5,11 @@ if (sessionStorage.length==0) {
     sessionStorage.setItem("Individual", null)
     sessionStorage.setItem("log", 0)
     console.log("test");
+    initBenutzer()
 }
+
+changeBenutzer()
+storeAnzeigen()
 
 //Anzeigem der einkäufe
 function storeAnzeigen() {
@@ -48,7 +52,21 @@ function storeAnzeigen() {
 function changeBenutzer(){
     var user = document.getElementById("user");
     if (sessionStorage.getItem("login")=="1"){
-        user.innerHTML=""
+        user.innerHTML="Karl Walter"
+        user.setAttribute("href", "account.html")
     }
    
 }
+
+function initBenutzer() {
+    sessionStorage.setItem("anrede","Herr")
+    sessionStorage.setItem("vorname","Karl")
+    sessionStorage.setItem("nachname","Walter")
+    sessionStorage.setItem("geb","12.04.1985")
+    sessionStorage.setItem("plz","78628")
+    sessionStorage.setItem("stadt","Rottweil")
+    sessionStorage.setItem("strasse","Gartenstraße")
+    sessionStorage.setItem("hausnr", "6")
+}
+
+

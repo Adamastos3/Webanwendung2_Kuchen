@@ -1,0 +1,96 @@
+
+
+.fieldset1  {
+  min-height: 200px;
+  border:2px solid green;
+  border: 2px solid rgba(0,0,0,0.2);
+  font-size: 20px;
+  align-items: center;
+
+}
+
+.fieldset1 table {
+  border: 0px solid rgba(0,0,0,0.2);
+  border-spacing:15px 5px;
+  text-align: right;
+}
+
+.fieldset1 form {
+  border: 0px solid rgba(0,0,0,0.2);
+  display: inline-block;
+}
+
+.fieldset1 > label {
+  border: 0px solid rgba(0,0,0,0.2);
+  font-size: 22px;
+  display: inline-block;
+}
+
+.fieldset1 > h2 {
+  font-size: 26px;
+}
+
+
+
+.fieldset2  {
+  min-height: 200px;
+  border: 2px solid rgba(0,0,0,0.2);
+  font-size: 20px;
+  align-items: center;
+  align-self: center;
+  width: 50%;
+
+}
+
+.fieldset2 table {
+  border: 0px solid rgba(0,0,0,0.2);
+  border-spacing:15px 5px;
+  text-align: left;
+}
+
+.fieldset2 form {
+  border: 0px solid rgba(0,0,0,0.2);
+  display: inline-block;
+}
+
+.fieldset2 > label {
+  border: 0px solid rgba(0,0,0,0.2);
+  font-size: 22px;
+  display: inline-block;
+}
+
+.fieldset2 > h2 {
+  font-size: 26px;
+}
+
+
+
+.inputField1 input{
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  background: rgba(0,0,0,0);
+  width: 200px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.inputField1.inputField1Reset input{
+  width: 300px;
+}
+
+.inputField2 input {
+  border: none;
+  border-bottom: 2px solid #333;
+  background: rgba(0,0,0,0);
+  width: 200px;
+}
+
+
+.inputField1.inputField1ED input{
+  width: 200px;
+  font-size: 22px;
+}
+
+#tableLoginEDalign input{
+  width:50px;
+}

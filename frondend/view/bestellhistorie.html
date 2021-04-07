@@ -4,52 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warenkorb</title>
+    <link href="CSS/SSMain.css" rel="stylesheet">
+    <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="CSS/SSButtons.css" rel="stylesheet">
+    <link href="CSS/SSFieldset.css" rel="stylesheet">
+    <link href="CSS/SSTables.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="" alt="" id="logo">
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html">Warenkorb</a>
+      <a href="account.html">Account</a>
     </nav>
-<article>
+  </header>
 
-    <h1>Bestellhistorie</h1>
-    <div>
-        <table>
+
+
+    <div class="containerVertical">
+      <h1>Bestellhistorie</h1>
+      <div class="containerVertical">
+        <table class="tableList tableListHistory">
           <tr>
-            <td><img src="" alt=""></td>
+            <td><img src="../public/cake-example.png" alt=""></td>
             <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+            <td><p>01.01.2021</p></td>
             <td><p>250</p></td>
-            <td><button onclick=""><img src="" alt=""></button></td>
-            </tr>
+            <td><button onclick=""><img src="../public/shoppingCart.png" alt=""></button></td>
+          </tr>
         </table>
     </div>
+</div>
 
-</article>
 
-<footer>
-    <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
-    </div>
-    
-    <div>
+
+    <footer>
+      <div>
         &copy;
-		Copyright 2021
-		Kuchen AG
-    </div>
-
-</footer>
+        Copyright 2021
+        Kuchen AG
+      </div>
+      <div class="footerDiv">
+        <a href="ueberUns.html">Über uns / AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="kontakt.html">Kontaktformular</a>
+      </div>
+    </footer>
 
 
 </body>

@@ -4,59 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anmeldung</title>
+    <link href="CSS/SSMain.css" rel="stylesheet">
+    <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="CSS/SSButtons.css" rel="stylesheet">
+    <link href="CSS/SSFieldset.css" rel="stylesheet">
+    <link href="CSS/SSTables.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="" alt="" id="logo">
+      <nav class="navbar">
+        <img src="../public/Cake.png" alt="" id="logo">
+        <a href="start.html">Startseite</a>
+        <a href="shop.html">Shop</a>
+        <a href="warenkorb.html">Warenkorb</a>
+        <a href="account.html">Account</a>
+      </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
-    </nav>
-<article>
-   
     <h1>Anmeldung</h1>
 
-    <form action="" method="post">
-        <table>
+
+<div class="containerSmallCenter">
+  <div>
+    <form action="" method="post" class="inputField1">
+    <table class="tableLogin">
+
             <tr><td><label for="">Email</label></td></tr>
             <tr><td><input type="text"></td></tr>
-            <tr></tr>
             <tr><td><label for="">Kennwort</label></td></tr>
             <tr><td><input type="password" name="" id=""></td></tr>
-            <tr><td><a href="">Kennwort vergessen?</a></td></tr>
+            <tr><td><a href="passwortVergessen.html">Kennwort vergessen?</a></td></tr>
+
         </table>
+        </form>
+        <p>Noch kein Konto?</p>
+        <button class="button2 button2login"><a href="">jetzt Registrieren</a></button>
 
-        <table>
-            <tr><td>Noch kein Konto?</td></tr>
-            <tr><td><button><a href="">jetzt Registrieren</a></button></td></tr>
-        </table>
+  </div>
+</div>
 
-    </form>
-
-</article>
-
-<footer>
-    <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
-    </div>
-    
-    <div>
+    <footer>
+      <div>
         &copy;
-		Copyright 2021
-		Kuchen AG
-    </div>
+        Copyright 2021
+        Kuchen AG
+      </div>
 
-</footer>
+      <div class="footerDiv">
+        <a href="ueberUns.html">Über uns / AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="kontakt.html">Kontaktformular</a>
+      </div>
+
+
+
+    </footer>
 
 
 </body>

@@ -1,0 +1,140 @@
+.button1 {
+  display: inline-block;
+  background-color: #f4511e;
+  border: 1px solid rgba(0,0,0,1);
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  width: 200px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/*---------Button2---------------*/
+.button2 {
+  display: inline-block;
+  background-color: #333;
+  border: 1px solid rgba(0,0,0,1);
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  width: 200px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button2:hover {
+  background-color: #ddd;
+  transition-duration: 0.5s;
+}
+
+.button2:hover >a  {
+  color: #000;
+}
+
+.button2.button2login{
+  width: 100%;
+}
+
+.button2.button2reset{
+  width: 300px;
+  background-color: #ddd;
+  color: #333;
+}
+
+.button2.button2reset:hover{
+  width: 300px;
+  background-color: #777;
+
+}
+
+
+/*---------AccountButtons---------------*/
+
+.containerVertical.accountButtonsDiv{
+  display: flex;
+  flex-direction:column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  margin: 10px 10px 0;
+  max-width: 100%;
+  border: 0px solid rgba(0,0,0,.25);
+}
+
+
+.containerVertical.accountButtonsDiv > button{
+  background-color: #333;
+  border: 1px solid rgba(0,0,0,1);
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  width: 35%;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+.containerVertical.accountButtonsDiv > button:hover{
+  background-color: #ddd;
+  transition-duration: 0.5s;
+}
+
+.containerVertical.accountButtonsDiv > button:hover > a{
+  color: #000;
+}
+
+
+/*---------Button3---------------*/
+.tableLogin.tableLoginED button {
+  display: inline-block;
+  background-color: #ddd;
+  border: 1px solid rgba(0,0,0,1);
+  color: #333;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  width: 70%;
+  height:auto;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.tableLogin.tableLoginED button:hover{
+  background-color: #777;
+  color: #000;
+  transition-duration: 0.5s;
+}
+
+.tableLogin.tableLoginED.ButtonConfirm {
+  width: 100%;
+}

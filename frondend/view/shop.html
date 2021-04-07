@@ -1,90 +1,101 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-    <script src="shop.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <script src="shop.js"></script>
+  <link href="CSS/SSMain.css" rel="stylesheet">
+  <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="CSS/SSTables.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="" alt="" id="logo">
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html">Warenkorb</a>
+      <a href="account.html">Account</a>
     </nav>
-<article>
-    
-    
+  </header>
+
+
+  <div class="containerHorizontal">
     <div onclick="sendOn('r')">
-        <h1>Reguläres Sortiment</h1>
-        <table>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-
+      <h1>Reguläres Sortiment</h1>
+      <a href="sortimentR.html">
+        <table class="table3x3">
+          <tr>
+            <td><img src="../public/cake-example2.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example2.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+            <td><img src="../public/cake-example.png" alt="" class="tableImg3x3"></td>
+          </tr>
         </table>
+      </a>
     </div>
-
 
     <div onclick="sendOn('i')">
-        <h1>Individuelles Sortiment</h1>
-        <table>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-                <td><img src="" alt=""></td>
-            </tr>
-
+      <h1>Individuelles Sortiment</h1>
+      <a href="sortimentI.html">
+        <table class="table3x3">
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+          </tr>
+          <tr>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+            <td><img src="../public/cake-example.png" alt="" class=tableImg3x3></td>
+          </tr>
         </table>
+      </a>
     </div>
+  </div>
 
-</article>
-
-<footer>
+  <footer>
     <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
-    </div>
-    
-    <div>
-        &copy;
-		Copyright 2021
-		Kuchen AG
+      &copy;
+      Copyright 2021
+      Kuchen AG
     </div>
 
-</footer>
+    <div class="footerDiv">
+      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="kontakt.html">Kontaktformular</a>
+    </div>
+
+
+
+  </footer>
 
 
 </body>

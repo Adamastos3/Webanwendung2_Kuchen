@@ -1,85 +1,137 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmeldung</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmeldung</title>
+  <link href="CSS/SSMain.css" rel="stylesheet">
+  <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="CSS/SSTables.css" rel="stylesheet">
+  <link href="CSS/SSFieldset.css" rel="stylesheet">
+  <link href="CSS/SSButtons.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="" alt="" id="logo">
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html">Warenkorb</a>
+      <a href="account.html">Account</a>
     </nav>
-<article>
-   
-    <h1>Ihre Daten</h1>
+  </header>
 
-    <form action="" method="post">
-        <table border="solid">
-            <tr><td><label for="">Anrede</label></td></tr>
-            <tr><td><input type="radio" name="" id=""></td></tr>
-            <tr><td><input type="radio" name="" id=""></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Vorname</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Nachname</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Geburtstag</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">PLZ</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Stadt</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Straße</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><label for="">Hausnummer</label></td></tr>
-            <tr><td><input type="text"></td></tr>
-            <tr><td><button onclick="">ändern</button></td></tr>
-            <tr></tr>
-            <tr><td><button onclick="">Daten ändern</button></td></tr>
+
+
+  <h1>Ihre Daten</h1>
+  <div class="containerSmallCenter">
+    <div>
+      <form action="" method="post" class="inputField1 inputField1ED">
+        <table class="tableLogin tableLoginED">
+          <!--Z1-->
+          <tr>
+            <td><label for="">Anrede</label></td>
+            <td><label for="">PLZ</label></td>
+          </tr>
+          <!--Z2-->
+          <tr>
+            <td id="tableLoginEDalign">
+              <table>
+                <tr>
+                  <td>
+                    <label for="Herr">Herr</label>
+                  </td>
+                  <td>
+                    <input type="radio" name="Herr" id=""></input>
+                  </td>
+                  <td>
+                    <label for="Frau">Frau</label>
+                  </td>
+                  <td>
+                    <input type="radio" name="Frau" id=""></input>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+            <td><input type="text"></td>
+          </tr>
+          <!--Z3-->
+          <tr>
+            <td><button onclick="">ändern</button></td>
+            <td><button onclick="">ändern</button></td>
+          </tr>
+          <!--Z4-->
+          <tr>
+            <td><label for="">Vorname</label></td>
+            <td><label for="">Stadt</label></td>
+          </tr>
+          <!--Z5-->
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <!--Z6-->
+          <tr>
+            <td><button onclick="">ändern</button></td>
+            <td><button onclick="">ändern</button></td>
+          </tr>
+          <!--Z7-->
+          <tr>
+            <td><label for="">Nachname</label></td>
+            <td><label for="">Straße</label></td>
+          </tr>
+          <!--Z8-->
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <!--Z9-->
+          <tr>
+            <td><button onclick="">ändern</button></td>
+            <td><button onclick="">ändern</button></td>
+          </tr>
+          <!--Z10-->
+          <tr>
+            <td><label for="">Geburtstag</label></td>
+            <td><label for="">Hausnummer</label></td>
+          </tr>
+          <!--Z11-->
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <!--Z12-->
+          <tr>
+            <td><button onclick="">ändern</button></td>
+            <td><button onclick="">ändern</button></td>
+          </tr>
+
+          <tr><td colspan="2"><button onclick="" class="tableLogin tableLoginED ButtonConfirm">
+            Daten speicher</button></td>
+          </tr>
         </table>
-
-    </form>
-
-</article>
-
-<footer>
-    <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
+      </form>
     </div>
-    
+  </div>
+
+  <footer>
     <div>
-        &copy;
-		Copyright 2021
-		Kuchen AG
+      &copy;
+      Copyright 2021
+      Kuchen AG
     </div>
 
-</footer>
+    <div class="footerDiv">
+      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="kontakt.html">Kontaktformular</a>
+    </div>
+
+
+
+  </footer>
 
 
 </body>

@@ -4,56 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anmeldung</title>
+    <link href="CSS/SSMain.css" rel="stylesheet">
+    <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="CSS/SSButtons.css" rel="stylesheet">
+    <link href="CSS/SSFieldset.css" rel="stylesheet">
+    <link href="CSS/SSTables.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="" alt="" id="logo">
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html">Warenkorb</a>
+      <a href="account.html">Account</a>
     </nav>
-<article>
-   
-    <h1>Passwort Ändern</h1>
+  </header>
 
-    <form>
-        <table>
+
+
+    <h1>Passwort Ändern</h1>
+    <div class="containerSmallCenter">
+      <div>
+        <form class="inputField1">
+        <table class="tableLogin tableLoginNewPW">
             <tr><td><label for="passwordOld">Ihr aktuelles Passwort</label></td></tr>
             <tr><td><input type="password" name="" id="passwordOld"></td></tr>
-            <tr><td><label for="passwordNew"></label></td></tr>
+            <tr><td><label for="passwordNew">Passwort wiederholen</label></td></tr>
             <tr><td><input type="password" name="" id="passwordNew"></td></tr>
-            <tr><td><label for="passwordNew2"></label></td></tr>
+            <tr><td><label for="passwordNew2">Ihr neues Passwort</label></td></tr>
             <tr><td><input type="password" name="" id="passwordNew2"></td></tr>
-            <tr></tr>
-            <tr><td><button type="submit">Password ändern</button></td></tr>
+
         </table>
-
     </form>
-
-</article>
-
-<footer>
-    <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
-    </div>
-    
-    <div>
+    <button type="submit" class="button2 button2login">Password ändern</button>
+  </div>
+  </div>
+    <footer>
+      <div>
         &copy;
-		Copyright 2021
-		Kuchen AG
-    </div>
+        Copyright 2021
+        Kuchen AG
+      </div>
 
-</footer>
+      <div class="footerDiv">
+        <a href="ueberUns.html">Über uns / AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="kontakt.html">Kontaktformular</a>
+      </div>
+
+
+
+    </footer>
 
 
 </body>

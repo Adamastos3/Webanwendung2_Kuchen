@@ -1,0 +1,219 @@
+
+/*---------------3x3-----------------*/
+.table3x3 {
+  margin: 2%;
+  margin-top: 5%;
+  border-collapse: separate;
+  border-spacing: 15px;
+  border: 2px solid rgba(0,0,0,.25);
+  background-color: #FAEBD7;
+}
+
+.table3x3:hover {
+  background-color: #DEB887;
+  filter: brightness(110%);
+  transition-duration: 0.5s;
+}
+
+
+.table3x3 img {
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(0,0,0,.25);
+  padding: 0;
+}
+
+/*---------------LIST-----------------*/
+.tableList {
+  margin:0;
+  border-spacing: 15px;
+  border: 2px solid rgba(0,0,0,0.25);
+  background-color: #FFDEAD;
+  width:100%;
+
+}
+
+.tableList td {
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+}
+
+.tableList td:nth-child(1) {
+  border: none;
+  width: 5%;
+}
+
+.tableList td:nth-child(2) {
+  width: 85%;
+  border-radius: 0px;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.tableList td:nth-child(3) {
+  width: 5%;
+  text-align: center;
+}
+
+.tableList td:last-child {
+  border: none;
+  width: 5%;
+}
+
+.tableList.tableListHistory td:nth-child(3) {
+  width: 5%;
+  text-align: center;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.tableList.tableListHistory td:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+
+
+.tableList input,img {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: 100px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+}
+
+.tableList input:hover {
+  background-color: #f4511e;
+  transition-duration: 0.5s;
+}
+
+.tableList button:hover {
+  background-color: #f4511e;
+  transition-duration: 0.5s;
+}
+
+
+.tableList button {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: auto;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  cursor: pointer;
+  outline: 0;
+}
+
+
+
+
+.tableList button img {
+  border-style: none;
+}
+
+
+.tableList.scrollable{
+  overflow-y:scroll;
+   height: 280px;
+   display:block;
+}
+
+
+/*-----------ZUR KASSE------------------*/
+.tableBuy{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 2px solid rgba(0,0,0,1);
+  padding: 20px;
+  text-align: left;
+}
+
+
+
+.tableBuy td:nth-child(3){
+  width:50%;
+}
+
+.tableBuy td:nth-child(2){
+  text-align: right;
+}
+
+
+
+
+
+/*-----------BESTELLEN------------------*/
+.tableOrder{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 0px solid rgba(0,0,0,0.25);
+  padding: 20px;
+  text-align: left;
+  overflow-y:scroll;
+  height: 280px;
+  display:block;
+}
+
+
+
+.tableOrder td:nth-child(3){
+  width:50%;
+}
+
+.tableOrder td:nth-child(2){
+  text-align: right;
+}
+
+
+.scrollableTable{
+  overflow-y:scroll;
+   height: 280px;
+   display:block;
+}
+
+
+/*------Login------------*/
+.tableLogin{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 2px solid rgba(0,0,0,1);
+  padding: 30px;
+  text-align: left;
+  height: 280px;
+  width: 50%;
+  border-spacing: 15px;
+}
+
+.tableLogin tr:nth-child(-n+4){
+  text-align: center;
+}
+
+.tableLogin tr:nth-child(3){
+  text-align: center;
+}
+
+
+
+.tableLogin.tableReset{
+  height: 200px;
+}
+
+.tableLogin.tableLoginNewPW tr:nth-child(-n+6){
+  text-align: center;
+}
+
+.tableLogin.tableLoginED {
+  width: 40%;
+  text-align: center;
+
+}
+
+.tableLogin.tableLoginED td{
+  text-align: center;
+  max-height: 20px;
+}

@@ -1,5 +1,5 @@
 const form = document.getElementById("form")
-var h=0
+
 
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -13,7 +13,7 @@ function sendData() {
 }
 
 function changeElem(id){
-    let b= document.getElementById("")
+    
     for (let i=0; i<id.length; i++){
         let a = document.getElementById(id[i])
         if ((id[i]!="herr") && (id[i]!= "frau")){
@@ -23,8 +23,8 @@ function changeElem(id){
             a.checked=false;
         }
     }
-    hideButton(h)
-    h+=1
+    hideButton(0)
+    
 }
 
 function hideButton(id){
@@ -40,14 +40,14 @@ function hideButton(id){
 
 //prototyp
 
-var anrede="Herr"
-var vorname="Karl"
-var nachname="Walter"
-var geb="12.04.1985"
-var plz="78628"
-var stadt="Rottweil"
-var strasse="Gartenstraße"
-var hausnr= "6"
+var anrede=sessionStorage.getItem("anrede")
+var vorname=sessionStorage.getItem("vorname")
+var nachname=sessionStorage.getItem("nachname")
+var geb=sessionStorage.getItem("geb")
+var plz=sessionStorage.getItem("plz")
+var stadt=sessionStorage.getItem("stadt")
+var strasse=sessionStorage.getItem("strasse")
+var hausnr= sessionStorage.getItem("hausnr")
 function inhaltSetzen() {
     if (anrede=="Herr"){
         document.getElementById("herr").checked=true
@@ -81,6 +81,17 @@ function neuSetzen(){
     stadt=document.getElementById("stadt").value
     strasse=document.getElementById("straße").value
     hausnr=document.getElementById("hausnummer").value
+
+    sessionStorage.setItem("anrede",anrede)
+    sessionStorage.setItem("vorname",vorname)
+    sessionStorage.setItem("nachname",nachname)
+    sessionStorage.setItem("geb",geb)
+    sessionStorage.setItem("plz",plz)
+    sessionStorage.setItem("stadt",stadt)
+    sessionStorage.setItem("strasse",strasse)
+    sessionStorage.setItem("hausnr", hausnr)
+
+    hideButton(0)
 }
 
 

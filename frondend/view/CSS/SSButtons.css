@@ -54,6 +54,7 @@
 .button2:hover {
   background-color: #ddd;
   transition-duration: 0.5s;
+  color: #000;
 }
 
 .button2:hover >a  {
@@ -66,14 +67,10 @@
 
 .button2.button2reset{
   width: 300px;
-  background-color: #ddd;
-  color: #333;
 }
 
 .button2.button2reset:hover{
   width: 300px;
-  background-color: #777;
-
 }
 
 

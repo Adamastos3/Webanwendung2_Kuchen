@@ -193,9 +193,7 @@
   text-align: center;
 }
 
-.tableLogin tr:nth-child(3){
-  text-align: center;
-}
+
 
 
 
@@ -216,4 +214,9 @@
 .tableLogin.tableLoginED td{
   text-align: center;
   max-height: 20px;
+}
+
+
+.tableLogin.tableLoginContact tr {
+  text-align:center;
 }

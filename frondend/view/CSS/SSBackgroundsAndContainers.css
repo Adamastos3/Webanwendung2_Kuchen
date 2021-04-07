@@ -46,6 +46,7 @@
   border: 2px solid rgba(0,0,0,.25);
   padding: 2%;
   border-radius: 0px;
+  box-sizing: border-box;
 }
 
 .containerVertical h1{
@@ -99,7 +100,7 @@ body > h1 {
   padding: 1%;
   border-radius: 0px;
   margin: 5px;
-
+  box-sizing: border-box;
 
 }
 
@@ -116,6 +117,7 @@ body > h1 {
   margin: 10px 10px 0;
   max-width: 100%;
   border: 0px solid rgba(0,0,0,.25);
+
 }
 
 .containerSmallLeft > div {
@@ -127,6 +129,7 @@ body > h1 {
   background-color: #E6E6FA;
   padding: 1%;
   border-radius: 0px;
+  box-sizing: border-box;
 }
 
 
@@ -149,7 +152,7 @@ body > h1 {
 .containerSmallCenter > div {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -158,18 +161,13 @@ body > h1 {
   padding:20px;
   border-radius: 0px;
   width: 100%;
+  box-sizing: border-box;
+  gap: 0px;
 }
 
 .containerSmallCenter.smallCenterColumns {
   flex-direction: column;
-  width: 50%;
-  max-width: 100%;
 }
 
 .containerSmallCenter.smallCenterColumns > div {
-  display:block;
-  width: auto;
-  min-width: 40%;
-  align-self: center;
-  padding:6px;
 }

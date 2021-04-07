@@ -6,7 +6,7 @@ form.addEventListener("submit", (e)=>{
     e.preventDefault();
     sessionStorage.setItem("login", 1)
     
-    location.href="/shop"
+    location.href="account.html"
 })
 
 

@@ -49,6 +49,7 @@ form.addEventListener("submit", (e)=>{
     let er= a+"-"+b+"-"+c+"-"+d
     
     store(er)
+    form.reset(); 
     
 })
 

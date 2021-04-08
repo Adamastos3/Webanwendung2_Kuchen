@@ -5,6 +5,7 @@ if (sessionStorage.length==0) {
     sessionStorage.setItem("Individual", null)
     sessionStorage.setItem("log", 0)
     sessionStorage.setItem("admin",0)
+    sessionStorage.setItem("kasse",0)
     console.log("test");
     initBenutzer()
 }
@@ -78,14 +79,17 @@ function changeAdmin(){
 }
 
 function initBenutzer() {
+    sessionStorage.setItem("email", "Test@test.de")
+    sessionStorage.setItem("username", "Karl1")
     sessionStorage.setItem("anrede","Herr")
     sessionStorage.setItem("vorname","Karl")
     sessionStorage.setItem("nachname","Walter")
-    sessionStorage.setItem("geb","12.04.1985")
+    sessionStorage.setItem("geb","2000-02-04")
     sessionStorage.setItem("plz","78628")
     sessionStorage.setItem("stadt","Rottweil")
     sessionStorage.setItem("strasse","Gartenstraße")
     sessionStorage.setItem("hausnr", "6")
+    console.log(sessionStorage)
 }
 
 

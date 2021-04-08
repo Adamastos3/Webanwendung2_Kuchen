@@ -8,7 +8,16 @@ document.addEventListener("keydown", (e)=>{
         console.log("tetetet")
 
         e.preventDefault();
-        var a= document.getElementById("username").value;
+        sendOn()
+        
+    
+        
+    };
+  
+})
+
+function sendOn() {
+    var a= document.getElementById("username").value;
         if(a=="admin"){
             if(document.getElementById("pass").value="admin"){
                 sessionStorage.setItem("admin",1);
@@ -22,15 +31,16 @@ document.addEventListener("keydown", (e)=>{
         }
         else{
             sessionStorage.setItem("login", 1)
-            console.log("ende")
-            location.href="account.html"
+            //console.log("ende")
+            if (sessionStorage.getItem("kasse")==1){
+                sessionStorage.setItem("kasse",0)
+                    location.href="kasse.html"
+            }
+            else{
+                location.href="account.html"
+            }
         }
-        
-    
-        
-    };
-  
-})
+}
 
 
 

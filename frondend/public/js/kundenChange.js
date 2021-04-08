@@ -47,18 +47,6 @@ function hideButton(id){
     }
 }
 
-function changeRadion(a){
-    if (a =="Herr") {
-        document.getElementById("Frau").checked=false;
-        document.getElementById("Herr").checked=true;
-    }
-    else{
-        document.getElementById("Frau").checked=true;
-        document.getElementById("Herr").checked=false;
-    }
-}
-
-
 //prototyp
 
 var email=sessionStorage.getItem("email")
@@ -82,6 +70,8 @@ function inhaltSetzen() {
     }
     document.getElementById("email").value=email
     document.getElementById("username").value=username
+    document.getElementById("pass1").value="asdf"
+    document.getElementById("pass2").value="asdf"
     document.getElementById("vorname").value=vorname
     document.getElementById("nachname").value=nachname
     document.getElementById("geb").value=geb
@@ -125,7 +115,16 @@ function neuSetzen(){
 }
 
 
-
+function changeRadion(a){
+    if (a =="Herr") {
+        document.getElementById("Frau").checked=false;
+        document.getElementById("Herr").checked=true;
+    }
+    else{
+        document.getElementById("Frau").checked=true;
+        document.getElementById("Herr").checked=false;
+    }
+}
 
 function check(){
     checkSex()

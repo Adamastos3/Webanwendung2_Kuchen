@@ -44,6 +44,16 @@ function removeElem(id) {
     //Es fehl noch das entfernen aus dem sessionstore
 }
 
+function sendOn(){
+    if (sessionStorage.getItem("login") ==1){
+        location.href="kasse.html"
+    }
+    else{
+        sessionStorage.setItem("kasse",1)
+        location.href="login.html"
+    }
+}
+
 //nur für Prototyp
 function einfügen() {
     console.log(sessionStorage)
@@ -91,3 +101,4 @@ catch{}
 
 
 }
+

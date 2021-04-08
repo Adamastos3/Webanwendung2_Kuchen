@@ -1,6 +1,6 @@
 
 //init seesionstorage
-if (sessionStorage.length==0) {
+if (sessionStorage.length === 0) {
     sessionStorage.setItem( "regular",null)
     sessionStorage.setItem("Individual", null)
     sessionStorage.setItem("log", 0)
@@ -10,7 +10,7 @@ if (sessionStorage.length==0) {
     initBenutzer()
 }
 
-if(sessionStorage.getItem("admin")=="0"){
+if(sessionStorage.getItem("admin")==="0"){
     changeBenutzer()
     storeAnzeigen()
 }else{
@@ -22,16 +22,16 @@ if(sessionStorage.getItem("admin")=="0"){
 function storeAnzeigen() {
     let anzahlR=0
     let anzahlI=0
-    let w = document.getElementById("warenkorb");
-    let r = sessionStorage.getItem("regular")
-    let i= sessionStorage.getItem("individual");
+    let warenkorb = document.getElementById("warenkorb");
+    let regular = sessionStorage.getItem("regular")
+    let individual= sessionStorage.getItem("individual");
     try {
-        console.log(r[0])
-        if (r[0]!="n"){
+        console.log(regular[0])
+        if (regular[0]!="n"){
             console.log("t1")
             anzahlR+=1
         }
-        anzahlR+=r.split(",").length-1
+        anzahlR+=regular.split(",").length-1
         
     }
     catch {
@@ -39,10 +39,10 @@ function storeAnzeigen() {
     }
 
     try {
-        if (i[0]!="n"){
+        if (individual[0]!="n"){
             anzahlI+=1
         }
-        anzahlI+=i.split(",").length-1
+        anzahlI+=individual.split(",").length-1
         
     }
     catch {
@@ -51,7 +51,7 @@ function storeAnzeigen() {
     
     let anzahl = anzahlI+anzahlR;
     if (anzahl >0) {
-        w.innerHTML="Warenkorb ("+anzahl+")"
+        warenkorb.innerHTML="Warenkorb ("+anzahl+")"
     }
 }
 

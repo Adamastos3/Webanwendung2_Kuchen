@@ -103,9 +103,13 @@ function benutzerSetzen(){
 }
 
 function sendOn(a) {
-    window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
-    location.href="shop.html"
-    
+    if (a==0){
+        window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
+        location.href="shop.html"
+    }
+    else {
+        location.href="warenkorb.html"
+    }
 }
 
 benutzerSetzen()

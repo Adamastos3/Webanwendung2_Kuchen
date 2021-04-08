@@ -29,18 +29,18 @@
 
     <div class="containerSmallCenter smallCenterColumns">
       <div>
-        <form class="inputField1" action="login.html" id="form">
+        <form class="inputField1" action="login.html" id="form" method="POST">
         <table class="tableLogin tableLoginNewPW">
             <tr><td><label for="passwordOld">Ihr aktuelles Passwort</label></td></tr>
-            <tr><td><input type="password" name="" id="passwordOld"></td></tr>
+            <tr><td><input type="password" name="" id="passwordOld" required></td></tr>
             <tr><td><label for="passwordNew">Ihr neues Passwort</label></td></tr>
-            <tr><td><input type="password" name="" id="passwordNew"></td></tr>
+            <tr><td><input type="password" name="" id="passwordNew" required></td></tr>
             <tr><td><label for="passwordNew2">Ihr neues Passwort wiederholen</label></td></tr>
-            <tr><td><input type="password" name="" id="passwordNew2"></td></tr>
+            <tr><td><input type="password" name="" id="passwordNew2" required></td></tr>
         </table>
+      </form>
+        <button onclick="submitten()" class="button2 button2login">Password ändern</button>
         
-        <button type="submit" class="button2 button2login">Password ändern</button>
-        </form>
       </div>
   </div>
 

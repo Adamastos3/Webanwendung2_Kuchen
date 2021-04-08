@@ -32,16 +32,17 @@
       <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
 
 
-      <form action="login.html" method="post" class="inputField1 inputField1Reset">
+      <form action="login.html" method="post" class="inputField1 inputField1Reset" id="form">
         <table class="tableLogin tableReset">
           <tr><td>  </tr></td>
-          <tr><td><label for="">Email</label></td></tr>
-          <tr><td><input type="text" name="" id=""></td></tr>
+          <tr><td><label for="mail">Email</label></td></tr>
+          <tr><td><input type="email" name="mail" id="mail" required></td></tr>
           <tr><td>
           </td></tr>
         </table>
       </form>
-      <button type="submit" class="button2 button2reset">Passwort zurücksetzen</button>
+        <button onclick="submitten()" class="button2 button2reset">Passwort zurücksetzen</button>
+      
     </div>
   </div>
 

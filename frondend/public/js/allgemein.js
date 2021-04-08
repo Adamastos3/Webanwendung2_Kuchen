@@ -73,6 +73,7 @@ function changeAdmin(){
     userA.setAttribute("href", "accountAdmin.html")
     warenA.innerHTML="offene Bestellungen"
     warenA.setAttribute("href", "ausstehendeBestellungen.html")
+    
 
 }
 

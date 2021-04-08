@@ -35,8 +35,9 @@ function addsumm() {
 }
 
 function removeElem(id) {
+
     console.log(id);
-    let element = id;
+    let element=id
     console.log(element)
     element.parentNode.removeChild(element);
     addsumm();
@@ -47,7 +48,6 @@ function removeElem(id) {
 function einfügen() {
     console.log(sessionStorage)
     var art= document.getElementById("waren");
-    var ref= document.getElementById("preisliste")
     try{
     var re = sessionStorage.getItem("regular").split(",");
 
@@ -62,31 +62,29 @@ function einfügen() {
     try{
     for(let i=1; i<re.length;i++) {
         let elem="elem"+zahl
-        var a = "<table class='tableList' id='"+elem+"'>"+
-        "<tr>"+
+        var a =
+        "<tr id='"+elem+"'>"+
         "<td><img src='../public/cake-example.png' alt=''></td>"+
         "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
         "<td><p class='preis'>Preis: 250€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
-        "</tr>"+
-        "</table>"
+        "</tr>"
         zahl+=1
-        art.innerHTML=a+art.innerHTML
+        art.innerHTML+=a
+        console.log("test")
     }
 
     for(let i=1; i<indi.length;i++) {
         let elem="elem"+zahl
         var b=
-        "<table class='tableList' id='"+elem+"'>"+
-        "<tr>"+
+        "<tr id='"+elem+"' >"+
         "<td><img src='../public/cake-example2.png' alt=''></td>"+
         "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
         "<td><p class='preis'>Preis: 250€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
-        "</tr>"+
-        "</table>"
+        "</tr>"
         zahl+=1
-        art.innerHTML+=a+art.innerHTML
+        art.innerHTML+=b
     }
 }
 catch{}

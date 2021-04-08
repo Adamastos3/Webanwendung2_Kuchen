@@ -234,8 +234,14 @@
 
 
 .tableLogin.tableReset{
-  height: 200px;
+  border: 5px solid rgba(0,0,0,1);
+  width: 100%;
+
+    table-layout:fixed;
+    width:100%;
+
 }
+
 
 .tableLogin.tableLoginNewPW tr:nth-child(-n+6){
   text-align: center;

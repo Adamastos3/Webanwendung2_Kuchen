@@ -18,9 +18,9 @@
     <nav class="navbar">
       <img src="../public/Cake.png" alt="" id="logo">
       <a href="start.html">Startseite</a>
-      <a href="shop.html">Shop</a>
+      <a href="shop.html" class="navbarSelected" id="shop">Shop</a>
       <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
-      <a href="account.html" class="navbarSelected" id="user">Account</a>
+      <a href="account.html" id="user">Account</a>
     </nav>
   </header>
 
@@ -47,6 +47,22 @@
           <tr>
             <td><button onclick="changeElem('email')">ändern</button></td>
             <td><button onclick="changeElem('username')">ändern</button></td>
+          </tr>
+
+          <!--Z1-->
+          <tr>
+            <td><label for="pass1">Neues Passwort</label></td>
+            <td><label for="pas2">Neues Passwort wiederholen</label></td>
+          </tr>
+          <!--Z2-->
+          <tr>
+            <td><input type="password" required id="pass1" readonly></td>
+            <td><input type="password" required id="pass2" readonly></td>
+          </tr>
+          
+          <tr>
+            <td><button onclick="changeElem('pass1')">ändern</button></td>
+            <td><button onclick="changeElem('pass1')">ändern</button></td>
           </tr>
 
           <!--Z1-->

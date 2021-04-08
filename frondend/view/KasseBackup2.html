@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kasse</title>
   <script src="../public/js/allgemein.js" defer></script>
-  <script src="../public/js/kasse.js" defer></script>
+  <script src="../public/js/kasse.js"></script>
   <link href="CSS/SSMain.css" rel="stylesheet">
   <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
   <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -27,7 +27,27 @@
   <div class="containerVertical">
     <div>
       <h2>Kasse</h2>
-      <table class="tableList scrollable" id="waren">
+      <table class="tableList scrollable">
+        <tr>
+          <td><img src="../public/cake-example.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>250</p></td>
+        </tr>
+        <tr>
+          <td><img src="../public/cake-example.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>250</p></td>
+        </tr>
+        <tr>
+          <td><img src="../public/cake-example.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>250</p></td>
+        </tr>
+        <tr>
+          <td><img src="../public/cake-example.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>250</p></td>
+        </tr>
 
       </table>
     </div>
@@ -43,18 +63,18 @@
           <tr>
             <td>
               <label for="vorkasse">
-                <input type="radio" name="vorkasse" value="vorkasse" id="vor" onclick="changeRadion('vor')"> Vorkasse</input>
+                <input type="radio" name="vorkasse" value="vorkasse"> Vorkasse</input>
               </label>
             </td>
 
             <td>
               <label for="rechnung">
-                <input type="radio" name="rechnung"  value="rechnung" id="rech" onclick="changeRadion('rech')"> Rechnung</input>
+                <input type="radio" name="rechnung"  value="rechnung"> Rechnung</input>
               </label>
             </td>
             <td>
               <label for="bar">
-                <input type="radio" name="bar"  value="bar" id="bar" onclick="changeRadion('bar')"> Bar</input>
+                <input type="radio" name="bar"  value="bar"> Bar</input>
               </label>
             </td>
           </tr>
@@ -68,22 +88,22 @@
           <table class="tableLogin Checkout CheckoutRight">
             <tr>
               <td><label for="">Anrede</label></td>
-              <td><input type="text" id="anrede"></td>
-              <td><label for="">Stadt</label></td>
-              <td><input type="text" id="adresse"></td>
+              <td><input type="text"></td>
+              <td><label for="">Adresse</label></td>
+              <td><input type="text"></td>
             </tr>
 
             <tr>
               <td><label for="">Vorname</label></td>
-              <td><input type="text" id="vorname"></td>
-              <td><label for="">Straße</label></td>
-              <td><input type="text" id="adresse2"></td>
+              <td><input type="text"></td>
+              <td><label for=""></label></td>
+              <td><input type="text"></td>
             </tr>
             <tr>
               <td><label for="">Nachname</label></td>
-              <td><input type="text" id="nachname"></td>
+              <td><input type="text"></td>
               <td><label for="">Email</label></td>
-              <td><input type="text" id="email" readonly ></td>
+              <td><input type="text"></td>
             </tr>
           </table>
         </form>
@@ -102,15 +122,15 @@
         <table class="tableBuy Checkout">
           <tr>
             <td>Summe: </td>
-            <td id="sum">250</td>
+            <td>250</td>
           </tr>
           <tr>
             <td>Mehrwertsteuer:</td>
-            <td id="mehr">250</td>
+            <td>250</td>
           </tr>
           <tr>
             <td>Gesamtsumme:</td>
-            <td id="gesamt">250</td>
+            <td>250</td>
           </tr>
         </table>
         </div>
@@ -123,9 +143,11 @@
               </button>
             </td>
             <td>
-              <button  onclick="sendOn()" class="button1">
+              <button  onclick="" class="button1">
                 <span>
-                 Bestellen
+                  <a href="kasse.html">
+                    Bestellen
+                  </a>
                 </span>
               </button>
             </td>

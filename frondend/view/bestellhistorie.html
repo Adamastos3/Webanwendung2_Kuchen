@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warenkorb</title>
+    <title>Bestellhistorie</title>
+    <script src="../public/js/allgemein.js" defer></script>
     <link href="CSS/SSMain.css" rel="stylesheet">
     <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
     <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -17,8 +18,8 @@
       <img src="../public/Cake.png" alt="" id="logo">
       <a href="start.html">Startseite</a>
       <a href="shop.html">Shop</a>
-      <a href="warenkorb.html">Warenkorb</a>
-      <a href="account.html" class="navbarSelected">Account</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="account.html" class="navbarSelected" id="user">Account</a>
     </nav>
   </header>
 
@@ -29,16 +30,22 @@
         <h2>Bestellhistorie</h2>
         <table class="tableList tableListHistory">
           <tr>
-            <td><p>01.01.2021</p></td>
-            <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
-            <td><p>250</p></td>
-            <td><p>12</p></td>
+            <th>Bestellnummer</th>
+            <th>Beschreibung</th>
+            <th>Rechnungsbetrag</th>
+            <th>Bestelldatum / Lieferdatum</th>
           </tr>
           <tr>
-            <td><p>01.01.2021</p></td>
+            <td><p>1</p></td>
             <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
             <td><p>250</p></td>
-            <td><p>12</p></td>
+            <td><p>01.01.2021 / 02.01.2021</p></td>
+          </tr>
+          <tr>
+            <td><p>1</p></td>
+            <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+            <td><p>250</p></td>
+            <td><p>01.01.2021 / 02.01.2021</p></td>
           </tr>
         </table>
     </div>

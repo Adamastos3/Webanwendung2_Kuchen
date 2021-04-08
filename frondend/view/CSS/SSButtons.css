@@ -1,7 +1,7 @@
 .button1 {
   display: inline-block;
   background-color: #f4511e;
-  border: 1px solid rgba(0,0,0,1);
+  border: 2px solid rgba(0,0,0,1);
   color: #FFFFFF;
   text-align: center;
   font-size: 25px;
@@ -41,7 +41,7 @@
 .button2 {
   display: inline-block;
   background-color: #333;
-  border: 1px solid rgba(0,0,0,1);
+  border: 2px solid rgba(0,0,0,1);
   color: #FFFFFF;
   text-align: center;
   font-size: 25px;
@@ -73,6 +73,9 @@
   width: 300px;
 }
 
+.button2.Change{
+  background-color: #555;
+}
 
 /*---------AccountButtons---------------*/
 

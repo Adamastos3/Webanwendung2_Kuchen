@@ -1,12 +1,17 @@
 
 
 .fieldset1  {
-  min-height: 200px;
-  border:2px solid green;
-  border: 2px solid rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  vertical-align: center;
+  border: 2px solid rgba(0,0,0,1);
   font-size: 20px;
   align-items: center;
   background-color: #333;
+  height: 100%;
 }
 
 .fieldset1 table {
@@ -16,7 +21,8 @@
 }
 
 .fieldset1 form {
-  border: 0px solid rgba(0,0,0,0.2);
+  float:center;
+  border: 1px solid rgba(0,0,0,0.2);
   display: inline-block;
 }
 
@@ -72,6 +78,7 @@
   width: auto;
   color: #ffffff;
   font-size: 22px;
+
 }
 
 .inputField1.inputField1Reset input{

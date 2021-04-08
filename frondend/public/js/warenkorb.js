@@ -1,8 +1,9 @@
 //Test
+/*
 var st="null,1,1,1,1,1"
 sessionStorage.setItem("regular", st)
 sessionStorage.setItem("individuel",st)
-
+*/
 
 
 //wirklich
@@ -14,7 +15,6 @@ addsumm();
 
 
 function addsumm() {
-    //Id ändern 
     let sum=document.getElementById("sum")
     let mehr= document.getElementById("mehr")
     let gesamt=document.getElementById("gesamt")
@@ -22,6 +22,9 @@ function addsumm() {
     let wert=0
     for (let i=0; i< a.length; i++){
         let d=a[i].innerHTML;
+        console.log(d)
+        d= d.substr(-4,3)
+        console.log(d)
         wert=wert+Number(d)
     }
     sum.innerHTML= wert+"€"
@@ -31,18 +34,20 @@ function addsumm() {
 
 }
 
-function addElem() {
-    //Warten bis id gesetzt sind
-}
-
-function sendOn() {
-        location.href="/kasse"
+function removeElem(id) {
+    console.log(id);
+    let element = id;
+    console.log(element)
+    element.parentNode.removeChild(element);
+    addsumm();
+    //Es fehl noch das entfernen aus dem sessionstore
 }
 
 //nur für Prototyp
 function einfügen() {
     console.log(sessionStorage)
     var art= document.getElementById("waren");
+    var ref= document.getElementById("preisliste")
     try{
     var re = sessionStorage.getItem("regular").split(",");
 
@@ -54,35 +59,37 @@ function einfügen() {
     var indi = sessionStorage.getItem("individuel").split(",");
     }catch{}
 
-    var a = "<table><tr><td><img src='' alt=''></td>"+
-    "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
-    "<td><p class='preis'>250</p></td>"+
-    "<td><button onclick=''><img src='' alt=''></button></td>"+
-    "</tr>"+
-    "</table>"
-
-    var b="<table><tr><td><img src='' alt=''></td>"+
-    "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
-    "<td><p class='preis'>250</p></td>"+
-    "<td><button onclick=''><img src='' alt=''></button></td>"+
-    "</tr>"+
-    "</table>"
-
+    try{
     for(let i=1; i<re.length;i++) {
-        let d=document.createElement("div")
-        d.setAttribute("id","elem"+zahl)
-        d.innerHTML=a
+        let elem="elem"+zahl
+        var a = "<table class='tableList' id='"+elem+"'>"+
+        "<tr>"+
+        "<td><img src='../public/cake-example.png' alt=''></td>"+
+        "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
+        "<td><p class='preis'>Preis: 250€</p></td>"+
+        "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
+        "</tr>"+
+        "</table>"
         zahl+=1
-        art.appendChild(d)
+        art.innerHTML=a+art.innerHTML
     }
 
     for(let i=1; i<indi.length;i++) {
-        let d=document.createElement("div")
-        d.setAttribute("id","elem"+zahl)
-        d.innerHTML=a
+        let elem="elem"+zahl
+        var b=
+        "<table class='tableList' id='"+elem+"'>"+
+        "<tr>"+
+        "<td><img src='../public/cake-example2.png' alt=''></td>"+
+        "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
+        "<td><p class='preis'>Preis: 250€</p></td>"+
+        "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
+        "</tr>"+
+        "</table>"
         zahl+=1
-        art.appendChild(d)
+        art.innerHTML+=a+art.innerHTML
     }
+}
+catch{}
 
 
 }

@@ -67,6 +67,7 @@ function einfügenWarenkorb() {
 
 
 function sendOn(a) {
+    window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
     location.href="/shop"
     
 }

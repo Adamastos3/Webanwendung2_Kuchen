@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ausstehende Bestellungen</title>
+  <script src="../public/js/allgemein.js" defer></script>
+  <script src="../public/js/ausstehendeBestellungen.js" defer></script>
+  <link href="CSS/SSMain.css" rel="stylesheet">
+  <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="CSS/SSTables.css" rel="stylesheet">
+  <link href="CSS/SSButtons.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="warenkorb.html" id="user">Warenkorb</a>
+      <a href="account.html" class="navbarSelected" id="user">Account</a>
+    </nav>
+  </header>
+
+
+
+
+  <div class="containerVertical">
+    <div class="containerVertical">
+      <table class="tableList" id="elem1">
+        <tr>
+          <td><img src="../public/cake-example.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>Bestell-Nr.: 5</p></td>
+          <td><p class="preis">Umsatz: 250€</p></td>
+          <td><button onclick="erledigt('elem1')"><img src="../public/shoppingCartCancel.png" alt=""></button></td> <!--ersetzen-->
+        </tr>
+      </table>
+
+      <table class="tableList" id="elem2">
+        <tr>
+          <td><img src="../public/cake-example2.png" alt=""></td>
+          <td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>
+          <td><p>Bestell-Nr.: 5</p></td>
+          <td><p class="preis">Umsatz: 250€</p></td>
+          <td><button onclick="erledigt('elem2')"><img src="../public/shoppingCartCancel.png" alt=""></button></td> <!--ersetzen-->
+        </tr>
+      </table>
+
+
+
+      <table class="tableBuy">
+        <tr>
+          <td>Umsatz:</td>
+          <td id="sum">500€</td>
+        </tr>
+        <tr>
+          <td>Steuer:</td>
+          <td id="steuer">95€</td>
+        </tr>
+        <tr>
+          <td>Gesamtsumme:</td>
+          <td id="gesamt">595€</td>
+        </tr>
+      </table>
+
+
+
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      &copy;
+      Copyright 2021
+      Kuchen AG
+    </div>
+
+    <div class="footerDiv">
+      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="kontakt.html">Kontaktformular</a>
+    </div>
+
+
+
+  </footer>
+
+
+</body>
+</html>

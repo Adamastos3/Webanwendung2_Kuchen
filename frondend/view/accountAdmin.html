@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmeldung</title>
+    <title>Account Admin</title>
     <script src="../public/js/allgemein.js" defer></script>
-    <script src="../public/js/login.js" defer></script>
+    <script src="../public/js/accountAdmin.js" defer></script>
     <link href="CSS/SSMain.css" rel="stylesheet">
     <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
     <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
     <link href="CSS/SSButtons.css" rel="stylesheet">
-    <link href="CSS/SSFieldset.css" rel="stylesheet">
-    <link href="CSS/SSTables.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,32 +18,21 @@
         <a href="start.html">Startseite</a>
         <a href="shop.html">Shop</a>
         <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
-        <a href="account.html" id="user" class="navbarSelected">Account</a>
+        <a href="accountAdmin.html" class="navbarSelected" id="user">Account</a>
       </nav>
     </header>
 
 
+    <h1>Account Admin</h1>
 
+    <div class="containerVertical accountButtonsDiv">
 
-<div class="containerSmallCenter">
-  <div>
-    <form method="post" class="inputField1" id="form" name="form">
-      <table class="tableLogin">
+        <button><a href="passwortAendern.html">Password ändern</a></button>
+        <button><a href="ausstehendeBestellungen.html">ausstehende Bestellungen</a></button>
+        <button><a href="kundendaten.html">KundenDaten</a></button>
+        <button><a href=login.html>Abmelden</a></button>
+    </div>
 
-            <tr><td><label for="user">Username</label></td></tr>
-            <tr><td><input type="text" id="username" ></td></tr>
-            <tr><td><label for="pass">Kennwort</label></td></tr>
-            <tr><td><input type="password"  id="pass"></td></tr>
-            <tr><td><a href="passwortVergessen.html">Kennwort vergessen?</a></td></tr>
-
-      </table>
-    </form>
-        <button class="button2 button2login"><a href="registrieren.html">Einloggen</a></button>
-        <p>Noch kein Konto?</p>
-        <button class="button2 button2login"><a href="registrieren.html">jetzt Registrieren</a></button>
-
-  </div>
-</div>
 
     <footer>
       <div>

@@ -4,12 +4,18 @@ if (sessionStorage.length==0) {
     sessionStorage.setItem( "regular",null)
     sessionStorage.setItem("Individual", null)
     sessionStorage.setItem("log", 0)
+    sessionStorage.setItem("admin",0)
     console.log("test");
     initBenutzer()
 }
 
-changeBenutzer()
-storeAnzeigen()
+if(sessionStorage.getItem("admin")=="0"){
+    changeBenutzer()
+    storeAnzeigen()
+}else{
+    changeAdmin()
+}
+
 
 //Anzeigem der einkäufe
 function storeAnzeigen() {
@@ -56,6 +62,19 @@ function changeBenutzer(){
         user.setAttribute("href", "account.html")
     }
    
+}
+
+function changeAdmin(){
+    let warenA = document.getElementById("warenkorb");
+    let userA = document.getElementById('user');
+    console.log(warenA)
+    console.log(userA)
+    userA.innerHTML="Admin";
+    userA.setAttribute("href", "accountAdmin.html")
+    warenA.innerHTML="offene Bestellungen"
+    warenA.setAttribute("href", "ausstehendeBestellungen.html")
+    
+
 }
 
 function initBenutzer() {

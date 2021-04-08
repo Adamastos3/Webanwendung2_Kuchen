@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmeldung</title>
+    <title>Account</title>
+    <script src="../public/js/allgemein.js" defer></script>
+    <script src="../public/js/account.js"defer></script>
     <link href="CSS/SSMain.css" rel="stylesheet">
     <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
     <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -15,8 +17,8 @@
         <img src="../public/Cake.png" alt="" id="logo">
         <a href="start.html">Startseite</a>
         <a href="shop.html">Shop</a>
-        <a href="warenkorb.html">Warenkorb</a>
-        <a href="account.html" class="navbarSelected">Account</a>
+        <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+        <a href="account.html" class="navbarSelected" id="user">Account</a>
       </nav>
     </header>
 
@@ -28,7 +30,7 @@
         <button><a href="passwortAendern.html">Password ändern</a></button>
         <button><a href="Bestellhistorie.html">Bestellhistorie</a></button>
         <button><a href="ihreDaten.html">Ihre Daten</a></button>
-        <button><a href=login.html>Abmelden</a></button>
+        <button><a onclick="logout()">Abmelden</a></button>
     </div>
 
 

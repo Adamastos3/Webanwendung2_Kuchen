@@ -4,7 +4,7 @@
 document.addEventListener("keydown", (e)=>{
     
 
-    if(e.keyCode===13){
+    if(e.keyCode === 13){
         console.log("tetetet")
 
         e.preventDefault();

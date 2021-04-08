@@ -67,13 +67,13 @@ function changeBenutzer(){
 function changeAdmin(){
     let warenA = document.getElementById("warenkorb");
     let userA = document.getElementById('user');
-    console.log(warenA)
-    console.log(userA)
+    let shopA= document.getElementById("shop")
     userA.innerHTML="Admin";
     userA.setAttribute("href", "accountAdmin.html")
     warenA.innerHTML="offene Bestellungen"
     warenA.setAttribute("href", "ausstehendeBestellungen.html")
-    
+    shopA.innerHTML="Kundendaten"
+    shopA.setAttribute("href", "kundendaten.html")
 
 }
 

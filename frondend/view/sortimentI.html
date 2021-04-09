@@ -1,150 +1,192 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Individuelles Sortiment</title>
-    <script src="../public/js/sortimentI.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individuelles Sortiment</title>
+  <script src="../public/js/sortimentI.js" defer></script>
+  <link href="CSS/SSMain.css" rel="stylesheet">
+  <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="CSS/SSTables.css" rel="stylesheet">
+  <link href="CSS/SSFieldset.css" rel="stylesheet">
+  <link href="CSS/SSButtons.css" rel="stylesheet">
+  <link href="CSS/SSImage.css" rel="stylesheet">
+  <link href="CSS/SSDropdown.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="" alt="" id="logo">
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="">Startseite</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Warenkorb</a></li>
-            <li><a href="">Account</a></li>
-        </ul>
+  <header>
+    <nav class="navbar">
+      <img src="../public/Cake.png" alt="" id="logo">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html" class="navbarSelected">Shop</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="account.html" id="user">Account</a>
     </nav>
-<article>
-    <h1>Individuller Kuchen</h1>
+  </header>
 
 
-    <div>
-        <div>
-            <h2>Boden</h2>
-            <table>
-                <tr>
-                    <td>
-                        <img src="" alt="">
-                        <p>Standart</p>
-                    </td>
-                    <td>
-                        <img src="" alt="">
-                        <p>Standart</p>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <img src="" alt="">
-                        <p>Standart</p>
-                    </td>
-                    <td>
-                        <img src="" alt="">
-                        <p>Standart</p>
-                    </td>
-
-                </tr>
-            </table>
-        </div>
-
-    </div>
-    <div>
-      <img src="../public/Cylinder.png" alt="Italian Trulli">
-      <img src="../public/Cylinder.png" alt="Italian Trulli">
-    </div>
 
 
-    <div>
-        <form id="form">
-            <table>
-                <tr>
-                    <td colspan="2"><label for="">1. Boden</label></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><select name="" id="select1">
-                        <option value="1"><p>Standart 25</p></option>
-                        <option value="2">Standart</option>
-                        <option value="3">Standart</option>
-                        <option value="4">Standart</option>
-                        <option value="5">Standart</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><label for="">1. Boden</label></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><select name="" id="select2">
-                        <option>Standart 25</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                    </select></td>
-                </tr>
-
-                <tr>
-                    <td colspan="2"><label for="">1. Boden</label></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><select name="" id="select3">
-                        <option>Standart 25</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                    </select></td>
-                </tr>
-
-                <tr>
-                    <td colspan="2"><label for="">1. Boden</label></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><select name="" id="select4">
-                        <option>Standart 25</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                        <option>Standart</option>
-                    </select></td>
-                </tr>
-
-                <tr></tr>
-                <tr>
-                    <td colspan="2"><p id="summe">Summe: 0,00</p></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><p id="mehrwert"></p></td>
-                </tr>
-                <tr>
-                    <td><p id="gesamtsumme"></p></td>
-                    <td><button type="submit">Bestellen</button></td>
-                </tr>
-            </table>
 
 
-        </form>
 
+
+  <div class="containerSmallLeft">
+
+    <!---DIV 1---------->
+
+    <div class="overlappingImages">
+
+      <div class="overlappingItemFrame">
+        <img src="../public/CylinderFrame.png" alt="Italian Trulli">
+      </div>
+
+      <div class="overlappingItemTOP-Topping">
+        <img src="../public/CylinderTopping.png" alt="Italian Trulli">
+      </div>
+
+      <div class="overlappingItemTOP">
+        <img src="../public/CylinderTop.png" alt="Italian Trulli">
+      </div>
+
+      <div class="overlappingItemsMIDDLE">
+        <img src="../public/CylinderMiddle.png" alt="Italian Trulli">
+      </div>
+
+      <div class="overlappingItemsBOTTOM">
+        <img src="../public/CylinderBottom.png" alt="Italian Trulli">
+      </div>
 
     </div>
 
-</article>
+
+
+
+
+<!--DIV 2---------->
+
+<div>
+  <form id="form" class="dropdown">
+    <table class="tableLogin Checkout individual">
+      <tr>
+        <td colspan="1"><label for="">1. Topping</label></td>
+      </tr>
+      <tr>
+        <td colspan="1"><select name="" id="select1" class="dropdown">
+          <option value="1"><p>Standart 25</p></option>
+          <option value="2">Standart</option>
+          <option value="3">Standart</option>
+          <option value="4">Standart</option>
+          <option value="5">Standart</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td colspan="1"><label for="">1. ??</label></td>
+      </tr>
+      <tr>
+        <td colspan="1"><select name="" id="select2">
+          <option>Standart 25</option>
+          <option>Standart</option>
+          <option>Standart</option>
+          <option>Standart</option>
+        </select></td>
+      </tr>
+
+      <tr>
+        <td colspan="1"><label for="">1. ??</label></td>
+      </tr>
+      <tr>
+        <td colspan="1"><select name="" id="select3">
+          <option>Standart 25</option>
+          <option>Standart</option>
+          <option>Standart</option>
+          <option>Standart</option>
+        </select></td>
+      </tr>
+
+      <tr>
+        <td colspan="1"><label for="">1. Boden</label></td>
+      </tr>
+      <tr>
+        <td colspan="1"><select name="" id="select4">
+          <option>Standart 25</option>
+          <option>Standart</option>
+          <option>Standart</option>
+          <option>Standart</option>
+        </select></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!---DIV 3---------->
+<div class="imgIndividualComponent">
+    <img src="../public/erdbeeren2.png" alt="Italian Trulli">
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="containerSmallright">
+  <div>
+    <table class="tableBuy">
+      <tr>
+        <td>Summe:</td>
+        <td id="summe"></td>
+      </tr>
+      <tr>
+        <td>Mehrwertsteuer:</td>
+        <td id="mehrwert"></td>
+      </tr>
+      <tr>
+        <td>Gesamtsumme:</td>
+        <td id="gesamtsumme"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <table class="tableBuy">
+
+      <tr>
+        <td>
+          <button class="button1" onclick="" >
+            <span>
+              Warenkorb
+            </span>
+          </button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+
+
+
 
 <footer>
-    <div>
-        <ul>
-            <li><a href="">Über uns / AGB</a></li>
-            <li><a href="">Impressum</a></li>
-            <li><a href="">Kontaktformular</a></li>
-        </ul>
-    </div>
+  <div>
+    &copy;
+    Copyright 2021
+    Kuchen AG
+  </div>
 
-    <div>
-        &copy;
-		Copyright 2021
-		Kuchen AG
-    </div>
+  <div class="footerDiv">
+    <a href="ueberUns.html">Über uns / AGB</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="kontakt.html">Kontaktformular</a>
+  </div>
+
+
 
 </footer>
 

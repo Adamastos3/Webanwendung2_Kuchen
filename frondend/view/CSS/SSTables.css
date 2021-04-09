@@ -6,7 +6,7 @@
   border-collapse: separate;
   border-spacing: 15px;
   border: 2px solid rgba(0,0,0,.25);
-  background-color: #FAEBD7;
+  background-color: #333;
 }
 
 .table3x3:hover {
@@ -32,7 +32,6 @@
   border: 2px solid rgba(0,0,0,0.25);
   background-color: #FFDEAD;
   width:100%;
-
 }
 
 .tableList td {
@@ -88,9 +87,18 @@
 }
 
 
+.tableList input {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: 100px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+}
 
-
-.tableList input,img {
+.tableList img {
   display: flex;
   flex-wrap:nowrap;
   width: auto;
@@ -184,6 +192,8 @@
 
 
 
+
+
 /*-----------BESTELLEN------------------*/
 .tableOrder{
   background-color: #333;
@@ -234,12 +244,9 @@
 
 
 .tableLogin.tableReset{
-  border: 5px solid rgba(0,0,0,1);
+  border: 2px solid rgba(0,0,0,1);
   width: 100%;
-
     table-layout:fixed;
-    width:100%;
-
 }
 
 
@@ -269,40 +276,63 @@
   width: 100%;
   border: 2px solid rgba(0,0,0,1);
   border-spacing: 10px 0px;
+  table-layout: fixed;
+
 }
 
 .tableLogin.Checkout td {
-  width: 33%;
+  border: 0px solid rgba(0,0,0,1);
 }
+
+.tableLogin.Checkout.CheckoutRight {
+    table-layout: auto;
+}
+
 
 .tableLogin.Checkout.CheckoutRight td {
   text-align: right;
   vertical-align: bottom;
+
+}
+
+
+.tableLogin.Checkout.individual td {
+  text-align: left;
+  vertical-align: bottom;
+}
+
+
+
+.tableLogin.Checkout.individual{
+  text-align: right;
+  vertical-align: bottom;
+  width: 100%;
+
 }
 
 
 
 
 @media only screen and (max-width: 1000px) {
-  table {
+  .tableAtMediaChanges {
     border-collapse:collapse;
   }
-  table tr {
+  .tableAtMediaChanges tr {
     height:4em;
   }
-  table th {
+  .tableAtMediaChanges th {
     padding:.07em .2em;
     white-space:nowrap;
     font-weight:400;
     height:4em;
   }
-  table td {
+  .tableAtMediaChanges td {
 
     white-space:nowrap;
     height:1.4em;
     display:inline;
 }
-table td:not(:last-child)::after {
+.tableAtMediaChanges td:not(:last-child)::after {
     display:block;
     content:'';
     height:0;

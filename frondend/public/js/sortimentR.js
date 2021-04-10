@@ -14,7 +14,7 @@ function store(a) {
     storeAnzeigen()
     
 }
-
+store("test")
 
 
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Individuelles Sortiment</title>
+  <script src="../public/js/allgemein.js" defer></script>
   <script src="../public/js/sortimentI.js" defer></script>
   <link href="CSS/SSMain.css" rel="stylesheet">
   <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
@@ -43,19 +44,19 @@
       </div>
 
       <div class="overlappingItemTOP-Topping">
-        <img src="../public/CylinderTopping.png" alt="Italian Trulli">
+        <img src="../public/CylinderTopping.png" alt="Italian Trulli" id="topping">
       </div>
 
       <div class="overlappingItemTOP">
-        <img src="../public/CylinderTop.png" alt="Italian Trulli">
+        <img src="../public/CylinderTop.png" alt="Italian Trulli" id="topping2">
       </div>
 
       <div class="overlappingItemsMIDDLE">
-        <img src="../public/CylinderMiddle.png" alt="Italian Trulli">
+        <img src="../public/CylinderMiddle.png" alt="Italian Trulli" id="middle">
       </div>
 
       <div class="overlappingItemsBOTTOM">
-        <img src="../public/CylinderBottom.png" alt="Italian Trulli">
+        <img src="../public/CylinderBottom.png" alt="Italian Trulli" id="bottom">
       </div>
 
     </div>
@@ -67,41 +68,40 @@
 <!--DIV 2---------->
 
 <div>
-  <form id="form" class="dropdown">
+  <form id="form" class="dropdown" name="form">
     <table class="tableLogin Checkout individual">
       <tr>
         <td colspan="1"><label for="">1. Topping</label></td>
       </tr>
       <tr>
-        <td colspan="1"><select name="" id="select1" class="dropdown">
-          <option value="1"><p>Standart 25</p></option>
-          <option value="2">Standart</option>
-          <option value="3">Standart</option>
-          <option value="4">Standart</option>
-          <option value="5">Standart</option>
-        </select></td>
+        <td colspan="1"><select onclick="start('topping',value.substr(-1,1))"name="" id="select1" class="dropdown">
+          <option value="25/01"><p>Standart  25€</p></option>
+          <option value="25/02">Standart</option>
+          <option value="25/03">Standart</option>
+          <option value="25/04">Standart</option>
+        </select ></td>
       </tr>
       <tr>
-        <td colspan="1"><label for="">1. ??</label></td>
+        <td colspan="1"><label for="">2. Masse</label></td>
       </tr>
       <tr>
-        <td colspan="1"><select name="" id="select2">
-          <option>Standart 25</option>
-          <option>Standart</option>
-          <option>Standart</option>
-          <option>Standart</option>
+        <td colspan="1"><select onclick="start('topping2',value.substr(-1,1))"  name="" id="select2">
+          <option value="25/05">Standart 25€</option>
+          <option value="25/06">Standart</option>
+          <option value="25/07">Standart</option>
+          <option value="25/08">Standart</option>
         </select></td>
       </tr>
 
       <tr>
-        <td colspan="1"><label for="">1. ??</label></td>
+        <td colspan="1"><label for="">3. Innenleben</label></td>
       </tr>
       <tr>
-        <td colspan="1"><select name="" id="select3">
-          <option>Standart 25</option>
-          <option>Standart</option>
-          <option>Standart</option>
-          <option>Standart</option>
+        <td colspan="1"><select onclick="start('middle',value.substr(-1,1))" name="" id="select3">
+          <option value="25/09">Standart 25€</option>
+          <option value="25/10">Standart</option>
+          <option value="25/11">Standart</option>
+          <option value="25/12">Standart</option>
         </select></td>
       </tr>
 
@@ -109,11 +109,11 @@
         <td colspan="1"><label for="">1. Boden</label></td>
       </tr>
       <tr>
-        <td colspan="1"><select name="" id="select4">
-          <option>Standart 25</option>
-          <option>Standart</option>
-          <option>Standart</option>
-          <option>Standart</option>
+        <td colspan="1"><select onclick="start('bottom',value.substr(-1,1))" name="" id="select4">
+          <option value="25/13">Standart 25€</option>
+          <option value="25/14">Standart</option>
+          <option value="25/15">Standart</option>
+          <option value="25/16">Standart</option>
         </select></td>
       </tr>
     </table>
@@ -121,7 +121,7 @@
 </div>
 <!---DIV 3---------->
 <div class="imgIndividualComponent">
-    <img src="../public/erdbeeren2.png" alt="Italian Trulli">
+    <img src="../public/erdbeeren.png" alt="Italian Trulli" id="bildMaterial">
 </div>
 </div>
 
@@ -157,7 +157,7 @@
 
       <tr>
         <td>
-          <button class="button1" onclick="" >
+          <button class="button1" onclick="sendOn()" >
             <span>
               zum Warenkorb hinzufügen
             </span>

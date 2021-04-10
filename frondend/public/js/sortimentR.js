@@ -2,10 +2,15 @@
 
 function store(a) {
     let elem = a.value;
-    let regular = sessionStorage.getItem("regular").split(",")
-    regular.push(elem);
-    sessionStorage.setItem("regular", regular)
-    //console.log(sessionStorage)
+    if(sessionStorage.getItem("regular")==" "){
+        sessionStorage.setItem("regular", elem)
+    }
+    else{
+        let individual = sessionStorage.getItem("regular").split(",")
+        individual.push(elem);
+        sessionStorage.setItem("regular", individual)
+    }
+    console.log(sessionStorage)
     storeAnzeigen()
     
 }

@@ -266,7 +266,25 @@ body > h1 {
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 100%;
   }
+}
 
 
+@media only screen and (max-width: 1200px) {
+  .containerSmallCenter{
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
 
+  .containerSmallCenter > div{
+    width: 100%;
+  }
+
+  .containerSmallCenter > div table{
+    width: 100%;
+  }
+
+  .containerSmallCenter.containerSmallCenterReset{
+    max-width: 66%;
+  }
 }

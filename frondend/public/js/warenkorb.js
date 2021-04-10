@@ -58,21 +58,30 @@ function sendOn(){
 function einfügen() {
     console.log(sessionStorage)
     var art= document.getElementById("waren");
-    try{
-    var re = sessionStorage.getItem("regular").split(",");
+    var a1= sessionStorage.getItem("regular")
+    var b1= sessionStorage.getItem("Individual")
+    var re=[];
+    var indi=[];
 
+    if(a1!=" "){
+        if( a1.length == 1){
+            re.push("a")
+        }
+        else{
+            re=a1.split(",")
+        }
     }
-    catch{
-
+    if(b1!=" "){
+        if( b1.length == 1){
+            indi.push("a")
+        }
+        else{
+            indi=b1.split(",")
+        }
     }
-    try{
-    var indi = sessionStorage.getItem("individuel").split(",");
-    }catch{}
-
-    try{
-    for(let i=1; i<re.length;i++) {
+    for(let i=0; i<re.length;i++) {
         let elem="elem"+zahl
-        var a =
+        let a =
         "<tr id='"+elem+"'>"+
         "<td><img src='../public/cake-example.png' alt=''></td>"+
         "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
@@ -84,9 +93,9 @@ function einfügen() {
         console.log("test")
     }
 
-    for(let i=1; i<indi.length;i++) {
+    for(let i=0; i<indi.length;i++) {
         let elem="elem"+zahl
-        var b=
+        let b=
         "<tr id='"+elem+"' >"+
         "<td><img src='../public/cake-example2.png' alt=''></td>"+
         "<td><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p></td>"+
@@ -96,9 +105,5 @@ function einfügen() {
         zahl+=1
         art.innerHTML+=b
     }
-}
-catch{}
-
 
 }
-

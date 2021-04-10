@@ -20,19 +20,20 @@ function addsumm() {
 
 function changeRadion(a){
     if (a =="vor") {
+        
         document.getElementById("vor").checked=true;
         document.getElementById("rech").checked=false;
-        ducument.getElementById("bar").checked=false;
+        document.getElementById("bar").checked=false;
     }
     else if (a =="rech") {
         document.getElementById("vor").checked=false;
         document.getElementById("rech").checked=true;
-        ducument.getElementById("bar").checked=false;
+        document.getElementById("bar").checked=false;
     }
-    else{
+    else if (a=="bar"){
         document.getElementById("vor").checked=false;
         document.getElementById("rech").checked=false;
-        ducument.getElementById("bar").checked=true;
+        document.getElementById("bar").checked=true;
     }
 }
 

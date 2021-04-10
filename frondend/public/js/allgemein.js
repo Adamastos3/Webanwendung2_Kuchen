@@ -1,8 +1,8 @@
 
 //init seesionstorage
 if (sessionStorage.length === 0) {
-    sessionStorage.setItem( "regular",null)
-    sessionStorage.setItem("Individual", null)
+    sessionStorage.setItem( "regular"," ")
+    sessionStorage.setItem("Individual", " ")
     sessionStorage.setItem("log", 0)
     sessionStorage.setItem("admin",0)
     sessionStorage.setItem("kasse",0)
@@ -24,30 +24,27 @@ function storeAnzeigen() {
     let anzahlI=0
     let warenkorb = document.getElementById("warenkorb");
     let regular = sessionStorage.getItem("regular")
-    let individual= sessionStorage.getItem("individual");
-    try {
-        console.log(regular[0])
-        if (regular[0]!="n"){
-            console.log("t1")
+    let individual= sessionStorage.getItem("Individual");
+
+    if (regular!=" "){
+        if(regular.length == 1){
             anzahlR+=1
         }
-        anzahlR+=regular.split(",").length-1
+        else{
+            anzahlR+=regular.split(",").length 
+        }
         
-    }
-    catch {
-       
     }
 
-    try {
-        if (individual[0]!="n"){
+    if (individual!=" "){
+        if(individual.length == 1){
             anzahlI+=1
         }
-        anzahlI+=individual.split(",").length-1
-        
+        else{
+            anzahlI+=individual.split(",").length 
+        }
     }
-    catch {
-       
-    }
+
     
     let anzahl = anzahlI+anzahlR;
     if (anzahl >0) {

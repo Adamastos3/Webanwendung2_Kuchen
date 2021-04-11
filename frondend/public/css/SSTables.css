@@ -1,0 +1,350 @@
+
+/*---------------3x3-----------------*/
+.table3x3 {
+  margin: 2%;
+  margin-top: 5%;
+  border-collapse: separate;
+  border-spacing: 15px;
+  border: 2px solid rgba(0,0,0,.25);
+  background-color: #333;
+}
+
+.table3x3:hover {
+  background-color: #DEB887;
+  filter: brightness(110%);
+  transition-duration: 0.5s;
+}
+
+
+.table3x3 img {
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(0,0,0,.25);
+  padding: 0;
+}
+
+/*---------------LIST-----------------*/
+.tableList {
+  margin:0;
+  border-spacing: 15px;
+  border: 2px solid rgba(0,0,0,0.25);
+  background-color: #FFDEAD;
+  width:100%;
+}
+
+.tableList td {
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+}
+
+.tableList td:nth-child(1) {
+  border: none;
+  width: 5%;
+}
+
+.tableList td:nth-child(2) {
+  width: auto;
+  border-radius: 0px;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.tableList td:nth-child(3) {
+  width: 5%;
+  text-align: center;
+}
+
+.tableList td:last-child {
+  border: none;
+  width: 5%;
+}
+
+.tableList.tableListHistory td:nth-child(1) {
+  width: 85%;
+  text-align: center;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.tableList.tableListHistory td:nth-child(1) {
+  width: 5%;
+  text-align: center;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.tableList.tableListHistory td:nth-child(3) {
+  width: 5%;
+  text-align: center;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.tableList.tableListHistory td:nth-child(4) {
+  width: 5%;
+  text-align: center;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) {
+  width: 5%;
+  text-align: center;
+  border: 0px solid rgba(0,0,0,0.2);
+}
+
+
+.tableList input {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: 100px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+}
+
+.tableList img {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: 100px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+}
+
+.tableList input:hover {
+  background-color: #f4511e;
+  transition-duration: 0.5s;
+}
+
+.tableList button:hover {
+  background-color: #f4511e;
+  transition-duration: 0.5s;
+}
+
+
+.tableList button {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: auto;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  cursor: pointer;
+  outline: 0;
+}
+
+
+
+
+.tableList button img {
+  border-style: none;
+}
+
+
+.tableList.scrollable{
+  overflow-y:scroll;
+  height: 280px;
+  display:block;
+}
+
+
+
+
+.tableList.scrollable td:nth-child(3) {
+  width: 5%;
+  text-align: center;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+
+
+
+/*-----------ZUR KASSE------------------*/
+.tableBuy{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 2px solid rgba(0,0,0,1);
+  padding: 10px;
+  text-align: left;
+  border-spacing: 0px 0;
+  height: 100%;
+  table-layout: fixed;
+}
+
+
+.tableBuy td{
+  width: 100%;
+  border:0px solid rgba(0,0,0,1);
+}
+
+.tableBuy td:nth-child(2){
+  text-align: right;
+  width: 100px;
+}
+
+.tableBuy.Checkout{
+
+}
+
+
+
+
+
+.tableBuy.tableBuyButtons td {
+  text-align: center;
+  width: 100%;
+}
+
+
+
+/*-----------BESTELLEN------------------*/
+.tableOrder{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 0px solid rgba(0,0,0,0.25);
+  padding: 20px;
+  text-align: left;
+  overflow-y:scroll;
+  height: 280px;
+  display:block;
+}
+
+
+
+.tableOrder td:nth-child(3){
+  width:50%;
+}
+
+.tableOrder td:nth-child(2){
+  text-align: right;
+}
+
+
+.scrollableTable{
+  overflow-y:scroll;
+  height: 280px;
+  display:block;
+}
+
+
+/*------Login------------*/
+.tableLogin{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 2px solid rgba(0,0,0,1);
+  padding: 20px;
+  text-align: left;
+  height: 280px;
+  width: 100%;
+  border-spacing: 15px;
+}
+
+.tableLogin tr:nth-child(-n+4){
+  text-align: center;
+}
+
+
+
+
+.tableLogin.tableReset{
+  border: 2px solid rgba(0,0,0,1);
+  width: 100%;
+    table-layout:fixed;
+}
+
+
+.tableLogin.tableLoginNewPW tr:nth-child(-n+6){
+  text-align: center;
+}
+
+.tableLogin.tableLoginED {
+  width: 40%;
+  text-align: center;
+
+}
+
+.tableLogin.tableLoginED td{
+  text-align: center;
+  max-height: 20px;
+}
+
+
+.tableLogin.tableLoginContact tr{
+  text-align:center;
+}
+
+.tableLogin.Checkout {
+  height: 100%;
+  min-height: 160px;
+  width: 100%;
+  border: 2px solid rgba(0,0,0,1);
+  border-spacing: 10px 0px;
+  table-layout: fixed;
+
+}
+
+.tableLogin.Checkout td {
+  border: 0px solid rgba(0,0,0,1);
+}
+
+.tableLogin.Checkout.CheckoutRight {
+    table-layout: auto;
+}
+
+
+.tableLogin.Checkout.CheckoutRight td {
+  text-align: right;
+  vertical-align: bottom;
+
+}
+
+
+.tableLogin.Checkout.individual td {
+  text-align: left;
+  vertical-align: bottom;
+}
+
+
+
+.tableLogin.Checkout.individual{
+  text-align: right;
+  vertical-align: bottom;
+  width: 100%;
+
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+  .tableAtMediaChanges {
+    border-collapse:collapse;
+  }
+  .tableAtMediaChanges tr {
+    height:4em;
+  }
+  .tableAtMediaChanges th {
+    padding:.07em .2em;
+    white-space:nowrap;
+    font-weight:400;
+    height:4em;
+  }
+  .tableAtMediaChanges td {
+
+    white-space:nowrap;
+    height:1.4em;
+    display:inline;
+}
+.tableAtMediaChanges td:not(:last-child)::after {
+    display:block;
+    content:'';
+    height:0;
+
+}
+
+}

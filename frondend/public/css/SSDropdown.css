@@ -1,0 +1,24 @@
+.dropdown select {
+  position: relative;
+  display: inline-block;
+  width:100%;
+  height: 40px;
+  appearance: none;
+
+  -webkit-appearance: button;
+
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -moz-padding-start: 2px;
+    background-color: #f4511e; /* Fallback color if gradients are not supported */
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #000;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 24px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}

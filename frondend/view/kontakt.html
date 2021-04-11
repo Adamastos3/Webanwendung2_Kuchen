@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startseite</title>
+    <title>Kontakt</title>
     <script src="../public/js/allgemein.js" defer></script>
-    <link href="CSS/SSMain.css" rel="stylesheet">
-    <link href="CSS/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="CSS/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="CSS/SSTables.css" rel="stylesheet">
-    <link href="CSS/SSFieldset.css" rel="stylesheet">
-    <link href="CSS/SSButtons.css" rel="stylesheet">
+    <script src="../public/js/kontakt.js"></script>
+    <link href="../public/css/SSMain.css" rel="stylesheet">
+    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="../public/css/SSTables.css" rel="stylesheet">
+    <link href="../public/css/SSFieldset.css" rel="stylesheet">
+    <link href="../public/css/SSButtons.css" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <nav class="navbar">
-      <img src="../public/Cake.png" alt="" id="logo">
+      <img src="../public/img/Cake.png" alt="" id="logo">
       <a href="start.html">Startseite</a>
       <a href="shop.html">Shop</a>
       <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
@@ -27,16 +28,18 @@
 
 
 <div class="containerSmallCenter smallCenterColumns">
+  
   <div>
+    <h2>Kontaktformular</h2>
     <form action="" class="inputField1 inputField1Contact">
         <table class="tableLogin tableLoginContact ">
             <tr>
                 <td><label for="">Anrede</label></td>
             <tr>
                <td>
-                   <input type="radio" name="" id="">
-                   <label for="">Herr</label>
-                   <input type="radio" name="" id="">
+                   <input type="radio" name="" id="Herr" onclick="changeRadion('Herr')" checked>
+                   <label for="Herr">Herr</label>
+                   <input type="radio" name="" id="Frau" onclick="changeRadion('Frau')">
                    <label for="">Frau</label>
                 </td>
             </tr>
@@ -44,24 +47,24 @@
                 <td><label for="textVorname">Vorname</label></td>
             </tr>
             <tr>
-                <td><input type="text" id="textVorname"></td>
+                <td><input type="text" id="textVorname" required></td>
             </tr>
             <tr>
                 <td><label for="textNachname">Nachname</label></td>
             </tr>
             <tr>
-                <td><input type="text" id="textNachname"></td>
+                <td><input type="text" id="textNachname" required></td>
             </tr>
             <tr>
                 <td><label for="textMail">Email</label></td>
             </tr>
             <tr>
-                <td><input type="email" name="" id="textMail"></td>
+                <td><input type="email" name="" id="textMail" required></td>
             </tr>
             <tr>
               <td>
                 <label for=""><h3>Ihre Nachricht</h3></label>
-                <textarea name="" id="">abc</textarea>
+                <textarea name="" id="text"></textarea>
               </td>
             </tr>
 
@@ -70,7 +73,7 @@
 
 
 
-  <button type="submit" class="button2 button2login">Senden</button>
+  <button type="submit" onclick="sendOn()" class="button2 button2login">Senden</button>
 </div>
 
 </div>

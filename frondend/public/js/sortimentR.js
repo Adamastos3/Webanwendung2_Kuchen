@@ -2,7 +2,7 @@
 
 function store(a) {
     let elem = a.value;
-    if(sessionStorage.getItem("regular")==" "){
+    if(sessionStorage.getItem("regular")=="n" || sessionStorage.getItem("regular")=="n," || sessionStorage.getItem("regular") == "undefined" || sessionStorage.getItem("regular") == ""){
         sessionStorage.setItem("regular", elem)
     }
     else{

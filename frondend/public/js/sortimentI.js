@@ -3,11 +3,6 @@ var timer1 = null;
 
 addSum()
 
-function test(){
-    let a = document.getElementById("topping")
-    a.style.visibility= "hidden"
-}
-
 
 function start(a,b){
     console.log(b)
@@ -46,10 +41,10 @@ function bildChange(a) {
 
     //Top
     if(a =="01" || a=="03"){
-        bild.src="../public/erdbeeren.png"
+        bild.src="../public/img/erdbeeren.png"
     }
     if(a =="02" || a=="04"){
-        bild.src= "../public/erdbeeren2.png"
+        bild.src= "../public/img/erdbeeren2.png"
     }
 
 
@@ -85,7 +80,7 @@ function sendOn(){
 
 function store() {
     let elem = "a";
-    if(sessionStorage.getItem("Individual")==" "){
+    if(sessionStorage.getItem("Individual")=="n"){
         sessionStorage.setItem("Individual", elem)
     }
     else{

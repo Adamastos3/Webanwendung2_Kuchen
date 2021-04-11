@@ -1,12 +1,12 @@
 
 //init seesionstorage
 if (sessionStorage.length === 0) {
-    sessionStorage.setItem( "regular"," ")
-    sessionStorage.setItem("Individual", " ")
+    sessionStorage.setItem("regular","n")
+    sessionStorage.setItem("Individual", "n")
     sessionStorage.setItem("log", 0)
     sessionStorage.setItem("admin",0)
     sessionStorage.setItem("kasse",0)
-    console.log("test");
+    console.log("init");
     initBenutzer()
 }
 
@@ -20,35 +20,43 @@ if(sessionStorage.getItem("admin")==="0"){
 
 //Anzeigem der einkäufe
 function storeAnzeigen() {
+    console.log(sessionStorage)
     let anzahlR=0
     let anzahlI=0
     let warenkorb = document.getElementById("warenkorb");
     let regular = sessionStorage.getItem("regular")
+    console.log(sessionStorage.getItem("regular"))
+    console.log("test")
     let individual= sessionStorage.getItem("Individual");
 
-    if (regular!=" "){
+    if (regular!="n" && regular !="n," && regular != "undefined"){
         if(regular.length == 1){
             anzahlR+=1
         }
         else{
             anzahlR+=regular.split(",").length 
+            console.log("r2")
         }
         
     }
 
-    if (individual!=" "){
+    if (individual!="n"){
         if(individual.length == 1){
             anzahlI+=1
         }
         else{
             anzahlI+=individual.split(",").length 
+            console.log("i2")
         }
     }
 
     
-    let anzahl = anzahlI+anzahlR;
+    let anzahl = (anzahlI)+(anzahlR);
     if (anzahl >0) {
         warenkorb.innerHTML="Warenkorb ("+anzahl+")"
+    }
+    else{
+        warenkorb.innerHTML="Warenkorb"
     }
 }
 
@@ -86,7 +94,7 @@ function initBenutzer() {
     sessionStorage.setItem("stadt","Rottweil")
     sessionStorage.setItem("strasse","Gartenstraße")
     sessionStorage.setItem("hausnr", "6")
-    console.log(sessionStorage)
+    //console.log(sessionStorage)
 }
 
 

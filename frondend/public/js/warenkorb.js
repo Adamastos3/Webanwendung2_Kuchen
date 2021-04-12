@@ -54,7 +54,7 @@ function removeElem(id) {
             s.pop()
         sessionStorage.setItem("regular", s)
         }
-        
+
         console.log(sessionStorage)
     }
     else{
@@ -66,11 +66,11 @@ function removeElem(id) {
             s.pop()
             sessionStorage.setItem("Individual", s)
         }
-        
+
         console.log(sessionStorage)
     }
 
-    storeAnzeigen()    
+    storeAnzeigen()
 }
 
 function sendOn(){

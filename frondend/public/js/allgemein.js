@@ -60,6 +60,10 @@ function storeAnzeigen() {
     }
 }
 
+function sendToStart(){
+    location.href="start.html"
+}
+
 //prototyp
 function changeBenutzer(){
     var user = document.getElementById("user");

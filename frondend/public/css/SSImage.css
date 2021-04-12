@@ -56,20 +56,20 @@
 }
 
 .overlappingItemTOP-Topping img {
-  filter: invert(27%) sepia(83%) saturate(4715%) hue-rotate(350deg) brightness(86%) contrast(90%);
+  filter: brightness(0%) invert(14%) sepia(47%) saturate(5789%) hue-rotate(353deg) brightness(106%) contrast(82%);
 }
 
 .overlappingItemTOP img {
-filter: invert(86%) sepia(47%) saturate(5789%) hue-rotate(353deg) brightness(106%) contrast(82%);
+  filter: brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%);
 }
 
 .overlappingItemsMIDDLE img {
-  filter: invert(66%) sepia(66%) saturate(551%) hue-rotate(335deg) brightness(97%) contrast(89%);
+  filter: brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%);
 }
 
 .overlappingItemsBOTTOM img {
 
-  filter: invert(14%) sepia(38%) saturate(386%) hue-rotate(327deg) brightness(103%) contrast(102%);
+  filter: brightness(0%) invert(62%) sepia(98%) saturate(301%) hue-rotate(338deg) brightness(99%) contrast(93%)
 }
 
 .imgIndividualComponent {

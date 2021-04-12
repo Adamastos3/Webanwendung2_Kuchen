@@ -3,7 +3,7 @@
 if (sessionStorage.length === 0) {
     sessionStorage.setItem("regular","n")
     sessionStorage.setItem("Individual", "n")
-    sessionStorage.setItem("log", 0)
+    sessionStorage.setItem("login", 0)
     sessionStorage.setItem("admin",0)
     sessionStorage.setItem("kasse",0)
     console.log("init");

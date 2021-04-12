@@ -74,6 +74,7 @@ function removeElem(id) {
 }
 
 function sendOn(){
+    console.log(sessionStorage)
     if (sessionStorage.getItem("login") ==1){
         location.href="kasse.html"
     }
@@ -116,7 +117,7 @@ function einfügen() {
         "<td><p>Erdbeerkuchen<p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
         "<td><p class='preis'>Preis: 12€</p></td>"+
-        "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
+        "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1
         art.innerHTML+=a
@@ -131,7 +132,7 @@ function einfügen() {
         "<td><p>Individueller kuchen<p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
         "<td><p class='preis'>Preis: 25€</p></td>"+
-        "<td><button onclick='removeElem("+elem+")'><img src='../public/shoppingCartCancel.png' alt=''></button></td>"+
+        "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1
         art.innerHTML+=b

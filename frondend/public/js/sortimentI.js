@@ -40,12 +40,55 @@ function bildChange(a) {
     let bild= document.getElementById("bildMaterial")
 
     //Top
-    if(a =="01" || a=="03"){
-        bild.src="../public/img/erdbeeren.png"
+    if(a =="01"){
+        bild.src="../public/img/erdbeeren2.png"
     }
-    if(a =="02" || a=="04"){
-        bild.src= "../public/img/erdbeeren2.png"
+    if(a =="02"){
+        bild.src= "../public/img/himbeeren.jpeg"
     }
+    if(a =="03"){
+        bild.src= "../public/img/schokolade.png"
+    }
+    if(a =="04"){
+        bild.src= "../public/img/sahne.jpeg"
+    }
+    if(a =="05"){
+        bild.src= "../public/img/schokolade.png"
+    }
+    if(a =="06"){
+        bild.src= "../public/img/weißeSchokolade.jpeg"
+    }
+    if(a =="07"){
+        bild.src= "../public/img/creme.jpeg"
+    }
+    if(a =="08"){
+        bild.src= "../public/img/schokolade.png"
+    }
+    if(a =="09"){
+        bild.src= "../public/img/schokolade.png"
+    }
+    if(a =="10"){
+        bild.src= "../public/img/weißeSchokolade.jpeg"
+    }
+    if(a =="11"){
+        bild.src= "../public/img/erdbeercreme.jpeg"
+    }
+    if(a =="12"){
+        bild.src= "../public/img/erdbeercreme.jpeg"
+    }
+    if(a =="13"){
+        bild.src= "../public/img/kuchenboden.jpeg"
+    }
+    if(a =="14"){
+        bild.src= "../public/img/kuchenboden.jpeg"
+    }
+    if(a =="15"){
+        bild.src= "../public/img/schokoladenboden.jpeg"
+    }
+    if(a =="16"){
+        bild.src= "../public/img/schokoladenboden.jpeg"
+    }
+
 
 
 }

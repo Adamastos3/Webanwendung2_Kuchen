@@ -13,7 +13,7 @@
 
 body {
   background-color: #FAEBD7;
-  font-family: Roboto-medium;
+  font-family: Roboto-ligth;
   height:100vh;
   display:flex;
   flex-direction:column;
@@ -26,7 +26,7 @@ header{
 
 
 h1, h2, h3 {
-  font-family: Roboto-ligth;
+  font-family: Roboto-medium;
 }
 
 a {

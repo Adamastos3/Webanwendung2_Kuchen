@@ -11,7 +11,10 @@ server.use(express.urlencoded({ extended: false }))
 server.use(session({
     secret: "test",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000*60*60*24
+    }
   }))
 
 //middleware
@@ -21,7 +24,7 @@ server.use(express.static(path.join(__dirname,'public')));
 //Routen
 //Index
 server.get('/', (req,res) =>{
-    res.sendFile("index.html", {root: path.join(__dirname, 'view')});
+    res.sendFile("start.html", {root: path.join(__dirname, 'view')});
 });
 
 //Register

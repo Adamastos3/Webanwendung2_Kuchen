@@ -9,7 +9,7 @@ function addsumm() {
     for (let i=0; i< a.length; i++){
         let d=a[i].innerHTML;
         console.log(d)
-        d= d.substr(-4,3)
+        d= d.substr(-3,2)
         console.log(d)
         wert=wert+Number(d)
     }
@@ -71,7 +71,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p>Erdbeerkuchen<p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
-        "<td><p class='preis'>Preis: 12€</p></td>"+
+        "<td><p class='preis'>12€</p></td>"+
         "</tr>"
         zahl+=1
         art.innerHTML+=a
@@ -85,7 +85,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
         "<td><p>Individueller kuchen<p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
-        "<td><p class='preis'>Preis: 25€</p></td>"+
+        "<td><p class='preis'>25€</p></td>"+
         "</tr>"
         zahl+=1
         art.innerHTML+=b

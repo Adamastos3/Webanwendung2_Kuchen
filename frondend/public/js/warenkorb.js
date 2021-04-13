@@ -89,12 +89,20 @@ function removeElem(id) {
 
 function sendOn(){
     console.log(sessionStorage)
-    if (sessionStorage.getItem("login") ==1){
-        location.href="kasse.html"
+    let r = document.getElementById("regular")
+    let i = document.getElementById("Individual")
+
+    if((r=="undefined") && (i=="n")){
+        location.href="shop.html"
     }
     else{
-        sessionStorage.setItem("kasse",1)
-        location.href="login.html"
+        if (sessionStorage.getItem("login") ==1){
+            location.href="kasse.html"
+        }
+        else{
+            sessionStorage.setItem("kasse",1)
+            location.href="login.html"
+        }
     }
 }
 

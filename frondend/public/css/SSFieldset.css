@@ -1,40 +1,5 @@
 
 
-.fieldset1  {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  vertical-align: center;
-  border: 2px solid rgba(0,0,0,1);
-  font-size: 20px;
-  align-items: center;
-  background-color: #333;
-  height: 100%;
-}
-
-.fieldset1 table {
-  border: 0px solid rgba(0,0,0,0.2);
-  border-spacing:15px 5px;
-  text-align: right;
-}
-
-.fieldset1 form {
-  float:center;
-  border: 1px solid rgba(0,0,0,0.2);
-  display: inline-block;
-}
-
-.fieldset1 > label {
-  border: 0px solid rgba(0,0,0,0.2);
-  font-size: 22px;
-  display: inline-block;
-}
-
-.fieldset1 > h2 {
-  font-size: 26px;
-}
 
 
 
@@ -116,8 +81,8 @@
 
 
 @media only screen and (max-width: 1500px) {
-  .inputField1 input{
+  .inputField1.Checkout input{
     width: 100%;
-    overflow: hidden;
+    overflow: scroll;
   }
 }

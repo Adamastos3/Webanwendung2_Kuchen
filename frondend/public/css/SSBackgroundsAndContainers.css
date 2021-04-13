@@ -192,16 +192,38 @@ body > h1 {
   flex-direction: column;
 }
 
-.containerSmallCenter.smallCenterColumns > div {
+
+/*Start divs*/
+
+
+.startImageDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  background-image: url("../../img/start.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px 10px 00px 10px;
+  box-sizing: border-box;
+  border: 2px solid rgba(0,0,0,.5);
+  padding:  0;
+
+}
+
+.startImageDiv h1{
+  margin-bottom: 0;
+  color: #E6E6FA;
+  text-shadow: 4px 2px #333;
+  font-size: 400%;
 
 }
 
 
-
-
-
-
-
+.headerStart{
+  margin-bottom: 00px;
+}
 
 
 
@@ -267,6 +289,10 @@ body > h1 {
     max-width: 100%;
   }
 }
+
+
+
+
 
 
 @media only screen and (max-width: 1200px) {

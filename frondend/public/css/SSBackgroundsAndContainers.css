@@ -217,6 +217,8 @@ body > h1 {
   color: #E6E6FA;
   text-shadow: 4px 2px #333;
   font-size: 400%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 
 }
 

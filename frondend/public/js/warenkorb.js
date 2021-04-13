@@ -37,6 +37,7 @@ function addsumm() {
 
 function removeElem(id) {
 
+    console.log("id")
     console.log(id);
     let element=id
     console.log(element)
@@ -45,12 +46,14 @@ function removeElem(id) {
     addsumm();
 
     let d = element.id.substr(-2,2)
+    console.log(d)
     if(d=="re"){
         let e = sessionStorage.getItem("regular")
+        console.log(e)
         if (e.length==4){
             sessionStorage.setItem("regular", "undefined")
         }else{
-            let s = e.split()
+            let s = e.split(",")
             s.pop()
             if (s.length==0){
                 sessionStorage.setItem("regular", "undefined")

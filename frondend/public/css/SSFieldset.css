@@ -78,7 +78,6 @@
   width: auto;
   color: #ffffff;
   font-size: 22px;
-
 }
 
 .inputField1.inputField1Reset input{
@@ -113,6 +112,12 @@
   max-width: 600px;
   min-width: 99%;
   min-height: 100px;
+}
 
 
+@media only screen and (max-width: 1500px) {
+  .inputField1 input{
+    width: 100%;
+    overflow: hidden;
+  }
 }

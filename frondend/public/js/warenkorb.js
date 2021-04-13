@@ -89,8 +89,10 @@ function removeElem(id) {
 
 function sendOn(){
     console.log(sessionStorage)
-    let r = document.getElementById("regular")
-    let i = document.getElementById("Individual")
+    let r = sessionStorage.getItem("regular")
+    console.log(r)
+    let i = sessionStorage.getItem("Individual")
+    console.log(i)
 
     if((r=="undefined") && (i=="n")){
         location.href="shop.html"

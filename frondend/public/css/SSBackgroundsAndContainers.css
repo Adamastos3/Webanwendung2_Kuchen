@@ -201,15 +201,14 @@ body > h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 230px;
+  height: 300px;
   background-image: url("../../img/start.jpg");
-  background-repeat: no-repeat;
+  min-height: 200px;
   background-size: cover;
   margin: 10px 10px 00px 10px;
   box-sizing: border-box;
   border: 2px solid rgba(0,0,0,.5);
   padding:  0;
-
 }
 
 .startImageDiv h1{
@@ -218,7 +217,6 @@ body > h1 {
   font-size: 400%;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-
 }
 
 
@@ -289,6 +287,10 @@ body > h1 {
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 100%;
   }
+
+  .startImageDiv h1{
+    font-size: 300%;
+  }
 }
 
 
@@ -313,5 +315,13 @@ body > h1 {
 
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 66%;
+  }
+}
+
+
+
+@media only screen and (max-width: 1600px) {
+  .startImageDiv{
+    height: 1800px;
   }
 }

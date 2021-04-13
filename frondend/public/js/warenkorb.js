@@ -129,7 +129,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p>Erdbeerkuchen<p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
-        "<td><p class='preis'>Preis: 12€</p></td>"+
+        "<td><p class='preis'>12€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1
@@ -144,7 +144,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
         "<td><p>Individueller kuchen<p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
-        "<td><p class='preis'>Preis: 25€</p></td>"+
+        "<td><p class='preis'>25€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1

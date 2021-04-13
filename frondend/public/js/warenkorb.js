@@ -52,7 +52,12 @@ function removeElem(id) {
         }else{
             let s = e.split()
             s.pop()
-        sessionStorage.setItem("regular", s)
+            if (s.length==0){
+                sessionStorage.setItem("regular", "undefined")
+            }else {
+                sessionStorage.setItem("regular", s)
+            }
+        
         }
 
         console.log(sessionStorage)
@@ -64,9 +69,14 @@ function removeElem(id) {
         }else{
             let s = e.split()
             s.pop()
-            sessionStorage.setItem("Individual", s)
+            if (s.length==0){
+                sessionStorage.setItem("Individual", "n")
+            }else {
+                sessionStorage.setItem("Individual", s)
+            }
         }
 
+        
         console.log(sessionStorage)
     }
 

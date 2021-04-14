@@ -70,6 +70,8 @@ function changeBenutzer(){
     if (sessionStorage.getItem("login")=="1"){
         user.innerHTML="Karl Walter"
         user.setAttribute("href", "account.html")
+    }else{
+        user.setAttribute("href", "login.html")
     }
    
 }

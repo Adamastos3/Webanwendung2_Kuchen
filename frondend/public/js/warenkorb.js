@@ -138,7 +138,7 @@ function einfügen() {
         let a =
         "<tr id='"+elem+"'>"+
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
-        "<td><h4><p>Erdbeerkuchen</h4><p>"+
+        "<td><p><h4>Erdbeerkuchen</h4></p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
         "<td><p class='preis'>12€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
@@ -153,7 +153,7 @@ function einfügen() {
         let b=
         "<tr id='"+elem+"' >"+
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
-        "<td><p>Individueller kuchen<p>"+
+        "<td><p><h4>Individueller kuchen</h4></p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
         "<td><p class='preis'>25€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+

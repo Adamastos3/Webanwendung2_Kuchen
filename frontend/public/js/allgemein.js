@@ -61,7 +61,7 @@ function storeAnzeigen() {
 }
 
 function sendToStart(){
-    location.href="start.html"
+    location.href="/"
 }
 
 //prototyp
@@ -69,7 +69,10 @@ function changeBenutzer(){
     var user = document.getElementById("user");
     if (sessionStorage.getItem("login")=="1"){
         user.innerHTML="Karl Walter"
-        user.setAttribute("href", "account.html")
+        user.setAttribute("href", "/account")
+    }
+    else{
+        user.setAttribute("href", "/login")
     }
    
 }

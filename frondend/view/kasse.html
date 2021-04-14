@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kasse</title>
+  <script src="../public/js/allgemein.js" defer></script>
+  <script src="../public/js/kasse.js" defer></script>
+  <link href="../public/css/SSMain.css" rel="stylesheet">
+  <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="../public/css/SSTables.css" rel="stylesheet">
+  <link href="../public/css/SSFieldset.css" rel="stylesheet">
+  <link href="../public/css/SSButtons.css" rel="stylesheet">
+  <link href="../public/css/SSImage.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html" id="shop" >Shop</a>
+      <a href="warenkorb.html" class="navbarSelected" id="warenkorb">Warenkorb</a>
+      <a href="account.html" id="user">Account</a>
+    </nav>
+  </header>
+
+  <div class="containerVertical">
+    <div>
+      <h2>Kasse</h2>
+      <table class="tableList scrollable" id="waren">
+        <tr>
+          <th></th>
+          <th>Beschreibung</th>
+          <th>Preis</th>
+          <th></th>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="containerHorizontal containerHorizontalCheckout">
+    <div>
+      <h2>Zahlungsmethode</h2>
+      <form class="inputField1">
+        <table class="tableLogin Checkout">
+
+          <tr>
+            <td>
+              <label for="vorkasse">
+                <input type="radio" name="vorkasse" value="vorkasse" id="vor" onclick="changeRadion('vor')"> Vorkasse
+              </label>
+            </td>
+
+            <td>
+              <label for="rechnung">
+                <input type="radio" name="rechnung"  value="rechnung" id="rech" onclick="changeRadion('rech')"> Rechnung
+              </label>
+            </td>
+            <td>
+              <label for="bar">
+                <input type="radio" name="bar"  value="bar" id="bar" onclick="changeRadion('bar')"> Bar
+              </label>
+            </td>
+          </tr>
+        </table>
+        </form>
+      </div>
+
+      <div>
+        <h2>Ihre Daten</h2>
+        <form class="inputField1 Checkout">
+          <table class="tableLogin Checkout CheckoutRight tableAtMediaChanges">
+            <tr>
+              <td><label for="">Anrede</label></td>
+              <td><input type="text" id="anrede"></td>
+              <td><label for="">Stadt</label></td>
+              <td><input type="text" id="adresse"></td>
+            </tr>
+
+            <tr>
+              <td><label for="">Vorname</label></td>
+              <td><input type="text" id="vorname"></td>
+              <td><label for="">Straße</label></td>
+              <td><input type="text" id="adresse2"></td>
+            </tr>
+            <tr>
+              <td><label for="">Nachname</label></td>
+              <td><input type="text" id="nachname"></td>
+              <td><label for="">Email</label></td>
+              <td><input type="text" id="email" readonly ></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Buttons + Preis -->
+    <div class="containerSmallright">
+      <div>
+        <table class="tableBuy Checkout">
+          <tr>
+            <td>Summe: </td>
+            <td id="sum">250</td>
+          </tr>
+          <tr>
+            <td>Mehrwertsteuer:</td>
+            <td id="mehr">250</td>
+          </tr>
+          <tr>
+            <td>Gesamtsumme:</td>
+            <td id="gesamt">250</td>
+          </tr>
+        </table>
+        </div>
+
+
+        <div>
+        <table class="tableBuy Checkout tableBuyButtons">
+          <tr>
+            <td>
+              <button onclick="sendon('1')" class="button2 Change">
+                Ändern
+              </button>
+            </td>
+            <td>
+              <button  onclick="sendOn('0')" class="button1">
+                <span>
+                 Bestellen
+                </span>
+              </button>
+            </td>
+          </tr>
+      </table>
+      </div>
+  </div>
+
+
+
+
+
+
+  <footer>
+
+
+    <div class="footerDiv">
+      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="kontakt.html">Kontaktformular</a>
+    </div>
+
+    <div>
+      &copy;
+      Copyright 2021
+      Kuchen AG
+    </div>
+
+  </footer>
+
+
+</body>
+</html>

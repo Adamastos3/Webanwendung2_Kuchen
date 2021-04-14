@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwort ändern</title>
+    <script src="../public/js/allgemein.js" defer></script>
+    <script src="../public/js/passwordChange.js" defer></script>
+    <link href="../public/css/SSMain.css" rel="stylesheet">
+    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="../public/css/SSButtons.css" rel="stylesheet">
+    <link href="../public/css/SSFieldset.css" rel="stylesheet">
+    <link href="../public/css/SSTables.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html" id="shop">Shop</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="account.html" id="user" class="navbarSelected">Account</a>
+    </nav>
+  </header>
+
+
+
+
+    <div class="containerSmallCenter smallCenterColumns">
+      <div>
+
+<h2>Passwort ändern</h2>
+        <form class="inputField1" action="login.html" id="form" method="POST" name="form">
+
+        <table class="tableLogin tableLoginNewPW">
+            <tr><td><label for="passwordOld">Ihr aktuelles Passwort</label></td></tr>
+            <tr><td><input type="password" name="" id="passwordOld" required></td></tr>
+            <tr><td><label for="passwordNew">Ihr neues Passwort</label></td></tr>
+            <tr><td><input type="password" name="" id="passwordNew" required></td></tr>
+            <tr><td><label for="passwordNew2">Ihr neues Passwort wiederholen</label></td></tr>
+            <tr><td><input type="password" name="" id="passwordNew2" required></td></tr>
+        </table>
+      </form>
+        <button onclick="submitten()" class="button2 button2login">Passwort ändern</button>
+
+      </div>
+  </div>
+
+
+
+    <footer>
+      
+
+      <div class="footerDiv">
+        <a href="ueberUns.html">Über uns / AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="kontakt.html">Kontaktformular</a>
+      </div>
+
+      <div>
+        &copy;
+        Copyright 2021
+        Kuchen AG
+      </div>
+
+    </footer>
+
+
+</body>
+</html>

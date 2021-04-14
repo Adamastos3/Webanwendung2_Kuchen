@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <script src="../public/js/allgemein.js" defer></script>
+    <script src="../public/js/kontakt.js"></script>
+    <link href="../public/css/SSMain.css" rel="stylesheet">
+    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="../public/css/SSTables.css" rel="stylesheet">
+    <link href="../public/css/SSFieldset.css" rel="stylesheet">
+    <link href="../public/css/SSButtons.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+      <a href="start.html">Startseite</a>
+      <a href="shop.html" id="shop">Shop</a>
+      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
+      <a href="login.html" id="user">Account</a>
+    </nav>
+  </header>
+
+
+
+<div class="containerSmallCenter smallCenterColumns">
+  
+  <div>
+    <h2>Kontaktformular</h2>
+    <form action="" class="inputField1 inputField1Contact">
+        <table class="tableLogin tableLoginContact ">
+            <tr>
+                <td><label for="">Anrede</label></td>
+            </tr>
+            <tr>
+               <td>
+                   <input type="radio" name="" id="Herr" onclick="changeRadion('Herr')" checked>
+                   <label for="Herr">Herr</label>
+                   <input type="radio" name="" id="Frau" onclick="changeRadion('Frau')">
+                   <label for="">Frau</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="textVorname">Vorname</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="textVorname" required></td>
+            </tr>
+            <tr>
+                <td><label for="textNachname">Nachname</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="textNachname" required></td>
+            </tr>
+            <tr>
+                <td><label for="textMail">Email</label></td>
+            </tr>
+            <tr>
+                <td><input type="email" name="" id="textMail" required></td>
+            </tr>
+            <tr>
+              <td>
+                <label for=""><h3>Ihre Nachricht</h3></label>
+                <textarea name="" id="text"></textarea>
+              </td>
+            </tr>
+
+        </table>
+    </form>
+
+
+
+  <button type="submit" onclick="sendOn()" class="button2 button2login">Senden</button>
+</div>
+
+</div>
+
+
+
+<footer>
+  
+
+  <div class="footerDiv">
+    <a href="ueberUns.html">Über uns / AGB</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="kontakt.html" class="navbarSelected">Kontaktformular</a>
+  </div>
+
+  <div>
+    &copy;
+    Copyright 2021
+    Kuchen AG
+  </div>
+
+</footer>
+
+
+</body>
+</html>

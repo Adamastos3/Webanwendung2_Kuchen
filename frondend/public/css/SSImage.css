@@ -1,0 +1,91 @@
+
+.overlappingImages {
+  min-width: 400px;
+  height: 375px;
+  position: relative;
+  padding: 1%;
+}
+
+
+
+.overlappingItemFrame {
+  position:absolute;
+      top: 5px;
+      z-index: 4;
+}
+
+.overlappingItemTOP-Topping {
+  position:absolute;
+      top: 5px;
+      z-index: 4;
+}
+
+
+.overlappingItemTOP {
+  position:absolute;
+      top: 5px;
+      z-index: 3;
+}
+
+.overlappingItemsMIDDLE {
+  position:absolute;
+   top: 5px;
+   z-index: 2;
+}
+
+.overlappingItemsBOTTOM {
+  position:absolute;
+   top: 5px;
+   z-index: 1;
+}
+
+
+
+.overlappingImages img {
+
+  height: 360px;
+  border: 0px solid rgba(0,0,0,0.2);
+}
+
+.overlappingItemFrame img {
+  height: 360px;
+}
+
+.overlappingImages {
+  border: 5px solid rgba(0,0,0,0.2);
+}
+
+.overlappingItemTOP-Topping img {
+  filter: brightness(0%) invert(14%) sepia(47%) saturate(5789%) hue-rotate(353deg) brightness(106%) contrast(82%);
+}
+
+.overlappingItemTOP img {
+  filter: brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%);
+}
+
+.overlappingItemsMIDDLE img {
+  filter: brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%);
+}
+
+.overlappingItemsBOTTOM img {
+
+  filter: brightness(0%) invert(62%) sepia(98%) saturate(301%) hue-rotate(338deg) brightness(99%) contrast(93%)
+}
+
+.imgIndividualComponent {
+  width: auto;
+  height: 100%;
+  max-height: 375px;
+}
+
+
+.imgIndividualComponent img{
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 00px;
+  border: 2px solid rgba(0,0,0,1);
+  max-height: 375px;
+  width: auto;
+}

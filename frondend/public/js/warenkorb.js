@@ -61,7 +61,7 @@ function removeElem(id) {
             }else {
                 sessionStorage.setItem("regular", s)
             }
-        
+
         }
 
         console.log(sessionStorage)
@@ -80,7 +80,7 @@ function removeElem(id) {
             }
         }
 
-        
+
         console.log(sessionStorage)
     }
 
@@ -138,7 +138,7 @@ function einfügen() {
         let a =
         "<tr id='"+elem+"'>"+
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
-        "<td><p>Erdbeerkuchen<p>"+
+        "<td><h4><p>Erdbeerkuchen</h4><p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
         "<td><p class='preis'>12€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+

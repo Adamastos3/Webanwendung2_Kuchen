@@ -117,9 +117,8 @@ body > h1 {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  border: 2px solid rgba(0,0,0,.25);
-  background-color: #E6E6FA;
-  padding: 1%;
+  border: 0px solid rgba(0,0,0,.25);
+  padding: 0;
   border-radius: 0px;
   box-sizing: border-box;
   gap: 0px;
@@ -203,7 +202,7 @@ body > h1 {
   text-align: center;
   height: 300px;
   background-image: url("../../img/start.jpg");
-  min-height: 200px;
+  min-height: 300px;
   background-size: cover;
   margin: 10px 10px 00px 10px;
   box-sizing: border-box;
@@ -214,9 +213,11 @@ body > h1 {
 .startImageDiv h1{
   margin-bottom: 0;
   color: #E6E6FA;
-  font-size: 400%;
-  -webkit-text-stroke-width: 1px;
+  font-size: 500%;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
+  font-family: Roboto-bold;
+  text-transform: uppercase;
 }
 
 
@@ -225,6 +226,11 @@ body > h1 {
 }
 
 
+h2 {
+  font-family: Roboto-bold;
+  text-transform: uppercase;
+  font-size: 2em;
+}
 
 
 @media only screen and (max-width: 1000px) {
@@ -291,10 +297,19 @@ body > h1 {
   .startImageDiv h1{
     font-size: 300%;
   }
+
+
 }
 
 
-
+@media only screen and (max-width: 1600px) {
+  .startImageDiv{
+    height: 1800px;
+  }
+  h2 {
+    font-size: 1.2rem
+  }
+}
 
 
 
@@ -316,12 +331,20 @@ body > h1 {
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 66%;
   }
-}
 
-
-
-@media only screen and (max-width: 1600px) {
-  .startImageDiv{
-    height: 1800px;
+  .containerSmallLeft{
+    flex-direction: column;
+    flex-wrap: wrap;
   }
+
+  .containerSmallLeft > div{
+    width: 100%;
+  }
+
+  .containerSmallLeft > div table{
+    width: 100%;
+  }
+
+
+
 }

@@ -1,11 +1,11 @@
 
 
 function sendOnR() {
-    location.href="sortimentR.html"
+    location.href="/sortimentR"
         
 }
 
 function sendOnI() {
-    location.href="sortimentI.html"
+    location.href="/sortimentI"
 }
 

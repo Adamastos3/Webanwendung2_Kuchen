@@ -94,7 +94,7 @@ function sendOn(){
     let i = sessionStorage.getItem("Individual")
     console.log(i)
 
-    if((r=="undefined") && (i=="n")){
+    if(((r=="undefined") && (i=="n")) || ((r=="n") && (i=="n"))){
         location.href="shop.html"
     }
     else{

@@ -34,7 +34,12 @@ function storeAnzeigen() {
             anzahlR+=1
         }
         else{
-            anzahlR+=regular.split(",").length 
+            let fe=regular.split(",")
+            for (let tr=0; tr< fe.length; tr++){
+                if (fe[tr] !=""){
+                    anzahlR+=1
+                }
+            }
             console.log("r2")
         }
         

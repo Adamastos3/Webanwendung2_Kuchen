@@ -10,6 +10,7 @@ function store(a) {
         individual.push(elem);
         sessionStorage.setItem("regular", individual)
     }
+    console.log("sortiment")
     console.log(sessionStorage)
     storeAnzeigen()
     

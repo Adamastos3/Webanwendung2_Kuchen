@@ -10,7 +10,7 @@
 }
 
 .table3x3:hover {
-  background-color: #DEB887;
+  background-color: #fff;
   filter: brightness(110%);
   transition-duration: 0.5s;
 }
@@ -29,18 +29,23 @@
 .tableList {
   margin:0;
   border-spacing: 15px;
-  border: 2px solid rgba(0,0,0,0.25);
-  background-color: #FFDEAD;
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: #333;
   width:100%;
+  overflow-y:auto;
+  display:block;
 }
 
 .tableList td {
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
   border-radius: 00px;
+  color:white;
+  text-shadow: 0px 0px black;
+
 }
 
 .tableList td:nth-child(1) {
-  border: none;
+  border: 2px solid rgba(255,255,255,0.25);
   width: 5%;
 }
 
@@ -57,20 +62,20 @@
 }
 
 .tableList td:last-child {
-  border: none;
+  border: 2px solid rgba(255,255,255,0.25);
   width: 5%;
 }
 
 .tableList.tableListHistory td:nth-child(1) {
   width: 85%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory td:nth-child(1) {
   width: 5%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory td:nth-child(3) {
@@ -83,13 +88,32 @@
 .tableList.tableListHistory td:nth-child(4) {
   width: 5%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) {
   width: 5%;
   text-align: center;
+}
+
+.tableList.tableListHistory button {
   border: 0px solid rgba(0,0,0,0.2);
+}
+
+
+
+
+.tableList  img {
+  display: flex;
+  flex-wrap:nowrap;
+  width: auto;
+  height: 12rem;
+  border: 0px solid rgba(255,255,255,0.25);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+  vertical-align: bottom;
+
 }
 
 
@@ -97,22 +121,14 @@
   display: flex;
   flex-wrap:nowrap;
   width: auto;
-  height: 100px;
-  border: 2px solid rgba(0,0,0,0.2);
+  height: 6rem;
+  border: 0px solid rgba(0,0,0,0.25);
   border-radius: 00px;
   padding: 0;
   outline: 0;
-}
-
-.tableList img {
-  display: flex;
-  flex-wrap:nowrap;
-  width: auto;
-  height: 100px;
-  border: 2px solid rgba(0,0,0,0.2);
-  border-radius: 00px;
-  padding: 0;
-  outline: 0;
+  filter: invert(100%);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .tableList input:hover {
@@ -120,30 +136,50 @@
   transition-duration: 0.5s;
 }
 
-.tableList button:hover {
-  background-color: #f4511e;
-  transition-duration: 0.5s;
-}
+
 
 
 .tableList button {
   display: flex;
   flex-wrap:nowrap;
   width: auto;
-  height: auto;
+  height: 12rem;
   background-color: rgba(0,0,0,0);
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 0px solid rgba(0,0,0,0.25);
   border-radius: 00px;
   cursor: pointer;
   outline: 0;
+  filter: invert(100%);
+  padding-top: 3rem;
 }
 
-
+.tableList button:hover {
+  background-color: #00CED1;
+  transition-duration: 0.5s;
+}
 
 
 .tableList button img {
   border-style: none;
+    height: 6rem;
 }
+
+
+.tableList.tableListHistory td:nth-child(5) button:hover {
+  background-color: #ff1493;
+}
+
+
+
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) button:hover {
+  background-color: #483d8b;
+}
+
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(5) button:hover {
+  background-color: #00CED1;
+}
+
+
 
 
 .tableList.scrollable{
@@ -318,6 +354,13 @@
 
 }
 
+th {
+  font-family: Roboto-bold;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: white;
+}
+
 
 
 
@@ -344,7 +387,11 @@
     display:block;
     content:'';
     height:0;
-
 }
+
+
+
+
+
 
 }

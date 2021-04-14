@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Password vergessen</title>
-  <script src="../public/js/allgemein.js" defer></script>
-  <script src="../public/js/passwordVergessen.js" defer></script>
-  <link href="../public/css/SSMain.css" rel="stylesheet">
-  <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="../public/css/SSButtons.css" rel="stylesheet">
-  <link href="../public/css/SSFieldset.css" rel="stylesheet">
-  <link href="../public/css/SSTables.css" rel="stylesheet">
+  <script src="./js/allgemein.js" defer></script>
+  <script src="./js/passwordVergessen.js" defer></script>
+  <link href="./css/SSMain.css" rel="stylesheet">
+  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
+  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
+  <link href="./css/SSButtons.css" rel="stylesheet">
+  <link href="./css/SSFieldset.css" rel="stylesheet">
+  <link href="./css/SSTables.css" rel="stylesheet">
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="start.html">Startseite</a>
-      <a href="shop.html" id="shop" >Shop</a>
-      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
-      <a href="login.html" id="user" class="navbarSelected">Account</a>
+      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+      <a href="/start">Startseite</a>
+      <a href="/shop" id="shop" >Shop</a>
+      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+      <a href="/login" id="user" class="navbarSelected">Account</a>
     </nav>
   </header>
 
@@ -32,7 +32,7 @@
       <p>An die angegebene Email wird Ihr neues Passwort gesendet. Beachten Sie, dass Sie nur eine E-Mail erhalten, wenn sich Ihre Mail-Adresse in unserer Datenbank befindet.</p>
 
 
-      <form action="login.html" method="post" class="inputField1 inputField1Reset" id="form">
+      <form action="/passwordVergessen" method="post" class="inputField1 inputField1Reset" id="form">
         <table class="tableLogin tableReset">
           <tr><td>  </td></tr>
           <tr><td><label for="mail">Em-Mil</label></td></tr>
@@ -52,9 +52,9 @@
     
 
     <div class="footerDiv">
-      <a href="ueberUns.html">Über uns / AGB</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="kontakt.html">Kontaktformular</a>
+      <a href="/ueberUns">Über uns / AGB</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/kontakt">Kontaktformular</a>
     </div>
 
     <div>

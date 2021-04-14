@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Admin</title>
-    <script src="../public/js/allgemein.js" defer></script>
-    <script src="../public/js/accountAdmin.js" defer></script>
-    <link href="../public/css/SSMain.css" rel="stylesheet">
-    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="../public/css/SSButtons.css" rel="stylesheet">
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/accountAdmin.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet">
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="./css/SSButtons.css" rel="stylesheet">
 </head>
 <body>
     <header>
       <nav class="navbar">
-        <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-        <a href="start.html">Startseite</a>
-        <a href="shop.html" id="shop">Shop</a>
-        <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
-        <a href="accountAdmin.html" class="navbarSelected" id="user">Account</a>
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+        <a href="/start">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/accountAdmin" class="navbarSelected" id="user">Account</a>
       </nav>
     </header>
 
@@ -27,9 +27,9 @@
 
     <div class="containerVertical accountButtonsDiv">
 
-        <button><a href="passwortAendern.html">Passwort ändern</a></button>
-        <button><a href="ausstehendeBestellungen.html">ausstehende Bestellungen</a></button>
-        <button><a href="kundendaten.html">Kundendaten</a></button>
+        <button><a href="/passwortAendern">Passwort ändern</a></button>
+        <button><a href="/ausstehendeBestellungen">ausstehende Bestellungen</a></button>
+        <button><a href="/kundendaten">Kundendaten</a></button>
         <button><a onclick="logout()">Abmelden</a></button>
     </div>
 
@@ -37,9 +37,9 @@
     <footer>
       
       <div class="footerDiv">
-        <a href="ueberUns.html">Über uns / AGB</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="kontakt.html">Kontaktformular</a>
+        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
       </div>
 
       <div>

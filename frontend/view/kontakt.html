@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt</title>
-    <script src="../public/js/allgemein.js" defer></script>
-    <script src="../public/js/kontakt.js"></script>
-    <link href="../public/css/SSMain.css" rel="stylesheet">
-    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="../public/css/SSTables.css" rel="stylesheet">
-    <link href="../public/css/SSFieldset.css" rel="stylesheet">
-    <link href="../public/css/SSButtons.css" rel="stylesheet">
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/kontakt.js"></script>
+    <link href="./css/SSMain.css" rel="stylesheet">
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
+    <link href="./css/SSTables.css" rel="stylesheet">
+    <link href="./css/SSFieldset.css" rel="stylesheet">
+    <link href="./css/SSButtons.css" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <nav class="navbar">
-      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="start.html">Startseite</a>
-      <a href="shop.html" id="shop">Shop</a>
-      <a href="warenkorb.html" id="warenkorb">Warenkorb</a>
-      <a href="login.html" id="user">Account</a>
+      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
+      <a href="/start">Startseite</a>
+      <a href="/shop" id="shop">Shop</a>
+      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+      <a href="/login" id="user">Account</a>
     </nav>
   </header>
 
@@ -31,7 +31,7 @@
   
   <div>
     <h2>Kontaktformular</h2>
-    <form action="" class="inputField1 inputField1Contact">
+    <form action="/kontakt" class="inputField1 inputField1Contact">
         <table class="tableLogin tableLoginContact ">
             <tr>
                 <td><label for="">Anrede</label></td>
@@ -64,7 +64,7 @@
             </tr>
             <tr>
               <td>
-                <label for=""><h3>Ihre Nachricht</h3></label>
+                <label for="text"><h3>Ihre Nachricht</h3></label>
                 <textarea name="" id="text"></textarea>
               </td>
             </tr>
@@ -85,9 +85,9 @@
   
 
   <div class="footerDiv">
-    <a href="ueberUns.html">Über uns / AGB</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="kontakt.html" class="navbarSelected">Kontaktformular</a>
+    <a href="/ueberUns">Über uns / AGB</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/kontakt" class="navbarSelected">Kontaktformular</a>
   </div>
 
   <div>

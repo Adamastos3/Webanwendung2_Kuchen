@@ -2,7 +2,9 @@ const path = require('path');
 
 const express=require('express');
 const session = require('express-session');
+const isAuth= require('./middleware/controller.js')
 var favicon = require('serve-favicon');
+
 
 const server= express();
 const port= 3000;
@@ -25,65 +27,47 @@ server.use(express.static(path.join(__dirname,'public')));
 //Favicon
 server.use(favicon(path.join(__dirname,'public','favicon.ico')))
 
-
 //Routen
-
-//Header
-//Index
-server.get('/', (req,res) =>{
-    res.sendFile("start.html", {root: path.join(__dirname, 'view')});
-});
-
-//Register
-server.get("/register", (req,res) =>{
-    res.sendFile('register.html', { root: path.join(__dirname, 'view') });
-});
-
-//login
-server.get("/login", (req,res) =>{
-    res.sendFile('login.html', { root: path.join(__dirname, 'view') });
-});
-
-
-//Footer
-
-//ueberuns
-server.get("/ueberUns", (req,res) =>{
-    res.sendFile('ueberUns.html', { root: path.join(__dirname, 'view') });
-});
-
-//impressum
-server.get("/impressum", (req,res) =>{
-    res.sendFile('impressum.html', { root: path.join(__dirname, 'view') });
-});
-
-//kontakt
-server.get("/kontakt", (req,res) =>{
-    res.sendFile('kontakt.html', { root: path.join(__dirname, 'view') });
-});
-
-
-//Shop
-
-//shop
-server.get("/shop", (req,res) =>{
-    res.sendFile('kontakt.html', { root: path.join(__dirname, 'view') });
-});
-
-//SortimentR
-server.get("/sortimentR", (req,res) =>{
-    res.sendFile('sortimentR.html', { root: path.join(__dirname, 'view') });
-});
-
-//SortimentI
-server.get("/sortimentI", (req,res) =>{
-    res.sendFile('sortimentI.html', { root: path.join(__dirname, 'view') });
-});
-
-//warenkorb
-server.get("/warenkorb", (req,res) =>{
-    res.sendFile('warenkorb.html', { root: path.join(__dirname, 'view') });
-});
+var route= require("./routes/shop.js")
+server.use('/',route)
+route= require("./routes/login.js")
+server.use('/',route)
+route= require("./routes/registrieren.js")
+server.use('/',route)
+route= require("./routes/ueberUns.js")
+server.use('/',route)
+route= require("./routes/impressum.js")
+server.use('/',route)
+route= require("./routes/kontakt.js")
+server.use('/',route)
+route= require("./routes/sortimentR.js")
+server.use('/',route)
+route= require("./routes/sortimentI.js")
+server.use('/',route)
+route= require("./routes/warenkorb.js")
+server.use('/',route)
+route= require("./routes/kasse.js")
+server.use('/',route)
+route= require("./routes/passwordVergessen.js")
+server.use('/',route)
+route= require("./routes/passwortAendern.js")
+server.use('/',route)
+route= require("./routes/kundendaten.js")
+server.use('/',route)
+route= require("./routes/kundenChange.js")
+server.use('/',route)
+route= require("./routes/ihreDaten.js")
+server.use('/',route)
+route= require("./routes/bestellhistorie.js")
+server.use('/',route)
+route= require("./routes/ausstehendeBestellungen.js")
+server.use('/',route)
+route= require("./routes/accountAdmin.js")
+server.use('/',route)
+route= require("./routes/account.js")
+server.use('/',route)
+route= require("./routes/start.js")
+server.use('/',route)
 
 
 

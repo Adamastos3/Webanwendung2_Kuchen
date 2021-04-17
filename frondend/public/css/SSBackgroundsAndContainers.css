@@ -16,6 +16,7 @@
   gap: 10px;
   margin: 10px 10px 0;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .containerHorizontal > div {
@@ -35,6 +36,15 @@
 
 .containerHorizontal.containerHorizontalIndividual > div{
   width: 77%;
+}
+
+.containerHorizontal.containerHorizontalProduct{
+  margin: 00px 00px 0;
+  justify-content: space-between;
+}
+
+.containerHorizontal.containerHorizontalProduct > div{
+  width: 100%;
 }
 
 

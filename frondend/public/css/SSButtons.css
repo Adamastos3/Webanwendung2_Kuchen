@@ -38,6 +38,8 @@
 .button1.button1Product {
   width: 100%;
   margin: 0px;
+  padding: 00px;
+  border: 1px solid rgba(0,0,0,1);
 }
 
 
@@ -130,4 +132,21 @@
 
 .tableLogin.tableLoginED.ButtonConfirm {
   width: 100%;
+}
+
+
+/*---------Button4---------------*/
+
+.regProductButton button{
+  display: inline-block;
+  background-color: #ddd;
+  border: 1px solid rgba(0,0,0,1);
+  color: #333;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  height:auto;
+  cursor: pointer;
+  margin: 0px;
 }

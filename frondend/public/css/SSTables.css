@@ -241,6 +241,26 @@
 }
 
 
+.tableProduct{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 5px solid rgba(0,0,0,1);
+  padding: 10px;
+  text-align: left;
+  border-spacing: 0px 5px;
+  height: 100%;
+  table-layout: fixed;
+}
+
+.tableProduct img{
+  width: 100%;
+  border: 2px solid rgba(0,0,0,1);
+}
+
+
+
+
+
 
 /*-----------BESTELLEN------------------*/
 .tableOrder{

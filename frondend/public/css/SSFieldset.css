@@ -72,11 +72,10 @@
 
 
 .inputField1 input{
-  border: none;
-  border-bottom: 2px solid #ffffff;
-  background: rgba(0,0,0,0);
+  border: 2px solid #ffffff;
+  background: rgba(255,255,255,1);
   width: auto;
-  color: #ffffff;
+  color: #333;
   font-size: 22px;
 }
 
@@ -107,7 +106,7 @@
 
 
 .inputField1 textarea {
-  width: 100%;
+  width: 33rem;
   height: 150px;
   max-width: 600px;
   min-width: 99%;
@@ -119,5 +118,10 @@
   .inputField1.Checkout input{
     width: 100%;
     overflow: scroll;
+  }
+
+  .inputField1 textarea {
+    width: 100%;
+    max-width: 600px;
   }
 }

@@ -193,6 +193,31 @@ body > h1 {
 }
 
 
+
+
+.containerProduct{
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  float:left;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+  gap: 20px;
+  margin: 10px 10px 0;
+  width: auto;
+  max-width: 80%;
+  border: 0px solid rgba(0,0,0,.25);
+  box-sizing: border-box
+}
+
+.containerProduct div {
+  display:block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
 /*Start divs*/
 
 

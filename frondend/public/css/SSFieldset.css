@@ -88,9 +88,8 @@
 }
 
 .inputField2 input {
-  border: none;
-  border-bottom: 2px solid rgba(0,0,0,0.5);
-  background: rgba(0,0,0,0);
+  border: 2px solid #ffffff;
+  background: rgba(255,255,255,1);
   width: 200px;
 }
 
@@ -111,6 +110,15 @@
   max-width: 600px;
   min-width: 99%;
   min-height: 100px;
+}
+
+.inputField2.inputField2Product input {
+  height: 2rem;
+  width: 4rem;
+  border: 2px solid #000;
+  background: rgba(255,255,255,1);
+  margin: 0px;
+
 }
 
 

@@ -104,16 +104,14 @@
 
 
 .tableList  img {
-  display: flex;
-  flex-wrap:nowrap;
-  width: auto;
+
   height: 12rem;
   border: 0px solid rgba(255,255,255,0.25);
   border-radius: 00px;
   padding: 0;
   outline: 0;
   vertical-align: bottom;
-
+  display: block;
 }
 
 
@@ -154,7 +152,6 @@
 }
 
 .tableList button:hover {
-  background-color: #00CED1;
   transition-duration: 0.5s;
 }
 
@@ -164,6 +161,13 @@
     height: 6rem;
 }
 
+.tableList td:nth-child(4) button:hover {
+  background-color: #f4511e;
+}
+
+.tableList.tableListCart td:nth-child(4) button:hover {
+  background-color: #00CED1;
+}
 
 .tableList.tableListHistory td:nth-child(5) button:hover {
   background-color: #ff1493;
@@ -235,6 +239,26 @@
   text-align: center;
   width: 100%;
 }
+
+
+.tableProduct{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 5px solid rgba(0,0,0,1);
+  padding: 10px;
+  text-align: left;
+  border-spacing: 0px 5px;
+  height: 100%;
+  table-layout: fixed;
+}
+
+.tableProduct img{
+  width: 100%;
+  border: 2px solid rgba(0,0,0,1);
+}
+
+
+
 
 
 

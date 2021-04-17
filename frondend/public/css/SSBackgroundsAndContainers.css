@@ -189,6 +189,7 @@ body > h1 {
 
 .containerSmallCenter.smallCenterColumns {
   flex-direction: column;
+  max-width: 66%;
 }
 
 

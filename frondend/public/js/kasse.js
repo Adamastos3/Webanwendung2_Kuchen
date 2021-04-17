@@ -118,12 +118,10 @@ function benutzerSetzen(){
 }
 
 function sendOn(a) {
-    sessionStorage.setItem("regular", "undefined")
-    sessionStorage.setItem("Individual", "n")
-
+    
     if (a==0){
-        window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
-        location.href="shop.html"
+        //window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
+        location.href="bestellbestaetigung.html"
     }
     else {
         location.href="warenkorb.html"

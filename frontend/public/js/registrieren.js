@@ -20,14 +20,19 @@ var hausnr= document.getElementById("hausnr")
 
 
 //Prototype
+/*
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
+    document.forms.formular.submit();
+    location.href="/login"
+    /*
     check()
     if(passW &&  sexW && plzW) {
         document.forms.formular.submit();
     }
     
 })
+*/
 
 function changeRadion(a){
     if (a =="herr") {

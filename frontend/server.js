@@ -3,6 +3,7 @@ const path = require('path');
 const express=require('express');
 const session = require('express-session');
 const isAuth= require('./middleware/controller.js')
+var cookieParser = require('cookie-parser')
 var favicon = require('serve-favicon');
 
 
@@ -20,7 +21,10 @@ server.use(session({
     }
   }))
 
+
 //middleware
+//cookie-parser
+server.use(cookieParser())
 //uebergabe static files
 server.use(express.static(path.join(__dirname,'public')));
 

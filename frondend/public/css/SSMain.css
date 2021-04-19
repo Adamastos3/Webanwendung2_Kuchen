@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Roboto-ligth";
+  font-family: "Roboto-light";
   src: url("../Fonts/Roboto-Light.ttf");
   font-style:normal;
 }
@@ -21,7 +21,7 @@
 body {
   /*background-color: #FAEBD7;*/
   background-color: #ffffff;
-  font-family: Roboto-ligth;
+  font-family: Roboto-light;
   height:100vh;
   display:flex;
   flex-direction:column;

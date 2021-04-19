@@ -22,7 +22,7 @@ function addsumm() {
 
 function changeRadion(a){
     if (a =="vor") {
-        
+
         document.getElementById("vor").checked=true;
         document.getElementById("rech").checked=false;
         document.getElementById("bar").checked=false;
@@ -71,6 +71,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p>Erdbeerkuchen<p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
+        "<td><p class='menge'>1x</p></td>"+
         "<td><p class='preis'>12€</p></td>"+
         "</tr>"
         zahl+=1
@@ -85,6 +86,7 @@ function einfügen() {
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
         "<td><p>Individueller kuchen<p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
+        "<td><p class='menge'>1x</p></td>"+
         "<td><p class='preis'>25€</p></td>"+
         "</tr>"
         zahl+=1
@@ -118,7 +120,7 @@ function benutzerSetzen(){
 }
 
 function sendOn(a) {
-    
+
     if (a==0){
         //window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
         location.href="bestellbestaetigung.html"

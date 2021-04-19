@@ -140,7 +140,10 @@ function einfügen() {
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p><h4>Erdbeerkuchen</h4></p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
-        "<td><p class='preis'>12€</p></td>"+
+        "<td>"+
+        "<input class='menge' type='number' name='' id=''>"+
+        "</td>"+
+        "<td><p class='preis'>12,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1
@@ -155,7 +158,10 @@ function einfügen() {
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
         "<td><p><h4>Individueller kuchen</h4></p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
-        "<td><p class='preis'>25€</p></td>"+
+        "<td>"+
+        "<input class='menge' type='number' name='' id=''>"+
+        "</td>"+
+        "<td><p class='preis'>25,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
         zahl+=1

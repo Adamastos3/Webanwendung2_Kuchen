@@ -1,5 +1,6 @@
 
 //init seesionstorage
+
 if (sessionStorage.length === 0) {
     sessionStorage.setItem("regular","n")
     sessionStorage.setItem("Individual", "n")
@@ -10,13 +11,51 @@ if (sessionStorage.length === 0) {
     initBenutzer()
 }
 
+
+
+cookies()
+
+
+
+//Richtig
+//
+var request = new XMLHttpRequest();
+var id= cookies()
+request.open('GET', 'http://localhost:8000/wba2api/produkt/alle')
+request.onload=function() {
+    var data = JSON.parse(request.responseText);
+    console.log(data);
+
+}
+request.send();
+
+function setzenHtml(){
+
+}
+
+
+
+
+function cookies(){
+    console.log(document.cookie)
+    var Wertstart = document.cookie.indexOf("=") + 1;
+    let c= document.cookie.substring(Wertstart,Wertstart+4);
+    console.log(c)
+    return c;
+   
+}
+
+
+
+
+/*
 if(sessionStorage.getItem("admin")==="0"){
     changeBenutzer()
     storeAnzeigen()
 }else{
     changeAdmin()
 }
-
+*/
 
 //Anzeigem der einkäufe
 function storeAnzeigen() {

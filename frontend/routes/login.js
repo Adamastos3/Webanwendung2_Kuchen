@@ -16,6 +16,7 @@ server.post('/login', (req,res)=>{
 
 
 async function logins(req,res){
+    const name="KN"
     const b= await login(req.body);
     console.log("Test")
     console.log(b)
@@ -26,6 +27,7 @@ async function logins(req,res){
         console.log("angemeldet")
         req.session.isAuth=true
         req.session.username=b;
+        res.cookie(name, b, {maxAge: 1000*60*60*24});
         res.redirect("/account")
 
     }

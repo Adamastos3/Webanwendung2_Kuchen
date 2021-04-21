@@ -17,6 +17,10 @@ document.addEventListener("keydown", (e)=>{
 })
 
 function sendOn() {
+
+    console.log("submit")
+    document.forms.form.submit();
+    /*
     var a= document.getElementById("username").value;
         if(a=="admin"){
             if(document.getElementById("pass").value="admin"){
@@ -40,6 +44,7 @@ function sendOn() {
                 location.href="account.html"
             }
         }
+    */
 }
 
 

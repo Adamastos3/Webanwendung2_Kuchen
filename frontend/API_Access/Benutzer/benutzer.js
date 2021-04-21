@@ -20,8 +20,15 @@ async function checkBenutzer(data){
     return b.eindeutig;
 }
 
+async function checkBenutzerUndPassword(data){
+    let pa="/wba2api/benutzer/zugang"
+    const b = await getRequest(pa,data);
+    return b.id;
+}
+
 module.exports={
     getBenutzerbyId,
     createBenutzer,
     checkBenutzer,
+    checkBenutzerUndPassword,
 }

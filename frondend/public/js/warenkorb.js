@@ -12,27 +12,32 @@ einfügen()
 addsumm();
 
 
-
-
 function addsumm() {
-    let sum=document.getElementById("sum")
-    let mehr= document.getElementById("mehr")
-    let gesamt=document.getElementById("gesamt")
+    console.log("addsum Funktion")
+    let sum = document.getElementById("sum")
+    let mehr = document.getElementById("mehr")
+    let gesamt = document.getElementById("gesamt")
     let a = document.getElementsByClassName("preis")
-    let wert=0
-    for (let i=0; i< a.length; i++){
-        let d=a[i].innerHTML;
-        console.log("inner")
-        console.log(d)
-        d= d.substr(-3,2)
-        console.log(d)
-        wert=wert+Number(d)
-    }
-    let steuer= Math.round((wert*0.07)*100)/100
-    sum.innerHTML= wert+"€"
-    mehr.innerHTML= steuer+"€"
-    gesamt.innerHTML=(wert+steuer)+"€"
 
+    console.log("a Länge: " + a.length);       //Anzahl Kuchen im Warenkorb
+
+    let wert = 0
+    for (let i = 0; i < a.length; i++) {        //die Werte aufsummieren
+        let d = a[i].innerHTML;
+        let FrontOfComma = d.length-4;        //Betrag bis Komma. Jeder Betrag hat hinten 4 Stellen. for ex: ,73€.
+        console.log("vor substring: " + d);
+        d = d.substr(0, FrontOfComma) + "." + d.substr(-3,2);  //Substring nimmt die Zahlen bis zum Komma, und hängt dann den Cent betrag an
+        console.log("nach substring: " + d);
+        console.log(isFinite(d));
+        wert = wert + Number(d)
+    }
+    console.log("wert: " + wert);
+
+
+    let steuer = Math.round((wert * 0.07) * 100) / 100
+    sum.innerHTML = wert + "€"
+    mehr.innerHTML = steuer + "€"
+    gesamt.innerHTML = (wert + steuer) + "€"
 
 }
 

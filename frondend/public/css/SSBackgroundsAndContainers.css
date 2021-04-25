@@ -209,7 +209,6 @@ body > h1 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
   justify-content: center;
   align-self: center;
   align-items: center;
@@ -229,6 +228,18 @@ body > h1 {
   align-content: center;
   border: 0px solid rgba(0,0,0,.25);
   width: 100%;
+}
+
+.containerProduct.containerProductReg{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  width: 20%;
+  max-width: 66%;
+  min-width: 20%;
 }
 
 

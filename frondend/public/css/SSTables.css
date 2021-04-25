@@ -272,13 +272,11 @@
   width: 100%;
   border: 0px solid rgba(0,0,0,1);
   max-width: 35rem;
-
   vertical-align: middle;
   display: block;
 }
 
 .tableProduct td{
-  width: 100%;
   border: 00px solid rgba(0,0,0,1);
   padding:0;
   width: 50%;
@@ -292,8 +290,14 @@
   align-items: center;
 }
 
-#tableProductImage {
+.tableProductImage {
   border: 1px solid rgba(0,0,0,1);
+  display:block;
+}
+
+.tableProductImage img {
+  border: 1px solid rgba(0,0,0,1);
+  display:block;
 }
 
 #tableProductImage2 img {
@@ -319,6 +323,17 @@
 }
 
 .tableProduct.tableProductReg{
+  width: 100%;
+  min-height: 28rem;
+}
+
+.tableProduct.tableProductReg td {
+  width: 100%;
+  
+  border: 0px solid rgba(0,0,0,1);
+}
+
+.tableProduct.tableProductReg tr {
 
 }
 

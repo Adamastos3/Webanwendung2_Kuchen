@@ -6,6 +6,7 @@
   <title>Reguläres Sortiment</title>
   <script src="../public/js/allgemein.js" defer></script>
   <script src="../public/js/sortimentR.js" defer></script>
+  <script src="../public/js/replaceDiv.js" defer></script>
   <link href="../public/css/SSMain.css" rel="stylesheet">
   <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
   <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
@@ -24,203 +25,201 @@
   </header>
 
 
-<h2>Reguläres Sortiment</h2>
-<div class="containerHorizontal containerHorizontalProduct regProductButton">
-  <!--Prod1-->
-  <div class="containerProduct">
-      <div>
+  <h2>Reguläres Sortiment</h2>
+  <div class="containerHorizontal containerHorizontalProduct regProductButton">
+    <!--Prod1-->
+    <div class="containerProduct containerProductReg" onmouseover="replaceDiv1()" onmouseout="replaceDiv1Invert()">
+      <div id="DivBefore1" >
         <table class="tableProduct tableProductReg">
-            <tr>
-                <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-            </tr>
-            <tr>
-                <td>
-                    <h4>Name</h4>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Inhalt </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Preis</p>
-                </td>
-            </tr>
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Name</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Inhalt </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Preis</p>
+            </td>
+          </tr>
 
         </table>
       </div>
 
 
- <div>
+      <div id="DivAfter1" style="display: none">
         <table class="tableProduct tableProductReg">
-            <tr>
-                <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-            </tr>
-            <tr>
-                <td>
-                    <button>ProduktInfo</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button>In den Warenkorb</button>
-                </td>
-            </tr>
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <button>ProduktInfo</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>In den Warenkorb</button>
+            </td>
+          </tr>
 
         </table>
       </div>
-</div>
+    </div>
 
-<!--Prod2-->
-<div class="containerProduct">
-    <div>
-      <table class="tableProduct tableProductReg">
+    <!--Prod2-->
+    <div class="containerProduct containerProductReg" onmouseover="replaceDiv2()" onmouseout="replaceDiv2Invert()">
+      <div id="DivBefore2">
+        <table class="tableProduct tableProductReg">
           <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
           </tr>
           <tr>
-              <td>
-                  <h4>Name</h4>
-              </td>
+            <td>
+              <h4>Name</h4>
+            </td>
           </tr>
           <tr>
-              <td>
-                  <p>Inhalt </p>
-              </td>
+            <td>
+              <p>Inhalt </p>
+            </td>
           </tr>
           <tr>
-              <td>
-                  <p>Preis</p>
-              </td>
+            <td>
+              <p>Preis</p>
+            </td>
           </tr>
 
-      </table>
+        </table>
+      </div>
+
+      <div id="DivAfter2" style="display: none">
+        <table class="tableProduct tableProductReg">
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <button>ProduktInfo</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>In den Warenkorb</button>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+    </div>
+
+    <!--Prod3-->
+    <div class="containerProduct containerProductReg" onmouseover="replaceDiv3()" onmouseout="replaceDiv3Invert()">
+      <div id="DivBefore3">
+        <table class="tableProduct tableProductReg">
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Name</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Inhalt </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Preis</p>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+
+      <div id="DivAfter3" style="display: none">
+        <table class="tableProduct tableProductReg">
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <button>ProduktInfo</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>In den Warenkorb</button>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+    </div>
+
+    <!--Prod4-->
+    <div class="containerProduct containerProductReg" onmouseover="replaceDiv4()" onmouseout="replaceDiv4Invert()">
+      <div id="DivBefore4">
+        <table class="tableProduct tableProductReg">
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Name</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Inhalt </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Preis</p>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+
+      <div id="DivAfter4" style="display: none">
+        <table class="tableProduct tableProductReg">
+          <tr>
+            <td class="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>
+              <button>ProduktInfo</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>In den Warenkorb</button>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
     </div>
 
 
-<div>
-      <table class="tableProduct tableProductReg">
-          <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-          </tr>
-          <tr>
-              <td>
-                  <button>ProduktInfo</button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <button>In den Warenkorb</button>
-              </td>
-          </tr>
 
-      </table>
-    </div>
-
-</div>
-
-<!--Prod3-->
-<div class="containerProduct">
-    <div>
-      <table class="tableProduct tableProductReg">
-          <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-          </tr>
-          <tr>
-              <td>
-                  <h4>Name</h4>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <p>Inhalt </p>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <p>Preis</p>
-              </td>
-          </tr>
-
-      </table>
-    </div>
-
-
-<div>
-      <table class="tableProduct tableProductReg">
-          <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-          </tr>
-          <tr>
-              <td>
-                  <button>ProduktInfo</button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <button>In den Warenkorb</button>
-              </td>
-          </tr>
-
-      </table>
-    </div>
-
-</div>
-
-<!--Prod4-->
-<div class="containerProduct">
-
-    <div>
-      <table class="tableProduct tableProductReg">
-          <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-          </tr>
-          <tr>
-              <td>
-                  <h4>Name</h4>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <p>Inhalt </p>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <p>Preis</p>
-              </td>
-          </tr>
-
-      </table>
-    </div>
-
-
-<div>
-      <table class="tableProduct tableProductReg">
-          <tr>
-              <td id="tableProductImage"><img src="../public/img/erdbeeren.png" alt=""></td>
-          </tr>
-          <tr>
-              <td>
-                  <button>ProduktInfo</button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <button>In den Warenkorb</button>
-              </td>
-          </tr>
-
-      </table>
-    </div>
-
-</div>
-
-
-
-</div>
+  </div>
 
   <footer>
 

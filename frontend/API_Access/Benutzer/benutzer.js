@@ -23,7 +23,12 @@ async function checkBenutzer(data){
 async function checkBenutzerUndPassword(data){
     let pa="/wba2api/benutzer/zugang"
     const b = await getRequest(pa,data);
-    return b.id;
+    //console.log(b)
+    if(b==null){
+        return 0
+    }else{
+        return b;
+    }
 }
 
 module.exports={

@@ -290,15 +290,7 @@
   align-items: center;
 }
 
-.tableProductImage {
-  border: 1px solid rgba(0,0,0,1);
-  display:block;
-}
 
-.tableProductImage img {
-  border: 1px solid rgba(0,0,0,1);
-  display:block;
-}
 
 #tableProductImage2 img {
   border: 1px solid rgba(0,0,0,1);
@@ -324,17 +316,36 @@
 
 .tableProduct.tableProductReg{
   width: 100%;
-  min-height: 28rem;
+  min-height: 46rem;
+  border-spacing: 10px 10px;
+
 }
+
+.tableProduct.tableProductReg img{
+  max-height: 26rem;
+  min-height: 26rem;
+  min-width: 100%;
+  padding: 0px;
+}
+
+
 
 .tableProduct.tableProductReg td {
   width: 100%;
-  
   border: 0px solid rgba(0,0,0,1);
+  padding: 0px;
 }
 
-.tableProduct.tableProductReg tr {
 
+.tableProductImage {
+  border: 0px solid rgba(0,0,0,1);
+  display:block;
+
+}
+
+.tableProductImage img {
+  border: 1px solid rgba(0,0,0,1);
+  object-fit: cover;
 }
 
 
@@ -415,6 +426,13 @@
   text-align:center;
 }
 
+.tableLogin.tableLoginContact td{
+  border: 0px solid rgba(0,0,0,1);
+}
+
+
+
+
 .tableLogin.Checkout {
   height: 100%;
   min-height: 160px;
@@ -454,6 +472,28 @@
   width: 100%;
 
 }
+
+
+.UeberUnsTable td{
+  border: 0px solid rgba(0,0,0,1);
+  padding: 15px;
+}
+
+.UeberUnsTable p{
+  text-align: justify;
+  hyphens: auto;
+}
+
+.UeberUnsTable img{
+  border: 2px solid rgba(0,0,0,1);
+  width:300px;
+}
+
+.UUimageTD{
+  width:20%;
+}
+
+
 
 
 

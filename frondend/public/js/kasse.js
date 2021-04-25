@@ -41,6 +41,7 @@ function changeRadion(a){
 
 //nur für Prototyp
 function einfügen() {
+    console.log("Kasse Einfügen");
     console.log(sessionStorage)
     var art= document.getElementById("waren");
     var a1= sessionStorage.getItem("regular")
@@ -78,8 +79,8 @@ function einfügen() {
         art.innerHTML+=a
         console.log("test")
     }
-
     for(let i=0; i<indi.length;i++) {
+        console.log(art)
         let elem="elem"+zahl+"in"
         let b=
         "<tr id='"+elem+"' >"+
@@ -120,10 +121,26 @@ function benutzerSetzen(){
 }
 
 function sendOn(a) {
-
+    console.log("SendOn Kasse zur Bestellbestätigung");
     if (a==0){
-        //window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
-        location.href="bestellbestaetigung.html"
+        var changeDiv = document.getElementById("makeHidden");
+        var changeName = document.getElementById("makeOrder");
+        var getPay = document.querySelectorAll('input[type="radio"]');
+        var changeForm = document.getElementById("paymentForm")
+        var fixPayment = document.getElementById("fixedPayment");
+
+        for (let i=0; i<3; i++) {
+            if (getPay[i].checked === true) {
+                var payMethod = getPay[i].getAttribute("name")
+                break;
+            }
+        }
+        payMethod = payMethod.charAt(0).toUpperCase() + payMethod.slice(1)
+        changeDiv.style.display = "none";
+        changeName.innerHTML = "Bestellbestätigung";
+        changeForm.style.display = "none";
+        fixPayment.innerHTML += "<p>"+payMethod+"</p>"
+
     }
     else {
         location.href="warenkorb.html"

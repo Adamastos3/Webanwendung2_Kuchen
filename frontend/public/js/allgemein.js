@@ -14,34 +14,57 @@ if (sessionStorage.length === 0) {
 
 
 cookies()
+request()
 
 
 
 //Richtig
 //
-var request = new XMLHttpRequest();
-var id= cookies()
-request.open('GET', 'http://localhost:8000/wba2api/produkt/alle')
-request.onload=function() {
-    var data = JSON.parse(request.responseText);
-    console.log(data);
+function request(){
+    var id= cookies()
+
+    if(id > 0){
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://localhost:8000/wba2api/benutzer/gib/'+id)
+        request.onload=function() {
+            var data = JSON.parse(request.responseText);
+            console.log(data);
+            setzenHtml(data)
+
+        }
+        request.send();
+    }
 
 }
-request.send();
+function setzenHtml(data){
+    let waren = document.getElementById("warenkorb");
+    let user = document.getElementById('user');
+    let shop= document.getElementById("shop")
+    let be= data.daten.benutzerrolle.id;
+    let username= data.daten.benutzername
+    if(be == 3){
+        user.innerHTML=""+username
+    }else if(be==1){
+    user.innerHTML="Admin";
+    user.setAttribute("href", "/accountAdmin")
+    waren.innerHTML="offene Bestellungen"
+    waren.setAttribute("href", "/ausstehendeBestellungen")
+    shop.innerHTML="Kundendaten"
+    shop.setAttribute("href", "/kundendaten")
 
-function setzenHtml(){
+    }
 
+    
 }
-
-
-
 
 function cookies(){
     console.log(document.cookie)
     var Wertstart = document.cookie.indexOf("=") + 1;
     let c= document.cookie.substring(Wertstart,Wertstart+4);
+    let z= Number(c);
     console.log(c)
-    return c;
+    console.log(z)
+    return z;
    
 }
 
@@ -101,46 +124,6 @@ function storeAnzeigen() {
 
 function sendToStart(){
     location.href="/"
-}
-
-//prototyp
-function changeBenutzer(){
-    var user = document.getElementById("user");
-    if (sessionStorage.getItem("login")=="1"){
-        user.innerHTML="Karl Walter"
-        user.setAttribute("href", "/account")
-    }
-    else{
-        user.setAttribute("href", "/login")
-    }
-   
-}
-
-function changeAdmin(){
-    let warenA = document.getElementById("warenkorb");
-    let userA = document.getElementById('user');
-    let shopA= document.getElementById("shop")
-    userA.innerHTML="Admin";
-    userA.setAttribute("href", "accountAdmin.html")
-    warenA.innerHTML="offene Bestellungen"
-    warenA.setAttribute("href", "ausstehendeBestellungen.html")
-    shopA.innerHTML="Kundendaten"
-    shopA.setAttribute("href", "kundendaten.html")
-
-}
-
-function initBenutzer() {
-    sessionStorage.setItem("email", "Test@test.de")
-    sessionStorage.setItem("username", "Karl1")
-    sessionStorage.setItem("anrede","Herr")
-    sessionStorage.setItem("vorname","Karl")
-    sessionStorage.setItem("nachname","Walter")
-    sessionStorage.setItem("geb","2000-02-04")
-    sessionStorage.setItem("plz","78628")
-    sessionStorage.setItem("stadt","Rottweil")
-    sessionStorage.setItem("strasse","Gartenstraße")
-    sessionStorage.setItem("hausnr", "6")
-    //console.log(sessionStorage)
 }
 
 

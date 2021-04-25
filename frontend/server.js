@@ -34,6 +34,8 @@ server.use(favicon(path.join(__dirname,'public','favicon.ico')))
 //Routen
 var route= require("./routes/shop.js")
 server.use('/',route)
+route= require("./routes/logout.js")
+server.use('/',route)
 route= require("./routes/login.js")
 server.use('/',route)
 route= require("./routes/registrieren.js")

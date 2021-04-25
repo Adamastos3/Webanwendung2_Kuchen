@@ -1,40 +1,55 @@
 const form = document.getElementById("form")
-
 var sexW=false
 var plzW=false
+var userW=false
+var mailW=false
 
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    console.log("submit")
-})
 
-function sendData() {
-    //prototype
-    check()
-    if(sexW && plzW){
-        neuSetzen()
-        document.forms.form.submit()
+function requestIhreDaten(){
+    var id= cookies()
+
+    if(id > 0){
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://localhost:8000/wba2api/benutzer/gib/'+id)
+        request.onload=function() {
+            var data = JSON.parse(request.responseText);
+            console.log(data)
+            if (data.daten != null){
+            HTMLIhreDatenSetzen(data.daten)
+            }else{
+                consolose.log(data.fehler)
+            }
+        }
+        request.send();
+    }
+    else{
+        console.log("error")
+    }
+}
+
+
+function HTMLIhreDatenSetzen(data) {
+
+    let person = data.person
+    
+    if (person.anrede =="Herr"){
+        document.getElementById("Herr").checked=true
     }
     else {
-        inhaltSetzen()
+        document.getElementById("Frau").checked=true
     }
-    
+    document.getElementById("email").value=person.email
+    document.getElementById("username").value=data.benutzername
+    document.getElementById("vorname").value=person.vorname
+    document.getElementById("nachname").value=person.nachname
+    document.getElementById("geb").value=person.geburtstag
+    document.getElementById("plz").value=person.adresse.plz
+    document.getElementById("stadt").value=person.adresse.stadt
+    document.getElementById("straße").value=person.adresse.strasse
+    document.getElementById("hausnr").value=person.adresse.hausnummer
+    hideButton(0)
 }
 
-function changeElem(id){
-    
-    let a = document.getElementById(id)
-    a.removeAttribute("readonly")
-    if ((id!="Herr") && (id!= "Frau")){
-            a.value="";
-        }
-        else{
-            a.checked=false;
-            document.getElementById("Frau").checked=false;
-        }
-    hideButton(0)
-    
-}
 
 function hideButton(id){
     var x = document.getElementById("b1");
@@ -58,82 +73,20 @@ function changeRadion(a){
     }
 }
 
-
-//prototyp
-
-var email=sessionStorage.getItem("email")
-//console.log(email)
-var username=sessionStorage.getItem("username")
-var anrede=sessionStorage.getItem("anrede")
-var vorname=sessionStorage.getItem("vorname")
-var nachname=sessionStorage.getItem("nachname")
-var geb=sessionStorage.getItem("geb")
-//console.log(geb)
-var plz=sessionStorage.getItem("plz")
-var stadt=sessionStorage.getItem("stadt")
-var strasse=sessionStorage.getItem("strasse")
-var hausnr= sessionStorage.getItem("hausnr")
-function inhaltSetzen() {
-    if (anrede=="Herr"){
-        document.getElementById("Herr").checked=true
-    }
-    else {
-        document.getElementById("Frau").checked=true
-    }
-    document.getElementById("email").value=email
-    document.getElementById("username").value=username
-    document.getElementById("vorname").value=vorname
-    document.getElementById("nachname").value=nachname
-    document.getElementById("geb").value=geb
-    document.getElementById("plz").value=plz
-    document.getElementById("stadt").value=stadt
-    document.getElementById("straße").value=strasse
-    document.getElementById("hausnr").value=hausnr
+function changeElem(id){
+    
+    let a = document.getElementById(id)
+    a.removeAttribute("readonly")
+    if ((id!="Herr") && (id!= "Frau")){
+            a.value="";
+        }
+        else{
+            a.checked=false;
+            document.getElementById("Frau").checked=false;
+        }
     hideButton(0)
-}
-
-function neuSetzen(){
-
-    if(document.getElementById("Herr").checked==true){
-        anrede="Herr"
-    }
-    else{
-        anrede="Frau"
-    }
-    email=document.getElementById("email").value
-    username=document.getElementById("username").value
-    vorname=document.getElementById("vorname").value
-    nachname=document.getElementById("nachname").value
-    geb= document.getElementById("geb").value
-    plz=document.getElementById("plz").value
-    stadt=document.getElementById("stadt").value
-    strasse=document.getElementById("straße").value
-    hausnr=document.getElementById("hausnr").value
-
-    sessionStorage.setItem("email", email)
-    sessionStorage.setItem("username", username)
-    sessionStorage.setItem("anrede",anrede)
-    sessionStorage.setItem("vorname",vorname)
-    sessionStorage.setItem("nachname",nachname)
-    sessionStorage.setItem("geb",geb)
-    sessionStorage.setItem("plz",plz)
-    sessionStorage.setItem("stadt",stadt)
-    sessionStorage.setItem("strasse",strasse)
-    sessionStorage.setItem("hausnr", hausnr)
-
-    hideButton(0)
-}
-
-
-
-
-function check(){
-    checkSex()
-    checkPlz()
-    checkUser()
     
 }
-
 
 function checkPlz(){
     var array=["1","2","3","4","5","6","7","8","9","0"]
@@ -170,8 +123,94 @@ function checkSex(){
 }
 
 
-function checkUser(){
-    //nicht im prototype
+function checkUser(data){
+
+    let result= true;
+    let id=cookies()
+    for (let i=0; i< data.length;i++){
+        if( data[i].id != id){
+            if (data[i].username == document.getElementById("username")){
+                result = false;
+                break;
+            }
+
+        }
+
+    }
+    if (result){
+        userlW=true;
+    }else{
+        window.alert("Username is taken")
+        userlW=false;
+    }
+
 }
 
-inhaltSetzen()
+function checkMail(data){
+
+    let result= true;
+    let id=cookies()
+    for (let i=0; i< data.length;i++){
+        if( data[i].id != id){
+            if(data[i].person != null){
+                if (data[i].person.email == document.getElementById("email")){
+                    result = false;
+                    break;
+                }
+            }else{
+                result=false;
+            }
+        }
+
+    }
+
+    if (result){
+        emailW=true;
+    }else{
+        window.alert("Mail is taken")
+        emailW=false;
+    }
+
+}
+
+function requesUserMail(){
+        var requestUser = new XMLHttpRequest();
+        requestUser.open('GET', 'http://localhost:8000/wba2api/benutzer/alle')
+        requestUser.onload=function() {
+            var data = JSON.parse(request.responseText);
+            console.log(data)
+            if (data.daten != null){
+            checkUser(data.daten)
+            checkMail()
+            }else{
+                console.log(data.fehler)
+            }
+        }
+        requestUser.send();
+}
+
+function check(){
+    checkSex()
+    checkPlz()
+    requestUserMail()
+    
+}
+
+function sendData() {
+    check()
+    if(sexW && plzW && userW && mailW){
+        document.forms.form.submit()
+    }
+    else {
+        requestIhreDaten()
+    }
+    
+}
+
+
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    sendData()
+    console.log("submit")
+})
+

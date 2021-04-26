@@ -1,5 +1,6 @@
 const getRequest = require("./../Request/getRequest");
 const postRequest = require("./../Request/postRequest");
+const putRequest = require("./../Request/putRequest");
 
 async function getBenutzerbyId(id) {
   let pa = "/wba2api/benutzer/gib/" + id;
@@ -30,9 +31,17 @@ async function checkBenutzerUndPassword(data) {
   }
 }
 
+async function updateBenutzer(data) {
+  let pa = "/wba2api/benutzer/zugang";
+  const b = await putRequest(pa, data);
+  //console.log(b);
+  return b.id;
+}
+
 module.exports = {
   getBenutzerbyId,
   createBenutzer,
   checkBenutzer,
   checkBenutzerUndPassword,
+  updateBenutzer,
 };

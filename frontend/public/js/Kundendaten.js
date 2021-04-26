@@ -75,11 +75,10 @@ function erledigt(id, idU) {
   let ids = idU.innerHTML;
   deleteRequest(ids);
   element.parentNode.removeChild(element);
-  //Es fehl noch das entfernen aus dem sessionstore
 }
 
 function sendOn() {
-  location.href = "kundenChange.html";
+  document.forms.form.submit();
 }
 
 function deleteRequest(id) {

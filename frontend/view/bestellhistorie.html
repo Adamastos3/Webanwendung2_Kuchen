@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bestellhistorie</title>
     <script src="./js/allgemein.js" defer></script>
     <script src="./js/bestellhistorie.js" defer></script>
-    <link href="./css/SSMain.css" rel="stylesheet">
-    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="./css/SSButtons.css" rel="stylesheet">
-    <link href="./css/SSFieldset.css" rel="stylesheet">
-    <link href="./css/SSTables.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop">Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/account" class="navbarSelected" id="user">Account</a>
-    </nav>
-  </header>
-
-
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/account" class="navbarSelected" id="user">Account</a>
+      </nav>
+    </header>
 
     <div class="containerVertical">
       <div>
@@ -35,29 +33,20 @@
             <th>Beschreibung</th>
             <th>Rechnungsbetrag</th>
             <th>Bestelldatum</th>
+            <th>Lieferdatum</th>
           </tr>
-          
         </table>
+      </div>
     </div>
-</div>
-
-
 
     <footer>
-      
       <div class="footerDiv">
         <a href="/ueberUns">Über uns / AGB</a>
         <a href="/impressum">Impressum</a>
         <a href="/kontakt">Kontaktformular</a>
       </div>
 
-      <div>
-        &copy;
-        Copyright 2021
-        Kuchen AG
-      </div>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
     </footer>
-
-
-</body>
+  </body>
 </html>

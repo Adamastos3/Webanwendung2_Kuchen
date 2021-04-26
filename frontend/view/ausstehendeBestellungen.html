@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ausstehende Bestellungen</title>
     <script src="./js/allgemein.js" defer></script>
     <script src="./js/ausstehendeBestellungen.js" defer></script>
-    <link href="./css/SSMain.css" rel="stylesheet">
-    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="./css/SSButtons.css" rel="stylesheet">
-    <link href="./css/SSFieldset.css" rel="stylesheet">
-    <link href="./css/SSTables.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop">Shop</a>
-      <a href="/warenkorb" class="navbarSelected" id="warenkorb">Warenkorb</a>
-      <a href="/account"  id="user">Account</a>
-    </nav>
-  </header>
-
-
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" class="navbarSelected" id="warenkorb">Warenkorb</a>
+        <a href="/account" id="user">Account</a>
+      </nav>
+    </header>
 
     <div class="containerVertical">
       <div>
         <h2>Ausstehende Bestellungen</h2>
-        <table class="tableList tableListHistory">
+        <table class="tableList tableListHistory" id="tableAus">
           <tr>
             <th>Bestellnummer</th>
             <th>Beschreibung</th>
             <th>Rechnungsbetrag</th>
-            <th>Bestelldatum / Lieferdatum</th>
+            <th>Bestelldatum</th>
             <th>Erledigt</th>
           </tr>
           <tr id="elem1">
@@ -45,40 +43,38 @@
             </td>
             <td><p>150,99€</p></td>
             <td><p>01.01.2021 / 02.01.2021</p></td>
-            <td><button onclick="erledigt('elem1')"><img src="./img/confirm.png" alt=""></button></td>
+            <td>
+              <button onclick="erledigt('elem1')">
+                <img src="./img/confirm.png" alt="" />
+              </button>
+            </td>
           </tr>
           <tr id="elem2">
             <td><p>1</p></td>
             <td>
               <p>3x Käsekuchen</p>
-              <p>3x individueller Kuchen</p></td>
+              <p>3x individueller Kuchen</p>
+            </td>
             <td><p>249,99€</p></td>
             <td><p>03.01.2021 / 07.01.2021</p></td>
-            <td><button onclick="erledigt('elem2')"><img src="./img/confirm.png" alt=""></button></td>
+            <td>
+              <button onclick="erledigt('elem2')">
+                <img src="./img/confirm.png" alt="" />
+              </button>
+            </td>
           </tr>
         </table>
-
+      </div>
     </div>
-</div>
-
-
 
     <footer>
-      
       <div class="footerDiv">
         <a href="/ueberUns">Über uns / AGB</a>
         <a href="/impressum">Impressum</a>
         <a href="/kontakt">Kontaktformular</a>
       </div>
 
-      <div>
-        &copy;
-        Copyright 2021
-        Kuchen AG
-      </div>
-      
+      <div>&copy; Copyright 2021 Kuchen AG</div>
     </footer>
-
-
-</body>
+  </body>
 </html>

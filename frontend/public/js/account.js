@@ -1,7 +1,4 @@
-
-
-//prototype
-function logout(){
-    sessionStorage.clear
-    location.href="/logout"
+function logout() {
+  sessionStorage.clear;
+  location.href = "/logout";
 }

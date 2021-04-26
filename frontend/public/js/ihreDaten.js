@@ -161,7 +161,9 @@ function sendData() {
   if (sexW && plzW && userW && mailW) {
     document.forms.form.submit();
   } else {
-    requestIhreDaten();
+    console.log(refresh);
+    document.forms.form.reset();
+    getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
   }
 }
 

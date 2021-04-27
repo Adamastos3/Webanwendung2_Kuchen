@@ -56,9 +56,9 @@ function setzenHtml(data) {
   let user = document.getElementById("user");
   let shop = document.getElementById("shop");
   let be = data.benutzerrolle.id;
-  let username = data.benutzername;
+  let usernamen = data.benutzername;
   if (be == 3) {
-    user.innerHTML = "" + username;
+    user.innerHTML = "" + usernamen;
   } else if (be == 1) {
     user.innerHTML = "Admin";
     user.setAttribute("href", "/accountAdmin");

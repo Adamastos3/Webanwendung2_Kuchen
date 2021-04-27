@@ -17,7 +17,12 @@ function HTMLIhreDatenSetzen(data) {
   document.getElementById("username").value = data.benutzername;
   document.getElementById("vorname").value = person.vorname;
   document.getElementById("nachname").value = person.nachname;
+
+  //Geb
+  document.getElementById("geb").setAttribute("type", "text")
   document.getElementById("geb").value = person.geburtstag;
+
+
   document.getElementById("plz").value = person.adresse.plz;
   document.getElementById("stadt").value = person.adresse.stadt;
   document.getElementById("straße").value = person.adresse.strasse;
@@ -134,8 +139,9 @@ function checkMail(data) {
   }
 }
 
-function requestUserMail() {
-  var requestUser = new XMLHttpRequest();
+async function requestUserMail() {
+  return new Promise((resolve, reject) =>{
+    var requestUser = new XMLHttpRequest();
   requestUser.open("GET", "http://localhost:8000/wba2api/benutzer/alle");
   requestUser.onload = function () {
     var data = JSON.parse(requestUser.responseText);
@@ -143,27 +149,25 @@ function requestUserMail() {
     if (data.daten != null) {
       checkUser(data.daten);
       checkMail(data.daten);
+      checkPlz()
+      checkSex()
+      resolve(true)
     } else {
-      console.log(data.fehler);
+      reject(data.fehler);
     }
   };
   requestUser.send();
-}
-
-function check() {
-  checkSex();
-  checkPlz();
-  requestUserMail();
+});
 }
 
 function sendData() {
-  check();
-  if (sexW && plzW && userW && mailW) {
+  const a = requestUserMail();
+  if (a && sexW && plzW && userW && mailW) {
     document.forms.form.submit();
   } else {
     console.log(refresh);
-    document.forms.form.reset();
     getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
+    
   }
 }
 

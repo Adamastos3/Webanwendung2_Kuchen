@@ -10,6 +10,8 @@ form.addEventListener("submit", (e)=>{
 
 function sendData() {
     //prototype
+    document.getElementById("b1").style.display="none";
+    document.getElementById("b2").style.display="block";
     check()
     if(sexW && plzW){
         neuSetzen()
@@ -18,11 +20,19 @@ function sendData() {
     else {
         inhaltSetzen()
     }
-    
+
+
+
+}
+
+
+function changeData() {
+  document.getElementById("b1").style.display="block";
+  document.getElementById("b2").style.display="none";
 }
 
 function changeElem(id){
-    
+
     let a = document.getElementById(id)
     a.removeAttribute("readonly")
     if ((id!="Herr") && (id!= "Frau")){
@@ -33,7 +43,7 @@ function changeElem(id){
             document.getElementById("Frau").checked=false;
         }
     hideButton(0)
-    
+
 }
 
 function hideButton(id){
@@ -131,7 +141,7 @@ function check(){
     checkSex()
     checkPlz()
     checkUser()
-    
+
 }
 
 
@@ -155,7 +165,7 @@ function checkPlz(){
     }else{
         plzW=true
     }
-    
+
 }
 
 function checkSex(){

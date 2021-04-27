@@ -14,7 +14,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 2vmin;
   width: 25%;
 
 }
@@ -47,7 +47,7 @@ footer > div {
   flex-wrap: nowrap;
   background-color: #333;
   border: 2px solid rgba(0,0,0,.25);
-  margin: 10px 10px 10px 10px;
+  margin: 50px 10px 10px 10px;
 }
 
 .footerDiv > a {
@@ -55,7 +55,7 @@ footer > div {
   text-align: center;
   padding: 6px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 2vmin;
   width: 33%;
 }
 

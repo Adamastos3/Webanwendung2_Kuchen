@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ausstehende Bestellungen</title>
     <script src="../public/js/allgemein.js" defer></script>
     <script src="../public/js/ausstehendeBestellungen.js" defer></script>
-    <link href="../public/css/SSMain.css" rel="stylesheet">
-    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="../public/css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="../public/css/SSButtons.css" rel="stylesheet">
-    <link href="../public/css/SSFieldset.css" rel="stylesheet">
-    <link href="../public/css/SSTables.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="../public/img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="start.html">Startseite</a>
-      <a href="shop.html" id="shop">Shop</a>
-      <a href="warenkorb.html" class="navbarSelected" id="warenkorb">Warenkorb</a>
-      <a href="account.html"  id="user">Account</a>
-    </nav>
-  </header>
-
-
+    <link href="../public/css/SSMain.css" rel="stylesheet" />
+    <link href="../public/css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link
+      href="../public/css/SSBackgroundsAndContainers.css"
+      rel="stylesheet"
+    />
+    <link href="../public/css/SSButtons.css" rel="stylesheet" />
+    <link href="../public/css/SSFieldset.css" rel="stylesheet" />
+    <link href="../public/css/SSTables.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img
+          src="../public/img/Cake.png"
+          alt=""
+          id="logo"
+          onclick="sendToStart()"
+        />
+        <a href="start.html"> Startseite </a>
+        <a href="shop.html" id="shop"> Shop </a>
+        <a href="warenkorb.html" class="navbarSelected" id="warenkorb">Warenkorb</a>
+        <a href="account.html" id="user"> Account </a>
+      </nav>
+    </header>
 
     <div class="containerVertical">
       <div>
@@ -34,7 +40,8 @@
             <th>Bestellnummer</th>
             <th>Beschreibung</th>
             <th>Rechnungsbetrag</th>
-            <th>Bestelldatum / Lieferdatum</th>
+            <th>Bestelldatum</th>
+            <th>Lieferdatum</th>
             <th>Erledigt</th>
           </tr>
           <tr id="elem1">
@@ -44,41 +51,42 @@
               <p>2x individueller Kuchen</p>
             </td>
             <td><p>150,99€</p></td>
-            <td><p>01.01.2021 / 02.01.2021</p></td>
-            <td><button onclick="erledigt('elem1')"><img src="../public/img/confirm.png" alt=""></button></td>
+            <td><p>01.01.2021</p></td>
+            <td><p>02.01.2021</p></td>
+
+            <td>
+              <button onclick="erledigt('elem1')">
+                <img src="../public/img/confirm.png" alt="" />
+              </button>
+            </td>
           </tr>
           <tr id="elem2">
             <td><p>1</p></td>
             <td>
               <p>3x Käsekuchen</p>
-              <p>3x individueller Kuchen</p></td>
+              <p>3x individueller Kuchen</p>
+            </td>
             <td><p>249,99€</p></td>
-            <td><p>03.01.2021 / 07.01.2021</p></td>
-            <td><button onclick="erledigt('elem2')"><img src="../public/img/confirm.png" alt=""></button></td>
+            <td><p>03.01.2021</p></td>
+            <td><p>07.01.2021</p></td>
+            <td>
+              <button onclick="erledigt('elem2')">
+                <img src="../public/img/confirm.png" alt="" />
+              </button>
+            </td>
           </tr>
         </table>
-
+      </div>
     </div>
-</div>
-
-
 
     <footer>
-      
       <div class="footerDiv">
-        <a href="ueberUns.html">Über uns / AGB</a>
+        <a href="ueberUns.html">Über uns</a>
         <a href="impressum.html">Impressum</a>
         <a href="kontakt.html">Kontaktformular</a>
       </div>
 
-      <div>
-        &copy;
-        Copyright 2021
-        Kuchen AG
-      </div>
-      
+      <div>&copy; Copyright 2021 Kuchen AG</div>
     </footer>
-
-
-</body>
+  </body>
 </html>

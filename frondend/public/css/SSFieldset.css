@@ -8,7 +8,7 @@
   justify-content: center;
   vertical-align: center;
   border: 2px solid rgba(0,0,0,1);
-  font-size: 20px;
+  font-size: 2vmin;
   align-items: center;
   background-color: #333;
   height: 100%;
@@ -28,12 +28,12 @@
 
 .fieldset1 > label {
   border: 0px solid rgba(0,0,0,0.2);
-  font-size: 22px;
+  font-size: 2vmin;
   display: inline-block;
 }
 
 .fieldset1 > h2 {
-  font-size: 26px;
+  font-size: 2.2vmin;
 }
 
 
@@ -41,7 +41,7 @@
 .fieldset2  {
   min-height: 200px;
   border: 2px solid rgba(0,0,0,0.2);
-  font-size: 20px;
+  font-size: 2vmin;
   align-items: center;
   align-self: center;
   width: 50%;
@@ -61,23 +61,23 @@
 
 .fieldset2 > label {
   border: 0px solid rgba(0,0,0,0.2);
-  font-size: 22px;
+  font-size: 2vmin;
   display: inline-block;
 }
 
 .fieldset2 > h2 {
-  font-size: 26px;
+  font-size: 2.2vmin;
 }
 
 
 
 .inputField1 input{
-  border: none;
-  border-bottom: 2px solid #ffffff;
-  background: rgba(0,0,0,0);
+  border: 2px solid #ffffff;
+  background: rgba(255,255,255,1);
   width: auto;
-  color: #ffffff;
-  font-size: 22px;
+  color: #333;
+  font-size: 2vmin;
+
 }
 
 .inputField1.inputField1Reset input{
@@ -86,38 +86,53 @@
 
 .inputField1.inputField1Contact input {
   width: auto;
+
 }
 
 .inputField2 input {
-  border: none;
-  border-bottom: 2px solid rgba(0,0,0,0.5);
-  background: rgba(0,0,0,0);
+  border: 2px solid #ffffff;
+  background: rgba(255,255,255,1);
   width: 200px;
 }
 
 
 .inputField1.inputField1ED input{
-  width: 200px;
-  font-size: 22px;
+  width: 12rem;
+  font-size: 2vmin;
 }
 
 #tableLoginEDalign input{
-  width:40px;
+  width:20px;
+  align: middle;
 }
 
 
 .inputField1 textarea {
-  width: 100%;
+  width: 33rem;
   height: 150px;
   max-width: 600px;
   min-width: 99%;
   min-height: 100px;
 }
 
+.inputField2.inputField2Product input {
+  height: 2rem;
+  width: 4rem;
+  border: 2px solid #000;
+  background: rgba(255,255,255,1);
+  margin: 0px;
+
+}
+
 
 @media only screen and (max-width: 1500px) {
   .inputField1.Checkout input{
-    width: 100%;
+    width: 80%;
     overflow: scroll;
+  }
+
+  .inputField1 textarea {
+    width: 100%;
+    max-width: 600px;
   }
 }

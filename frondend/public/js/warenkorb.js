@@ -11,39 +11,57 @@ var zahl=0;
 einfügen()
 addsumm();
 
+function checkAmmount(counterID,elem){
+    console.log("der Onchange hat funktioniert!!!!")
+    console.log("Teste");
+    console.log(counterID)
+    console.log(document.getElementById(counterID.toString()))
 
-
+    if(counterID.value > 0){
+        addsumm()
+    }
+    else{
+        removeElem(elem)
+    }
+}
 
 function addsumm() {
-    let sum=document.getElementById("sum")
-    let mehr= document.getElementById("mehr")
-    let gesamt=document.getElementById("gesamt")
+    console.log("addsum Funktion")
+    let sum = document.getElementById("sum")
+    let mehr = document.getElementById("mehr")
+    let gesamt = document.getElementById("gesamt")
     let a = document.getElementsByClassName("preis")
-    let wert=0
-    for (let i=0; i< a.length; i++){
-        let d=a[i].innerHTML;
-        console.log("inner")
-        console.log(d)
-        d= d.substr(-3,2)
-        console.log(d)
-        wert=wert+Number(d)
-    }
-    let steuer= Math.round((wert*0.07)*100)/100
-    sum.innerHTML= wert+"€"
-    mehr.innerHTML= steuer+"€"
-    gesamt.innerHTML=(wert+steuer)+"€"
+    let ammountCounter = document.getElementsByClassName("menge")
+    console.log("ammountCounter: " + ammountCounter[0].value);       //Anzahl Kuchen im Warenkorb
 
+    let wert = 0
+    for (let i = 0; i < a.length; i++) {        //die Werte aufsummieren
+        let d = a[i].innerHTML;
+        let counterNumber = ammountCounter[i].value
+        let FrontOfComma = d.length-4;        //Betrag bis Komma. Jeder Betrag hat hinten 4 Stellen. for ex: ,73€.
+        console.log("vor substring: " + d);
+        d = d.substr(0, FrontOfComma) + "." + d.substr(-3,2);  //Substring nimmt die Zahlen bis zum Komma, und hängt dann den Cent betrag an
+        console.log("nach substring: " + d);
+        console.log(isFinite(d));
+        wert = wert + Number(d) * Number(counterNumber)
+    }
+    console.log("wert: " + wert);
+
+
+    let steuer = Math.round((wert * 0.07) * 100) / 100
+    sum.innerHTML = wert + "€"
+    mehr.innerHTML = steuer + "€"
+    gesamt.innerHTML = (wert + steuer) + "€"
 
 }
 
 function removeElem(id) {
 
-    console.log("id")
-    console.log(id);
-    let element=id
-    console.log(element)
-    element.parentNode.removeChild(element);
+    console.log("id die gelöscht wird: " + id)
 
+    let element=document.getElementById(id);
+
+    element.parentNode.removeChild(element);
     addsumm();
 
     let d = element.id.substr(-2,2)
@@ -53,7 +71,8 @@ function removeElem(id) {
         console.log(e)
         if (e.length==4){
             sessionStorage.setItem("regular", "undefined")
-        }else{
+        }
+        else{
             let s = e.split(",")
             s.pop()
             if (s.length==0){
@@ -61,7 +80,7 @@ function removeElem(id) {
             }else {
                 sessionStorage.setItem("regular", s)
             }
-        
+
         }
 
         console.log(sessionStorage)
@@ -80,7 +99,7 @@ function removeElem(id) {
             }
         }
 
-        
+
         console.log(sessionStorage)
     }
 
@@ -88,11 +107,12 @@ function removeElem(id) {
 }
 
 function sendOn(){
+    console.log("SendOn Warenkorb zur Kasse");
     console.log(sessionStorage)
     let r = sessionStorage.getItem("regular")
-    console.log(r)
+    console.log("regulär: " + r);
     let i = sessionStorage.getItem("Individual")
-    console.log(i)
+    console.log("individuell: " + i);
 
     if(((r=="undefined") && (i=="n")) || ((r=="n") && (i=="n"))){
         location.href="shop.html"
@@ -110,7 +130,7 @@ function sendOn(){
 
 //nur für Prototyp
 function einfügen() {
-    console.log(sessionStorage)
+
     var art= document.getElementById("waren");
     var a1= sessionStorage.getItem("regular")
     var b1= sessionStorage.getItem("Individual")
@@ -133,33 +153,55 @@ function einfügen() {
             indi=b1.split(",")
         }
     }
+
     for(let i=0; i<re.length;i++) {
+
         let elem="elem"+zahl+"re"
+        let counterID="counter"+zahl
+        console.log("test")
         let a =
         "<tr id='"+elem+"'>"+
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
-        "<td><p>Erdbeerkuchen<p>"+
+        "<td><p><h4>Erdbeerkuchen</h4></p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
-        "<td><p class='preis'>12€</p></td>"+
+        "<td>"+
+        "<input class='menge' type='number' value='1' name='counter' id='"+counterID+"'  onclick='checkAmmount('"+counterID+"', '"+elem+"')'>"+
+        "</td>"+
+        "<td><p class='preis'>12,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
-        zahl+=1
+
         art.innerHTML+=a
-        console.log("test")
-    }
+
+        zahl+=1
+
+
+    }           //addet die REGULÄREN kuchen
+
 
     for(let i=0; i<indi.length;i++) {
+
         let elem="elem"+zahl+"in"
+        let counterID="counter"+zahl
         let b=
         "<tr id='"+elem+"' >"+
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
-        "<td><p>Individueller kuchen<p>"+
+        "<td><p><h4>Individueller kuchen</h4></p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
-        "<td><p class='preis'>25€</p></td>"+
+        "<td>"+
+        "<input class='menge' type='number'  value='1' name='counter' id='"+counterID+"'  onclick='checkAmmount('"+counterID+"','"+elem+"')'>"+
+        "</td>"+
+        "<td><p class='preis'>25,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
         "</tr>"
-        zahl+=1
-        art.innerHTML+=b
-    }
+        console.log("counterID: " + counterID);
 
+        art.innerHTML+=b
+
+
+        zahl+=1
+
+    }       //addet die INDIVIDUELLEN kuchen
 }
+
+

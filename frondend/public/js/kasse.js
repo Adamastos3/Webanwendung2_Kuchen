@@ -22,7 +22,7 @@ function addsumm() {
 
 function changeRadion(a){
     if (a =="vor") {
-        
+
         document.getElementById("vor").checked=true;
         document.getElementById("rech").checked=false;
         document.getElementById("bar").checked=false;
@@ -41,6 +41,7 @@ function changeRadion(a){
 
 //nur für Prototyp
 function einfügen() {
+    console.log("Kasse Einfügen");
     console.log(sessionStorage)
     var art= document.getElementById("waren");
     var a1= sessionStorage.getItem("regular")
@@ -71,20 +72,22 @@ function einfügen() {
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p>Erdbeerkuchen<p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
+        "<td><p class='menge'>1x</p></td>"+
         "<td><p class='preis'>12€</p></td>"+
         "</tr>"
         zahl+=1
         art.innerHTML+=a
         console.log("test")
     }
-
     for(let i=0; i<indi.length;i++) {
+        console.log(art)
         let elem="elem"+zahl+"in"
         let b=
         "<tr id='"+elem+"' >"+
         "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
         "<td><p>Individueller kuchen<p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
+        "<td><p class='menge'>1x</p></td>"+
         "<td><p class='preis'>25€</p></td>"+
         "</tr>"
         zahl+=1
@@ -118,12 +121,26 @@ function benutzerSetzen(){
 }
 
 function sendOn(a) {
-    sessionStorage.setItem("regular", "undefined")
-    sessionStorage.setItem("Individual", "n")
-
+    console.log("SendOn Kasse zur Bestellbestätigung");
     if (a==0){
-        window.alert("Die Bestellbestätigung wurde in Ihre Mail versendet")
-        location.href="shop.html"
+        var changeDiv = document.getElementById("makeHidden");
+        var changeName = document.getElementById("makeOrder");
+        var getPay = document.querySelectorAll('input[type="radio"]');
+        var changeForm = document.getElementById("paymentForm")
+        var fixPayment = document.getElementById("fixedPayment");
+
+        for (let i=0; i<3; i++) {
+            if (getPay[i].checked === true) {
+                var payMethod = getPay[i].getAttribute("name")
+                break;
+            }
+        }
+        payMethod = payMethod.charAt(0).toUpperCase() + payMethod.slice(1)
+        changeDiv.style.display = "none";
+        changeName.innerHTML = "Bestellbestätigung";
+        changeForm.style.display = "none";
+        fixPayment.innerHTML += "<p>"+payMethod+"</p>"
+
     }
     else {
         location.href="warenkorb.html"

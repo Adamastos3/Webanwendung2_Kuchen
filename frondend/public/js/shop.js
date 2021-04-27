@@ -1,11 +1,7 @@
-
-
 function sendOnR() {
-    location.href="sortimentR.html"
-        
+  location.href = "sortimentRNeu.html";
 }
 
 function sendOnI() {
-    location.href="sortimentI.html"
+  location.href = "sortimentI.html";
 }
-

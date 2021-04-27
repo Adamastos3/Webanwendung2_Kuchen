@@ -10,7 +10,7 @@
 }
 
 .table3x3:hover {
-  background-color: #DEB887;
+  background-color: #fff;
   filter: brightness(110%);
   transition-duration: 0.5s;
 }
@@ -29,18 +29,23 @@
 .tableList {
   margin:0;
   border-spacing: 15px;
-  border: 2px solid rgba(0,0,0,0.25);
-  background-color: #FFDEAD;
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: #333;
   width:100%;
+  overflow-y:auto;
+  display:block;
 }
 
 .tableList td {
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
   border-radius: 00px;
+  color:white;
+  text-shadow: 0px 0px black;
+  padding:0;
 }
 
 .tableList td:nth-child(1) {
-  border: none;
+  border: 2px solid rgba(255,255,255,0.25);
   width: 5%;
 }
 
@@ -57,20 +62,20 @@
 }
 
 .tableList td:last-child {
-  border: none;
+  border: 2px solid rgba(255,255,255,0.25);
   width: 5%;
 }
 
 .tableList.tableListHistory td:nth-child(1) {
   width: 85%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory td:nth-child(1) {
   width: 5%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory td:nth-child(3) {
@@ -83,13 +88,36 @@
 .tableList.tableListHistory td:nth-child(4) {
   width: 5%;
   text-align: center;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.25);
+}
+
+.tableList.tableListHistory td:nth-child(5) {
+  width: 5%;
+  text-align: center;
+  border: 2px solid rgba(255,255,255,0.25);
 }
 
 .tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) {
   width: 5%;
   text-align: center;
+}
+
+.tableList.tableListHistory button {
   border: 0px solid rgba(0,0,0,0.2);
+}
+
+
+
+.tableList img {
+
+  height: 15vmin;
+  border: 0px solid rgba(255,255,255,0.25);
+  border-radius: 00px;
+  padding: 0;
+  outline: 0;
+  vertical-align: bottom;
+  display: block;
+  object-fit: cover;
 }
 
 
@@ -97,53 +125,77 @@
   display: flex;
   flex-wrap:nowrap;
   width: auto;
-  height: 100px;
-  border: 2px solid rgba(0,0,0,0.2);
+  height: 15vmin;
+  border: 0px solid rgba(0,0,0,0.25);
+  background-color: #333;
   border-radius: 00px;
   padding: 0;
   outline: 0;
+  width: 100%;
+
+  text-align: center;
+  color: #fff;
+  font-family: Roboto-light;
+  font-size: 2vmin;
 }
 
-.tableList img {
-  display: flex;
-  flex-wrap:nowrap;
-  width: auto;
-  height: 100px;
-  border: 2px solid rgba(0,0,0,0.2);
-  border-radius: 00px;
-  padding: 0;
-  outline: 0;
-}
 
-.tableList input:hover {
-  background-color: #f4511e;
-  transition-duration: 0.5s;
-}
-
-.tableList button:hover {
-  background-color: #f4511e;
-  transition-duration: 0.5s;
-}
 
 
 .tableList button {
-  display: flex;
-  flex-wrap:nowrap;
-  width: auto;
-  height: auto;
+  display: block;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0,0,0,0);
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 0px solid rgba(0,0,0,0.25);
   border-radius: 00px;
   cursor: pointer;
   outline: 0;
+  filter: invert(100%);
+  padding-top: 0rem;
 }
 
-
+.tableList button:hover {
+  transition-duration: 0.5s;
+}
 
 
 .tableList button img {
   border-style: none;
+  height: 15vmin;
 }
+
+.tableList td:nth-child(4) button:hover {
+  background-color: #f4511e;
+}
+
+.tableList.tableListCart td:nth-child(4) {
+  text-align: center;
+}
+
+.tableList.tableListCart td:nth-child(5) {
+  height: 100%;
+}
+
+.tableList.tableListCart td:nth-child(5) button:hover {
+  background-color: #00CED1;
+}
+
+.tableList.tableListHistory td:nth-child(6) button:hover {
+  background-color: #ff1493;
+}
+
+
+
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) button:hover {
+  background-color: #483d8b;
+}
+
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(5) button:hover {
+  background-color: #00CED1;
+}
+
+
 
 
 .tableList.scrollable{
@@ -160,6 +212,14 @@
   text-align: center;
   border: 2px solid rgba(0,0,0,0.2);
 }
+
+
+.tableList.tableListCheckout td:nth-child(4) {
+  width: 5%;
+  text-align: center;
+}
+
+
 
 
 
@@ -180,6 +240,7 @@
 .tableBuy td{
   width: 100%;
   border:0px solid rgba(0,0,0,1);
+
 }
 
 .tableBuy td:nth-child(2){
@@ -198,6 +259,101 @@
 .tableBuy.tableBuyButtons td {
   text-align: center;
   width: 100%;
+}
+
+
+.tableProduct{
+  background-color: #333;
+  color: #f2f2f2;
+  border: 2px solid rgba(0,0,0,1);
+  padding: 0px;
+  text-align: center;
+  border-spacing: 10px 10px;
+  height: 100%;
+  vertical-align:middle; text-align:center;
+  width: 100%;
+
+}
+
+.tableProduct img{
+  display:flex;
+  width: 100%;
+  border: 0px solid rgba(0,0,0,1);
+  max-width: 35rem;
+  vertical-align: middle;
+  display: block;
+}
+
+.tableProduct td{
+  border: 00px solid rgba(0,0,0,1);
+  padding:0;
+  width: 50%;
+}
+
+.tableProduct input, label{
+  display:flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+
+#tableProductImage2 img {
+  border: 1px solid rgba(0,0,0,1);
+  padding: 0;
+  outline: 0;
+  vertical-align: bottom;
+  display: block;
+  max-width: 50rem;
+}
+
+#tableProductImage2 {
+  width: 50%;
+}
+
+
+.tableProduct.tableProductDescription {
+  width: 100%;
+}
+
+.tableProduct.tableProductDescription td {
+  width: 100%;
+}
+
+.tableProduct.tableProductReg{
+  width: 100%;
+  min-height: 46rem;
+  border-spacing: 10px 10px;
+
+}
+
+.tableProduct.tableProductReg img{
+  max-height: 26rem;
+  min-height: 26rem;
+  min-width: 100%;
+  padding: 0px;
+}
+
+
+
+.tableProduct.tableProductReg td {
+  width: 100%;
+  border: 0px solid rgba(0,0,0,1);
+  padding: 0px;
+}
+
+
+.tableProductImage {
+  border: 0px solid rgba(0,0,0,1);
+  display:block;
+
+}
+
+.tableProductImage img {
+  border: 1px solid rgba(0,0,0,1);
+  object-fit: cover;
 }
 
 
@@ -242,6 +398,7 @@
   height: 280px;
   width: 100%;
   border-spacing: 15px;
+  font-size: 2vmin;
 }
 
 .tableLogin tr:nth-child(-n+4){
@@ -265,7 +422,8 @@
 .tableLogin.tableLoginED {
   width: 40%;
   text-align: center;
-
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .tableLogin.tableLoginED td{
@@ -277,6 +435,13 @@
 .tableLogin.tableLoginContact tr{
   text-align:center;
 }
+
+.tableLogin.tableLoginContact td{
+  border: 0px solid rgba(0,0,0,1);
+}
+
+
+
 
 .tableLogin.Checkout {
   height: 100%;
@@ -319,6 +484,30 @@
 }
 
 
+.UeberUnsTable td{
+  border: 0px solid rgba(0,0,0,1);
+  padding: 15px;
+}
+
+.UeberUnsTable p{
+  text-align: justify;
+  hyphens: auto;
+}
+
+.UeberUnsTable img{
+  border: 2px solid rgba(0,0,0,1);
+  width:300px;
+}
+
+.UUimageTD{
+  width:20%;
+}
+
+
+
+
+
+
 
 
 @media only screen and (max-width: 1000px) {
@@ -344,6 +533,30 @@
     display:block;
     content:'';
     height:0;
+}
+}
+
+@media only screen and (max-width: 500px) {
+
+
+.tableProduct tr {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-content: center;
+}
+
+.tableProduct td{
+  width: 100%;
+}
+
+#tableProductImage2 {
+  width: 100%;
+}
+
+.tableList {
+
+  border-spacing: 5px;
 
 }
 

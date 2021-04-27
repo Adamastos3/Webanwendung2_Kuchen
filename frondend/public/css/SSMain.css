@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Roboto-ligth";
+  font-family: "Roboto-light";
   src: url("../Fonts/Roboto-Light.ttf");
   font-style:normal;
 }
@@ -10,10 +10,18 @@
   font-style:normal;
 }
 
+@font-face {
+  font-family: "Roboto-bold";
+  src: url("../Fonts/Roboto-Bold.ttf");
+  font-style:normal;
+}
+
+
 
 body {
-  background-color: #FAEBD7;
-  font-family: Roboto-ligth;
+  /*background-color: #FAEBD7;*/
+  background-color: #ffffff;
+  font-family: Roboto-light;
   height:100vh;
   display:flex;
   flex-direction:column;
@@ -38,8 +46,41 @@ a {
   color: #f2f2f2;
 }
 
-.agb a {
-  color: rgb(0, 0, 0)
+h1 {
+  font-size: 4.0vw;
+}
+
+h2 {
+  font-size: 3.0vh;
+}
+
+h3 {
+  font-size: 2.5vh;
+}
+
+h4 {
+  font-size: 2vmin;
+}
+
+p {
+  font-size: 2vmin;
+}
+
+a {
+  font-size: 2vmin;
+}
+
+
+
+th {
+  font-family: Roboto-bold;
+  text-transform: uppercase;
+  font-size: 2.5vmin;
+  color: white;
+}
+
+#agb {
+  color: black;
 }
 
 #logo {
@@ -63,9 +104,7 @@ a {
   width: 10px;
 }
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 60px 0 0px grey;
-}
+
 
 
 ::-webkit-scrollbar-thumb {

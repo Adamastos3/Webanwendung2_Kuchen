@@ -8,6 +8,13 @@ async function getBenutzerbyId(id) {
   return b;
 }
 
+async function getBenutzerAll() {
+  let pa = "/wba2api/benutzer/all";
+  const b = await getRequest(pa);
+  return b;
+}
+
+
 async function createBenutzer(data) {
   let pa = "/wba2api/benutzer";
   const b = await postRequest(pa, data);
@@ -40,6 +47,7 @@ async function updateBenutzer(data) {
 
 module.exports = {
   getBenutzerbyId,
+  getBenutzerAll,
   createBenutzer,
   checkBenutzer,
   checkBenutzerUndPassword,

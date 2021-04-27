@@ -1,145 +1,172 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrierung</title>
-  <script src="./js/allgemein.js" defer></script>
-  <script src="./js/registrieren.js" defer></script>
-  <link href="./css/SSMain.css" rel="stylesheet">
-  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="./css/SSTables.css" rel="stylesheet">
-  <link href="./css/SSFieldset.css" rel="stylesheet">
-  <link href="./css/SSButtons.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop">Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user" class="navbarSelected">Account</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrierung</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/registrieren.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user" class="navbarSelected">Account</a>
+      </nav>
+    </header>
 
+    <div class="containerSmallCenter">
+      <div>
+        <h2>Registrierung</h2>
+        <form
+          action="/registrieren"
+          method="post"
+          class="inputField1 inputField1ED"
+          id="form"
+          name="formular"
+        >
+          <table class="tableLogin tableLoginED">
+            <!--Z1-->
+            <tr>
+              <td><label for="email1">E-Mail</label></td>
+              <td><label for="username1">Username</label></td>
+            </tr>
+            <!--Z2-->
+            <tr>
+              <!--Bug die nachfolgenden Inputs geben keinen Value ab-->
+              <td>
+                <input type="email" id="email1" name="email" required>
+              </td>
+              <td>
+                <input type="text" id="username1" name="username" required>
+              </td>
+            </tr>
 
+            <!--Z1-->
+            <tr>
+              <td><label for="pass1">Passwort</label></td>
+              <td><label for="pass2">Passwort wiederholen</label></td>
+            </tr>
+            <!--Z2-->
+            <tr>
+              <td>
+                <input type="password" required id="pass1" name="pass1">
+              </td>
+              <td>
+                <input type="password" required id="pass2" name="pass2">
+              </td>
+            </tr>
 
-  <div class="containerSmallCenter">
-    <div>
-      <h2>Registrierung</h2>
-      <form action="/registrieren" method="post" class="inputField1 inputField1ED" id="form" name="formular">
-        <table class="tableLogin tableLoginED">
-          <!--Z1-->
-          <tr>
-            <td><label for="email">E-Mail</label></td>
-            <td><label for="username">Username</label></td>
-          </tr>
-          <!--Z2-->
-          <tr>
-            <td><input type="email" required id="email" name="email"></td>
-            <td><input type="text" required id="username" name="username"></td>
-          </tr>
+            <!--Z3-->
+            <tr>
+              <td><label for="herr">Anrede</label></td>
+              <td><label for="plz">PLZ</label></td>
+            </tr>
+            <!--Z4-->
+            <tr>
+              <td id="tableLoginEDalign">
+                <table>
+                  <tr>
+                    <td>
+                      <label for="herr">Herr</label>
+                    </td>
+                    <td>
+                      <input
+                        type="radio"
+                        name="Herr"
+                        id="herr"
+                        onclick="changeRadion('herr')"
+                      >
+                    </td>
+                    <td>
+                      <label for="frau">Frau</label>
+                    </td>
+                    <td>
+                      <input
+                        type="radio"
+                        name="Frau"
+                        id="frau"
+                        onclick="changeRadion('frau')"
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <input type="text" required id="plz" size="5" name="plz">
+              </td>
+            </tr>
 
-          <!--Z1-->
-          <tr>
-            <td><label for="pass1">Passwort</label></td>
-            <td><label for="pass2">Passwort wiederholen</label></td>
-          </tr>
-          <!--Z2-->
-          <tr>
-            <td><input type="password" required id="pass1" name="pass1"></td>
-            <td><input type="password" required id="pass2" name="pass2"></td>
-          </tr>
+            <!--Z5-->
+            <tr>
+              <td><label for="vorname">Vorname</label></td>
+              <td><label for="stadt">Stadt</label></td>
+            </tr>
+            <!--Z6-->
+            <tr>
+              <td>
+                <input type="text" required id="vorname" name="vorname">
+              </td>
+              <td><input type="text" required id="stadt" name="stadt"></td>
+            </tr>
 
+            <!--Z7-->
+            <tr>
+              <td><label for="nachname">Nachname</label></td>
+              <td><label for="straße">Straße</label></td>
+            </tr>
+            <!--Z8-->
+            <tr>
+              <td>
+                <input type="text" required id="nachname" name="nachname">
+              </td>
+              <td>
+                <input type="text" required id="strasse" name="strasse">
+              </td>
+            </tr>
+            <!--Z9-->
+            <tr>
+              <td><label for="geb">Geburtstag</label></td>
+              <td><label for="hausnr">Hausnummer</label></td>
+            </tr>
+            <!--Z10-->
+            <tr>
+              <td><input type="date" required id="geb" name="geb"></td>
+              <td><input type="text" required id="hausnr" name="hausnr"></td>
+            </tr>
 
-          <!--Z3-->
-          <tr>
-            <td><label for="herr">Anrede</label></td>
-            <td><label for="plz">PLZ</label></td>
-          </tr>
-          <!--Z4-->
-          <tr>
-            <td id="tableLoginEDalign">
-              <table>
-                <tr>
-                  <td>
-                    <label for="herr">Herr</label>
-                  </td>
-                  <td>
-                    <input type="radio" name="Herr" id="herr"  onclick="changeRadion('herr')">
-                  </td>
-                  <td>
-                    <label for="frau" >Frau</label>
-                  </td>
-                  <td>
-                    <input type="radio" name="Frau" id="frau" onclick="changeRadion('frau')">
-                  </td>
-                </tr>
-              </table>
-
-            </td>
-            <td><input type="text" required id="plz" size="5" name="plz"></td>
-          </tr>
-
-          <!--Z5-->
-          <tr>
-            <td><label for="vorname">Vorname</label></td>
-            <td><label for="stadt">Stadt</label></td>
-          </tr>
-          <!--Z6-->
-          <tr>
-            <td><input type="text" required id="vorname" name="vorname"></td>
-            <td><input type="text" required id="stadt" name="stadt"></td>
-          </tr>
-
-          <!--Z7-->
-          <tr>
-            <td><label for="nachname">Nachname</label></td>
-            <td><label for="straße">Straße</label></td>
-          </tr>
-          <!--Z8-->
-          <tr>
-            <td><input type="text" required id="nachname" name="nachname"></td>
-            <td><input type="text" required id="strasse" name="strasse"></td>
-          </tr>
-          <!--Z9-->
-          <tr>
-            <td><label for="geb">Geburtstag</label></td>
-            <td><label for="hausnr">Hausnummer</label></td>
-          </tr>
-          <!--Z10-->
-          <tr>
-            <td><input type="date" required id="geb" name="geb"></td>
-            <td><input type="text" required id="hausnr" name="hausnr"></td>
-          </tr>
-
-          <tr><td colspan="2"><button type="submit" class="tableLogin tableLoginED ButtonConfirm">
-            Registrieren</button></td>
-          </tr>
-        </table>
-      </form>
+            <tr>
+              <td colspan="2">
+                <button
+                  type="submit"
+                  class="tableLogin tableLoginED ButtonConfirm"
+                >
+                  Registrieren
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <footer>
-    
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
 
-    <div class="footerDiv">
-      <a href="/ueberUns">Über uns / AGB</a>
-      <a href="/impressum">Impressum</a>
-      <a href="/kontakt">Kontaktformular</a>
-    </div>
-
-    <div>
-      &copy;
-      Copyright 2021
-      Kuchen AG
-    </div>
-
-  </footer>
-
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

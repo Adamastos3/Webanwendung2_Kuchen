@@ -48,7 +48,7 @@ function setzenHtmlKundenDaten(data) {
 
       //button
       text +=
-        "<td><button onclick='sendOn()'><img src='./img/pencil.png' alt=''></button></td>" +
+        "<td><button onclick='sendOn('"+data[i].id+"')'><img src='./img/pencil.png' alt=''></button></td>" +
         "<td><button onclick='erledigt(" +
         elem +
         "," +
@@ -78,7 +78,8 @@ function erledigt(id, idU) {
 }
 
 function sendOn() {
-  document.forms.form.submit();
+  //Cookie setzen für id
+  location.href="";
 }
 
 function deleteRequest(id) {

@@ -96,9 +96,9 @@
 }
 
 
-.inputField1.inputField1ED input{
-  width: 12rem;
-  font-size: 2vmin;
+.inputField1.inputField1ED input {
+    width: 22vmin;
+    font-size: 2vmin;
 }
 
 #tableLoginEDalign input{

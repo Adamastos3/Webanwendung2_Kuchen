@@ -8,9 +8,7 @@ form.addEventListener("submit", (e)=>{
 })
 
 function submitten(){
-    sessionStorage.setItem("login", 0)
-    
-    location.href="login.html"
+    document.form.form.submit();
 }
 
 

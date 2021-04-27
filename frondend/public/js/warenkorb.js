@@ -13,9 +13,11 @@ addsumm();
 
 function checkAmmount(counterID,elem){
     console.log("der Onchange hat funktioniert!!!!")
+    console.log("Teste");
     console.log(counterID)
     console.log(document.getElementById(counterID.toString()))
-    if(document.getElementById(counterID).value > 0){
+
+    if(counterID.value > 0){
         addsumm()
     }
     else{
@@ -57,10 +59,9 @@ function removeElem(id) {
 
     console.log("id die gelöscht wird: " + id)
 
-    let element=document.getElementById(id)
+    let element=document.getElementById(id);
 
     element.parentNode.removeChild(element);
-
     addsumm();
 
     let d = element.id.substr(-2,2)
@@ -157,13 +158,14 @@ function einfügen() {
 
         let elem="elem"+zahl+"re"
         let counterID="counter"+zahl
+        console.log("test")
         let a =
         "<tr id='"+elem+"'>"+
         "<td><img src='../public/img/cake-example.png' alt=''></td>"+
         "<td><p><h4>Erdbeerkuchen</h4></p>"+
         "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
         "<td>"+
-        "<input class='menge' type='number' value='1' name='counter' id='"+counterID+"'  onchange='checkAmmount("+counterID+","+elem+")'>"+
+        "<input class='menge' type='number' value='1' name='counter' id='"+counterID+"'  onclick='checkAmmount('"+counterID+"', '"+elem+"')'>"+
         "</td>"+
         "<td><p class='preis'>12,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
@@ -172,6 +174,7 @@ function einfügen() {
         art.innerHTML+=a
 
         zahl+=1
+
 
     }           //addet die REGULÄREN kuchen
 
@@ -186,7 +189,7 @@ function einfügen() {
         "<td><p><h4>Individueller kuchen</h4></p>"+
         "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
         "<td>"+
-        "<input class='menge' type='number'  value='1' name='counter' id='"+counterID+"'  onchange='checkAmmount('"+counterID+"','"+elem+"')'>"+
+        "<input class='menge' type='number'  value='1' name='counter' id='"+counterID+"'  onclick='checkAmmount('"+counterID+"','"+elem+"')'>"+
         "</td>"+
         "<td><p class='preis'>25,00€</p></td>"+
         "<td><button onclick='removeElem("+elem+")'><img src='../public/img/shoppingCartCancel.png' alt=''></button></td>"+
@@ -197,6 +200,7 @@ function einfügen() {
 
 
         zahl+=1
+
     }       //addet die INDIVIDUELLEN kuchen
 }
 

@@ -85,6 +85,7 @@
                         name="Herr"
                         id="herr"
                         onclick="changeRadion('herr')"
+                        checked
                       >
                     </td>
                     <td>
@@ -144,10 +145,11 @@
               <td><input type="text" required id="hausnr" name="hausnr"></td>
             </tr>
 
-            <tr>
+          </form>
+          <tr>
               <td colspan="2">
                 <button
-                  type="submit"
+                  onclick= sendOnReg();
                   class="tableLogin tableLoginED ButtonConfirm"
                 >
                   Registrieren
@@ -155,7 +157,6 @@
               </td>
             </tr>
           </table>
-        </form>
       </div>
     </div>
 

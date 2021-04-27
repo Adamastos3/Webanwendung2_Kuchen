@@ -1,17 +1,29 @@
 const form = document.getElementById("form");
 var passW = false;
-var sexW = false;
 var plzW = false;
 var userW = false;
 var mailW = false;
 
-const email = document.getElementById("email1");
-const username = document.getElementById("username1");
+let email = document.getElementById("email1");
+let username = document.getElementById("username1");
 const password1 = document.getElementById("pass1");
 const password2 = document.getElementById("pass2");
 const anredeH = document.getElementById("herr");
 const anredeF = document.getElementById("frau");
 const plz = document.getElementById("plz");
+const fehler= document.getElementById("Fehler")
+const fehlerfeld= document.getElementById("fehlerfeld")
+
+
+function hideFehler(id){
+  if (id == 0) {
+    if (fehler.style.display === "none") {
+      fehler.style.display = "block";
+    } else {
+      fehler.style.display = "none";
+    }
+  }
+}
 
 function changeRadion(a) {
   if (a == "herr") {
@@ -23,7 +35,7 @@ function changeRadion(a) {
   }
 }
 
-function checkPlz() {
+ async function checkPlz() {
   var array = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var alertCode = 1;
   var plz1 = plz.value;
@@ -38,45 +50,53 @@ function checkPlz() {
     alertCode = 0;
   }
   if (alertCode < 1) {
-    alert("Die Plz muss aus 5 Zahlen bestehen");
+    //alert("Die Plz muss aus 5 Zahlen bestehen");
   } else {
     plzW = true;
   }
-}
 
-function checkSex() {
+  console.log("plz")
+}
+/*
+function checkSefehler() {
   if (anredeH.checked == true || anredeF.checked == true) {
     sexW = true;
   } else {
     alert("Bitte geben Sie ein Geschlecht an");
     sexW = false;
   }
+
+  console.log("sefehler")
 }
+*/
 
 function checkPassword() {
   if (password1.value != password2.value) {
     if (password1.value.length < 8) {
-      alert(
-        "Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein"
-      );
+      //alert("Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein");
     } else {
-      alert("Beide Passwörter müssen gleich sein");
+      //alert("Beide Passwörter müssen gleich sein");
     }
     passW = false;
   } else {
     if (password1.value.length < 8) {
-      alert("Das Password muss mindestens 8 Zeichen haben");
+      //alert("Das Password muss mindestens 8 Zeichen haben");
       passW = false;
     } else {
       passW = true;
     }
   }
+
+  console.log("passwort")
 }
+
 
 function checkUser(data) {
   let result = true;
   for (let i = 0; i < data.length; i++) {
     //Bug, von username wird kein Value genommen
+    console.log(user)
+    console.log(typeof(user.value))
     console.log("User: " + data[i].benutzername + " / " + username.value);
     if (data[i].benutzername == username.value) {
       result = false;
@@ -86,7 +106,7 @@ function checkUser(data) {
   if (result) {
     userlW = true;
   } else {
-    window.alert("Username is taken");
+    //window.alert("Username is taken");
     userlW = false;
   }
 }
@@ -95,6 +115,7 @@ function checkMail(data) {
   let result = true;
   for (let i = 0; i < data.length; i++) {
     //Bug, von Email wird auch kein Value genommen
+    console.log(email)
     console.log("person: " + data[i].person + " / " + email.value);
     if (data[i].person != null) {
       console.log(data[i].person);
@@ -108,45 +129,85 @@ function checkMail(data) {
   if (result) {
     emailW = true;
   } else {
-    window.alert("Mail is taken");
+    //window.alert("Mail is taken")
     emailW = false;
   }
 }
 
-function requestReg() {
-  var requestReg = new XMLHttpRequest();
-  requestReg.open("GET", "http://localhost:8000/wba2api/benutzer/alle");
-  requestReg.onload = function () {
-    var data = JSON.parse(requestReg.responseText);
-    console.log(data);
-    if (data.daten != null) {
-      checkUser(data.daten);
-      checkMail(data.daten);
-    } else {
-      console.log(data.fehler);
-    }
-  };
-  requestReg.send();
+async function requestReg() {
+  return new Promise((resolve, reject) =>{
+    var requestReg = new XMLHttpRequest();
+    requestReg.open("GET", "http://localhost:8000/wba2api/benutzer/alle");
+    requestReg.onload = function () {
+      var data = JSON.parse(requestReg.responseText);
+      console.log(data);
+      if (data.daten != null) {
+        checkUser(data.daten);
+        checkMail(data.daten);
+        checkPassword();
+        checkPlz();
+        //checkSefehler();
+        resolve(true);
+
+      } else {
+        reject(data.fehler);
+      }
+    };
+    requestReg.send();
+});
 }
 
-function check() {
-  requestReg();
-  checkPassword();
-  checkPlz();
-  checkSex();
+async function check() {
+  return await requestReg();
+  
+  
+}
+
+function druckFehler(){
+  let text="";
+  if(!mailW){
+    text+="Mail is taken \n"
+  }
+  if(!userW){
+    text+="Username is taken \n"
+  }
+  if(!passW){
+    text+="Das Password muss mindestens 8 Zeichen haben \n "+
+      "Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein \n"+
+      "Beide Passwörter müssen gleich sein /n"
+
+  }
+  if(!plzW){
+    text+="Die Plz muss aus 5 Zahlen bestehen"
+  }
+
+  alert(text);
+  
+
+}
+
+
+async function sendOnReg(){
+  const a= await check()
+
+  console.log("a ist "+ a)
+    if (a && passW && plzW && userW && mailW) {
+      document.forms.form.submit();
+  } else {
+    druckFehler()
+    passW = false;
+    plzW = false;
+    userW = false;
+    mailW = false;
+    console.log("reset")
+    document.forms.form.reset();
+    
+  }
+
 }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  check();
-  if (passW && sexW && plzW && userW && mailW) {
-    document.form.forms.submit();
-  } else {
-    passW = false;
-    sexW = false;
-    plzW = false;
-    userW = false;
-    mailW = false;
-    document.forms.form.reset();
-  }
 });
+
+hideFehler(0)

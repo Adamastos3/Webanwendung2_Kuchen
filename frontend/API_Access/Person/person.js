@@ -8,6 +8,12 @@ async function getPersonbyId(id) {
   return b;
 }
 
+async function getPersonnAll(id){
+  let pa = "/wba2api/person/alle";
+  const b = await getRequest(pa);
+  return b;
+}
+
 async function createPerson(data) {
   //console.log("start");
   //console.log(data);
@@ -24,6 +30,7 @@ async function updatePerson(data) {
 
 module.exports = {
   getPersonbyId,
+  getPersonnAll,
   createPerson,
   updatePerson,
 };

@@ -96,7 +96,7 @@ function checkUser(data) {
   let id = cookies();
   for (let i = 0; i < data.length; i++) {
     if (data[i].id != id) {
-      if (data[i].username == document.getElementById("username")) {
+      if (data[i].benutzername == document.getElementById("username").value) {
         result = false;
         break;
       }
@@ -116,7 +116,7 @@ function checkMail(data) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].id != id) {
       if (data[i].person != null) {
-        if (data[i].person.email == document.getElementById("email")) {
+        if (data[i].person.email == document.getElementById("email").value) {
           result = false;
           break;
         }
@@ -134,15 +134,15 @@ function checkMail(data) {
   }
 }
 
-function requesUserMail() {
+function requestUserMail() {
   var requestUser = new XMLHttpRequest();
   requestUser.open("GET", "http://localhost:8000/wba2api/benutzer/alle");
   requestUser.onload = function () {
-    var data = JSON.parse(request.responseText);
+    var data = JSON.parse(requestUser.responseText);
     console.log(data);
     if (data.daten != null) {
       checkUser(data.daten);
-      checkMail();
+      checkMail(data.daten);
     } else {
       console.log(data.fehler);
     }

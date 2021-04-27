@@ -33,28 +33,33 @@
       <form action="" method="post" class="inputField1 inputField1ED" id="form" name="form">
         <table class="tableLogin tableLoginED">
           
-           <!--Z1-->
-           <tr>
-            <td><label for="email">E-Mail</label></td>
-            <td><label for="username">Username</label></td>
-          </tr>
-          <!--Z2-->
-          <tr>
-            <td><input type="email" required id="email" readonly></td>
-            <td><input type="text" required id="username" readonly></td>
-          </tr>
-          
-          <tr>
-            <td><button onclick="changeElem('email')">ändern</button></td>
-            <td><button onclick="changeElem('username')">ändern</button></td>
-          </tr>
-
           <!--Z1-->
-          <tr>
-            <td><label for="">Anrede</label></td>
-            <td><label for="">PLZ</label></td>
-          </tr>
+          <tr><td><label for="email">E-Mail</label></td></tr>
+          <tr><td><input type="email" required id="email" readonly></td></tr>
+          <tr><td><button onclick="changeElem('email')">ändern</button></td></tr>
+
+
           <!--Z2-->
+          <tr><td><label for="username">Username</label></td></tr>
+          <tr><td><input type="text" required id="username" readonly></td></tr>
+          <tr><td><button onclick="changeElem('username')">ändern</button></td></tr>
+
+          
+          
+          <!--Z3-->
+          <tr><td><label for="pass1">Neues Passwort</label></td></tr>
+          <tr><td><input type="password" required id="pass1" readonly></td></tr>
+          <tr><td><button onclick="changeElem('pass1')">ändern</button></td></tr>
+
+
+          <!--Z4-->
+          <tr><td><label for="pas2">Neues Passwort wiederholen</label></td> </tr>
+          <tr><td><input type="password" required id="pass2" readonly></td></tr>
+          <tr><td><button onclick="changeElem('pass1')">ändern</button></td></tr>
+
+
+          <!--Z5-->
+          <tr><td><label for="">Anrede</label></td></tr>
           <tr>
             <td id="tableLoginEDalign">
               <table>
@@ -63,70 +68,63 @@
                     <label for="Herr">Herr</label>
                   </td>
                   <td>
-                    <input type="radio" name="Herr" id="Herr" onclick="changeRadion('Herr')">
+                    <input type="radio" name="Herr" id="Herr" onclick="changeElem('Herr')">
                   </td>
                   <td>
                     <label for="Frau">Frau</label>
                   </td>
                   <td>
-                    <input type="radio" name="Frau" id="Frau" onclick="changeRadion('Frau')">
+                    <input type="radio" name="Frau" id="Frau" onclick="changeElem('Frau')">
                   </td>
                 </tr>
               </table>
 
             </td>
-            <td><input type="text" id="plz" required readonly></td>
-          </tr>
-          <!--Z3-->
-          <tr>
-            <td><button onclick="changeElem('Herr')">ändern</button></td>
-            <td><button onclick="changeElem('plz')">ändern</button></td>
-          </tr>
-          <!--Z4-->
-          <tr>
-            <td><label for="vorname">Vorname</label></td>
-            <td><label for="stadt">Stadt</label></td>
-          </tr>
-          <!--Z5-->
-          <tr>
-            <td><input type="text" id="vorname" required readonly></td>
-            <td><input type="text" id="stadt" required readonly></td>
-          </tr>
+            <tr><td><button onclick="changeElem('Herr')">ändern</button></td></tr>
+
+
           <!--Z6-->
-          <tr>
-            <td><button onclick="changeElem('vorname')">ändern</button></td>
-            <td><button onclick="changeElem('stadt')">ändern</button></td>
-          </tr>
+          <tr><td><label for="">PLZ</label></td></tr>
+          <tr><td><input type="text" id="plz" required readonly></td></tr>
+          <tr><td><button onclick="changeElem('plz')">ändern</button></td></tr>
+
+
+          
           <!--Z7-->
-          <tr>
-            <td><label for="nachname">Nachname</label></td>
-            <td><label for="straße">Straße</label></td>
-          </tr>
+          <tr><td><label for="vorname">Vorname</label></td></tr>
+          <tr><td><input type="text" id="vorname" required readonly></td></tr>
+          <td><button onclick="changeElem('vorname')">ändern</button></td>
+
+
           <!--Z8-->
-          <tr>
-            <td><input type="text" id="nachname" readonly required></td>
-            <td><input type="text" id="straße" readonly required></td>
-          </tr>
+          <tr><td><label for="nachname">Nachname</label></td></tr>
+          <tr><td><input type="text" id="nachname" readonly required></td></tr>
+          <td><button onclick="changeElem('nachname')">ändern</button></td>
+
+
           <!--Z9-->
-          <tr>
-            <td><button onclick="changeElem('nachname')">ändern</button></td>
-            <td><button onclick="changeElem('straße')">ändern</button></td>
-          </tr>
+          <tr><td><label for="stadt">Stadt</label></td></tr>
+          <tr><td><input type="text" id="stadt" required readonly></td></tr>
+          <tr><td><button onclick="changeElem('stadt')">ändern</button></td></tr>
+
+          
           <!--Z10-->
-          <tr>
-            <td><label for="">Geburtstag</label></td>
-            <td><label for="">Hausnummer</label></td>
+          <tr></tr>
+          <tr></tr>
+          <td><button onclick="changeElem('nachname')">ändern</button></td>
+
           </tr>
+          
+          
           <!--Z11-->
-          <tr>
-            <td><input type="date" id="geb" readonly required></td>
-            <td><input type="text" id="hausnr" readonly required></td>
-          </tr>
+          <tr><td><label for="">Geburtstag</label></td></tr>
+          <tr><td><input type="date" id="geb" readonly required></td></tr>
+          <tr><td><button onclick="changeElem('geb')">ändern</button></td></tr>
+          
           <!--Z12-->
-          <tr>
-            <td><button onclick="changeElem('geb')">ändern</button></td>
-            <td><button onclick="changeElem('hausnr')">ändern</button></td>
-          </tr>
+          <tr><td><label for="">Hausnummer</label></td></tr>
+          <tr><td><input type="text" id="hausnr" readonly required></td></tr>
+          <tr><td><button onclick="changeElem('hausnr')">ändern</button></td></tr>
 
 
         </table>
@@ -140,7 +138,7 @@
     
 
     <div class="footerDiv">
-      <a href="ueberUns.html">Über uns / AGB</a>
+      <a href="ueberUns.html">Über uns</a>
       <a href="impressum.html">Impressum</a>
       <a href="kontakt.html">Kontaktformular</a>
     </div>

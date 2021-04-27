@@ -85,6 +85,7 @@
 
 .inputField1.inputField1Contact input {
   width: auto;
+
 }
 
 .inputField2 input {
@@ -100,7 +101,8 @@
 }
 
 #tableLoginEDalign input{
-  width:40px;
+  width:20px;
+  align: middle;
 }
 
 

@@ -28,7 +28,7 @@
       <div>
         <h2>Registrierung</h2>
         <form
-          action="login.html"
+          action="/registrieren"
           method="post"
           class="inputField1 inputField1ED"
           id="form"
@@ -49,14 +49,14 @@
                         type="radio"
                         name="Herr"
                         id="Herr"
-                        onclick="changeElem('Herr')"
+                        onclick="changeRadion('Herr')"
                         checked
                       />Herr
                       <input
                         type="radio"
                         name="Frau"
                         id="Frau"
-                        onclick="changeElem('Frau')"
+                        onclick="changeRadion('Frau')"
                       />Frau
                   </td>
               <td><input type="text" id="plz" name="plz" required /></td>
@@ -123,7 +123,7 @@
           </table>
         </form>
         <button
-          type="submit"
+          onclick="sendOnReg()"
           class="button2 button2login"
         >
           Registrieren

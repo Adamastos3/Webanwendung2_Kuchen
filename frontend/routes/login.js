@@ -39,7 +39,7 @@ async function logins(req, res) {
       val = "000" + b.id;
     }
 
-    res.cookie(name, val, { maxAge: 1000 * 60 * 60 * 24 });
+    res.cookie(name, val);
     if (b.benutzerrolle.id == 1) {
       res.redirect("/accountAdmin");
     } else {

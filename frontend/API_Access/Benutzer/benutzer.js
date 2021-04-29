@@ -39,9 +39,9 @@ async function checkBenutzerUndPassword(data) {
 }
 
 async function updateBenutzer(data) {
-  let pa = "/wba2api/benutzer/zugang";
+  let pa = "/wba2api/benutzer";
   const b = await putRequest(pa, data);
-  //console.log(b);
+  console.log(b);
   return b.id;
 }
 

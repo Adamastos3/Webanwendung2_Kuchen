@@ -1,357 +1,43 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reguläres Sortiment</title>
-  <script src="./js/allgemein.js" defer></script>
-  <script src="./js/sortimentR.js" defer></script>
-  <script src="./js/replaceDiv.js" defer></script>
-  <link href="./css/SSMain.css" rel="stylesheet">
-  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="./css/SSTables.css" rel="stylesheet">
-  <link href="./css/SSButtons.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" class="navbarSelected" id="shop">Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user">Account</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reguläres Sortiment</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/sortimentR.js" defer></script>
+    <!--<script src="./js/replaceDiv.js" defer></script>-->
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" class="navbarSelected" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user">Account</a>
+      </nav>
+    </header>
 
-
-
-
-
-  <div class="containerHorizontal containerHorizontalProduct regProductButton">
-    <div>
-    <!--Prod1-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv1()" onmouseout="replaceDiv1Invert()">
-      <div id="DivBefore1" >
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/schwarzwälder.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Schwarzwälderkirschtorte</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt:</p>
-              <p>
-                Kirschen, eingelegte Kirschen, Kirschwasser, Sahne, Schokokrümel, Mehl, Eier
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Preis: 19,00€</p>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-
-      <div id="DivAfter1" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/schwarzwälder.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
+    <div
+      class="containerHorizontal containerHorizontalProduct regProductButton"
+    >
+      <div id="textdiv"></div>
     </div>
-    <!--Prod2-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv2()" onmouseout="replaceDiv2Invert()">
-      <div id="DivBefore2">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/bananenkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Bananenkuchen</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt: </p>
-              <p>
-                Bananen, Bananenchips, Schokoladenstückchen, Sahne, Schokokrümel, Mehl, Eier
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>16,00€</p>
-            </td>
-          </tr>
 
-        </table>
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
       </div>
 
-      <div id="DivAfter2" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/bananenkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-    </div>
- 
-    <!--Prod3-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv3()" onmouseout="replaceDiv3Invert()">
-      <div id="DivBefore3">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/erdbeercremekuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Erdbeercremekuchen</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt: </p>
-              <p>
-              Erdbeeren, Erdbeercreme, Sahne, Creme, Mehl, Eier
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Preis: 18,00€</p>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-
-      <div id="DivAfter3" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/erdbeercremekuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-    </div>
-    <!--Prod4-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv4()" onmouseout="replaceDiv4Invert()">
-      <div id="DivBefore4">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/himbeerkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Himbeerkuchen</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt: </p>
-              <p>
-                Himbeeren, eingelegte Kirschen, Kirschwasser, Sahne, Schokokrümel, Eier
-              </p>
-
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>14,00€</p>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-
-      <div id="DivAfter4" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/himbeerkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-    </div>
-    <!--Prod5-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv5()" onmouseout="replaceDiv5Invert()">
-      <div id="DivBefore5">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/käsekuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Käsekuchen</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt:</p>
-              <p>
-                Käse, Marzipan, Eierlikör, Sahne, Mehl, Eier
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Preis: 17,00€</p>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-
-      <div id="DivAfter5" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/käsekuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-    </div>
-    <!--Prod6-->
-    <div class="containerProduct containerProductReg" onmouseover="replaceDiv6()" onmouseout="replaceDiv6Invert()">
-      <div id="DivBefore6">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/schokoladenkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <h4>Schokoladenkuchen</h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Inhalt:</p>
-              <p>
-                Schokolade, mehr Schokolade, Schokokrümelstückchen, Sahne, Mehl, Eier
-              </p>
-
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Preis: 15,00€</p>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-
-      <div id="DivAfter6" style="display: none">
-        <table class="tableProduct tableProductReg">
-          <tr>
-            <td class="tableProductImage"><img src="./img/schokoladenkuchen.jpg" alt=""></td>
-          </tr>
-          <tr>
-            <td>
-              <button>Info</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>In den Warenkorb</button>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-
-
-<footer>
-
-
-  <div class="footerDiv">
-    <a href="/ueberUns">Über uns / AGB</a>
-    <a href="/impressum">Impressum</a>
-    <a href="/kontakt">Kontaktformular</a>
-  </div>
-
-  <div>
-    &copy;
-    Copyright 2021
-    Kuchen AG
-  </div>
-</footer>
-
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

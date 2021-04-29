@@ -4,29 +4,19 @@ var plzW = false;
 var userW = false;
 var mailW = false;
 
-let email = document.getElementById("email1");
-let username = document.getElementById("username1");
+let email = document.getElementById("email");
+let username = document.getElementById("username");
 const password1 = document.getElementById("pass1");
 const password2 = document.getElementById("pass2");
-const anredeH = document.getElementById("herr");
-const anredeF = document.getElementById("frau");
+const anredeH = document.getElementById("Herr");
+const anredeF = document.getElementById("Frau");
 const plz = document.getElementById("plz");
 const fehler= document.getElementById("Fehler")
 const fehlerfeld= document.getElementById("fehlerfeld")
 
 
-function hideFehler(id){
-  if (id == 0) {
-    if (fehler.style.display === "none") {
-      fehler.style.display = "block";
-    } else {
-      fehler.style.display = "none";
-    }
-  }
-}
-
 function changeRadion(a) {
-  if (a == "herr") {
+  if (a == "Herr") {
     anredeF.checked = false;
     anredeH.checked = true;
   } else {
@@ -96,7 +86,7 @@ function checkUser(data) {
   for (let i = 0; i < data.length; i++) {
     //Bug, von username wird kein Value genommen
     console.log(user)
-    console.log(typeof(user.value))
+    //console.log(typeof(user.value))
     console.log("User: " + data[i].benutzername + " / " + username.value);
     if (data[i].benutzername == username.value) {
       result = false;
@@ -104,10 +94,10 @@ function checkUser(data) {
     }
   }
   if (result) {
-    userlW = true;
+    userW = true;
   } else {
     //window.alert("Username is taken");
-    userlW = false;
+    userW = false;
   }
 }
 
@@ -165,16 +155,16 @@ async function check() {
 
 function druckFehler(){
   let text="";
-  if(!mailW){
+  if(!emailW){
     text+="Mail is taken \n"
   }
   if(!userW){
     text+="Username is taken \n"
   }
   if(!passW){
-    text+="Das Password muss mindestens 8 Zeichen haben \n "+
+    text+="Das Password muss mindestens 8 Zeichen haben\n"+
       "Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein \n"+
-      "Beide Passwörter müssen gleich sein /n"
+      "Beide Passwörter müssen gleich sein \n"
 
   }
   if(!plzW){
@@ -191,7 +181,8 @@ async function sendOnReg(){
   const a= await check()
 
   console.log("a ist "+ a)
-    if (a && passW && plzW && userW && mailW) {
+    if (a && passW && plzW && userW && emailW) {
+      console.log("submit")
       document.forms.form.submit();
   } else {
     druckFehler()
@@ -210,4 +201,3 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-hideFehler(0)

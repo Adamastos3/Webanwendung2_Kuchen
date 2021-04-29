@@ -1,51 +1,33 @@
-
-
-//prototyp
-document.addEventListener("keydown", (e)=>{
-    
-
-    if(e.keyCode === 13){
-        console.log("tetetet")
-
-        e.preventDefault();
-        sendOn()
-        
-    
-        
-    };
-  
-})
-
-function sendOn() {
-
-    console.log("submit")
-    document.forms.form.submit();
-    /*
-    var a= document.getElementById("username").value;
-        if(a=="admin"){
-            if(document.getElementById("pass").value="admin"){
-                sessionStorage.setItem("admin",1);
-                location.href="accountAdmin.html";
-            }
-            else{
-                alert("Falsche Eingaben. Bitte versuchen Sie es nochmal")
-                document.forms.form.reset();
-
-            }
-        }
-        else{
-            sessionStorage.setItem("login", 1)
-            //console.log("ende")
-            if (sessionStorage.getItem("kasse")==1){
-                sessionStorage.setItem("kasse",0)
-                    location.href="kasse.html"
-            }
-            else{
-                location.href="account.html"
-            }
-        }
-    */
+function setInfo() {
+  let text = document.getElementById("info");
+  let a = cookies();
+  console.log(a);
+  console.log(text);
+  if (a[0] != 0) {
+    text.innerHTML =
+      "Bitte geben Sie aus Sicherheitsgründen Ihre Anmeldedaten nochmals ein";
+  } else {
+    text.style.display = "none";
+  }
 }
 
+//prototyp
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    console.log("tetetet");
 
+    e.preventDefault();
+    sendOn(0);
+  }
+});
 
+function sendOn(a) {
+  if (a == 0) {
+    console.log("submit");
+    document.forms.form.submit();
+  } else {
+    location.href = "/registrieren";
+  }
+}
+
+setInfo();

@@ -3,7 +3,8 @@ const pathIhreDaten = "http://localhost:8000/wba2api/benutzer/gib/" + cookies();
 var sexW = false;
 var plzW = false;
 var userW = false;
-var mailW = false;
+var emailW = false;
+var feldW=false;
 
 function HTMLIhreDatenSetzen(data) {
   let person = data.person;
@@ -24,20 +25,31 @@ function HTMLIhreDatenSetzen(data) {
 
 
   document.getElementById("plz").value = person.adresse.plz;
-  document.getElementById("stadt").value = person.adresse.stadt;
-  document.getElementById("straße").value = person.adresse.strasse;
-  document.getElementById("hausnr").value = person.adresse.hausnummer;
+  document.getElementById("stadt").value = person.adresse.ort;
+  document.getElementById("strasse").value = person.adresse.strasse;
+  document.getElementById("hausnummer").value = person.adresse.hausnummer;
   hideButton(0);
 }
 
 function hideButton(id) {
-  var x = document.getElementById("b1");
-  if (id == 0) {
+  function hide(x){
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
+  }
+
+  if (id == 0) {
+    let x = document.getElementById("b1")
+    hide(x)
+    
+  }
+  else{
+    let x = document.getElementById("b1")
+    let y = document.getElementById("b2")
+    hide(y)
+    hide(x)
   }
 }
 
@@ -101,6 +113,8 @@ function checkUser(data) {
   let id = cookies();
   for (let i = 0; i < data.length; i++) {
     if (data[i].id != id) {
+      console.log(document.getElementById("username").value)
+      console.log(data[i].benutzername)
       if (data[i].benutzername == document.getElementById("username").value) {
         result = false;
         break;
@@ -108,16 +122,17 @@ function checkUser(data) {
     }
   }
   if (result) {
-    userlW = true;
+    userW = true;
   } else {
-    window.alert("Username is taken");
-    userlW = false;
+    console.log("falsche User")
+    userW = false;
   }
 }
 
 function checkMail(data) {
   let result = true;
   let id = cookies();
+  console.log("id"+ id)
   for (let i = 0; i < data.length; i++) {
     if (data[i].id != id) {
       if (data[i].person != null) {
@@ -125,8 +140,6 @@ function checkMail(data) {
           result = false;
           break;
         }
-      } else {
-        result = false;
       }
     }
   }
@@ -134,10 +147,54 @@ function checkMail(data) {
   if (result) {
     emailW = true;
   } else {
-    window.alert("Mail is taken");
     emailW = false;
   }
 }
+
+
+function checkFields(){
+  let result=true;
+  if(document.getElementById("email").value==""){
+    result=false;
+  }
+   if(document.getElementById("username").value==""){
+    result=false;
+  }
+
+  console.log("Vorname ist "+ typeof(document.getElementById("vorname").value))
+   if(document.getElementById("vorname").value==""){
+    result=false;
+  }
+   if(document.getElementById("nachname").value==""){
+    result=false;
+  }
+    if(document.getElementById("geb").value==""){
+    result=false;
+  }
+    if(document.getElementById("strasse").value==""){
+    result=false;
+  }
+    if(document.getElementById("stadt").value==""){
+    result=false;
+  }
+    if(document.getElementById("hausnummer").value==""){
+    result=false;
+  }
+    if(document.getElementById("plz").value==""){
+    result=false;
+  }
+  
+  if (result){
+    feldW=true;
+  }
+  else{
+    feldW=false;
+  }
+
+}
+
+
+
 
 async function requestUserMail() {
   return new Promise((resolve, reject) =>{
@@ -151,6 +208,7 @@ async function requestUserMail() {
       checkMail(data.daten);
       checkPlz()
       checkSex()
+      checkFields()
       resolve(true)
     } else {
       reject(data.fehler);
@@ -160,23 +218,84 @@ async function requestUserMail() {
 });
 }
 
-function sendData() {
-  const a = requestUserMail();
-  if (a && sexW && plzW && userW && mailW) {
+async function sendData() {
+  const a = await requestUserMail();
+  console.log("a ist "+a)
+  if (a && sexW && plzW && userW && emailW && feldW) {
+    console.log("submit");
     document.forms.form.submit();
   } else {
-    console.log(refresh);
-    getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
+    console.log("refresh");
+    druckFehler()
+    sexW = false;
+    plzW = false;
+    userW = false;
+    emailW = false;
+    feldW=false;
     
   }
+}
+
+function changeData(){
+  hideButton(1);
+  document.getElementById("Herr").removeAttribute("readonly")
+  document.getElementById("Frau").removeAttribute("readonly")
+  document.getElementById("email").removeAttribute("readonly")
+  document.getElementById("username").removeAttribute("readonly")
+  document.getElementById("vorname").removeAttribute("readonly")
+  document.getElementById("nachname").removeAttribute("readonly")
+  
+
+
+  //Geb
+  document.getElementById("geb").removeAttribute("readonly")
+  document.getElementById("geb").setAttribute("onclick", "gebChange()")
+
+
+  document.getElementById("plz").removeAttribute("readonly")
+  document.getElementById("stadt").removeAttribute("readonly")
+  document.getElementById("strasse").removeAttribute("readonly")
+  document.getElementById("hausnummer").removeAttribute("readonly")
+ 
+
+}
+
+function gebChange(){
+  document.getElementById("geb").removeAttribute("onclick")
+  document.getElementById("geb").setAttribute("type", "date")
+}
+
+function druckFehler(){
+  let text="";
+  if(!emailW){
+    text+="Mail is taken \n"
+  }
+  if(!userW){
+    text+="Username is taken \n"
+  }
+  if(!plzW){
+    text+="Die Plz muss aus 5 Zahlen bestehen\n"
+  }
+
+  if(!sexW){
+    text+= "Bitte wählen Sie ein Geschlecht\n"
+  }
+
+  if(!feldW){
+    text+= "Bitte füllen Sie alle Felder aus"
+  }
+
+  alert(text);
+  
+
 }
 
 //ausführen
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  sendData();
-  console.log("submit");
+  
+  
 });
 
 getRequest(pathIhreDaten, HTMLIhreDatenSetzen);

@@ -77,9 +77,10 @@ function erledigt(id, idU) {
   element.parentNode.removeChild(element);
 }
 
-function sendOn() {
-  //Cookie setzen für id
-  location.href="";
+function sendOn(id) {
+  //Cookie setzen für id 
+  setCookie("kid", id, 1);
+  location.href="/kundenChange";
 }
 
 function deleteRequest(id) {

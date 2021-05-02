@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password vergessen</title>
-  <script src="./js/allgemein.js" defer></script>
-  <script src="./js/passwordVergessen.js" defer></script>
-  <link href="./css/SSMain.css" rel="stylesheet">
-  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="./css/SSButtons.css" rel="stylesheet">
-  <link href="./css/SSFieldset.css" rel="stylesheet">
-  <link href="./css/SSTables.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop" >Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user" class="navbarSelected">Account</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password vergessen</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/passwordVergessen.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user" class="navbarSelected">Account</a>
+      </nav>
+    </header>
 
+    <div class="containerSmallCenter containerSmallCenterReset">
+      <div>
+        <h2>Passwort zurücksetzen</h2>
+        <p>
+          An die angegebene Email wird Ihr neues Passwort gesendet. Beachten
+          Sie, dass Sie nur eine E-Mail erhalten, wenn sich Ihre Mail-Adresse in
+          unserer Datenbank befindet.
+        </p>
 
-
-  <div class="containerSmallCenter containerSmallCenterReset">
-    <div>
-      <h2>Passwort zurücksetzen</h2>
-      <p>An die angegebene Email wird Ihr neues Passwort gesendet. Beachten Sie, dass Sie nur eine E-Mail erhalten, wenn sich Ihre Mail-Adresse in unserer Datenbank befindet.</p>
-
-
-      <form action="/passwordVergessen" method="post" class="inputField1 inputField1Reset" id="form">
-        <table class="tableLogin tableReset">
-          <tr><td>  </td></tr>
-          <tr><td><label for="mail">E-Mail</label></td></tr>
-          <tr><td><input type="email" name="mail" id="mail" required></td></tr>
-          <tr><td>
-          </td></tr>
-        </table>
-      </form>
-        <button onclick="submitten()" class="button2 button2reset">Passwort zurücksetzen</button>
-
-    </div>
-  </div>
-
-
-
-  <footer>
-
-
-    <div class="footerDiv">
-      <a href="/ueberUns">Über uns / AGB</a>
-      <a href="/impressum">Impressum</a>
-      <a href="/kontakt">Kontaktformular</a>
-    </div>
-
-    <div>
-      &copy;
-      Copyright 2021
-      Kuchen AG
+        <form
+          action="/passwordVergessen"
+          method="post"
+          class="inputField1 inputField1Reset"
+          id="form"
+        >
+          <table class="tableLogin tableReset">
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td><label for="mail">E-Mail</label></td>
+            </tr>
+            <tr>
+              <td><input type="email" name="mail" id="mail" required /></td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+        </form>
+        <button onclick="submitten()" class="button2 button2reset">
+          Passwort zurücksetzen
+        </button>
+      </div>
     </div>
 
-  </footer>
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
 
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

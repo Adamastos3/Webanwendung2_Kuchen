@@ -1,197 +1,195 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Individuelles Sortiment</title>
-  <script src="./js/allgemein.js" defer></script>
-  <script src="./js/sortimentI.js" defer></script>
-  <link href="./css/SSMain.css" rel="stylesheet">
-  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="./css/SSTables.css" rel="stylesheet">
-  <link href="./css/SSFieldset.css" rel="stylesheet">
-  <link href="./css/SSButtons.css" rel="stylesheet">
-  <link href="./css/SSImage.css" rel="stylesheet">
-  <link href="./css/SSDropdown.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" class="navbarSelected" id="shop" >Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user">Account</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Individuelles Sortiment</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/sortimentI.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSImage.css" rel="stylesheet" />
+    <link href="./css/SSDropdown.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" class="navbarSelected" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user">Account</a>
+      </nav>
+    </header>
 
+    <div class="containerSmallLeft">
+      <!---DIV 1---------->
 
+      <div class="overlappingImages">
+        <div class="overlappingItemFrame">
+          <img src="./img/CylinderFrame.png" alt="Italian Trulli" />
+        </div>
 
+        <div class="overlappingItemTOP-Topping">
+          <img
+            src="./img/CylinderTopping.png"
+            alt="Italian Trulli"
+            id="topping"
+          />
+        </div>
 
+        <div class="overlappingItemTOP">
+          <img src="./img/CylinderTop.png" alt="Italian Trulli" id="topping2" />
+        </div>
 
+        <div class="overlappingItemsMIDDLE">
+          <img
+            src="./img/CylinderMiddle.png"
+            alt="Italian Trulli"
+            id="middle"
+          />
+        </div>
 
-
-
-  <div class="containerSmallLeft">
-
-    <!---DIV 1---------->
-
-    <div class="overlappingImages">
-
-      <div class="overlappingItemFrame">
-        <img src="./img/CylinderFrame.png" alt="Italian Trulli">
+        <div class="overlappingItemsBOTTOM">
+          <img
+            src="./img/CylinderBottom.png"
+            alt="Italian Trulli"
+            id="bottom"
+          />
+        </div>
       </div>
 
-      <div class="overlappingItemTOP-Topping">
-        <img src="./img/CylinderTopping.png" alt="Italian Trulli" id="topping">
-      </div>
+      <!--DIV 2---------->
 
-      <div class="overlappingItemTOP">
-        <img src="./img/CylinderTop.png" alt="Italian Trulli" id="topping2">
-      </div>
+      <div>
+        <form id="form" class="dropdown" name="form">
+          <table class="tableLogin Checkout individual">
+            <tr>
+              <td colspan="1"><label for="">Topping</label></td>
+            </tr>
+            <tr>
+              <td colspan="1">
+                <select
+                  onclick="start('topping',value.substr(-2,2))"
+                  name=""
+                  id="select1"
+                  class="dropdown"
+                >
+                  <option value="05/01"><p>Erdbeere 5€</p></option>
+                  <option value="05/02">Himbeeren 5€</option>
+                  <option value="05/03">Schokolade 5€</option>
+                  <option value="05/04">Sahne 5€</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1"><label for="">Außenschicht</label></td>
+            </tr>
+            <tr>
+              <td colspan="1">
+                <select
+                  onclick="start('topping2',value.substr(-2,2))"
+                  name=""
+                  id="select2"
+                >
+                  <option value="05/05">Schokolade 5€</option>
+                  <option value="05/06">Weiße Schokolade 5€</option>
+                  <option value="05/07">Zitronen-Jogurtcreme 5€</option>
+                  <option value="05/08">Schokoladen-Jogurtcreme 5€</option>
+                </select>
+              </td>
+            </tr>
 
-      <div class="overlappingItemsMIDDLE">
-        <img src="./img/CylinderMiddle.png" alt="Italian Trulli" id="middle">
-      </div>
+            <tr>
+              <td colspan="1"><label for="">Füllung</label></td>
+            </tr>
+            <tr>
+              <td colspan="1">
+                <select
+                  onclick="start('middle',value.substr(-2,2))"
+                  name=""
+                  id="select3"
+                >
+                  <option value="05/09">Schokolade 5€</option>
+                  <option value="05/10">Weiße Schokolade 5€</option>
+                  <option value="05/11">Erdbeeren-Jogurtcreme 5€</option>
+                  <option value="05/12">Himbeer-Jogurtcreme 5€</option>
+                </select>
+              </td>
+            </tr>
 
-      <div class="overlappingItemsBOTTOM">
-        <img src="./img/CylinderBottom.png" alt="Italian Trulli" id="bottom">
+            <tr>
+              <td colspan="1"><label for="">Boden</label></td>
+            </tr>
+            <tr>
+              <td colspan="1">
+                <select
+                  onclick="start('bottom',value.substr(-2,2))"
+                  name=""
+                  id="select4"
+                >
+                  <option value="25/13">Standardboden &Oslash;20cm 25€</option>
+                  <option value="20/14">Standardboden &Oslash;16cm 20€</option>
+                  <option value="25/15">
+                    Schokoladenboden &Oslash;20cm 25€
+                  </option>
+                  <option value="25/16">
+                    Schokoladenboden &Oslash;16cm 25€
+                  </option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </form>
       </div>
-
+      <!---DIV 3---------->
+      <div class="imgIndividualComponent">
+        <img
+          src="./img/erdbeeren2.png"
+          alt="Italian Trulli"
+          id="bildMaterial"
+        />
+      </div>
     </div>
 
+    <div class="containerSmallright">
+      <table class="tableBuy Checkout">
+        <tr>
+          <td>Summe:</td>
+          <td id="summe"></td>
+        </tr>
+        <tr>
+          <td>Mehrwertsteuer:</td>
+          <td id="mehrwert"></td>
+        </tr>
+        <tr>
+          <td>Gesamtsumme:</td>
+          <td id="gesamtsumme"></td>
+        </tr>
+      </table>
+      <table class="tableBuy Checkout tableBuyButtons">
+        <tr>
+          <td>
+            <button class="button1" onclick="sendOn()">
+              <span> zum Warenkorb hinzufügen </span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
 
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
 
-
-
-<!--DIV 2---------->
-
-<div>
-  <form id="form" class="dropdown" name="form">
-    <table class="tableLogin Checkout individual">
-
-
-      <tr>
-        <td colspan="1"><label for="">Topping</label></td>
-      </tr>
-      <tr>
-        <td colspan="1"><select onclick="start('topping',value.substr(-2,2))" name="" id="select1" class="dropdown">
-          <option value="05/01"><p>Erdbeere  5€</p></option>
-          <option value="05/02">Himbeeren 5€</option>
-          <option value="05/03">Schokolade 5€</option>
-          <option value="05/04">Sahne 5€</option>
-        </select></td>
-      </tr>
-      <tr>
-        <td colspan="1"><label for="">Außenschicht</label></td>
-      </tr>
-      <tr>
-        <td colspan="1"><select onclick="start('topping2',value.substr(-2,2))"  name="" id="select2">
-          <option value="05/05">Schokolade 5€</option>
-          <option value="05/06">Weiße Schokolade 5€</option>
-          <option value="05/07">Zitronen-Jogurtcreme 5€</option>
-          <option value="05/08">Schokoladen-Jogurtcreme 5€</option>
-        </select></td>
-      </tr>
-
-      <tr>
-        <td colspan="1"><label for="">Füllung</label></td>
-      </tr>
-      <tr>
-        <td colspan="1"><select onclick="start('middle',value.substr(-2,2))" name="" id="select3">
-          <option value="05/09">Schokolade 5€</option>
-          <option value="05/10">Weiße Schokolade 5€</option>
-          <option value="05/11">Erdbeeren-Jogurtcreme 5€</option>
-          <option value="05/12">Himbeer-Jogurtcreme 5€</option>
-        </select></td>
-      </tr>
-
-      <tr>
-        <td colspan="1"><label for="">Boden</label></td>
-      </tr>
-      <tr>
-        <td colspan="1"><select onclick="start('bottom',value.substr(-2,2))" name="" id="select4">
-          <option value="25/13">Standardboden &Oslash;20cm 25€</option>
-          <option value="20/14">Standardboden &Oslash;16cm 20€</option>
-          <option value="25/15">Schokoladenboden &Oslash;20cm 25€</option>
-          <option value="25/16">Schokoladenboden &Oslash;16cm 25€</option>
-        </select></td>
-      </tr>
-    </table>
-  </form>
-</div>
-<!---DIV 3---------->
-<div class="imgIndividualComponent">
-    <img src="./img/erdbeeren2.png" alt="Italian Trulli" id="bildMaterial">
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="containerSmallright">
-  
-    <table class="tableBuy Checkout">
-      <tr>
-        <td>Summe:</td>
-        <td id="summe"></td>
-      </tr>
-      <tr>
-        <td>Mehrwertsteuer:</td>
-        <td id="mehrwert"></td>
-      </tr>
-      <tr>
-        <td>Gesamtsumme:</td>
-        <td id="gesamtsumme"></td>
-      </tr>
-    </table>
-    <table class="tableBuy Checkout tableBuyButtons">
-
-      <tr>
-        <td>
-          <button class="button1" onclick="sendOn()" >
-            <span>
-              zum Warenkorb hinzufügen
-            </span>
-          </button>
-        </td>
-      </tr>
-
-    </table>
-
-  
-    
-  
-</div>
-
-
-
-
-
-<footer>
-
-
-  <div class="footerDiv">
-    <a href="/ueberUns">Über uns / AGB</a>
-    <a href="/impressum">Impressum</a>
-    <a href="/kontakt">Kontaktformular</a>
-  </div>
-
-  <div>
-    &copy;
-    Copyright 2021
-    Kuchen AG
-  </div>
-
-</footer>
-
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

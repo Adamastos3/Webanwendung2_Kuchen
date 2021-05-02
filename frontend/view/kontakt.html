@@ -32,12 +32,12 @@
   <div>
     <h2>Kontaktformular</h2>
     <form action="/kontakt" class="inputField1 inputField1Contact">
-        <table class="tableLogin tableLoginContact ">
+        <table class="tableLogin tableLoginContact tableMaxWidthWhenSmall">
             <tr>
                 <td><label for="">Anrede</label></td>
             </tr>
             <tr>
-               <td>
+               <td id="inputAutoWidth">
                    <input type="radio" name="" id="Herr" onclick="changeRadion('Herr')" checked>Herr
                    <input type="radio" name="" id="Frau" onclick="changeRadion('Frau')">Frau
                 </td>
@@ -60,13 +60,14 @@
             <tr>
                 <td><input type="email" name="" id="textMail" required></td>
             </tr>
+            
             <tr>
               <td>
                 <label for="text"><h3>Ihre Nachricht</h3></label>
                 <textarea name="" id="text"></textarea>
               </td>
             </tr>
-
+            
         </table>
     </form>
 

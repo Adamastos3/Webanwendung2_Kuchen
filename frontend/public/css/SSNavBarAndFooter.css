@@ -82,3 +82,22 @@ footer > div {
   filter: grayscale(100%);
   background-color: #ddd;
 }
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+  .navbar {
+    margin: 0px 0px 0;
+  }
+
+  .footerDiv {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+
+

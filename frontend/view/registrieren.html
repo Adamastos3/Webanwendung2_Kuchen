@@ -34,7 +34,7 @@
           id="form"
           name="formular"
         >
-          <table class="tableLogin tableLoginED">
+          <table class="tableLogin tableLoginED tableMaxWidthWhenSmall tableAtMediaChanges600">
             <!--Z1, Z5, Z10-->
             <tr>
               <td><label for="email">E-Mail</label></td>
@@ -45,19 +45,22 @@
               <td><input type="email" required id="email" name="email" /></td>
 
               <td id="tableLoginEDalign">
+
                       <input
                         type="radio"
                         name="Herr"
                         id="Herr"
                         onclick="changeElem('Herr')"
                         checked
-                      />Herr
+                      /><label for="Herr">Herr</label>
+
                       <input
                         type="radio"
                         name="Frau"
                         id="Frau"
                         onclick="changeElem('Frau')"
-                      />Frau
+                      /><label for="Frau">Frau</label>
+
                   </td>
               <td><input type="text" id="plz" name="plz" required /></td>
             </tr>
@@ -102,7 +105,7 @@
 
             <!--Z4-->
             <tr>
-              <td><label for="pas2">Neues Passwort wiederholen</label></td>
+              <td><label for="pas2">Passwort wiederholen</label></td>
               <td><label for="geb">Geburtstag</label></td>
               <td><label for="hausnr">Hausnummer</label></td>
             </tr>

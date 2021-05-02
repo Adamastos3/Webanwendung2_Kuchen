@@ -41,7 +41,7 @@
   border-radius: 00px;
   color:white;
   text-shadow: 0px 0px black;
-  padding:0;
+  padding: 0;
 }
 
 .tableList td:nth-child(1) {
@@ -272,7 +272,6 @@
   height: 100%;
   vertical-align:middle; text-align:center;
   width: 100%;
-
 }
 
 .tableProduct img{
@@ -398,7 +397,8 @@
   height: 280px;
   width: 100%;
   border-spacing: 15px;
-  font-size: 2vmin;
+
+  
 }
 
 .tableLogin tr:nth-child(-n+4){
@@ -420,7 +420,7 @@
 }
 
 .tableLogin.tableLoginED {
-  width: 40%;
+
   text-align: center;
   height: auto;
   margin-bottom: 10px;
@@ -429,7 +429,9 @@
 .tableLogin.tableLoginED td{
   text-align: center;
   max-height: 20px;
+  border: 0px solid rgba(0,0,0,1);
 }
+
 
 
 .tableLogin.tableLoginContact tr{
@@ -438,7 +440,10 @@
 
 .tableLogin.tableLoginContact td{
   border: 0px solid rgba(0,0,0,1);
+  width: 100%;
 }
+
+
 
 
 
@@ -511,30 +516,34 @@
 
 
 @media only screen and (max-width: 1000px) {
-  .tableAtMediaChanges {
+  .tableAtMediaChanges1000 {
     border-collapse:collapse;
+    page-break-inside: avoid;
   }
-  .tableAtMediaChanges tr {
+  .tableAtMediaChanges1000 tr {
     height:4em;
   }
-  .tableAtMediaChanges th {
+  .tableAtMediaChanges1000 th {
     padding:.07em .2em;
     white-space:nowrap;
     font-weight:400;
     height:4em;
   }
-  .tableAtMediaChanges td {
+  .tableAtMediaChanges1000 td {
 
     white-space:nowrap;
     height:1.4em;
     display:inline;
 }
-.tableAtMediaChanges td:not(:last-child)::after {
+.tableAtMediaChanges1000 td:not(:last-child)::after {
     display:block;
     content:'';
     height:0;
 }
 }
+
+
+
 
 @media only screen and (max-width: 500px) {
 
@@ -550,6 +559,10 @@
   width: 100%;
 }
 
+.tableProduct.tableProductReg tr{
+  display: table-row;
+}
+
 #tableProductImage2 {
   width: 100%;
 }
@@ -557,7 +570,35 @@
 .tableList {
 
   border-spacing: 5px;
+}
 
 }
 
+
+@media only screen and (max-width: 800px) {
+  .tableLogin.tableMaxWidthWhenSmall {
+    table-layout: fixed;
+  }
+
+  
+.tableLogin tr:nth-child(5){
+  text-align: center;
+}
+
+}
+
+@media only screen and (max-width: 600px) {
+  .tableAtMediaChanges600 {
+    border-collapse:collapse;
+    page-break-inside: avoid;
+  }
+  .tableAtMediaChanges600 tr {
+    height:4em;
+  }
+  .tableAtMediaChanges600 th {
+    padding:.07em .2em;
+    white-space:nowrap;
+    font-weight:400;
+    height:4em;
+  }
 }

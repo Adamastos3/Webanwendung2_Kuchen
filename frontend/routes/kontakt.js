@@ -1,13 +1,14 @@
-const path= require('path')
+const path = require("path");
 const express = require("express");
-const server =express()
-
+const server = express();
 
 //kontakt
-server.get("/kontakt", (req,res) =>{
-    res.sendFile('kontakt.html', { root: path.join(__dirname,'..', 'view') });
+server.get("/kontakt", (req, res) => {
+  res.sendFile("kontakt.html", { root: path.join(__dirname, "..", "view") });
 });
 
+server.post("/kontakt", (req, res) => {
+  res.send.status(200);
+});
 
-
-module.exports=server;
+module.exports = server;

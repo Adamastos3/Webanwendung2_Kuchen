@@ -3,13 +3,9 @@ const pathAllgemein =
 
 //init seesionstorage
 if (sessionStorage.length === 0) {
-  sessionStorage.setItem("regular", "n");
-  sessionStorage.setItem("Individual", "n");
-  sessionStorage.setItem("login", 0);
-  sessionStorage.setItem("admin", 0);
-  sessionStorage.setItem("kasse", 0);
+  sessionStorage.setItem("regular", "");
+  sessionStorage.setItem("Individual", "");
   console.log("init");
-  //initBenutzer();
 }
 
 getRequest(pathAllgemein, setzenHtml);
@@ -25,6 +21,7 @@ function getRequest(path, func) {
     if (data.daten != null) {
       func(data.daten);
     } else {
+      storeAnzeigen();
       console.log("error, NO Data");
     }
   };
@@ -61,6 +58,8 @@ function setzenHtml(data) {
     shop.innerHTML = "Kundendaten";
     shop.setAttribute("href", "/kundendaten");
   }
+  console.log("store");
+  storeAnzeigen();
 }
 
 function cookies() {
@@ -99,15 +98,6 @@ function setCookie(cname, cvalue) {
   document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
-/*
-if(sessionStorage.getItem("admin")==="0"){
-    changeBenutzer()
-    storeAnzeigen()
-}else{
-    changeAdmin()
-}
-*/
-
 //Anzeigem der einkäufe
 function storeAnzeigen() {
   console.log(sessionStorage);
@@ -119,22 +109,19 @@ function storeAnzeigen() {
   console.log("test");
   let individual = sessionStorage.getItem("Individual");
 
-  if (regular != "n" && regular != "n," && regular != "undefined") {
-    if (regular.length == 1) {
-      anzahlR += 1;
-    } else {
-      anzahlR += regular.split(",").length;
-      console.log("r2");
+  if (regular != "") {
+    let pro = regular.split(",");
+    console.log(pro.length);
+    for (let i = 0; i < pro.length; i++) {
+      let anzahl = pro[i].substring(4, 8);
+      console.log(anzahl);
+      anzahlR += Number(anzahl);
     }
   }
 
-  if (individual != "n") {
-    if (individual.length == 1) {
-      anzahlI += 1;
-    } else {
-      anzahlI += individual.split(",").length;
-      console.log("i2");
-    }
+  if (individual != "") {
+    let proI = individual.split(",");
+    anzahlI = proI.length;
   }
 
   let anzahl = anzahlI + anzahlR;

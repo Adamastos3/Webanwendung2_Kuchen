@@ -72,6 +72,12 @@ try {
   serviceRouter = require("./services/individuelles.js");
   app.use(TOPLEVELPATH, serviceRouter);
 
+  serviceRouter = require("./services/individuelleKategorie.js");
+  app.use(TOPLEVELPATH, serviceRouter);
+
+  serviceRouter = require("./services/individuellesBild.js");
+  app.use(TOPLEVELPATH, serviceRouter);
+
   serviceRouter = require("./services/download.js");
   app.use(TOPLEVELPATH, serviceRouter);
 

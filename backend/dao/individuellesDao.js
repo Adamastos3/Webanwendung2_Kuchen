@@ -1,8 +1,7 @@
 const helper = require("../helper.js");
 const IndividuelleKategorieDao = require("./individuelleKategorieDao.js");
 const MehrwertsteuerDao = require("./mehrwertsteuerDao.js");
-const DownloadDao = require("./downloadDao.js");
-const ProduktbildDao = require("./produktbildDao.js");
+const IndividuellesBildDao = require("./individuellesBildDao.js");
 
 class IndividuellesDao {
   constructor(dbConnection) {
@@ -15,8 +14,8 @@ class IndividuellesDao {
 
   loadById(id) {
     const individuellekategorieDao = new IndividuelleKategorieDao(this._conn);
-
-    const produktbildDao = new ProduktbildDao(this._conn);
+    const mehrwertsteuerDao = new MehrwertsteuerDao(this._conn);
+    const individuellesBildDao = new IndividuellesBildDao(this._conn);
 
     var sql = "SELECT * FROM Individuelles WHERE ID=?";
     var statement = this._conn.prepare(sql);
@@ -29,15 +28,11 @@ class IndividuellesDao {
 
     result.kategorie = individuellekategorieDao.loadById(result.kategorieid);
     delete result.kategorieid;
-    if (helper.isNull(result.datenblattid)) {
-      result.datenblatt = null;
-    } else {
-      result.datenblatt = downloadDao.loadById(result.datenblattid);
-    }
-    delete result.datenblattid;
-    result.bilder = produktbildDao.loadByParent(result.id);
+    result.mehrwertsteuer = mehrwertsteuerDao.loadById(result.mehrwertsteuerid);
+    delete result.mehrwertsteuerid;
+    result.bilder = individuellesBildDao.loadByParent(result.id);
     for (i = 0; i < result.bilder.length; i++) {
-      delete result.bilder[i].produktid;
+      delete result.bilder[i].individuellesid;
     }
 
     result.mehrwertsteueranteil = helper.round(
@@ -56,9 +51,8 @@ class IndividuellesDao {
     var categories = individuellekategorieDao.loadAll();
     const mehrwertsteuerDao = new MehrwertsteuerDao(this._conn);
     var taxes = mehrwertsteuerDao.loadAll();
-    const produktbildDao = new ProduktbildDao(this._conn);
-    var pictures = produktbildDao.loadAll();
-    const downloadDao = new DownloadDao(this._conn);
+    const individuellesBildDao = new IndividuellesBildDao(this._conn);
+    var pictures = individuellesBildDao.loadAll();
 
     var sql = "SELECT * FROM Individuelles";
     var statement = this._conn.prepare(sql);
@@ -85,16 +79,9 @@ class IndividuellesDao {
       }
       delete result[i].mehrwertsteuerid;
 
-      if (helper.isNull(result[i].datenblattid)) {
-        result[i].datenblatt = null;
-      } else {
-        result[i].datenblatt = downloadDao.loadById(result[i].datenblattid);
-      }
-      delete result[i].datenblattid;
-
       result[i].bilder = [];
       for (var element of pictures) {
-        if (element.produkt.id == result[i].id) {
+        if (element.individuelles.id == result[i].id) {
           result[i].bilder.push(element);
         }
       }
@@ -126,15 +113,13 @@ class IndividuellesDao {
     bezeichnung = "",
     beschreibung = "",
     mehrwertsteuerid = 1,
-    details = null,
     nettopreis = 0.0,
-    datenblattid = null,
     bilder = []
   ) {
-    const produktbildDao = new ProduktbildDao(this._conn);
+    const individuellesBildDao = new IndividuellesBildDao(this._conn);
 
     var sql =
-      "INSERT INTO Individuelles (KategorieID,Bezeichnung,Beschreibung,MehrwertsteuerID,Nettopreis,DatenblattID) VALUES (?,?,?,?,?,?)";
+      "INSERT INTO Individuelles (KategorieID,Bezeichnung,Beschreibung,MehrwertsteuerID,Nettopreis) VALUES (?,?,?,?,?)";
     var statement = this._conn.prepare(sql);
     var params = [
       kategorieid,
@@ -142,7 +127,6 @@ class IndividuellesDao {
       beschreibung,
       mehrwertsteuerid,
       nettopreis,
-      datenblattid,
     ];
     var result = statement.run(params);
 
@@ -151,7 +135,7 @@ class IndividuellesDao {
 
     if (bilder.length > 0) {
       for (var element of bilder) {
-        produktbildDao.create(element.bildpfad, result.lastInsertRowid);
+        individuellesBildDao.create(element.bildpfad, result.lastInsertRowid);
       }
     }
 
@@ -166,14 +150,13 @@ class IndividuellesDao {
     beschreibung = "",
     mehrwertsteuerid = 1,
     nettopreis = 0.0,
-    datenblattid = null,
     bilder = []
   ) {
-    const produktbildDao = new ProduktbildDao(this._conn);
-    produktbildDao.deleteByParent(id);
+    const individuellesBildDao = new IndividuellesBildDao(this._conn);
+    individuellesBildDao.deleteByParent(id);
 
     var sql =
-      "UPDATE Individuelles SET KategorieID=?,Bezeichnung=?,Beschreibung=?,MehrwertsteuerID=?,Nettopreis=?,DatenblattID=? WHERE ID=?";
+      "UPDATE Individuelles SET KategorieID=?,Bezeichnung=?,Beschreibung=?,MehrwertsteuerID=?,Nettopreis=?, WHERE ID=?";
     var statement = this._conn.prepare(sql);
     var params = [
       kategorieid,
@@ -181,7 +164,6 @@ class IndividuellesDao {
       beschreibung,
       mehrwertsteuerid,
       nettopreis,
-      datenblattid,
       id,
     ];
     var result = statement.run(params);
@@ -191,7 +173,7 @@ class IndividuellesDao {
 
     if (bilder.length > 0) {
       for (var element of bilder) {
-        produktbildDao.create(element.bildpfad, id);
+        individuellesBildDao.create(element.bildpfad, id);
       }
     }
 
@@ -201,8 +183,8 @@ class IndividuellesDao {
 
   delete(id) {
     try {
-      const produktbildDao = new ProduktbildDao(this._conn);
-      produktbildDao.deleteByParent(id);
+      const individuellesBildDao = new IndividuellesBildDao(this._conn);
+      individuellesBildDao.deleteByParent(id);
 
       var sql = "DELETE FROM Individuelles WHERE ID=?";
       var statement = this._conn.prepare(sql);

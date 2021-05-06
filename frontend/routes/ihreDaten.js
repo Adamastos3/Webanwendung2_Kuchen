@@ -9,17 +9,34 @@ server.get("/ihreDaten", isAuth, (req, res) => {
   res.sendFile("ihreDaten.html", { root: path.join(__dirname, "..", "view") });
 });
 
+server.get("/ihreDaten/api", isAuth, (req, res) => {
+  getData(req, res);
+});
+
+server.post("/ihreDaten/api", isAuth, (req, res) => {
+  checkData(req, res);
+});
+
 server.post("/ihreDaten", isAuth, (req, res) => {
   setData(req, res);
 });
 
 async function setData(req, res) {
-  const b = await ihreDaten(req.body, req.session.username);
-  if (b != undefined) {
-    res.redirect("/ihreDaten");
-  } else {
-    res.status(404).redirect("/ihreDaten");
-  }
+  const b = await ihreDaten.setIhreDaten(req.body, req.session.username);
+  console.log("Sendet");
+  res.send(b);
+}
+
+async function getData(req, res) {
+  const a = await ihreDaten.getBenutzerDaten(req.session.username);
+  res.send(a);
+}
+
+async function checkData(req, res) {
+  const data = await ihreDaten.checkBenutzer(req.body, req.session.username);
+  console.log(data);
+
+  res.send(data);
 }
 
 module.exports = server;

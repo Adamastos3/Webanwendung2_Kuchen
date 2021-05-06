@@ -1,13 +1,13 @@
-const path= require('path')
+const path = require("path");
 const express = require("express");
-const server =express()
-
+const isAuth = require("../middleware/controller");
+const server = express();
 
 //passwordAendern
-server.get("/passwordAendern", (req,res) =>{
-    res.sendFile('passwordAendern.html', { root: path.join(__dirname,'..', 'view') });
+server.get("/passwortAendern", isAuth, (req, res) => {
+  res.sendFile("passwortAendern.html", {
+    root: path.join(__dirname, "..", "view"),
+  });
 });
 
-
-
-module.exports=server;
+module.exports = server;

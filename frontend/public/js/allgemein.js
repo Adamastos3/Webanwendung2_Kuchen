@@ -1,5 +1,4 @@
-const pathAllgemein =
-  "http://localhost:8000/wba2api/benutzer/gib/" + cookies()[0];
+const pathAllgemein = "http://localhost:3000/allgemein";
 
 //init seesionstorage
 if (sessionStorage.length === 0) {
@@ -13,35 +12,42 @@ getRequest(pathAllgemein, setzenHtml);
 //Richtig
 //
 function getRequest(path, func) {
-  var request = new XMLHttpRequest();
+  let request = new XMLHttpRequest();
   request.open("GET", path);
   request.onload = function () {
-    var data = JSON.parse(request.responseText);
+    console.log(request.responseText);
+    let data = JSON.parse(request.responseText);
     console.log(data);
     if (data.daten != null) {
       func(data.daten);
     } else {
       storeAnzeigen();
-      console.log("error, NO Data");
+      console.log(data.fehler);
     }
   };
   request.send();
 }
 
-function postRequest(path, data) {
-  var request = new XMLHttpRequest();
-  request.open("POST", path);
-  request.setRequestHeader("Content-type", "application/json");
-  request.setRequestHeader("Content-Length", data.length);
+function postRequest(path, data, func = undefined) {
+  console.log(data);
+  let requestPost = new XMLHttpRequest();
+  requestPost.open("POST", path, true);
+  requestPost.setRequestHeader("Content-type", "application/json");
+  //request.setRequestHeader("Content-Length", data.length);
 
-  request.onload = function () {
-    var data = JSON.parse(request.responseText);
-    console.log(data);
+  requestPost.onload = function () {
+    let dataPost = JSON.parse(requestPost.responseText);
+    console.log(dataPost);
+    if (func != undefined) {
+      func(dataPost);
+    }
   };
-  request.send(data);
+
+  requestPost.send(data);
 }
 
 function setzenHtml(data) {
+  console.log(data);
   let waren = document.getElementById("warenkorb");
   let user = document.getElementById("user");
   let shop = document.getElementById("shop");
@@ -60,38 +66,6 @@ function setzenHtml(data) {
   }
   console.log("store");
   storeAnzeigen();
-}
-
-function cookies() {
-  console.log(document.cookie);
-  let a = document.cookie.split(";");
-  let co = 0;
-  console.log(a);
-  console.log(a[0].substring(0, 2));
-  let result = [];
-
-  for (let i = 0; i < a.length; i++) {
-    if (i == 0 && co == 0) {
-      if (a[i].substring(0, 2) == "KN") {
-        console.log("kunde");
-        let Wertstart = a[i].indexOf("=") + 1;
-        let c = a[i].substring(Wertstart, Wertstart + 4);
-        result.push(Number(c));
-      } else {
-        console.log("kein Kunde");
-        result.push(0);
-        i--;
-      }
-      co++;
-    } else {
-      console.log("else");
-      console.log(a[i]);
-      let Wertstart = a[i].indexOf("=") + 1;
-      let c = a[i].substring(Wertstart, Wertstart + 4);
-      result.push(Number(c));
-    }
-  }
-  return result;
 }
 
 function setCookie(cname, cvalue) {

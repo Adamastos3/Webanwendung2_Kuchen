@@ -1,6 +1,6 @@
 var counter = 1;
 const pathAussthendeBestellung =
-  "http://localhost:8000/wba2api/bestellung/alle/";
+  "http://localhost:3000/ausstehendeBestellungen/api";
 
 function setzenHtmlAusstehendeBestellung(data) {
   let table = document.getElementById("tableAus");

@@ -1,13 +1,13 @@
-function setInfo() {
+function setInfo(data) {
+  console.log(data);
   let text = document.getElementById("info");
-  let a = cookies();
-  console.log(a);
-  console.log(text);
-  if (a[0] != 0) {
-    text.innerHTML =
-      "Bitte geben Sie aus Sicherheitsgründen Ihre Anmeldedaten nochmals ein";
-  } else {
-    text.style.display = "none";
+  for (let i = 0; i < data.fehler.length; i++) {
+    text.innerHTML += data.fehler[i] + "\n";
+  }
+  if (data.an == "a") {
+    location.href = "/accountAdmin";
+  } else if (data.an == "b") {
+    location.href = "/account";
   }
 }
 
@@ -24,10 +24,15 @@ document.addEventListener("keydown", (e) => {
 function sendOn(a) {
   if (a == 0) {
     console.log("submit");
-    document.forms.form.submit();
+    let dataPost = JSON.stringify({
+      username: document.getElementById("username").value,
+      passwort: document.getElementById("pass").value,
+    });
+
+    console.log(dataPost);
+    postRequest("/login", dataPost, setInfo);
+    console.log("ende");
   } else {
     location.href = "/registrieren";
   }
 }
-
-setInfo();

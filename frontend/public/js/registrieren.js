@@ -11,9 +11,8 @@ const password2 = document.getElementById("pass2");
 const anredeH = document.getElementById("Herr");
 const anredeF = document.getElementById("Frau");
 const plz = document.getElementById("plz");
-const fehler= document.getElementById("Fehler")
-const fehlerfeld= document.getElementById("fehlerfeld")
-
+const fehler = document.getElementById("Fehler");
+const fehlerfeld = document.getElementById("fehlerfeld");
 
 function changeRadion(a) {
   if (a == "Herr") {
@@ -25,7 +24,7 @@ function changeRadion(a) {
   }
 }
 
- async function checkPlz() {
+async function checkPlz() {
   var array = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var alertCode = 1;
   var plz1 = plz.value;
@@ -45,7 +44,7 @@ function changeRadion(a) {
     plzW = true;
   }
 
-  console.log("plz")
+  console.log("plz");
 }
 /*
 function checkSefehler() {
@@ -77,21 +76,13 @@ function checkPassword() {
     }
   }
 
-  console.log("passwort")
+  console.log("passwort");
 }
-
 
 function checkUser(data) {
   let result = true;
-  for (let i = 0; i < data.length; i++) {
-    //Bug, von username wird kein Value genommen
-    console.log(user)
-    //console.log(typeof(user.value))
-    console.log("User: " + data[i].benutzername + " / " + username.value);
-    if (data[i].benutzername == username.value) {
-      result = false;
-      break;
-    }
+  if (!data) {
+    result = false;
   }
   if (result) {
     userW = true;
@@ -103,17 +94,9 @@ function checkUser(data) {
 
 function checkMail(data) {
   let result = true;
-  for (let i = 0; i < data.length; i++) {
-    //Bug, von Email wird auch kein Value genommen
-    console.log(email)
-    console.log("person: " + data[i].person + " / " + email.value);
-    if (data[i].person != null) {
-      console.log(data[i].person);
-      if (data[i].person.email == email.value) {
-        result = false;
-        break;
-      }
-    }
+
+  if (!data) {
+    result = false;
   }
 
   if (result) {
@@ -125,79 +108,115 @@ function checkMail(data) {
 }
 
 async function requestReg() {
-  return new Promise((resolve, reject) =>{
+  return new Promise((resolve, reject) => {
+    let daten = JSON.stringify({
+      username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+    });
+
+    console.log(daten);
     var requestReg = new XMLHttpRequest();
-    requestReg.open("GET", "http://localhost:8000/wba2api/benutzer/alle");
+    requestReg.open("Post", "http://localhost:3000/registrieren/api");
+    requestReg.setRequestHeader("Content-type", "application/json");
     requestReg.onload = function () {
-      var data = JSON.parse(requestReg.responseText);
+      let data = JSON.parse(requestReg.responseText);
       console.log(data);
-      if (data.daten != null) {
-        checkUser(data.daten);
-        checkMail(data.daten);
+      if (data.user != null) {
+        checkUser(data.user);
+        checkMail(data.email);
         checkPassword();
         checkPlz();
         //checkSefehler();
         resolve(true);
-
       } else {
         reject(data.fehler);
       }
     };
-    requestReg.send();
-});
+    requestReg.send(daten);
+  });
 }
 
 async function check() {
   return await requestReg();
-  
-  
 }
 
-function druckFehler(){
-  let text="";
-  if(!emailW){
-    text+="Mail is taken \n"
+function druckFehler() {
+  let text = "";
+  if (!emailW) {
+    text += "Mail is taken \n";
   }
-  if(!userW){
-    text+="Username is taken \n"
+  if (!userW) {
+    text += "Username is taken \n";
   }
-  if(!passW){
-    text+="Das Password muss mindestens 8 Zeichen haben\n"+
-      "Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein \n"+
-      "Beide Passwörter müssen gleich sein \n"
-
+  if (!passW) {
+    text +=
+      "Das Password muss mindestens 8 Zeichen haben\n" +
+      "Das Password muss mindestens 8 Zeichen haben und beide Eingaben müssen gleich sein \n" +
+      "Beide Passwörter müssen gleich sein \n";
   }
-  if(!plzW){
-    text+="Die Plz muss aus 5 Zahlen bestehen"
+  if (!plzW) {
+    text += "Die Plz muss aus 5 Zahlen bestehen";
   }
 
   alert(text);
-  
-
 }
 
+async function sendOnReg() {
+  const a = await check();
 
-async function sendOnReg(){
-  const a= await check()
+  console.log("a ist " + a);
+  if (a && passW && plzW && userW && emailW) {
+    console.log("submit");
+    let path = "http://localhost:3000/registrieren";
+    let data = JSON.stringify({
+      email: email.value,
+      username: username.value,
+      pass: password1.value,
+      anrede: checkSex(),
+      vorname: document.getElementById("vorname").value,
+      nachname: document.getElementById("nachname").value,
+      geb: document.getElementById("geb").value,
+      plz: plz.value,
+      stadt: document.getElementById("stadt").value,
+      strasse: document.getElementById("strasse").value,
+      hausnr: document.getElementById("hausnr").value,
+    });
 
-  console.log("a ist "+ a)
-    if (a && passW && plzW && userW && emailW) {
-      console.log("submit")
-      document.forms.form.submit();
+    console.log(data);
+    let b = await postRequest(path, data, requestServer);
   } else {
-    druckFehler()
+    druckFehler();
     passW = false;
     plzW = false;
     userW = false;
     mailW = false;
-    console.log("reset")
+    console.log("reset");
     document.forms.form.reset();
-    
   }
-
 }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
+function checkSex() {
+  if (anredeH.checked) {
+    return "Herr";
+  } else {
+    return "Frau";
+  }
+}
+
+function requestServer(data) {
+  let fehler = data.fehler;
+  console.log(fehler);
+  if (fehler == null) {
+    location.href = "/login";
+  } else {
+    let text = "";
+    for (let i = 0; i < fehler.length; i++) {
+      text += fehler[i].bezeichnung + "\n";
+    }
+    alert(text);
+  }
+}

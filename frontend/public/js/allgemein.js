@@ -17,7 +17,7 @@ function getRequest(path, func) {
   request.onload = function () {
     console.log(request.responseText);
     let data = JSON.parse(request.responseText);
-    console.log(data);
+    //console.log(data);
     if (data.daten != null) {
       func(data.daten);
     } else {

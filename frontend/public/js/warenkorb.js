@@ -17,11 +17,10 @@ function startWarenkorb(data) {
 
 function checkAmmount(counterID, elem) {
   console.log("der Onchange hat funktioniert!!!!");
-  console.log("Teste");
   console.log(counterID);
   console.log(document.getElementById(counterID.toString()));
 
-  if (counterID.value > 0) {
+  if (document.getElementById(counterID).value > 0) {
     addsumm();
   } else {
     removeElem(elem);
@@ -46,29 +45,28 @@ function addsumm() {
     console.log("vor substring: " + d);
     d = d.substr(0, FrontOfComma) + "." + d.substr(-3, 2); //Substring nimmt die Zahlen bis zum Komma, und hängt dann den Cent betrag an
     console.log("nach substring: " + d);
-    console.log(isFinite(d));
     wert = wert + Number(d) * Number(counterNumber);
   }
   console.log("wert: " + wert);
+  gesamt.innerHTML = Math.round(wert*100)/100      + "€";
+  //let steuer = Math.round(wert * 0.07 * 100) / 100;
 
-  let steuer = Math.round(wert * 0.07 * 100) / 100;
-  sum.innerHTML = wert + "€";
-  mehr.innerHTML = steuer + "€";
-  gesamt.innerHTML = wert + steuer + "€";
+  sum.innerHTML = Math.round((wert/1.07)*100)/100 + "€";
+  mehr.innerHTML = Math.round( ( wert - Math.round(wert/1.07) ) * 100  ) /100 + "€";
+
 }
 
 function removeElem(id) {
   console.log("id die gelöscht wird: " + id);
   console.log(id);
-  console.log(id.id);
-  let element = id.id;
+  let element = document.getElementById(id);
   let result = [];
 
   element.parentNode.removeChild(element);
   addsumm();
 
-  let d = element.substring(0, 6);
-  let idRe = Number(element.substring(6, 10));
+  let d = id.substring(0, 6);
+  let idRe = Number(id.substring(6, 10));
   console.log(d);
   if (d == "reElem") {
     let e = sessionStorage.getItem("regular");
@@ -139,10 +137,11 @@ function sendOn() {
 }
 
 function setzenWarenkorb(data) {
+  console.log("Funktion: setzenWarenkorb");
   let art = document.getElementById("waren");
   let regular = sessionStorage.getItem("regular");
   let indivi = sessionStorage.getItem("Individual");
-  var re = [];
+  var re = [];      // Array für reguläre Kuchen
   var indi = [];
 
   if (regular != "") {
@@ -156,14 +155,13 @@ function setzenWarenkorb(data) {
 
   for (let i = 0; i < re.length; i++) {
     let id = Number(re[i].substring(0, 4));
-    console.log(id);
+    console.log("id des regulären kuchen: " + id);
     let anzahl = Number(re[i].substring(4, 8));
     console.log(anzahl);
     for (let j = 0; j < data.length; j++) {
       if (data[j].id == id) {
         let elem = "reElem" + id;
         let counterID = "counter" + zahl;
-        console.log("test");
         let a =
           "<tr id='" +
           elem +
@@ -178,24 +176,16 @@ function setzenWarenkorb(data) {
           data[j].beschreibung +
           "</p></td>" +
           "<td>" +
-          "<input class='menge' type='number' value='" +
-          anzahl +
-          "' name='counter' id='" +
-          counterID +
-          "'  onclick='checkAmmount('" +
-          counterID +
-          "', '" +
-          elem +
-          "')'>" +
+          "<input class='menge' type='number' value='"+anzahl+"' name='counter' id='"+counterID+"'  onclick=checkAmmount('"+counterID+"','"+elem+"')>" +
           "</td>" +
           "<td><p class='preis'>" +
           data[j].bruttopreis +
-          "+€</p></td>" +
-          "<td><button onclick='removeElem(" +
-          elem +
-          ")'><img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
+          "€</p></td>" +
+          "<td><button onclick=removeElem('"+elem+"')>" +
+          "<img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
           "</tr>";
-
+        console.log("counterID: " + counterID)
+        console.log("elem: " + elem)
         art.innerHTML += a;
 
         zahl += 1;

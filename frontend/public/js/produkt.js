@@ -7,6 +7,7 @@ function getID() {
 
 function setzenHtmlProdukt(data) {
   let text = "";
+  document.title = data.beschreibung;
   let div = document.getElementById("produktdiv");
 
   text +=
@@ -37,7 +38,7 @@ function setzenHtmlProdukt(data) {
     "'>Nährwerttabelle</a></p>" +
     "</td></tr><tr colspan='1' class='inputField2 inputField2Product'>" +
     //Buttons
-    "<td><label for='number'>Menge:<input type='number' 'name='menge' id='menge' /> </label></td>" +
+    "<td><label for='number'>Menge:<input type='number' 'name='menge' id='menge' onchange=checkChange() /> </label></td>" +
     "</tr><tr><td colspan='2'><button class='button1 button1Product' onclick=addWarenkorb('" +
     data.id +
     "')>Warenkorb</button>" +
@@ -49,7 +50,59 @@ function setzenHtmlProdukt(data) {
   div.innerHTML = text;
 }
 
+function checkChange() {
+  let menge = document.getElementById("menge");
+  if (Number(menge.value) < 0) {
+    menge.value = 0;
+  }
+}
+
 //Muss noch gemacht werden
-function addWarenkorb(id) {}
+function addWarenkorb(idP) {
+  let menge = document.getElementById("menge").value;
+  let regular = sessionStorage.getItem("regular");
+  let pro = regular.split(",");
+  console.log(pro.length);
+  console.log(typeof pro[0]);
+  let check = 1;
+  if (pro[0] == "") {
+    check = 3;
+  }
+
+  for (let i = 0; i < pro.length; i++) {
+    let id = pro[i].substring(0, 4);
+    if (Number(id) == idP) {
+      let anzahl = pro[i].substring(4, 8);
+      anzahl = Number(anzahl) + Number(menge);
+
+      pro[i] = id + anzahl;
+      check = 0;
+      break;
+    }
+  }
+  if (check != 0) {
+    let idS = "";
+    if (idP < 10) {
+      idS = "000" + idP;
+    } else if (idP < 100) {
+      idS = "00" + idP;
+    } else if (idP < 1000) {
+      idS = "0" + idP;
+    } else {
+      idS = idP;
+    }
+    if (check == 3) {
+      pro[0] = idS + 1;
+    } else {
+      pro.push(idS + 1);
+    }
+  }
+
+  regular = pro;
+  sessionStorage.setItem("regular", regular);
+  console.log(sessionStorage);
+  location.href = "/sortimentR";
+  storeAnzeigen();
+}
 
 getRequest(pathProdukt, setzenHtmlProdukt);

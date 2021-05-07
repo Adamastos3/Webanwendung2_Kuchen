@@ -52,29 +52,18 @@ a {
 }
 
 h1 {
-  font-size: 3.5vw;
+  font-size: 4.0vw;
 }
 
 h2 {
-  font-size: 2.0vw;
+  font-size: 3.0vw;
 }
 
 h3 {
-  font-size: 1.5vw;
+  font-size: 2.5vw;
 }
 
 h4 {
-
-  font-size: 1vw;
-}
-
-p {
-  font-size: 1vw;
-}
-
-a {
-  font-size: 1vw;
-
   font-size: 20px;
 }
 
@@ -84,7 +73,6 @@ p {
 
 a {
   font-size: 16px;
->>>>>>> Stashed changes
 }
 
 
@@ -139,8 +127,6 @@ th {
 
 
 
-
-
 @media only screen and (max-width: 1600px) {
 
   h2 {
@@ -183,12 +169,10 @@ th {
     margin-top: 10px;
   }
 
-
-  a{
-    font-size: initial;
-  }
-
   
+
+
+ 
 
   h1 {
     font-size: 3.0em;
@@ -214,4 +198,3 @@ th {
     font-size: 2.5vw;
   }
 }
-

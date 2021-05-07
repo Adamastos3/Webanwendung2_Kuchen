@@ -290,11 +290,7 @@ body > h1 {
 }
 
 
-h2 {
-  font-family: Roboto-bold;
-  text-transform: uppercase;
-  font-size: 2em;
-}
+
 
 
 @media only screen and (max-width: 1000px) {
@@ -370,9 +366,7 @@ h2 {
   .startImageDiv{
     height: 1800px;
   }
-  h2 {
-    font-size: 1.2rem
-  }
+  
 }
 
 

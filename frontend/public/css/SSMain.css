@@ -56,15 +56,15 @@ h1 {
 }
 
 h2 {
-  font-size: 3.0vw;
+  font-size: 2.0vw;
 }
 
 h3 {
-  font-size: 2.5vw;
+  font-size: 1.5vw;
 }
 
 h4 {
-<<<<<<< Updated upstream
+
   font-size: 1vw;
 }
 
@@ -74,7 +74,7 @@ p {
 
 a {
   font-size: 1vw;
-=======
+
   font-size: 20px;
 }
 
@@ -132,8 +132,8 @@ th {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
-<<<<<<< Updated upstream
-=======
+
+
 
 
 
@@ -183,17 +183,12 @@ th {
     margin-top: 10px;
   }
 
-<<<<<<< Updated upstream
+
   a{
     font-size: initial;
   }
-}
->>>>>>> Stashed changes
-=======
+
   
-
-
- 
 
   h1 {
     font-size: 3.0em;
@@ -219,4 +214,4 @@ th {
     font-size: 2.5vw;
   }
 }
->>>>>>> Stashed changes
+

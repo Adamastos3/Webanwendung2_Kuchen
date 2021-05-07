@@ -159,6 +159,20 @@ async function checkPLZ(body) {
   return error;
 }
 
+async function checkProdukt(id) {
+  let error = [];
+  const b = await validator.isNumeric(id);
+  const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
+  console.log(b);
+  if (!b && !c) {
+    error.push({
+      bezeichnung: "Keine Nummer ",
+    });
+  }
+
+  return error;
+}
+
 async function checkRegister(body) {
   let error = [];
   let er = [];
@@ -212,4 +226,5 @@ module.exports = {
   checkPassword,
   checkRegister,
   checkIhreDaten,
+  checkProdukt,
 };

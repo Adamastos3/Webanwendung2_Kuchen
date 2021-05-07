@@ -29,7 +29,7 @@
       <h2>Ihre Daten</h2>
 
       <form action="/ihreDaten" method="post" class="inputField1 inputField1ED" id="form" name="form">
-        <table class="tableLogin tableLoginED tableAtMediaChanges">
+        <table class="tableLogin tableLoginED tableAtMediaChanges600">
           <tr>
             <td><label for="username">Username</label></td>
             <td rowspan=><label for="email">E-Mail</label></td>
@@ -44,7 +44,7 @@
         </table>
 
 
-        <table class="tableLogin tableLoginED tableAtMediaChanges">
+        <table class="tableLogin tableLoginED tableAtMediaChanges600 tableMaxWidthWhenSmall">
           <!--Z1, Z5, Z10-->
           <tr>
             <td><label for="">Anrede</label></td>
@@ -123,7 +123,7 @@
       </form>
       <button onclick="changeData()" class="button2 button2login" id="b2">
         Daten ändern</button>
-      <button onclick="sendData()" class="button2 button2login" id="b1">
+      <button onclick="sendData()" class="button2 button2login" id="b1" style="display: none">
         Daten speichern</button>
 
     </div>

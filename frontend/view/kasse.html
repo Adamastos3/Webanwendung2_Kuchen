@@ -6,6 +6,7 @@
     <title>Kasse</title>
     <script src="./js/allgemein.js" defer></script>
     <script src="./js/kasse.js" defer></script>
+    <!--<script src="./js/warenkorb.js" defer></script>-->
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
@@ -46,62 +47,45 @@
         <form
           class="inputField1"
           id="paymentForm"
-          action="/kasse"
-          method="POST"
         >
           <table class="tableLogin Checkout" id="tablePayment">
             <tr id="tablePaymentTr">
               <td>
-                <label for="payment1" id="labelPayment1"> Vorkasse </label>
+                <label for="vorkasse" id="labelvorkasse"> Vorkasse </label>
                 <input
                   type="radio"
                   name="vorkasse"
                   value="vorkasse"
-                  id="payment1"
-                  onclick="changeRadion('payment1')"
+                  id="vorkasse"
+                  onclick="changeRadion('vorkasse')"
                   checked
                 />
               </td>
 
               <td>
-                <label for="payment2" id="labelPayment2"> Rechnung </label>
+                <label for="rechnung" id="labelrechnung"> Rechnung </label>
                 <input
                   type="radio"
                   name="rechnung"
                   value="rechnung"
-                  id="payment2"
-                  onclick="changeRadion('payment2')"
+                  id="rechnung"
+                  onclick="changeRadion('rechnung')"
                 />
               </td>
               <td>
-                <label for="payment3" id="labelPayment3"> Bar </label>
+                <label for="bar" id="labelbar"> Bar </label>
                 <input
                   type="radio"
                   name="bar"
                   value="bar"
-                  id="payment3"
-                  onclick="changeRadion('payment3')"
+                  id="bar"
+                  onclick="changeRadion('bar')"
                 />
               </td>
             </tr>
             <tr>
-              <td colspan="3">
-                <h4>Vorkasse</h4>
-                <p>sadfghjkl</p>
-              </td>
-            </tr>
-
-            <tr>
-              <td colspan="3">
-                <h4>Vorkasse</h4>
-                <p>sadfghjkl</p>
-              </td>
-            </tr>
-
-            <tr>
-              <td colspan="3">
-                <h4>Vorkasse</h4>
-                <p>sadfghjkl</p>
+              <td colspan="3" id="Infosatz">
+               
               </td>
             </tr>
           </table>
@@ -110,26 +94,33 @@
 
       <div>
         <h2>Ihre Daten</h2>
-        <form class="inputField1 Checkout">
+        <form class="inputField1 Checkout" id = "userForm">
           <table class="tableLogin Checkout CheckoutRight tableAtMediaChanges">
             <tr>
               <td><label for="">Anrede</label></td>
               <td><input type="text" id="anrede" readonly /></td>
-              <td><label for="">Stadt</label></td>
-              <td><input type="text" id="adresse" readonly /></td>
+              <td><label for="">Plz</label></td>
+              <td><input type="text" id="plz" readonly /></td>
             </tr>
-
-            <tr>
-              <td><label for="">Vorname</label></td>
-              <td><input type="text" id="vorname" readonly /></td>
-              <td><label for="">Straße</label></td>
-              <td><input type="text" id="adresse2" readonly /></td>
-            </tr>
-            <tr>
-              <td><label for="">Nachname</label></td>
-              <td><input type="text" id="nachname" readonly /></td>
-              <td><label for="">Email</label></td>
-              <td><input type="text" id="email" readonly /></td>
+                <tr>
+                  <td><label for="">Vorname</label></td>
+                  <td><input type="text" id="vorname" readonly /></td>
+                  <td><label for="">Stadt</label></td>
+                  <td><input type="text" id="stadt" readonly /></td>
+                </tr>
+                <tr>
+                  <td><label for="">Nachname</label></td>
+                  <td><input type="text" id="nachname" readonly /></td>
+                  <td><label for="">Straße</label></td>
+                  <td><input type="text" id="strasse" readonly /></td>
+                </tr>
+                <tr>
+                  <td><label for="">Email</label></td>
+                  <td><input type="text" id="email" readonly /></td>
+                  <td><label for="">Hausnummer</label></td>
+                  <td><input type="text" id="hausnr" readonly /></td>
+                </tr>
+              </td>
             </tr>
           </table>
         </form>
@@ -141,17 +132,16 @@
       <div>
         <table class="tableBuy Checkout">
           <tr>
-            <td>Summe:</td>
-            <td id="sum">250</td>
+            <td>Gesamtsumme:</td>
+            <td id="gesamt">250</td>
           </tr>
           <tr>
             <td>Mehrwertsteuer:</td>
             <td id="mehr">250</td>
           </tr>
           <tr>
-            <td>Gesamtsumme:</td>
-            <td id="gesamt">250</td>
-          </tr>
+            <td>Nettosumme:</td>
+            <td id="sum">250</td>
         </table>
       </div>
 
@@ -159,12 +149,12 @@
         <table class="tableBuy Checkout tableBuyButtons">
           <tr>
             <td>
-              <button onclick="sendon('1')" class="button2 Change">
+              <button onclick="sendon()" class="button2 Change">
                 Ändern
               </button>
             </td>
             <td>
-              <button onclick="sendOn('0')" class="button1">
+              <button onclick="sendOn()" class="button1">
                 <span> Bestellen </span>
               </button>
             </td>

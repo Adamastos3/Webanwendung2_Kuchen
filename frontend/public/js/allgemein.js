@@ -1,12 +1,14 @@
 const pathAllgemein = "http://localhost:3000/allgemein";
 
 //init seesionstorage
-if (sessionStorage.length === 0) {
-  sessionStorage.setItem("regular", "");
-  sessionStorage.setItem("Individual", "");
-  console.log("init");
+function initStorage() {
+  if (sessionStorage.length === 0) {
+    sessionStorage.setItem("regular", "");
+    sessionStorage.setItem("Individual", "");
+    console.log("init");
+  }
 }
-
+initStorage();
 getRequest(pathAllgemein, setzenHtml);
 
 //Richtig
@@ -17,7 +19,7 @@ function getRequest(path, func) {
   request.onload = function () {
     console.log(request.responseText);
     let data = JSON.parse(request.responseText);
-    //console.log(data);
+    console.log(data);
     if (data.daten != null) {
       func(data.daten);
     } else {
@@ -56,7 +58,10 @@ function setzenHtml(data) {
   let usernamen = data.benutzername;
   if (be == 3) {
     user.innerHTML = "" + usernamen;
+    console.log("store");
+    storeAnzeigen();
   } else if (be == 1) {
+    console.log("admin");
     user.innerHTML = "Admin";
     user.setAttribute("href", "/accountAdmin");
     waren.innerHTML = "offene Bestellungen";
@@ -64,12 +69,18 @@ function setzenHtml(data) {
     shop.innerHTML = "Kundendaten";
     shop.setAttribute("href", "/kundendaten");
   }
-  console.log("store");
-  storeAnzeigen();
 }
 
 function setCookie(cname, cvalue) {
   document.cookie = cname + "=" + cvalue + ";path=/";
+}
+
+function getCookie() {
+  return document.cookie;
+}
+
+function deleteCookie(cname) {
+  document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 //Anzeigem der einkäufe
@@ -95,7 +106,14 @@ function storeAnzeigen() {
 
   if (individual != "") {
     let proI = individual.split(",");
-    anzahlI = proI.length;
+    let an = 0;
+    for (let i = 0; i < proI.length; i++) {
+      let a = proI[i].split("/");
+      console.log(a);
+      an += Number(a[a.length - 1]);
+    }
+    console.log(an);
+    anzahlI = an;
   }
 
   let anzahl = anzahlI + anzahlR;

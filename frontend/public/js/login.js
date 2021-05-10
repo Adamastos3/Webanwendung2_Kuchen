@@ -1,13 +1,18 @@
 function setInfo(data) {
   console.log(data);
-  let text = document.getElementById("info");
-  for (let i = 0; i < data.fehler.length; i++) {
-    text.innerHTML += data.fehler[i] + "\n";
-  }
-  if (data.an == "a") {
-    location.href = "/accountAdmin";
-  } else if (data.an == "b") {
-    location.href = "/account";
+  let text = "";
+  if (data.fehler.length >= 1) {
+    for (let i = 0; i < data.fehler.length; i++) {
+      text += data.fehler[i] + "\n";
+    }
+    window.alert(text);
+    document.forms.form.reset();
+  } else {
+    if (data.an == "a") {
+      location.href = "/accountAdmin";
+    } else if (data.an == "b") {
+      location.href = "/account";
+    }
   }
 }
 

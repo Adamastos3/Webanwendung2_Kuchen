@@ -86,7 +86,6 @@
 
 .inputField1.inputField1Contact input {
   width: auto;
-
 }
 
 .inputField2 input {
@@ -96,14 +95,18 @@
 }
 
 
-.inputField1.inputField1ED input{
-  width: 12rem;
-  font-size: 2vmin;
+.inputField1.inputField1ED input {
+    width: 22vmin;
+    font-size: 2vmin;
 }
 
 #tableLoginEDalign input{
   width:20px;
   align: middle;
+}
+
+#tableLoginEDalign{
+  display: inline-flex;
 }
 
 
@@ -132,7 +135,61 @@
   }
 
   .inputField1 textarea {
-    width: 100%;
-    max-width: 600px;
+    width: 50vmin;
+    
   }
 }
+
+@media only screen and (max-width: 800px) {
+
+  .inputField1 input {
+    font-size: initial;
+}
+
+
+  .inputField1 textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inputField1.inputField1Contact input {
+    width: 100%;
+  }
+
+  #inputAutoWidth input {
+    width: auto;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+
+  .inputField1 textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  .inputField1.inputField1Login input {
+    width: 100%;
+  }
+
+  #inputAutoWidth input {
+    width: auto;
+  }
+
+  .inputField1.inputField1ED input {
+    width: 22vmin;
+    font-size: initial;
+}
+
+
+#tableLoginEDalign{
+  display:inline-block
+}
+
+}
+
+
+

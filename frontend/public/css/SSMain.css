@@ -41,6 +41,11 @@ h1, h2, h3 {
   font-family: Roboto-medium;
 }
 
+h2 {
+  font-family: Roboto-bold;
+  text-transform: uppercase;
+}
+
 a {
   text-decoration: none;
   color: #f2f2f2;
@@ -59,15 +64,15 @@ h3 {
 }
 
 h4 {
-  font-size: 1vw;
+  font-size: 20px;
 }
 
 p {
-  font-size: 1vw;
+  font-size: 16px;
 }
 
 a {
-  font-size: 1vw;
+  font-size: 16px;
 }
 
 
@@ -75,7 +80,7 @@ a {
 th {
   font-family: Roboto-bold;
   text-transform: uppercase;
-  font-size: 2.5vmin;
+  font-size: 2vw;
   color: white;
 }
 
@@ -115,8 +120,44 @@ th {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
-<<<<<<< Updated upstream
-=======
+
+
+
+
+
+
+
+@media only screen and (max-width: 1600px) {
+
+  h2 {
+    font-size: 1.2rem
+  }
+
+  h1 {
+    font-size: 3.0vw;
+  }
+  
+  h2 {
+    font-size: 3.0vw;
+  }
+  
+  h3 {
+    font-size: 2.5vw;
+  }
+  
+  h4 {
+    font-size: 2vw;
+  }
+  
+  p {
+    font-size: 2vw;
+  }
+
+  th {
+    font-size: 2.5vw;
+  }
+}
+
 
 
 @media only screen and (max-width: 800px) {
@@ -128,8 +169,32 @@ th {
     margin-top: 10px;
   }
 
-  a{
-    font-size: initial;
+  
+
+
+ 
+
+  h1 {
+    font-size: 3.0em;
+  }
+  
+  h2 {
+    font-size: 2.0em;
+  }
+  
+  h3 {
+    font-size: 1.5em;
+  }
+  
+  h4 {
+    font-size: 1em;
+  }
+  
+  p {
+    font-size: 1em;
+  }
+
+  th {
+    font-size: 2.5vw;
   }
 }
->>>>>>> Stashed changes

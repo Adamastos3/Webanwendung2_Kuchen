@@ -56,8 +56,9 @@ function setzenHtml(data) {
   let be = data.benutzerrolle.id;
   console.log(be);
   let usernamen = data.benutzername;
-  if (be == 3) {
+  if (be != 1) {
     user.innerHTML = "" + usernamen;
+    user.setAttribute("href", "/account");
     console.log("store");
     storeAnzeigen();
   } else if (be == 1) {

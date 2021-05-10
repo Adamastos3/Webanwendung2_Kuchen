@@ -1,8 +1,11 @@
-const pathProdukt = "http://localhost:8000/wba2api/produkt/gib/" + getID();
+const pathProdukt = "http://localhost:3000/produkt/api/" + ids();
 
-function getID() {
-  const id = cookies();
-  return id[1];
+function ids() {
+  let a = document.cookie;
+  console.log(a);
+  let id = Number(a.substr(3, 4));
+  deleteCookie("kn");
+  return id;
 }
 
 function setzenHtmlProdukt(data) {
@@ -105,4 +108,5 @@ function addWarenkorb(idP) {
   storeAnzeigen();
 }
 
+console.log(pathProdukt);
 getRequest(pathProdukt, setzenHtmlProdukt);

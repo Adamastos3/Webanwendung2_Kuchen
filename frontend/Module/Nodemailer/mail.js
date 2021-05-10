@@ -24,7 +24,7 @@ async function main(email, subject, text) {
   // Message sent: <[email protected]>
 }
 
-main().catch(console.error);
+//main().catch(console.error);
 
 module.exports = {
   main,

@@ -263,6 +263,8 @@ serviceRouter.put("/benutzer/:zugang", function (request, response) {
       request.body.person = request.body.person.id;
     }
 
+    console.log(errorMsgs);
+
     if (errorMsgs.length > 0) {
       helper.log("Service Benutzer: Update not possible, data missing");
       response

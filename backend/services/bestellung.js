@@ -202,6 +202,7 @@ serviceRouter.put("/bestellung/:zugang", function (request, response) {
       errorMsgs.push("bestellpositionen is leer, nichts zu speichern");
     }
 
+    console.log(errorMsgs);
     if (errorMsgs.length > 0) {
       helper.log("Service Bestellung: Update not possible, data missing");
       response

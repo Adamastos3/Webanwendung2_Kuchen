@@ -1,6 +1,7 @@
 const getRequest = require("./../Request/getRequest");
 const postRequest = require("./../Request/postRequest");
 const putRequest = require("./../Request/putRequest");
+const deleteRequest = require("./../Request/deleteRequest");
 
 const pas = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 
@@ -49,6 +50,13 @@ async function updateBenutzer(data) {
   return b.id;
 }
 
+async function deleteBenutzer(id) {
+  let pa = "/wba2api/benutzer/" + id + pas;
+  const b = await deleteRequest(pa);
+  console.log(b);
+  return b;
+}
+
 module.exports = {
   getBenutzerbyId,
   getBenutzerAll,
@@ -56,4 +64,5 @@ module.exports = {
   checkBenutzer,
   checkBenutzerUndPassword,
   updateBenutzer,
+  deleteBenutzer,
 };

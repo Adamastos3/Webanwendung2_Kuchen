@@ -1,11 +1,13 @@
 const form = document.getElementById("form");
-const pathKundenChange = "http://localhost:3000/kundenChange/api/" + ids();
-const pathPostIhreDaten = "http://localhost:3000/kundenChange";
+const pathKundenChange = "http://localhost:3000/kundenChange/api/" + id;
+const pathPostKunden = "http://localhost:3000/kundenChange";
+const id = ids();
 var sexW = false;
 var plzW = false;
 var userW = false;
 var emailW = false;
 var feldW = false;
+var passW = false;
 
 console.log(pathKundenChange);
 
@@ -62,6 +64,30 @@ function hideButton(id) {
   }
 }
 
+function changeData() {
+  hideButton(1);
+  document.getElementById("Herr").removeAttribute("readonly");
+  document.getElementById("Frau").removeAttribute("readonly");
+  document.getElementById("email").removeAttribute("readonly");
+  document.getElementById("username").removeAttribute("readonly");
+  document.getElementById("vorname").removeAttribute("readonly");
+  document.getElementById("nachname").removeAttribute("readonly");
+
+  //Geb
+  document.getElementById("geb").removeAttribute("readonly");
+  document.getElementById("geb").setAttribute("onclick", "gebChange()");
+
+  document.getElementById("plz").removeAttribute("readonly");
+  document.getElementById("stadt").removeAttribute("readonly");
+  document.getElementById("strasse").removeAttribute("readonly");
+  document.getElementById("hausnummer").removeAttribute("readonly");
+}
+
+function gebChange() {
+  document.getElementById("geb").removeAttribute("onclick");
+  document.getElementById("geb").setAttribute("type", "date");
+}
+
 function changeRadion(a) {
   if (a == "Herr") {
     document.getElementById("Frau").checked = false;
@@ -99,7 +125,7 @@ function checkPlz() {
     alertCode = 0;
   }
   if (alertCode < 1) {
-    alert("Die Plz muss aus 5 Zahlen bestehen");
+    //alert("Die Plz muss aus 5 Zahlen bestehen");
   } else {
     plzW = true;
   }
@@ -112,7 +138,7 @@ function checkSex() {
   ) {
     sexW = true;
   } else {
-    alert("Bitte geben Sie ein Geschlecht an");
+    //alert("Bitte geben Sie ein Geschlecht an");
     sexW = false;
   }
 }
@@ -132,7 +158,6 @@ function checkUser(data) {
   }
   if (result) {
     userW = true;
-    12345;
   } else {
     //window.alert("Username is taken");
     userW = false;
@@ -193,6 +218,15 @@ function checkFields() {
   }
 }
 
+function checkPass() {
+  let pass1 = document.getElementById("pass1").value;
+  let pass2 = document.getElementById("pass2").value;
+  if (pass1.length >= 8)
+    if (pass1 == pass2) {
+      passW = true;
+    }
+}
+
 async function requestUserMail() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
@@ -211,6 +245,7 @@ async function requestUserMail() {
         checkPlz();
         checkSex();
         checkFields();
+        checkPass();
         resolve(true);
       } else {
         reject("data.fehler");
@@ -223,11 +258,13 @@ async function requestUserMail() {
 async function sendData() {
   const a = await requestUserMail();
   console.log("a ist " + a);
-  if (a && sexW && plzW && userW && emailW && feldW) {
+  if (a && sexW && plzW && userW && emailW && feldW && passW) {
     console.log("submit");
     let daten = JSON.stringify({
+      id: id,
       email: document.getElementById("email").value,
       username: document.getElementById("username").value,
+      pass: document.getElementById("pass1").value,
       anrede: setSex(),
       vorname: document.getElementById("vorname").value,
       nachname: document.getElementById("nachname").value,
@@ -238,7 +275,7 @@ async function sendData() {
       hausnr: document.getElementById("hausnummer").value,
     });
 
-    let b = await postRequest(pathPostIhreDaten, daten, aendernData);
+    let b = await postRequest(pathPostKunden, daten, aendernData);
   } else {
     console.log("refresh");
     druckFehler();
@@ -247,6 +284,7 @@ async function sendData() {
     userW = false;
     emailW = false;
     feldW = false;
+    passW = false;
   }
 }
 
@@ -272,7 +310,12 @@ function druckFehler() {
   }
 
   if (!feldW) {
-    text += "Bitte füllen Sie alle Felder aus";
+    text += "Bitte füllen Sie alle Felder aus\n";
+  }
+
+  if (!passw) {
+    text +=
+      "Das Password muss 8 Zeichen haben und zweimal gleich eingegeben werden";
   }
 
   alert(text);
@@ -283,7 +326,7 @@ function aendernData(daten) {
   console.log(fehler);
   if (fehler == null) {
     console.log("erledigt");
-    getRequest(pathKundenChange, HTMLIhreDatenSetzen);
+    getRequest(pathKundenChange, setzenHTMLKundenChange);
   } else {
     let text = "";
     for (let i = 0; i < fehler.length; i++) {

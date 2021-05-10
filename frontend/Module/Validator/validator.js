@@ -253,6 +253,21 @@ async function checkKasse(body) {
   return true;
 }
 
+async function checkPasswortVergessen(body) {
+  let error = [];
+  let er = [];
+  er.push(await checkLogin(body));
+  er.push(await checkMail(body));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
 async function checkRegister(body) {
   let error = [];
   let er = [];
@@ -300,6 +315,30 @@ async function checkIhreDaten(body) {
   return error;
 }
 
+async function checkKundenDaten(body) {
+  let error = [];
+  let er = [];
+  er.push(await checkLogin(body));
+  er.push(await checkMail(body));
+  er.push(await checkHausnr(body));
+  er.push(await checkNachname(body));
+  er.push(await checkAnrede(body));
+  er.push(await checkGeb(body));
+  er.push(await checkPLZ(body));
+  er.push(await checkStadt(body));
+  er.push(await checkStrasse(body));
+  er.push(await checkVorname(body));
+  er.push(await checkPassword(body));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
 module.exports = {
   checkLogin,
   checkMail,
@@ -309,4 +348,6 @@ module.exports = {
   checkProdukt,
   checkID,
   checkKasse,
+  checkKundenDaten,
+  checkPasswortVergessen,
 };

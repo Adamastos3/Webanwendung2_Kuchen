@@ -1,182 +1,309 @@
-const form = document.getElementById("form")
+const form = document.getElementById("form");
+const pathKundenChange = "http://localhost:3000/kundenChange/api/" + ids();
+const pathPostIhreDaten = "http://localhost:3000/kundenChange";
+var sexW = false;
+var plzW = false;
+var userW = false;
+var emailW = false;
+var feldW = false;
 
-var sexW=false
-var plzW=false
+console.log(pathKundenChange);
 
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    console.log("submit")
-})
-
-function sendData() {
-    //prototype
-    document.getElementById("b1").style.display="none";
-    document.getElementById("b2").style.display="block";
-    check()
-    if(sexW && plzW){
-        neuSetzen()
-        document.forms.form.submit()
-    }
-    else {
-        inhaltSetzen()
-    }
+function ids() {
+  let a = document.cookie;
+  console.log(a);
+  let id = Number(a.substr(3, 4));
+  deleteCookie("kc");
+  return id;
 }
 
-function changeData() {
-  document.getElementById("b1").style.display="block";
-  document.getElementById("b2").style.display="none";
+function setzenHTMLKundenChange(data) {
+  let person = data.person;
+  console.log(person);
+
+  if (person.anrede == "Herr") {
+    document.getElementById("Herr").checked = true;
+  } else {
+    document.getElementById("Frau").checked = true;
+  }
+  document.getElementById("email").value = person.email;
+  document.getElementById("username").value = data.benutzername;
+  document.getElementById("vorname").value = person.vorname;
+  document.getElementById("nachname").value = person.nachname;
+
+  //Geb
+  document.getElementById("geb").setAttribute("type", "text");
+  document.getElementById("geb").value = person.geburtstag;
+
+  document.getElementById("plz").value = person.adresse.plz;
+  document.getElementById("stadt").value = person.adresse.ort;
+  document.getElementById("strasse").value = person.adresse.strasse;
+  document.getElementById("hausnummer").value = person.adresse.hausnummer;
+  hideButton(0);
 }
 
-function changeElem(id){
+function hideButton(id) {
+  /*
+  function hide(x) {
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  */
 
-    let a = document.getElementById(id)
-    a.removeAttribute("readonly")
-    if ((id!="Herr") && (id!= "Frau")){
-            a.value="";
-        }
-        else{
-            a.checked=false;
-            document.getElementById("Frau").checked=false;
-        }
-    hideButton(0)
-
+  if (id == 0) {
+    document.getElementById("b2").style.display = "block";
+    document.getElementById("b1").style.display = "none";
+  } else {
+    document.getElementById("b1").style.display = "block";
+    document.getElementById("b2").style.display = "none";
+  }
 }
 
-function hideButton(id){
-    var x = document.getElementById("b1");
-    if(id==0){
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
+function changeRadion(a) {
+  if (a == "Herr") {
+    document.getElementById("Frau").checked = false;
+    document.getElementById("Herr").checked = true;
+  } else {
+    document.getElementById("Frau").checked = true;
+    document.getElementById("Herr").checked = false;
+  }
 }
 
-//prototyp
-
-var email=sessionStorage.getItem("email")
-//console.log(email)
-var username=sessionStorage.getItem("username")
-var anrede=sessionStorage.getItem("anrede")
-var vorname=sessionStorage.getItem("vorname")
-var nachname=sessionStorage.getItem("nachname")
-var geb=sessionStorage.getItem("geb")
-//console.log(geb)
-var plz=sessionStorage.getItem("plz")
-var stadt=sessionStorage.getItem("stadt")
-var strasse=sessionStorage.getItem("strasse")
-var hausnr= sessionStorage.getItem("hausnr")
-function inhaltSetzen() {
-    if (anrede=="Herr"){
-        document.getElementById("Herr").checked=true
-    }
-    else {
-        document.getElementById("Frau").checked=true
-    }
-    document.getElementById("email").value=email
-    document.getElementById("username").value=username
-    document.getElementById("pass1").value="asdf"
-    document.getElementById("pass2").value="asdf"
-    document.getElementById("vorname").value=vorname
-    document.getElementById("nachname").value=nachname
-    document.getElementById("geb").value=geb
-    document.getElementById("plz").value=plz
-    document.getElementById("stadt").value=stadt
-    document.getElementById("straße").value=strasse
-    document.getElementById("hausnr").value=hausnr
-    hideButton(0)
+function changeElem(id) {
+  let a = document.getElementById(id);
+  a.removeAttribute("readonly");
+  if (id != "Herr" && id != "Frau") {
+    a.value = "";
+  } else {
+    a.checked = false;
+    document.getElementById("Frau").checked = false;
+  }
+  hideButton(0);
 }
 
-function neuSetzen(){
-
-    if(document.getElementById("Herr").checked==true){
-        anrede="Herr"
+function checkPlz() {
+  var array = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  var alertCode = 1;
+  var plz1 = document.getElementById("plz").value;
+  if (plz1.length == 5) {
+    for (var i = 0; i < plz.length; i++) {
+      if (!array.includes(plz[i])) {
+        alertCode = 0;
+        plzW = false;
+      }
     }
-    else{
-        anrede="Frau"
-    }
-    email=document.getElementById("email").value
-    username=document.getElementById("username").value
-    vorname=document.getElementById("vorname").value
-    nachname=document.getElementById("nachname").value
-    geb= document.getElementById("geb").value
-    plz=document.getElementById("plz").value
-    stadt=document.getElementById("stadt").value
-    strasse=document.getElementById("straße").value
-    hausnr=document.getElementById("hausnr").value
-
-    sessionStorage.setItem("email", email)
-    sessionStorage.setItem("username", username)
-    sessionStorage.setItem("anrede",anrede)
-    sessionStorage.setItem("vorname",vorname)
-    sessionStorage.setItem("nachname",nachname)
-    sessionStorage.setItem("geb",geb)
-    sessionStorage.setItem("plz",plz)
-    sessionStorage.setItem("stadt",stadt)
-    sessionStorage.setItem("strasse",strasse)
-    sessionStorage.setItem("hausnr", hausnr)
-
-    hideButton(0)
+  } else {
+    alertCode = 0;
+  }
+  if (alertCode < 1) {
+    alert("Die Plz muss aus 5 Zahlen bestehen");
+  } else {
+    plzW = true;
+  }
 }
 
-
-function changeRadion(a){
-    if (a =="Herr") {
-        document.getElementById("Frau").checked=false;
-        document.getElementById("Herr").checked=true;
-    }
-    else{
-        document.getElementById("Frau").checked=true;
-        document.getElementById("Herr").checked=false;
-    }
+function checkSex() {
+  if (
+    document.getElementById("Frau").checked == true ||
+    document.getElementById("Herr").checked == true
+  ) {
+    sexW = true;
+  } else {
+    alert("Bitte geben Sie ein Geschlecht an");
+    sexW = false;
+  }
 }
 
-function check(){
-    checkSex()
-    checkPlz()
-    checkUser()
-
+function setSex() {
+  if (document.getElementById("Herr").checked) {
+    return "Herr";
+  } else {
+    return "Frau";
+  }
 }
 
-
-function checkPlz(){
-    var array=["1","2","3","4","5","6","7","8","9","0"]
-    var alertCode=1
-    var plz1=document.getElementById("plz").value
-    if(plz1.length==5){
-        for (var i=0;i<plz.length;i++){
-            if (!array.includes(plz[i])){
-                alertCode=0
-                plzW=false
-            }
-        }
-    }
-    else{
-        alertCode=0
-    }
-    if(alertCode<1){
-        alert("Die Plz muss aus 5 Zahlen bestehen")
-    }else{
-        plzW=true
-    }
-
+function checkUser(data) {
+  let result = true;
+  if (!data) {
+    result = false;
+  }
+  if (result) {
+    userW = true;
+    12345;
+  } else {
+    //window.alert("Username is taken");
+    userW = false;
+  }
 }
 
-function checkSex(){
+function checkMail(data) {
+  let result = true;
 
-    if ((document.getElementById("Frau").checked==true) || (document.getElementById("Herr").checked==true)){
-        sexW=true
-    }
-    else{
-        alert("Bitte geben Sie ein Geschlecht an")
-        sexW=false
-    }
+  if (!data) {
+    result = false;
+  }
+
+  if (result) {
+    emailW = true;
+  } else {
+    //window.alert("Mail is taken")
+    emailW = false;
+  }
 }
 
+function checkFields() {
+  let result = true;
+  if (document.getElementById("email").value == "") {
+    result = false;
+  }
+  if (document.getElementById("username").value == "") {
+    result = false;
+  }
 
-function checkUser(){
-    //nicht im prototype
+  console.log("Vorname ist " + typeof document.getElementById("vorname").value);
+  if (document.getElementById("vorname").value == "") {
+    result = false;
+  }
+  if (document.getElementById("nachname").value == "") {
+    result = false;
+  }
+  if (document.getElementById("geb").value == "") {
+    result = false;
+  }
+  if (document.getElementById("strasse").value == "") {
+    result = false;
+  }
+  if (document.getElementById("stadt").value == "") {
+    result = false;
+  }
+  if (document.getElementById("hausnummer").value == "") {
+    result = false;
+  }
+  if (document.getElementById("plz").value == "") {
+    result = false;
+  }
+
+  if (result) {
+    feldW = true;
+  } else {
+    feldW = false;
+  }
 }
 
-inhaltSetzen()
+async function requestUserMail() {
+  return new Promise((resolve, reject) => {
+    let daten = JSON.stringify({
+      username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+    });
+    let requestUser = new XMLHttpRequest();
+    requestUser.open("Post", "http://localhost:3000/ihreDaten/api");
+    requestUser.setRequestHeader("Content-type", "application/json");
+    requestUser.onload = function () {
+      var data = JSON.parse(requestUser.responseText);
+      console.log(data);
+      if (data.user != null) {
+        checkUser(data.user);
+        checkMail(data.email);
+        checkPlz();
+        checkSex();
+        checkFields();
+        resolve(true);
+      } else {
+        reject("data.fehler");
+      }
+    };
+    requestUser.send(daten);
+  });
+}
+
+async function sendData() {
+  const a = await requestUserMail();
+  console.log("a ist " + a);
+  if (a && sexW && plzW && userW && emailW && feldW) {
+    console.log("submit");
+    let daten = JSON.stringify({
+      email: document.getElementById("email").value,
+      username: document.getElementById("username").value,
+      anrede: setSex(),
+      vorname: document.getElementById("vorname").value,
+      nachname: document.getElementById("nachname").value,
+      geb: setGeb(),
+      plz: document.getElementById("plz").value,
+      stadt: document.getElementById("stadt").value,
+      strasse: document.getElementById("strasse").value,
+      hausnr: document.getElementById("hausnummer").value,
+    });
+
+    let b = await postRequest(pathPostIhreDaten, daten, aendernData);
+  } else {
+    console.log("refresh");
+    druckFehler();
+    sexW = false;
+    plzW = false;
+    userW = false;
+    emailW = false;
+    feldW = false;
+  }
+}
+
+function gebChange() {
+  document.getElementById("geb").removeAttribute("onclick");
+  document.getElementById("geb").setAttribute("type", "date");
+}
+
+function druckFehler() {
+  let text = "";
+  if (!emailW) {
+    text += "Mail is taken \n";
+  }
+  if (!userW) {
+    text += "Username is taken \n";
+  }
+  if (!plzW) {
+    text += "Die Plz muss aus 5 Zahlen bestehen\n";
+  }
+
+  if (!sexW) {
+    text += "Bitte wählen Sie ein Geschlecht\n";
+  }
+
+  if (!feldW) {
+    text += "Bitte füllen Sie alle Felder aus";
+  }
+
+  alert(text);
+}
+
+function aendernData(daten) {
+  let fehler = daten.fehler;
+  console.log(fehler);
+  if (fehler == null) {
+    console.log("erledigt");
+    getRequest(pathKundenChange, HTMLIhreDatenSetzen);
+  } else {
+    let text = "";
+    for (let i = 0; i < fehler.length; i++) {
+      text += fehler[i].bezeichnung + "\n";
+    }
+    alert(text);
+  }
+}
+
+function setGeb() {
+  let x = document.getElementById("geb").value;
+  let ar = x.split(".");
+  let result = "" + ar[2] + "-" + ar[1] + "-" + ar[0];
+  return result;
+}
+
+//ausführen
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+getRequest(pathKundenChange, setzenHTMLKundenChange);

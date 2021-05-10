@@ -1,7 +1,7 @@
 //ZUm Test ist nur Produkt 13 ausgewählt
 
-const pathSR = "http://localhost:8000/wba2api/produkt/alle";
-const pathSRTest = "http://localhost:8000/wba2api/produkt/gib/13";
+const pathSR = "http://localhost:3000/sortimentR/api";
+const pathSRTest = "http://localhost:3000/sortimentR/api/13";
 var zahl = 1;
 
 function setzenHtmlSR(data) {
@@ -91,12 +91,10 @@ function replaceDivInvert(a, b) {
 }
 
 function sendOn(id) {
-  console.log();
-  setCookie("Pid", id);
   location.href = "/produkt";
+  setCookie("kn", id);
 }
 
-//fehlt noch
 function addWarenkorb(idP) {
   let regular = sessionStorage.getItem("regular");
   let pro = regular.split(",");

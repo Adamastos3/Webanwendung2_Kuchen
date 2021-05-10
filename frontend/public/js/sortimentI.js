@@ -9,31 +9,33 @@ function start(a, b) {
   bildChange(b);
 }
 */
-/*
+
 function addSum() {
   let result = 0;
-  let er = [];
+  let mehrwert = 0;
+  let sum = 0;
   let summ = document.getElementById("summe");
   let mehr = document.getElementById("mehrwert");
   let gesamt = document.getElementById("gesamtsumme");
-  let a = document.getElementById("select1").value;
-  let b = document.getElementById("select2").value;
-  let c = document.getElementById("select3").value;
-  let d = document.getElementById("select4").value;
-  console.log(a);
-  er.push(a.substr(-5, 2));
-  er.push(b.substr(-5, 2));
-  er.push(c.substr(-5, 2));
-  er.push(d.substr(-5, 2));
-  for (let i = 0; i < er.length; i++) {
-    result = result + Number(er[i]);
-  }
-  let mehrwert = result * 0.19;
-  summ.innerHTML = result + ",00€";
+
+  let a = Number(document.getElementById("select1").innerHTML.substr(-15, 5));
+  let b = Number(document.getElementById("select2").innerHTML.substr(-15, 5));
+  let c = Number(document.getElementById("select3").innerHTML.substr(-15, 5));
+  let d = Number(document.getElementById("select4").innerHTML.substr(-15, 5));
+
+  console.log(d);
+  result = Math.round((a + b + c + d) * 1000) / 1000;
+
+  sum = Math.round(((result * 100) / 107) * 1000) / 1000;
+  console.log(sum);
+  mehrwert = Math.round((result - sum) * 1000) / 1000;
+  console.log(mehrwert);
+  summ.innerHTML = sum + "€";
   mehr.innerHTML = mehrwert + "€";
-  gesamt.innerHTML = result + mehrwert + "€";
+  gesamt.innerHTML = result + "€";
 }
 
+/*
 function bildChange(a) {
   let bild = document.getElementById("bildMaterial");
   let topping = document.getElementById("topping");
@@ -153,8 +155,31 @@ function sendOn() {
 }
 
 function store() {
-  let elem = "a";
-  if (sessionStorage.getItem("Individual") == "n") {
+  let elem = "";
+  let er = [];
+  er.push(document.getElementById("select1").value);
+  er.push(document.getElementById("select2").value);
+  er.push(document.getElementById("select3").value);
+  er.push(document.getElementById("select4").value);
+  er.push(1);
+
+  for (let i = 0; i < er.length; i++) {
+    if (i + 1 != er.length) {
+      if (er[i] < 10) {
+        elem += "000" + er[i] + "/";
+      } else if (er[i] < 100) {
+        elem += "00" + er[i] + "/";
+      } else if (er[i] < 1000) {
+        elem += "0" + er[i] + "/";
+      } else {
+        elem += er[i] + "/";
+      }
+    } else {
+      elem += er[i];
+    }
+  }
+
+  if (sessionStorage.getItem("Individual") == "") {
     sessionStorage.setItem("Individual", elem);
   } else {
     let individual = sessionStorage.getItem("Individual").split(",");
@@ -172,10 +197,12 @@ function setzenHTMLIndi(data) {
   console.log("setze");
   let table = document.getElementById("tableIndi");
   let bild = document.getElementById("bildMaterial");
-  let top = [];
+
+  /*let top = [];
   let aussen = [];
   let fuel = [];
   let boden = [];
+  console.log("testtest");
 
   for (let i = 0; i < data.length; i < 0) {
     if (data[i].kategorie.id == 1) {
@@ -191,91 +218,108 @@ function setzenHTMLIndi(data) {
       boden.push(data[i]);
     }
   }
-
-  bild.src = top[0].bilder[0].bildpfad;
-
+*/
+  console.log("testtest");
+  let bildid = 0;
   let text = "";
   text +=
     "<tr> <td colspan='1'><label for=''>Topping</label></td> </tr> <tr> <td colspan='1'>" +
     "<select " +
-    "onclick=start('topping',value)" +
+    "onclick=start('topping',value) " +
     "id='select1'" +
     "class='dropdown'>";
 
-  for (let i = 0; i < top.length; i++) {
-    text +=
-      "<option value='" +
-      top[i].id +
-      "'><p>" +
-      top[i].bezeichnung +
-      "  " +
-      top[i].nettopreis +
-      "€</p></option>";
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].kategorie.id == 1) {
+      if (bildid == 0) {
+        bild.src = data[i].bilder[0].bildpfad;
+      }
+      bildid++;
+      text +=
+        "<option value='" +
+        data[i].id +
+        "'><p>" +
+        data[i].bezeichnung +
+        "  " +
+        data[i].bruttopreis +
+        "€</p></option>";
+    }
   }
+
+  console.log("testetstst");
+
   text +=
     "</select> </td> </tr>" +
     " <tr> <td colspan='1'><label for=''>Außenschicht</label></td> </tr> <tr> <td colspan='1'>" +
     "<select " +
-    "onclick=start('topping2',value)" +
+    "onclick=start('topping2',value) " +
     "id='select2'>";
 
-  for (let i = 0; i < aussen.length; i++) {
-    text +=
-      "<option value='" +
-      aussen[i].id +
-      "'><p>" +
-      aussen[i].bezeichnung +
-      "  " +
-      aussen[i].nettopreis +
-      "€</p></option>";
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].kategorie.id == 2) {
+      text +=
+        "<option value='" +
+        data[i].id +
+        "'><p>" +
+        data[i].bezeichnung +
+        "  " +
+        data[i].bruttopreis +
+        "€</p></option>";
+    }
   }
 
   text +=
     "</select> </td> </tr> <tr> <td colspan='1'><label for=''>Füllung</label></td> </tr> <tr> <td colspan='1'>" +
     "<select " +
-    "onclick=start('middle',value)" +
+    "onclick=start('middle',value) " +
     "id='select3'>";
 
-  for (let i = 0; i < fuel.length; i++) {
-    text +=
-      "<option value='" +
-      fuel[i].id +
-      "'><p>" +
-      fuel[i].bezeichnung +
-      "  " +
-      fuel[i].nettopreis +
-      "€</p></option>";
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].kategorie.id == 3) {
+      text +=
+        "<option value='" +
+        data[i].id +
+        "'><p>" +
+        data[i].bezeichnung +
+        "  " +
+        data[i].bruttopreis +
+        "€</p></option>";
+    }
   }
 
   text +=
     "</select> </td> </tr> <tr> <td colspan='1'><label for=''>Boden</label></td> </tr> <tr> <td colspan='1'> " +
     "<select " +
-    "onclick=start('bottom',value)";
-  ("id='select4'>");
+    "onclick= start('bottom',value) " +
+    "id='select4'>";
 
-  for (let i = 0; i < boden.length; i++) {
-    text +=
-      "<option value='" +
-      boden[i].id +
-      "'><p>" +
-      boden[i].bezeichnung +
-      "  " +
-      boden[i].nettopreis +
-      "€</p></option>";
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].kategorie.id == 4) {
+      text +=
+        "<option value='" +
+        data[i].id +
+        "'><p>" +
+        data[i].bezeichnung +
+        "  " +
+        data[i].bruttopreis +
+        "€</p></option>";
+    }
   }
 
   text += "</select> </td> </tr>";
 
   table.innerHTML += text;
 
-  //addSum();
+  addSum();
 }
 
 function start(a, id) {
+  console.log(id);
   let path = "http://localhost:3000/sortimentI/api/" + id;
-  //console.log(b);
+  console.log(a);
   blink(a);
-  getRequest(psth, picturesChange);
+  console.log(path);
+  getRequest(path, picturesChange);
 }
 
 function picturesChange(data) {
@@ -284,6 +328,23 @@ function picturesChange(data) {
 
   x.src = s;
   //addSum();
+}
+
+async function requestIndi(id) {
+  return new Promise((resolve, reject) => {
+    var requestIndi = new XMLHttpRequest();
+    requestIndi.open("GET", "http://localhost:3000/sortimentI/api/" + id);
+    requestIndi.onload = function () {
+      let data = JSON.parse(requestIndi.responseText);
+      console.log(data);
+      if (data.daten != null) {
+        resolve(data.daten);
+      } else {
+        reject(data.fehler);
+      }
+    };
+    requestIndi.send();
+  });
 }
 
 getRequest(pathIndi, setzenHTMLIndi);

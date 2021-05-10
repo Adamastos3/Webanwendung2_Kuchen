@@ -10,7 +10,7 @@ async function getPersonbyId(id) {
   return b;
 }
 
-async function getPersonnAll(id) {
+async function getPersonnAll() {
   let pa = "/wba2api/person/alle" + auth;
   const b = await getRequest(pa);
   return b;

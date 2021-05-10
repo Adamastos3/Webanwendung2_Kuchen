@@ -173,6 +173,86 @@ async function checkProdukt(id) {
   return error;
 }
 
+async function checkID(id) {
+  let error = [];
+  const b = await validator.isNumeric(id);
+  const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
+  console.log(b);
+  if (!b && !c) {
+    error.push({
+      bezeichnung: "Keine Nummer ",
+    });
+  }
+
+  return error;
+}
+
+async function checkKasseProdukt(body) {
+  console.log(body.id);
+  let checkOne = await validator.isNumeric("" + body.id);
+  let checkTwo = await validator.isNumeric("" + body.menge);
+
+  console.log("checkasseProdukt");
+  console.log(checkOne);
+  console.log(checkTwo);
+
+  let checkThree = false;
+  if (body.bezeichnung === "regular" || body.bezeichnung === "individuel") {
+    checkThree = true;
+  }
+
+  console.log(checkThree);
+  if (checkOne && checkThree && checkTwo) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function checkKasseZahlung(body) {
+  let a = await validator.isAlpha(body.bezahlung);
+  console.log("checkZahlung");
+  console.log(a);
+  let b = false;
+  if (
+    body.bezahlung === "Vorkasse" ||
+    body.bezahlung === "Rechnung" ||
+    body.bezahlung === "Bar"
+  ) {
+    b = true;
+  }
+
+  console.log(b);
+  if (a && b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function checkKasse(body) {
+  let elem = body.produkt;
+  let res = [];
+  for (let i = 0; i < elem.length; i++) {
+    let a = await checkKasseProdukt(body.produkt[i]);
+    let b = await checkKasseZahlung(body);
+    console.log("test validator");
+    if (a && b) {
+      res.push(true);
+    } else {
+      res.push(false);
+    }
+  }
+
+  for (let j = 0; j < res.length; j++) {
+    console.log("Test ergebnis");
+    if (res[j] == false) {
+      return false;
+    }
+  }
+  return true;
+}
+
 async function checkRegister(body) {
   let error = [];
   let er = [];
@@ -227,4 +307,6 @@ module.exports = {
   checkRegister,
   checkIhreDaten,
   checkProdukt,
+  checkID,
+  checkKasse,
 };

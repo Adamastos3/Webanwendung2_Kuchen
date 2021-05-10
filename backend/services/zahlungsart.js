@@ -116,7 +116,10 @@ serviceRouter.post("/zahlungsart/:zugang", function (request, response) {
 
     const zahlungsartDao = new ZahlungsartDao(request.app.locals.dbConnection);
     try {
-      var result = zahlungsartDao.create(request.body.bezeichnung);
+      var result = zahlungsartDao.create(
+        request.body.bezeichnung,
+        request.body.beschreibung
+      );
       helper.log("Service Zahlungsart: Record inserted");
       response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
@@ -159,7 +162,8 @@ serviceRouter.put("/zahlungsart/:zugang", function (request, response) {
     try {
       var result = zahlungsartDao.update(
         request.body.id,
-        request.body.bezeichnung
+        request.body.bezeichnung,
+        request.body.beschreibung
       );
       helper.log("Service Zahlungsart: Record updated, id=" + request.body.id);
       response.status(200).json(helper.jsonMsgOK(result));

@@ -28,4 +28,86 @@ async function getKunde(id) {
   }
 }
 
-module.exports = { getKunden, getKunde };
+async function setKunde(body) {
+  const benutzerData = await benutzer.getBenutzerbyId(body.id);
+  console.log("BenutzerData");
+  console.log(benutzerData);
+  const vali = await validator.checkKundenDaten(body);
+  console.log(vali);
+  //const check = await console.log("benutzer geholt");
+  if (vali.length < 1) {
+    const personData = await person.getPersonbyId(benutzerData.daten.person.id);
+    console.log(personData);
+    const dataAdresse = JSON.stringify({
+      id: personData.daten.adresse.id,
+      strasse: body.strasse,
+      hausnummer: body.hausnr,
+      adresszusatz: "",
+      plz: body.plz,
+      ort: body.stadt,
+      land: {
+        id: 44,
+      },
+    });
+
+    console.log(dataAdresse);
+    console.log("dataAdress fertig");
+
+    //ändern Adresse
+    const adresseId = await adresse.updateAddress(dataAdresse);
+
+    console.log("adresse geändert");
+    //Daten PErson
+    const dataPerson = JSON.stringify({
+      id: benutzerData.daten.person.id,
+      anrede: body.anrede,
+      vorname: body.vorname,
+      nachname: body.nachname,
+      adresse: {
+        id: adresseId,
+      },
+      telefonnummer: "",
+      email: body.email,
+      geburtstag: geb(body),
+    });
+
+    console.log(dataPerson);
+    console.log("daten person");
+    const personId = await person.updatePerson(dataPerson);
+
+    console.log("person geändert");
+
+    const dataBenutzer = JSON.stringify({
+      id: benutzerData.daten.id,
+      neuespasswort: body.pass,
+      benutzername: body.username,
+      benutzerrolle: {
+        id: benutzerData.daten.benutzerrolle.id,
+      },
+      person: {
+        id: personId,
+      },
+    });
+
+    console.log(dataBenutzer);
+    console.log("benutzer daten");
+
+    const benutzerID = await benutzer.updateBenutzer(dataBenutzer);
+    if (benutzerID != null) {
+      return JSON.stringify({
+        fehler: null,
+      });
+    } else {
+      return JSON.stringify({
+        fehler: [{ bezeichnung: "Serverfehler" }],
+      });
+    }
+  } else {
+    let data = JSON.stringify({
+      fehler: vali,
+    });
+    return data;
+  }
+}
+
+module.exports = { getKunden, getKunde, setKunde };

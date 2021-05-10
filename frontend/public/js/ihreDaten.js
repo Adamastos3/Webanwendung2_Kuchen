@@ -88,7 +88,7 @@ function checkPlz() {
     alertCode = 0;
   }
   if (alertCode < 1) {
-    alert("Die Plz muss aus 5 Zahlen bestehen");
+    //alert("Die Plz muss aus 5 Zahlen bestehen");
   } else {
     plzW = true;
   }
@@ -101,7 +101,7 @@ function checkSex() {
   ) {
     sexW = true;
   } else {
-    alert("Bitte geben Sie ein Geschlecht an");
+    //alert("Bitte geben Sie ein Geschlecht an");
     sexW = false;
   }
 }

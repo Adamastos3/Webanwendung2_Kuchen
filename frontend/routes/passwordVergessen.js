@@ -1,25 +1,21 @@
-const path= require('path')
+const path = require("path");
 const express = require("express");
-const { getBenutzerAll } = require('../API_Access/Benutzer/benutzer');
-const server =express()
-
+const server = express();
+const passwort = require("../API_Access/IhreDaten/password");
 
 //passwordVergessen
-server.get("/passwordVergessen", (req,res) =>{
-    res.sendFile('passwordVergessen.html', { root: path.join(__dirname,'..', 'view') });
+server.get("/passwordVergessen", (req, res) => {
+  res.sendFile("passwordVergessen.html", {
+    root: path.join(__dirname, "..", "view"),
+  });
 });
 
-server.post("/passwordVergessen", (req,res) =>{
-    passV(req,res)
-})
+server.post("/passwordVergessen", (req, res) => {
+  passV(req, res);
+});
 
-async function passV(req,res){
-    const data = getBenutzerAll();
-    for (let i=0; i< data.length; i++){
-        if (data[i].person.email == req.body.email){
-            const pass = null;
-        }
-    }
-
+async function passV(req, res) {
+  const a = await passwort.resetPassword(req.body);
+  return a;
 }
-module.exports=server;
+module.exports = server;

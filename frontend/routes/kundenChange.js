@@ -16,9 +16,17 @@ server.get("/kundenChange/api/:id", isAuth, (req, res) => {
   getKunde(req, res);
 });
 
+server.post("/kundenChange", isAuth, (req, res) => {
+  setKunde(req, res);
+});
+
 async function getKunde(req, res) {
   const a = await kunde.getKunde(req.params.id);
   res.send(a);
+}
+
+async function setKunde(req, res) {
+  const a = await kunde.setKunde(req.body);
 }
 
 module.exports = server;

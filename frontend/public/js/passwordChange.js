@@ -1,42 +1,44 @@
-const forme = document.getElementById("form")
+const forme = document.getElementById("form");
+const pathPass = "http://localhost:3000/passwortAendern";
 
 //prototyp
-forme.addEventListener("submit", (e)=>{
-    
-    e.preventDefault();
-    submitten()
-})
+forme.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
-function submitten(){
-    sessionStorage.setItem("login", 0)
-    
-    //console.log(checkPassword())
-
-    if(checkPassword()){
-        location.href="login.html"
-    }
+async function sendOn() {
+  if (checkPassword()) {
+    let daten = JSON.stringify({
+      passOld: document.getElementById("passwordOld").value,
+      passNew: document.getElementById("passwordNew").value,
+    });
+    let a = postRequest(pathPass, daten, setErg);
+  }
 }
 
-function checkPassword(){
-    let a = document.getElementById("passwordNew")
-    let b = document.getElementById("passwordNew2")
-
-    if (a.value.length <8){
-        window.alert("Passwort ist zu kurz (min. 8 Zeichen)")
-        document.forms.form.reset()
-        return false
-    }
-    else{
-        if (a.value == b.value){
-            return true
-        }
-        else{
-            window.alert("Die Passwörter sind nicht gleich")
-            document.forms.form.reset()
-            return false
-        }
-    }
+function setErg(daten) {
+  if (daten.fehler == null) {
+    alert("Passwort wurde geändert");
+    location.href = "/login";
+  } else {
+    let text = daten.fehler[0].bezeichnung;
+    alert(text);
+  }
 }
 
+function checkPassword() {
+  let a = document.getElementById("passwordNew");
+  let b = document.getElementById("passwordNew2");
 
-
+  if (a.value.length < 8) {
+    window.alert("Passwort ist zu kurz (min. 8 Zeichen)");
+    return false;
+  } else {
+    if (a.value == b.value) {
+      return true;
+    } else {
+      window.alert("Die Passwörter sind nicht gleich");
+      return false;
+    }
+  }
+}

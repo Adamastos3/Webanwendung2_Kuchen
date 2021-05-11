@@ -10,7 +10,7 @@ function ids() {
       .find((row) => row.startsWith("kn="))
       .split("=")[1]
   );
-  deleteCookie("kn");
+  //deleteCookie("kn");
   return id;
 }
 

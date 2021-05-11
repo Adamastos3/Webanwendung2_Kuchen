@@ -1,5 +1,19 @@
 const validator = require("validator");
 
+function checkForSS(text) {
+  let str = "";
+  if (text.includes("ß")) {
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] == "ß") {
+        str += "ss";
+      } else {
+        str += text[i];
+      }
+    }
+  }
+  return str;
+}
+
 async function checkLogin(body) {
   let error = [];
   const b = await validator.isAlphanumeric(body.username);
@@ -74,24 +88,14 @@ async function checkNachname(body) {
 
 async function checkStrasse(body) {
   let error = [];
-  let strasse = body.strasse;
-  let str = "";
-  if (strasse.includes("ß")) {
-    for (let i = 0; i < strasse.length; i++) {
-      if (strasse[i] == "ß") {
-        str += "ss";
-      } else {
-        str += strasse[i];
-      }
-    }
-  }
+  const str = checkForSS(body.strasse);
   const b = await validator.isAlpha(str);
-  const c = await validator.isLength(str[{ min: 3, max: 50 }]);
+  const c = await validator.isLength(str, [{ min: 3, max: 50 }]);
   console.log(b);
   if (!b && !c) {
     error.push({
       bezeichnung:
-        "Strasse muss aus Buchstaben bestehen und mindestens drei Buchstaben haben",
+        "text muss aus Buchstaben bestehen und mindestens drei Buchstaben haben",
     });
   }
 

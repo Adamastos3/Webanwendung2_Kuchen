@@ -54,6 +54,20 @@ async function InputNewUser(body) {
     }
   }
 
+  function checkForSS(text) {
+    let str = "";
+    if (text.includes("ß")) {
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] == "ß") {
+          str += "ss";
+        } else {
+          str += text[i];
+        }
+      }
+    }
+    return str;
+  }
+
   function geb(body) {
     let a = body.geb.split("-");
     let r = "" + a[2] + "." + a[1] + "." + a[0];
@@ -62,7 +76,7 @@ async function InputNewUser(body) {
   }
 
   const dataAdresse = JSON.stringify({
-    strasse: body.strasse,
+    strasse: checkForSS(body.strasse),
     hausnummer: body.hausnr,
     adresszusatz: "",
     plz: body.plz,

@@ -102,6 +102,11 @@
   text-align: center;
 }
 
+.tableList.tableListHistory.tableHistoryUserdata td:nth-child(3) {
+  width: 10%;
+  text-align: center;
+}
+
 .tableList.tableListHistory button {
   border: 0px solid rgba(0,0,0,0.2);
 }
@@ -181,7 +186,7 @@
   background-color: #00CED1;
 }
 
-.tableList.tableListHistory td:nth-child(6) button:hover {
+.tableList.tableListHistory td:nth-child(5) button:hover {
   background-color: #ff1493;
 }
 

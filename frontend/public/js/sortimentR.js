@@ -1,7 +1,7 @@
 //ZUm Test ist nur Produkt 13 ausgewählt
 
 const pathSR = "http://localhost:3000/sortimentR/api";
-const pathSRTest = "http://localhost:3000/sortimentR/api/13";
+//const pathSRTest = "http://localhost:3000/sortimentR/api/13";
 var zahl = 1;
 
 function setzenHtmlSR(data) {
@@ -15,7 +15,7 @@ function setzenHtmlSR(data) {
   var divAId = "divA" + zahl;
 
   //for (let i = 0; i < data.length; i++) {
-  for (let i = 0; i <= 0; i++) {
+  for (let i = 0; i <= data.length; i++) {
     text +=
       "<div class='containerProduct containerProductReg' id='" +
       id +
@@ -26,19 +26,19 @@ function setzenHtmlSR(data) {
       "<table class='tableProduct tableProductReg'>" +
       //Bild
       "<tr><td class='tableProductImage'><img src='" +
-      data.bilder[0].bildpfad +
+      data[i].bilder[0].bildpfad +
       "' alt=''></td></tr>" +
       //Bezeichnung
       "<tr><td><h4>" +
-      data.bezeichnung +
+      data[i].bezeichnung +
       "</h4></td></tr>" +
       //Beschreibung
       "<tr><td><p>Beschreibung:</p><p>" +
-      data.beschreibung +
+      data[i].beschreibung +
       "</p></td></tr>" +
       //Preis
       "<tr><td><p>Preis: " +
-      data.bruttopreis +
+      data[i].bruttopreis +
       "€</p></td></tr>" +
       "</table></div>" +
       //div2
@@ -48,14 +48,14 @@ function setzenHtmlSR(data) {
       "<table class='tableProduct tableProductReg'>" +
       //Bild
       "<tr><td class='tableProductImage'><img src='" +
-      data.bilder[0].bildpfad +
+      data[i].bilder[0].bildpfad +
       "' alt=''></td></tr>" +
       //Info + Warenkorb
       "<tr><td><button onclick= sendOn('" +
-      data.id +
+      data[i].id +
       "')>Info</button></td></tr>" +
       "<tr><td><button onclick=addWarenkorb('" +
-      data.id +
+      data[i].id +
       "')>In den Warenkorb</button></td></tr>" +
       "</table></div></div>";
 
@@ -140,7 +140,7 @@ function addWarenkorb(idP) {
   storeAnzeigen();
 }
 
-getRequest(pathSRTest, setzenHtmlSR);
+getRequest(pathSR, setzenHtmlSR);
 
 /*
 

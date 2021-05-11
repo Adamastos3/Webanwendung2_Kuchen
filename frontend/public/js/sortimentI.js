@@ -129,6 +129,7 @@ function bildChange(a) {
 }
 */
 function blink(a) {
+  
   let bild = document.getElementById(a);
   if (timer1 != null) {
     clearInterval(timer1);
@@ -144,6 +145,7 @@ function blink(a) {
       bild.style.visibility = "visible";
     }
   }, 1000);
+  
 }
 
 //Prototype

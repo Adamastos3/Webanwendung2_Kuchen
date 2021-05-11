@@ -240,6 +240,7 @@ body > h1 {
   align-content: center;
   border: 0px solid rgba(0,0,0,.25);
   width: 100%;
+
 }
 
 .containerProduct.containerProductReg{
@@ -370,6 +371,12 @@ body > h1 {
   .startImageDiv{
     height: 1800px;
   }
+
+  .containerProduct.containerProductReg{
+    width: 40%;
+    max-width: 40%;
+    min-width: 40%;
+  }
   
 }
 
@@ -419,11 +426,7 @@ body > h1 {
     justify-content:space-around;
   }
 
-  .containerProduct.containerProductReg{
-    width: 40%;
-    max-width: 40%;
-    min-width: 40%;
-  }
+  
 }
 
 @media only screen and (max-width: 800px) {

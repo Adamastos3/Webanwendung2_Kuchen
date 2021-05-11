@@ -5,7 +5,7 @@ const passwort = require("../API_Access/IhreDaten/password");
 
 //passwordVergessen
 server.get("/passwordVergessen", (req, res) => {
-  res.sendFile("passwordVergessen.html", {
+  res.sendFile("passwortVergessen.html", {
     root: path.join(__dirname, "..", "view"),
   });
 });

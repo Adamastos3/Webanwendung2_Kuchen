@@ -17,20 +17,20 @@ form1.addEventListener("submit", (e) => {
 });
 
 function changeRadion(a) {
-  if (a == "Vorkasse") {
-    document.getElementById("Vorkasse").checked = true;
-    document.getElementById("Rechnung").checked = false;
-    document.getElementById("Bar").checked = false;
+  if (a == "vorkasse") {
+    document.getElementById("vorkasse").checked = true;
+    document.getElementById("rechnung").checked = false;
+    document.getElementById("bar").checked = false;
     getRequest(pathZahlung, setzenPayment);
-  } else if (a == "Rechnung") {
-    document.getElementById("Vorkasse").checked = false;
-    document.getElementById("Rechnung").checked = true;
-    document.getElementById("Bar").checked = false;
+  } else if (a == "rechnung") {
+    document.getElementById("vorkasse").checked = false;
+    document.getElementById("rechnung").checked = true;
+    document.getElementById("bar").checked = false;
     getRequest(pathZahlung, setzenPayment);
-  } else if (a == "Bar") {
-    document.getElementById("Vorkasse").checked = false;
-    document.getElementById("Rechnung").checked = false;
-    document.getElementById("Bar").checked = true;
+  } else if (a == "bar") {
+    document.getElementById("vorkasse").checked = false;
+    document.getElementById("rechnung").checked = false;
+    document.getElementById("bar").checked = true;
     getRequest(pathZahlung, setzenPayment);
   }
 }

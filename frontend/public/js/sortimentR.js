@@ -8,14 +8,20 @@ function setzenHtmlSR(data) {
   console.log(data);
   var div = document.getElementById("textdiv");
   console.log(div);
-  console.log("row div");
-  var text = "";
+  console.log("row");
+
+  /*
   var id = "id" + zahl;
   var divBId = "divB" + zahl;
   var divAId = "divA" + zahl;
+*/
 
   //for (let i = 0; i < data.length; i++) {
   for (let i = 0; i <= data.length; i++) {
+    let text = "";
+    var id = "id" + zahl;
+    var divBId = "divB" + zahl;
+    var divAId = "divA" + zahl;
     text +=
       "<div class='containerProduct containerProductReg' id='" +
       id +
@@ -76,7 +82,7 @@ function setzenHtmlSR(data) {
         "onmouseout",
         "replaceDiv('" + divBId + "', '" + divAId + "')"
       );
-    replaceDivInvert(divBId, divAId);
+    replaceDivInvert(divAId, divBId);
   }
 }
 

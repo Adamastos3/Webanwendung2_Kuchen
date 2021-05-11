@@ -1,7 +1,7 @@
 const form = document.getElementById("form");
+const id = ids();
 const pathKundenChange = "http://localhost:3000/kundenChange/api/" + id;
 const pathPostKunden = "http://localhost:3000/kundenChange";
-const id = ids();
 var sexW = false;
 var plzW = false;
 var userW = false;
@@ -14,7 +14,12 @@ console.log(pathKundenChange);
 function ids() {
   let a = document.cookie;
   console.log(a);
-  let id = Number(a.substr(3, 4));
+  let id = Number(
+    a
+      .split("; ")
+      .find((row) => row.startsWith("kc="))
+      .split("=")[1]
+  );
   deleteCookie("kc");
   return id;
 }
@@ -40,7 +45,7 @@ function setzenHTMLKundenChange(data) {
   document.getElementById("plz").value = person.adresse.plz;
   document.getElementById("stadt").value = person.adresse.ort;
   document.getElementById("strasse").value = person.adresse.strasse;
-  document.getElementById("hausnummer").value = person.adresse.hausnummer;
+  document.getElementById("hausnr").value = person.adresse.hausnummer;
   hideButton(0);
 }
 

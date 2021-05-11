@@ -1,9 +1,15 @@
-const pathProdukt = "http://localhost:3000/produkt/api/" + ids();
+const id = ids();
+const pathProdukt = "http://localhost:3000/produkt/api/" + id;
 
 function ids() {
   let a = document.cookie;
   console.log(a);
-  let id = Number(a.substr(3, 4));
+  let id = Number(
+    a
+      .split("; ")
+      .find((row) => row.startsWith("kn="))
+      .split("=")[1]
+  );
   deleteCookie("kn");
   return id;
 }

@@ -8,11 +8,13 @@ server.get("/kontakt", (req, res) => {
   res.sendFile("kontakt.html", { root: path.join(__dirname, "..", "view") });
 });
 
-server.post("/kontakt", (req, res) => {});
+server.post("/kontakt", (req, res) => {
+  sendKontakt(req, res);
+});
 
 async function sendKontakt(req, res) {
   const a = kontakt.sendKontakt(req.body);
-  return a;
+  res.send(a);
 }
 
 module.exports = server;

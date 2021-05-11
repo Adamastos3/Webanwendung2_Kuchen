@@ -5,6 +5,7 @@ const putRequest = require("../Request/putRequest");
 const produkt = require("../Sortiment/produkt");
 const benutzer = require("../Benutzer/benutzer");
 const zahlung = require("../Zahlung/zahlung");
+const mail = require("../../Module/Nodemailer/mail");
 
 const pas = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 const pathIndi = "http://localhost:8000/wba2api/individuelles/alle" + pas;
@@ -41,6 +42,7 @@ async function createBestellung(body, id) {
       console.log("Bestellung fertig");
       console.log(postBestellung);
       if (postBestellung != null) {
+        //Mail fehlt noch
         console.log("hat funktioniert");
         return true;
       } else {
@@ -49,6 +51,9 @@ async function createBestellung(body, id) {
     }
   }
 }
+
+//fehlt noch
+function sendenMail(person, bestellung) {}
 
 async function checkZahlungsart(name) {
   const a = await zahlung.getZahlungAll();

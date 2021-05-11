@@ -74,8 +74,19 @@ async function checkNachname(body) {
 
 async function checkStrasse(body) {
   let error = [];
-  const b = await validator.isAlpha(body.strasse);
-  const c = await validator.isLength(body.strasse, [{ min: 3, max: 50 }]);
+  let strasse = body.strasse;
+  let str = "";
+  if (strasse.includes("ß")) {
+    for (let i = 0; i < strasse.length; i++) {
+      if (strasse[i] == "ß") {
+        str += "ss";
+      } else {
+        str += strasse[i];
+      }
+    }
+  }
+  const b = await validator.isAlpha(str);
+  const c = await validator.isLength(str[{ min: 3, max: 50 }]);
   console.log(b);
   if (!b && !c) {
     error.push({
@@ -184,6 +195,23 @@ async function checkID(id) {
     });
   }
 
+  return error;
+}
+
+async function checkText(body) {
+  let error = [];
+  let data =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?. ";
+  for (let i = 0; i < body.text.length; i++) {
+    if (data.includes(body.text[i])) {
+      continue;
+    } else {
+      error.push({
+        bezeichnung: "Falsche Zeichen ",
+      });
+      return error;
+    }
+  }
   return error;
 }
 
@@ -339,6 +367,25 @@ async function checkKundenDaten(body) {
   return error;
 }
 
+async function checkKontakt(body) {
+  let error = [];
+  let er = [];
+  er.push(await checkLogin(body));
+  er.push(await checkMail(body));
+  er.push(await checkNachname(body));
+  er.push(await checkAnrede(body));
+  er.push(await checkVorname(body));
+  er.push(await checkText(body));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
 module.exports = {
   checkLogin,
   checkMail,
@@ -350,4 +397,5 @@ module.exports = {
   checkKasse,
   checkKundenDaten,
   checkPasswortVergessen,
+  checkKontakt,
 };

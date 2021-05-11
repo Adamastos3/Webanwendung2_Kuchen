@@ -191,7 +191,6 @@ async function sendOnReg() {
     userW = false;
     mailW = false;
     console.log("reset");
-    document.forms.form.reset();
   }
 }
 

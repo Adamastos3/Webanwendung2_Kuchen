@@ -39,7 +39,9 @@ async function register(body) {
       return data;
     }
   } catch {
-    return 0;
+    return JSON.stringify({
+      fehler: [{ bezeichnung: "ServerFehler" }],
+    });
   }
 }
 

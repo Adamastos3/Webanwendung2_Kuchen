@@ -64,26 +64,9 @@ function checkChange() {
 function addWarenkorb(idP) {
   let menge = document.getElementById("menge").value;
   let regular = sessionStorage.getItem("regular");
-  let pro = regular.split(",");
-  console.log(pro.length);
-  console.log(typeof pro[0]);
-  let check = 1;
-  if (pro[0] == "") {
-    check = 3;
-  }
-
-  for (let i = 0; i < pro.length; i++) {
-    let id = pro[i].substring(0, 4);
-    if (Number(id) == idP) {
-      let anzahl = pro[i].substring(4, 8);
-      anzahl = Number(anzahl) + Number(menge);
-
-      pro[i] = id + anzahl;
-      check = 0;
-      break;
-    }
-  }
-  if (check != 0) {
+  console.log(sessionStorage);
+  console.log(menge);
+  if (regular == "") {
     let idS = "";
     if (idP < 10) {
       idS = "000" + idP;
@@ -94,14 +77,47 @@ function addWarenkorb(idP) {
     } else {
       idS = idP;
     }
-    if (check == 3) {
-      pro[0] = idS + 1;
-    } else {
-      pro.push(idS + 1);
+    regular = idS + menge;
+  } else {
+    let pro = regular.split(",");
+    console.log(pro.length);
+    console.log(typeof pro[0]);
+    let check = 1;
+    if (pro[0] == "") {
+      check = 3;
     }
-  }
 
-  regular = pro;
+    for (let i = 0; i < pro.length; i++) {
+      let id = pro[i].substring(0, 4);
+      if (Number(id) == idP) {
+        let anzahl = pro[i].substring(4, 8);
+        anzahl = Number(anzahl) + Number(menge);
+
+        pro[i] = id + anzahl;
+        check = 0;
+        break;
+      }
+    }
+    if (check != 0) {
+      let idS = "";
+      if (idP < 10) {
+        idS = "000" + idP;
+      } else if (idP < 100) {
+        idS = "00" + idP;
+      } else if (idP < 1000) {
+        idS = "0" + idP;
+      } else {
+        idS = idP;
+      }
+      if (check == 3) {
+        pro[0] = idS + 1;
+      } else {
+        pro.push(idS + 1);
+      }
+    }
+
+    regular = pro;
+  }
   sessionStorage.setItem("regular", regular);
   console.log(sessionStorage);
   location.href = "/sortimentR";

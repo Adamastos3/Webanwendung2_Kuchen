@@ -7,7 +7,7 @@ async function main(email, subject, text) {
     host: "smtp.gmail.com",
     port: 465,
     auth: {
-      user: "kuchentest01@gmail.com",
+      user: "test01@gmail.com",
       pass: "",
     },
   });

@@ -40,7 +40,7 @@ async function setKunde(body) {
     console.log(personData);
     const dataAdresse = JSON.stringify({
       id: personData.daten.adresse.id,
-      strasse: body.strasse,
+      strasse: checkForSS(body.strasse),
       hausnummer: body.hausnr,
       adresszusatz: "",
       plz: body.plz,
@@ -108,6 +108,20 @@ async function setKunde(body) {
     });
     return data;
   }
+}
+
+function checkForSS(text) {
+  let str = "";
+  if (text.includes("ß")) {
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] == "ß") {
+        str += "ss";
+      } else {
+        str += text[i];
+      }
+    }
+  }
+  return str;
 }
 
 module.exports = { getKunden, getKunde, setKunde };

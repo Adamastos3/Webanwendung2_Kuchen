@@ -1,19 +1,5 @@
 const validator = require("validator");
 
-function checkForSS(text) {
-  let str = "";
-  if (text.includes("ß")) {
-    for (let i = 0; i < text.length; i++) {
-      if (text[i] == "ß") {
-        str += "ss";
-      } else {
-        str += text[i];
-      }
-    }
-  }
-  return str;
-}
-
 async function checkLogin(body) {
   let error = [];
   const b = await validator.isAlphanumeric(body.username);
@@ -87,6 +73,20 @@ async function checkNachname(body) {
 }
 
 async function checkStrasse(body) {
+  function checkForSS(text) {
+    let str = "";
+    if (text.includes("ß")) {
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] == "ß") {
+          str += "ss";
+        } else {
+          str += text[i];
+        }
+      }
+    }
+    return str;
+  }
+
   let error = [];
   const str = checkForSS(body.strasse);
   const b = await validator.isAlpha(str);

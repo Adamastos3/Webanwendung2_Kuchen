@@ -53,7 +53,7 @@ async function createBestellung(body, id) {
 }
 
 //fehlt noch
-function sendenMail(person, bestellung) {}
+function sendMail(person, bestellung) {}
 
 async function checkZahlungsart(name) {
   const a = await zahlung.getZahlungAll();

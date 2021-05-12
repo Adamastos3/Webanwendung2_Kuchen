@@ -86,6 +86,10 @@
   background-color: #555;
 }
 
+.button2.button2login a{
+  font-size: 25px;
+}
+
 /*---------AccountButtons---------------*/
 
 
@@ -100,7 +104,6 @@
   width: 35%;
   cursor: pointer;
   margin: 5px;
-
 }
 
 .containerVertical.accountButtonsDiv > button:hover{
@@ -153,6 +156,22 @@
   height:80%;
   cursor: pointer;
   margin: 0px;
+}
+
+.regProductButton button:hover{
+  background-color: #fff;
+  color: rgb(10, 10, 10);
+  
+}
 
 
+@media only screen and (max-width: 1000px) {
+  
+.containerVertical.accountButtonsDiv > button{
+  width: 75%;
+}
+
+button a{
+  font-size: 2.5vh;
+}
 }

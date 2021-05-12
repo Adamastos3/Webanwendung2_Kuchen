@@ -1,65 +1,68 @@
-const pathAllgemein = "http://localhost:8000/wba2api/benutzer/gib/" + cookies();
+const pathAllgemein = "http://localhost:3000/allgemein";
 
 //init seesionstorage
-if (sessionStorage.length === 0) {
-  sessionStorage.setItem("regular", "n");
-  sessionStorage.setItem("Individual", "n");
-  sessionStorage.setItem("login", 0);
-  sessionStorage.setItem("admin", 0);
-  sessionStorage.setItem("kasse", 0);
-  console.log("init");
-  initBenutzer();
+function initStorage() {
+  if (sessionStorage.length === 0) {
+    sessionStorage.setItem("regular", "");
+    sessionStorage.setItem("Individual", "");
+    console.log("init");
+  }
 }
-
+initStorage();
 getRequest(pathAllgemein, setzenHtml);
 
 //Richtig
 //
 function getRequest(path, func) {
-  var id = cookies();
-
-  if (id > 0) {
-    var request = new XMLHttpRequest();
-    request.open("GET", path);
-    request.onload = function () {
-      var data = JSON.parse(request.responseText);
-      console.log(data);
-      if (data.daten != null) {
-        func(data.daten);
-      } else {
-        console.log("error, NO Data");
-      }
-    };
-    request.send();
-  }
+  let request = new XMLHttpRequest();
+  request.open("GET", path);
+  request.onload = function () {
+    console.log(request.responseText);
+    let data = JSON.parse(request.responseText);
+    console.log(data);
+    if (data.daten != null) {
+      func(data.daten);
+    } else {
+      storeAnzeigen();
+      console.log(data.fehler);
+    }
+  };
+  request.send();
 }
 
-function postRequest(path, data) {
-  var id = cookies();
+function postRequest(path, data, func = undefined) {
+  console.log(data);
+  let requestPost = new XMLHttpRequest();
+  requestPost.open("POST", path, true);
+  requestPost.setRequestHeader("Content-type", "application/json");
+  //request.setRequestHeader("Content-Length", data.length);
 
-  if (id > 0) {
-    var request = new XMLHttpRequest();
-    request.open("POST", path);
-    request.setRequestHeader("Content-type", "application/json");
-    request.setRequestHeader("Content-Length", data.length);
+  requestPost.onload = function () {
+    let dataPost = JSON.parse(requestPost.responseText);
+    console.log(dataPost);
+    if (func != undefined) {
+      func(dataPost);
+    }
+  };
 
-    request.onload = function () {
-      var data = JSON.parse(request.responseText);
-      console.log(data);
-    };
-    request.send(data);
-  }
+  requestPost.send(data);
 }
 
 function setzenHtml(data) {
+  console.log(data);
   let waren = document.getElementById("warenkorb");
   let user = document.getElementById("user");
   let shop = document.getElementById("shop");
   let be = data.benutzerrolle.id;
+  console.log(be);
   let usernamen = data.benutzername;
-  if (be == 3) {
+  if (be != 1) {
     user.innerHTML = "" + usernamen;
+    user.setAttribute("href", "/account");
+    console.log("store");
+    storeAnzeigen();
   } else if (be == 1) {
+    console.log("admin");
     user.innerHTML = "Admin";
     user.setAttribute("href", "/accountAdmin");
     waren.innerHTML = "offene Bestellungen";
@@ -69,24 +72,17 @@ function setzenHtml(data) {
   }
 }
 
-function cookies() {
-  console.log(document.cookie);
-  var Wertstart = document.cookie.indexOf("=") + 1;
-  let c = document.cookie.substring(Wertstart, Wertstart + 4);
-  let z = Number(c);
-  console.log(c);
-  console.log(z);
-  return z;
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
-/*
-if(sessionStorage.getItem("admin")==="0"){
-    changeBenutzer()
-    storeAnzeigen()
-}else{
-    changeAdmin()
+function getCookie() {
+  return document.cookie;
 }
-*/
+
+function deleteCookie(cname) {
+  document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
 //Anzeigem der einkäufe
 function storeAnzeigen() {
@@ -99,22 +95,26 @@ function storeAnzeigen() {
   console.log("test");
   let individual = sessionStorage.getItem("Individual");
 
-  if (regular != "n" && regular != "n," && regular != "undefined") {
-    if (regular.length == 1) {
-      anzahlR += 1;
-    } else {
-      anzahlR += regular.split(",").length;
-      console.log("r2");
+  if (regular != "") {
+    let pro = regular.split(",");
+    console.log(pro.length);
+    for (let i = 0; i < pro.length; i++) {
+      let anzahl = pro[i].substring(4, 8);
+      console.log(anzahl);
+      anzahlR += Number(anzahl);
     }
   }
 
-  if (individual != "n") {
-    if (individual.length == 1) {
-      anzahlI += 1;
-    } else {
-      anzahlI += individual.split(",").length;
-      console.log("i2");
+  if (individual != "") {
+    let proI = individual.split(",");
+    let an = 0;
+    for (let i = 0; i < proI.length; i++) {
+      let a = proI[i].split("/");
+      console.log(a);
+      an += Number(a[a.length - 1]);
     }
+    console.log(an);
+    anzahlI = an;
   }
 
   let anzahl = anzahlI + anzahlR;

@@ -1,51 +1,43 @@
-
-
-//prototyp
-document.addEventListener("keydown", (e)=>{
-    
-
-    if(e.keyCode === 13){
-        console.log("tetetet")
-
-        e.preventDefault();
-        sendOn()
-        
-    
-        
-    };
-  
-})
-
-function sendOn() {
-
-    console.log("submit")
-    document.forms.form.submit();
-    /*
-    var a= document.getElementById("username").value;
-        if(a=="admin"){
-            if(document.getElementById("pass").value="admin"){
-                sessionStorage.setItem("admin",1);
-                location.href="accountAdmin.html";
-            }
-            else{
-                alert("Falsche Eingaben. Bitte versuchen Sie es nochmal")
-                document.forms.form.reset();
-
-            }
-        }
-        else{
-            sessionStorage.setItem("login", 1)
-            //console.log("ende")
-            if (sessionStorage.getItem("kasse")==1){
-                sessionStorage.setItem("kasse",0)
-                    location.href="kasse.html"
-            }
-            else{
-                location.href="account.html"
-            }
-        }
-    */
+function setInfo(data) {
+  console.log(data);
+  let text = "";
+  if (data.fehler.length >= 1) {
+    for (let i = 0; i < data.fehler.length; i++) {
+      text += data.fehler[i] + "\n";
+    }
+    window.alert(text);
+    document.forms.form.reset();
+  } else {
+    if (data.an == "a") {
+      location.href = "/accountAdmin";
+    } else if (data.an == "b") {
+      location.href = "/account";
+    }
+  }
 }
 
+//prototyp
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    console.log("tetetet");
 
+    e.preventDefault();
+    sendOn(0);
+  }
+});
 
+function sendOn(a) {
+  if (a == 0) {
+    console.log("submit");
+    let dataPost = JSON.stringify({
+      username: document.getElementById("username").value,
+      passwort: document.getElementById("pass").value,
+    });
+
+    console.log(dataPost);
+    postRequest("/login", dataPost, setInfo);
+    console.log("ende");
+  } else {
+    location.href = "/registrieren";
+  }
+}

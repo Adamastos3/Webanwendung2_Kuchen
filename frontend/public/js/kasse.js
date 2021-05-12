@@ -1,152 +1,404 @@
-const form = document.getElementById("form")
-var zahl=0;
+const form = document.getElementById("paymentForm");
+const form1 = document.getElementById("userForm");
+var zahl = 0;
+
+const pathZahlung = "http://localhost:3000/kasse/api/zahlung";
+const pathbenutzer = "http://localhost:3000/kasse/api/benutzer";
+const pathBestellung = "http://localhost:3000/kasse";
+const pathReg = "http://localhost:3000/warenkorb/api/reg";
+const pathIndi = "http://localhost:3000/warenkorb/api/indi";
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+form1.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+function changeRadion(a) {
+  if (a == "vorkasse") {
+    document.getElementById("vorkasse").checked = true;
+    document.getElementById("rechnung").checked = false;
+    document.getElementById("bar").checked = false;
+    getRequest(pathZahlung, setzenPayment);
+  } else if (a == "rechnung") {
+    document.getElementById("vorkasse").checked = false;
+    document.getElementById("rechnung").checked = true;
+    document.getElementById("bar").checked = false;
+    getRequest(pathZahlung, setzenPayment);
+  } else if (a == "bar") {
+    document.getElementById("vorkasse").checked = false;
+    document.getElementById("rechnung").checked = false;
+    document.getElementById("bar").checked = true;
+    getRequest(pathZahlung, setzenPayment);
+  }
+}
+
 function addsumm() {
-    let sum=document.getElementById("sum")
-    let mehr= document.getElementById("mehr")
-    let gesamt=document.getElementById("gesamt")
-    let a = document.getElementsByClassName("preis")
-    let wert=0
-    for (let i=0; i< a.length; i++){
-        let d=a[i].innerHTML;
-        console.log(d)
-        d= d.substr(-3,2)
-        console.log(d)
-        wert=wert+Number(d)
-    }
-    let steuer= Math.round((wert*0.07)*100)/100
-    sum.innerHTML= wert+"€"
-    mehr.innerHTML= steuer+"€"
-    gesamt.innerHTML=(wert+steuer)+"€"
+  console.log("addsum Funktion");
+  let sum = document.getElementById("sum");
+  let mehr = document.getElementById("mehr");
+  let gesamt = document.getElementById("gesamt");
+  let a = document.getElementsByClassName("preis");
+  console.log(a);
+  let ammountCounter = document.getElementsByClassName("menge");
+  //console.log("ammountCounter: " + ammountCounter[0].value); //Anzahl Kuchen im Warenkorb
 
+  let wert = 0;
+  for (let i = 0; i < a.length; i++) {
+    //die Werte aufsummieren
+    let d = a[i].innerHTML.substring(0, 4);
+    console.log(d);
+    let counterNumber = ammountCounter[i].value;
+    console.log(counterNumber);
+    wert = wert + Number(d) * Number(counterNumber);
+  }
+  console.log("wert: " + wert);
+  gesamt.innerHTML = Math.round(wert * 100) / 100 + "€";
+  //let steuer = Math.round(wert * 0.07 * 100) / 100;
+
+  sum.innerHTML = Math.round((wert / 1.07) * 100) / 100 + "€";
+  mehr.innerHTML =
+    Math.round((wert - Math.round(wert / 1.07)) * 100) / 100 + "€";
 }
 
-function changeRadion(a){
-    if (a =="vor") {
+function setzenWarenkorbReg(data) {
+  console.log("Funktion: setzenWarenkorb");
+  let art = document.getElementById("waren");
+  let regular = sessionStorage.getItem("regular");
+  var re = []; // Array für reguläre Kuchen
 
-        document.getElementById("vor").checked=true;
-        document.getElementById("rech").checked=false;
-        document.getElementById("bar").checked=false;
-    }
-    else if (a =="rech") {
-        document.getElementById("vor").checked=false;
-        document.getElementById("rech").checked=true;
-        document.getElementById("bar").checked=false;
-    }
-    else if (a=="bar"){
-        document.getElementById("vor").checked=false;
-        document.getElementById("rech").checked=false;
-        document.getElementById("bar").checked=true;
-    }
-}
+  if (regular != "") {
+    re = regular.split(",");
+    console.log(re);
+  }
 
-//nur für Prototyp
-function einfügen() {
-    console.log("Kasse Einfügen");
-    console.log(sessionStorage)
-    var art= document.getElementById("waren");
-    var a1= sessionStorage.getItem("regular")
-    var b1= sessionStorage.getItem("Individual")
-    var re=[];
-    var indi=[];
-
-    if(a1!="n" && a1!="undefined" ){
-        if( a1.length == 1){
-            re.push("a")
-        }
-        else{
-            re=a1.split(",")
-        }
-    }
-    if(b1!="n"){
-        if( b1.length == 1){
-            indi.push("a")
-        }
-        else{
-            indi=b1.split(",")
-        }
-    }
-    for(let i=0; i<re.length;i++) {
-        let elem="elem"+zahl+"re"
+  for (let i = 0; i < re.length; i++) {
+    let id = Number(re[i].substring(0, 4));
+    console.log("id des regulären kuchen: " + id);
+    let anzahl = Number(re[i].substring(4, 8));
+    console.log(anzahl);
+    for (let j = 0; j < data.length; j++) {
+      if (data[j].id == id) {
+        let elem = "reElem" + id;
+        let counterID = "counter" + zahl;
         let a =
-        "<tr id='"+elem+"'>"+
-        "<td><img src='../public/img/cake-example.png' alt=''></td>"+
-        "<td><p>Erdbeerkuchen<p>"+
-        "<p>leckerer Erdbeerkuchen mit Sahne und Biscuitteig</p></td>"+
-        "<td><p class='menge'>1x</p></td>"+
-        "<td><p class='preis'>12€</p></td>"+
-        "</tr>"
-        zahl+=1
-        art.innerHTML+=a
-        console.log("test")
+          "<tr id='" +
+          elem +
+          "'>" +
+          "<td><img src='" +
+          data[j].bilder[0].bildpfad +
+          "' alt=''></td>" +
+          "<td><p><h4>" +
+          data[j].bezeichnung +
+          "</h4></p>" +
+          "<p>" +
+          data[j].beschreibung +
+          "</p></td>" +
+          "<td>" +
+          "<input class='menge' type='number' value='" +
+          anzahl +
+          "' name='counter' id='" +
+          counterID +
+          "'  readonly>" +
+          "</td>" +
+          "<td><p class='preis'>" +
+          data[j].bruttopreis +
+          "€</p></td>" +
+          "<td><button onclick=removeElem('" +
+          elem +
+          "')>" +
+          "<img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
+          "</tr>";
+        console.log("counterID: " + counterID);
+        console.log("elem: " + elem);
+        art.innerHTML += a;
+
+        zahl += 1;
+      }
     }
-    for(let i=0; i<indi.length;i++) {
-        console.log(art)
-        let elem="elem"+zahl+"in"
-        let b=
-        "<tr id='"+elem+"' >"+
-        "<td><img src='../public/img/cake-example2.png' alt=''></td>"+
-        "<td><p>Individueller kuchen<p>"+
-        "<p>Individueller Kuchen nach Ihrer Konfiguration</p></td>"+
-        "<td><p class='menge'>1x</p></td>"+
-        "<td><p class='preis'>25€</p></td>"+
-        "</tr>"
-        zahl+=1
-        art.innerHTML+=b
-    }
+    getRequest(pathIndi, setzenWarenkorbIndi);
+  }
+} //addet die REGULÄREN kuchen
 
+//fehlrt noch
+function setzenWarenkorbIndi(data) {
+  console.log(data);
+  let art = document.getElementById("waren");
+  let indivi = sessionStorage.getItem("Individual");
+  if (indivi != "") {
+    let indi = indivi.split(",");
+    console.log("indi");
+    console.log(indi);
+    console.log(indi[0]);
+    for (let i = 0; i < indi.length; i++) {
+      let element = indi[i].split("/");
+      let anzahl = element[element.length - 1];
+      let kosten = 0;
+      let elem = "inElem" + indi[i];
+      console.log(elem);
+      let counterID = "counter" + zahl;
+      let b =
+        "<tr id='" +
+        elem +
+        "' >" +
+        "<td><img src='./img/cake-example2.png' alt=''></td>" +
+        "<td><p><h4>Individueller Kuchen</h4></p>" +
+        "<p>Individueller Kuchen nach Ihrer Konfiguration<br>";
 
-}
+      for (let j = 0; j < element.length - 1; j++) {
+        console.log(element);
+        let n = Number(element[j]);
+        console.log(n);
 
-function benutzerSetzen(){
-    var email=sessionStorage.getItem("email")
-    var anrede=sessionStorage.getItem("anrede")
-    var vorname=sessionStorage.getItem("vorname")
-    var nachname=sessionStorage.getItem("nachname")
-    var plz=sessionStorage.getItem("plz")
-    var stadt=sessionStorage.getItem("stadt")
-    var strasse=sessionStorage.getItem("strasse")
-    var hausnr= sessionStorage.getItem("hausnr")
-    if (anrede=="Herr"){
-        document.getElementById("anrede").value="Herr"
-    }
-    else {
-        document.getElementById("anrede").value="Frau"
-    }
-    document.getElementById("email").value=email
-    document.getElementById("adresse").value=plz+" "+stadt
-    document.getElementById("vorname").value=vorname
-    document.getElementById("nachname").value=nachname
-    document.getElementById("adresse2").value=strasse +" "+hausnr
-
-}
-
-function sendOn(a) {
-    console.log("SendOn Kasse zur Bestellbestätigung");
-    if (a==0){
-        var changeDiv = document.getElementById("makeHidden");
-        var changeName = document.getElementById("makeOrder");
-        var getPay = document.querySelectorAll('input[type="radio"]');
-        var changeForm = document.getElementById("paymentForm")
-        var fixPayment = document.getElementById("fixedPayment");
-
-        for (let i=0; i<3; i++) {
-            if (getPay[i].checked === true) {
-                var payMethod = getPay[i].getAttribute("name")
-                break;
-            }
+        for (let k = 0; k < data.length; k++) {
+          if (data[k].id == n) {
+            console.log("test");
+            b += data[k].beschreibung + "<br>";
+            kosten += data[k].bruttopreis;
+          }
         }
-        payMethod = payMethod.charAt(0).toUpperCase() + payMethod.slice(1)
-        changeDiv.style.display = "none";
-        changeName.innerHTML = "Bestellbestätigung";
-        changeForm.style.display = "none";
-        fixPayment.innerHTML += "<p>"+payMethod+"</p>"
+      }
 
+      b +=
+        "</p></td>" +
+        "<td>" +
+        "<input class='menge' type='number'  value='" +
+        Number(anzahl) +
+        "' name='counter' id='" +
+        counterID +
+        "' readonly >" +
+        "</td>" +
+        "<td><p class='preis'>" +
+        kosten +
+        "€</p></td>" +
+        "<td><button onclick=removeElem('" +
+        elem +
+        "')><img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
+        "</tr>";
+      console.log("counterID: " + counterID);
+
+      art.innerHTML += b;
+
+      zahl += 1;
     }
-    else {
-        location.href="warenkorb.html"
-    }
+  } //addet die INDIVIDUELLEN kuchen
+  addsumm();
 }
 
-benutzerSetzen()
-einfügen()
-addsumm()
+function setzenPayment(data) {
+  let info = document.getElementById("Infosatz");
+
+  if (document.getElementById("vorkasse").checked) {
+    info.innerHTML =
+      "<h4>" +
+      data[0].bezeichnung +
+      "</h4> " +
+      "<p>" +
+      data[0].beschreibung +
+      "</p>";
+  } else if (document.getElementById("rechnung").checked) {
+    info.innerHTML =
+      "<h4>" +
+      data[1].bezeichnung +
+      "</h4> " +
+      "<p>" +
+      data[1].beschreibung +
+      "</p>";
+  } else if (document.getElementById("bar").checked) {
+    info.innerHTML =
+      "<h4>" +
+      data[2].bezeichnung +
+      "</h4> " +
+      "<p>" +
+      data[2].beschreibung +
+      "</p>";
+  }
+
+  /*
+  let tr = document.getElementById("tablePaymentTr");
+  let zahl = 0;
+  let elemId = "elem" + zahl;
+  for (let i = 0; i < data.length; i++) {
+    let text = "";
+
+    text +=
+      "<td>" +
+      "<label for='payment" +
+      data[i].id +
+      "' id='labelPayment" +
+      data[i].id +
+      "'> Vorkasse </label>" +
+      "<input type='radio' name='" +
+      data[i].bezeichnung +
+      "'" +
+      "value='" +
+      data[i].bezeichnung +
+      "'" +
+      "id='" +
+      elemId +
+      "'" +
+      "onclick=changeRadion('" +
+      elemId +
+      "', '" +
+      elemId +
+      "L')" +
+      "checked/> </td>";
+
+    zahl++;
+  }
+
+  let table = document.getElementById("tablePayment");
+  zahl = 0;
+  for (let i = 0; i < data.length; i++) {
+    let text = "";
+
+    text +=
+      "<tr id='" +
+      elemId +
+      "L'> <td colspan='3'>" +
+      "<h4>" +
+      data[i].bezeichnung +
+      "</h4>" +
+      "<p>" +
+      data[i].beschreibung +
+      "</p>" +
+      "</td> </tr>";
+
+    table.innerHTML += text;
+    zahl++;
+  }
+  */
+}
+1;
+
+function benutzerSetzen(data) {
+  var email = data.email;
+  var anrede = data.anrede;
+  var vorname = data.vorname;
+  var nachname = data.nachname;
+  var plz = data.adresse.plz;
+  var stadt = data.adresse.ort;
+  var strasse = data.adresse.strasse;
+  var hausnr = data.adresse.hausnummer;
+  if (anrede == "Herr") {
+    document.getElementById("anrede").value = "Herr";
+  } else {
+    document.getElementById("anrede").value = "Frau";
+  }
+  document.getElementById("email").value = email;
+  document.getElementById("plz").value = plz;
+  document.getElementById("stadt").value = stadt;
+  document.getElementById("strasse").value = strasse;
+  document.getElementById("vorname").value = vorname;
+  document.getElementById("nachname").value = nachname;
+  document.getElementById("hausnr").value = hausnr;
+}
+
+function sendOn() {
+  console.log("SendOn Kasse zur Bestellbestätigung");
+  makeBestellung();
+  changeKasse();
+}
+
+function makeBestellung() {
+  let regular = sessionStorage.getItem("regular");
+  let indi = sessionStorage.getItem("Individual");
+  let reg = [];
+
+  console.log(sessionStorage);
+  console.log("Start reg");
+  if (regular != "") {
+    let pro = regular.split(",");
+    for (let i = 0; i < pro.length; i++) {
+      console.log(pro[i].substring(0, 4));
+      let text = {
+        bezeichnung: "regular",
+        id: Number(pro[i].substring(0, 4)),
+        menge: Number(pro[i].substring(4, 10)),
+      };
+      console.log(text);
+      reg.push(text);
+    }
+  }
+
+  if (indi != "") {
+    let pro = indi.split(",");
+    console.log(pro);
+    for (let i = 0; i < pro.length; i++) {
+      let t = pro[i].split("/");
+      let d = "";
+      for (let j = 0; j < t.length - 1; j++) {
+        d += t[j];
+      }
+      console.log("ids indi");
+      console.log(d);
+      let text = {
+        bezeichnung: "individuel",
+        id: d,
+        menge: t[t.length - 1],
+      };
+      reg.push(text);
+    }
+  }
+
+  let daten = JSON.stringify({
+    produkt: reg,
+    bezahlung: findBezahlung(),
+  });
+
+  postRequest(pathBestellung, daten, killStorage);
+}
+
+function killStorage(data) {
+  let e = data.fehler;
+  console.log(e);
+  if (!e) {
+    console.log("clear");
+    sessionStorage.clear();
+    initStorage();
+    storeAnzeigen();
+  } else {
+    alert("Er gab einen Fehler. Bitte bestellen Sie nochmals");
+  }
+}
+
+function findBezahlung() {
+  if (document.getElementById("vorkasse").checked) {
+    return "Vorkasse";
+  }
+  if (document.getElementById("rechnung").checked) {
+    return "Rechnung";
+  }
+  if (document.getElementById("bar").checked) {
+    return "Bar";
+  }
+}
+
+function changeKasse() {
+  var changeDiv = document.getElementById("makeHidden");
+  var changeName = document.getElementById("makeOrder");
+  var changeForm = document.getElementById("paymentForm");
+  var fixPayment = document.getElementById("fixedPayment");
+  var paymenttext = document.getElementById("Infosatz").innerHTML;
+
+  changeDiv.style.display = "none";
+  changeName.innerHTML = "Bestellbestätigung";
+  changeForm.style.display = "none";
+  fixPayment.innerHTML += "<p>" + paymenttext + "</p>";
+}
+
+function sendon() {
+  location.href = "/warenkorb";
+}
+
+getRequest(pathReg, setzenWarenkorbReg);
+getRequest(pathZahlung, setzenPayment);
+getRequest(pathbenutzer, benutzerSetzen);
+
+/*
+benutzerSetzen();
+einfügen();
+addsumm();
+*/

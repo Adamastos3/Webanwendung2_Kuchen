@@ -1,55 +1,55 @@
-const helper = require('../helper.js');
-const express = require('express');
+const helper = require("../helper.js");
+const express = require("express");
+const auth = require("../Auth/auth.js");
 var serviceRouter = express.Router();
 
-helper.log('- Service DateiUploadEinzeln');
+helper.log("- Service DateiUploadEinzeln");
 
-serviceRouter.post('/dateiuploadeinzeln', async(request, response) => {
-    helper.log('Service DateiUploadEinzeln called');
-
+serviceRouter.post("/dateiuploadeinzeln/:zugang", async (request, response) => {
+  helper.log("Service DateiUploadEinzeln called");
+  if (auth.checkAuth(request.app.locals.dbConnection, request.params.zugang)) {
     try {
+      // if no files received, send error
+      if (!request.files) {
+        console.log("no file transmitted, nothing to do");
+        response.status(400).json(helper.jsonMsgError("no file found"));
+      } else {
+        // get handle on file info, in this example is 'picture' the HTML Field Name
+        var picture = request.files.picture;
+        helper.log(picture);
 
-        // if no files received, send error
-        if (!request.files) {
-            console.log('no file transmitted, nothing to do');
-            response.status(400).json(helper.jsonMsgError('no file found'));
-        } else {
+        // if we want to save the file physically in a directory (/uploads) on the server, we can use the 'mv' (move) function
+        // if target directory is not existent, it is created automatically
+        // keep in mind that the files have to use unique file names, otherwise they are overwritten!
+        helper.log("saving file to target directory on server");
+        //picture.mv('./uploads/' + picture.name);
 
-            // get handle on file info, in this example is 'picture' the HTML Field Name
-            var picture = request.files.picture;
-            helper.log(picture);
+        /////////////////////////////////////////////////////////
+        // do anything what you want with this data
+        /////////////////////////////////////////////////////////
 
-            // if we want to save the file physically in a directory (/uploads) on the server, we can use the 'mv' (move) function
-            // if target directory is not existent, it is created automatically
-            // keep in mind that the files have to use unique file names, otherwise they are overwritten!
-            helper.log('saving file to target directory on server');
-            //picture.mv('./uploads/' + picture.name);
+        helper.log("creating response");
+        var res = {
+          status: true,
+          fileSaved: false,
+          fileName: picture.name,
+          fileSize: picture.size,
+          fileMimeType: picture.mimetype,
+          fileEncoding: picture.encoding,
+        };
 
-            
-            /////////////////////////////////////////////////////////
-            // do anything what you want with this data
-            /////////////////////////////////////////////////////////
-
-
-            helper.log('creating response');
-            var res = {
-                status: true,
-                fileSaved: false,
-                fileName: picture.name,
-                fileSize: picture.size,
-                fileMimeType: picture.mimetype,
-                fileEncoding: picture.encoding
-            };
-
-            // send response
-            response.status(200).json(res);
-        }
-        
-
+        // send response
+        response.status(200).json(res);
+      }
     } catch (err) {
-        response.status(500).json(helper.jsonMsgError('error in service'));
+      response.status(500).json(helper.jsonMsgError("error in service"));
     }
-    
+  } else {
+    const errorMessage = "Authentification is not given";
+    helper.logError(errorMessage);
+
+    response.status(401).json(helper.jsonMsgError(errorMessage));
+  }
 });
 
 module.exports = serviceRouter;

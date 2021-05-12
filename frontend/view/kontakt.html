@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakt</title>
     <script src="./js/allgemein.js" defer></script>
     <script src="./js/kontakt.js"></script>
-    <link href="./css/SSMain.css" rel="stylesheet">
-    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-    <link href="./css/SSTables.css" rel="stylesheet">
-    <link href="./css/SSFieldset.css" rel="stylesheet">
-    <link href="./css/SSButtons.css" rel="stylesheet">
-</head>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+  </head>
 
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop">Shop</a>
-      <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user">Account</a>
-    </nav>
-  </header>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user">Account</a>
+      </nav>
+    </header>
 
-
-
-<div class="containerSmallCenter smallCenterColumns">
-
-  <div>
-    <h2>Kontaktformular</h2>
-    <form action="/kontakt" class="inputField1 inputField1Contact">
-        <table class="tableLogin tableLoginContact ">
+    <div class="containerSmallCenter smallCenterColumns">
+      <div>
+        <h2>Kontaktformular</h2>
+        <form action="/kontakt" class="inputField1 inputField1Contact">
+          <table class="tableLogin tableLoginContact tableMaxWidthWhenSmall">
             <tr>
-                <td><label for="">Anrede</label></td>
+              <td><label for="">Anrede</label></td>
             </tr>
             <tr>
-               <td>
-                   <input type="radio" name="" id="Herr" onclick="changeRadion('Herr')" checked>Herr
-                   <input type="radio" name="" id="Frau" onclick="changeRadion('Frau')">Frau
-                </td>
+              <td id="inputAutoWidth">
+                <input
+                  type="radio"
+                  name=""
+                  id="Herr"
+                  onclick="changeRadion('Herr')"
+                  checked
+                />Herr
+                <input
+                  type="radio"
+                  name=""
+                  id="Frau"
+                  onclick="changeRadion('Frau')"
+                />Frau
+              </td>
             </tr>
             <tr>
-                <td><label for="textVorname">Vorname</label></td>
+              <td><label for="textVorname">Vorname</label></td>
             </tr>
             <tr>
-                <td><input type="text" id="textVorname" required></td>
+              <td><input type="text" id="textVorname" required /></td>
             </tr>
             <tr>
-                <td><label for="textNachname">Nachname</label></td>
+              <td><label for="textNachname">Nachname</label></td>
             </tr>
             <tr>
-                <td><input type="text" id="textNachname" required></td>
+              <td><input type="text" id="textNachname" required /></td>
             </tr>
             <tr>
-                <td><label for="textMail">Email</label></td>
+              <td><label for="textMail">Email</label></td>
             </tr>
             <tr>
-                <td><input type="email" name="" id="textMail" required></td>
+              <td><input type="email" name="" id="textMail" required /></td>
             </tr>
             <tr>
               <td>
@@ -66,36 +74,21 @@
                 <textarea name="" id="text"></textarea>
               </td>
             </tr>
+          </table>
+        </form>
 
-        </table>
-    </form>
+        <button onclick="sendOn()" class="button2 button2login">Senden</button>
+      </div>
+    </div>
 
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt" class="navbarSelected">Kontaktformular</a>
+      </div>
 
-
-  <button type="submit" onclick="sendOn()" class="button2 button2login">Senden</button>
-</div>
-
-</div>
-
-
-
-<footer>
-
-
-  <div class="footerDiv">
-    <a href="/ueberUns">Über uns / AGB</a>
-    <a href="/impressum">Impressum</a>
-    <a href="/kontakt" class="navbarSelected">Kontaktformular</a>
-  </div>
-
-  <div>
-    &copy;
-    Copyright 2021
-    Kuchen AG
-  </div>
-
-</footer>
-
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

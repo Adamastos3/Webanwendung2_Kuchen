@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kundendaten ändern</title>
     <script src="./js/allgemein.js" defer></script>
-    <script src="./js/ihreDaten.js" defer></script>
+    <script src="./js/kundenChange.js" defer></script>
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
@@ -24,8 +24,10 @@
       </nav>
     </header>
 
-    <form action="" method="post" class="inputField1 inputField1ED" id="form" name="form">
-        <table class="tableLogin tableLoginED">
+<div class="containerSmallCenter">
+  <div>
+    <form action="" class="inputField1 inputField1ED" id="form" name="form">
+        <table class="tableLogin tableLoginED tableMaxWidthWhenSmall tableAtMediaChanges600">
           <!--Z1, Z5, Z10-->
           <tr>
             <td><label for="email">E-Mail</label></td>
@@ -117,10 +119,11 @@
       <button onclick="sendData()" class="button2 button2login" id="b1" style="display: none">
         Daten speichern</button>
     </div>
+  </div>
 
     <footer>
       <div class="footerDiv">
-        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/ueberUns">Über uns</a>
         <a href="/impressum">Impressum</a>
         <a href="/kontakt">Kontaktformular</a>
       </div>

@@ -117,7 +117,7 @@ body > h1 {
 
 
 .containerSmallright{
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
@@ -184,7 +184,7 @@ body > h1 {
   gap: 40px;
   margin: 10px 10px 0;
   width: auto;
-  max-width: 40%;
+ 
   border: 0px solid rgba(0,0,0,.25);
 
 }
@@ -240,6 +240,7 @@ body > h1 {
   align-content: center;
   border: 0px solid rgba(0,0,0,.25);
   width: 100%;
+
 }
 
 .containerProduct.containerProductReg{
@@ -290,11 +291,7 @@ body > h1 {
 }
 
 
-h2 {
-  font-family: Roboto-bold;
-  text-transform: uppercase;
-  font-size: 2em;
-}
+
 
 
 @media only screen and (max-width: 1000px) {
@@ -362,6 +359,10 @@ h2 {
     font-size: 300%;
   }
 
+  .containerVertical.accountButtonsDiv{
+    gap: 5px;
+  }
+
 
 }
 
@@ -370,9 +371,13 @@ h2 {
   .startImageDiv{
     height: 1800px;
   }
-  h2 {
-    font-size: 1.2rem
+
+  .containerProduct.containerProductReg{
+    width: 40%;
+    max-width: 40%;
+    min-width: 40%;
   }
+  
 }
 
 
@@ -421,11 +426,7 @@ h2 {
     justify-content:space-around;
   }
 
-  .containerProduct.containerProductReg{
-    width: 40%;
-    max-width: 40%;
-    min-width: 40%;
-  }
+  
 }
 
 @media only screen and (max-width: 800px) {
@@ -442,6 +443,43 @@ h2 {
 
   .containerSmallCenter{
     width: 100%;
-    margin-left: 20px;
   }
+
+  .containerSmallCenter.smallCenterColumns {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .startImageDiv{
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  .background1{
+    margin: 10px 0 10px;
+  }
+
+  .containerVertical{
+    margin: 0;
+  }
+
+  .containerHorizontal{
+    margin: 0 0 10px;
+  }
+
+  .containerSmallright{
+    margin: 10px 0 10px;
+  }
+
+  
+  .containerSmallCenter{
+    margin: 0px 0 10px;
+  }
+
+  .containerSmallLeft{
+    margin: 0px 0 10px;
+    gap: 10px;
+  }
+
+
 }

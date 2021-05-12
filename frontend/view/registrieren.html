@@ -28,13 +28,13 @@
       <div>
         <h2>Registrierung</h2>
         <form
-          action="login.html"
+          action="/registrieren"
           method="post"
           class="inputField1 inputField1ED"
           id="form"
           name="formular"
         >
-          <table class="tableLogin tableLoginED">
+          <table class="tableLogin tableLoginED tableMaxWidthWhenSmall tableAtMediaChanges600">
             <!--Z1, Z5, Z10-->
             <tr>
               <td><label for="email">E-Mail</label></td>
@@ -49,15 +49,15 @@
                         type="radio"
                         name="Herr"
                         id="Herr"
-                        onclick="changeElem('Herr')"
+                        onclick="changeRadion('Herr')"
                         checked
-                      />Herr
+                      /><label for="Herr">Herr</label>
                       <input
                         type="radio"
                         name="Frau"
                         id="Frau"
-                        onclick="changeElem('Frau')"
-                      />Frau
+                        onclick="changeRadion('Frau')"
+                      /><label for="Frau">Frau</label>
                   </td>
               <td><input type="text" id="plz" name="plz" required /></td>
             </tr>
@@ -102,7 +102,7 @@
 
             <!--Z4-->
             <tr>
-              <td><label for="pas2">Neues Passwort wiederholen</label></td>
+              <td><label for="pas2">Passwort wiederholen</label></td>
               <td><label for="geb">Geburtstag</label></td>
               <td><label for="hausnr">Hausnummer</label></td>
             </tr>
@@ -123,7 +123,7 @@
           </table>
         </form>
         <button
-          type="submit"
+          onclick="sendOnReg()"
           class="button2 button2login"
         >
           Registrieren
@@ -133,7 +133,7 @@
 
     <footer>
       <div class="footerDiv">
-        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/ueberUns">Über uns</a>
         <a href="/impressum">Impressum</a>
         <a href="/kontakt">Kontaktformular</a>
       </div>

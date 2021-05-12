@@ -13,7 +13,7 @@ function postRequest(path, data) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": data.length,
+        //"Content-Length": data.length,
       },
     };
 

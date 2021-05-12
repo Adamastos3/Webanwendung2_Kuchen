@@ -1,179 +1,176 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kasse</title>
-  <script src="./js/allgemein.js" defer></script>
-  <script src="./js/kasse.js" defer></script>
-  <link href="./css/SSMain.css" rel="stylesheet">
-  <link href="./css/SSNavBarAndFooter.css" rel="stylesheet">
-  <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet">
-  <link href="./css/SSTables.css" rel="stylesheet">
-  <link href="./css/SSFieldset.css" rel="stylesheet">
-  <link href="./css/SSButtons.css" rel="stylesheet">
-  <link href="./css/SSImage.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()">
-      <a href="/">Startseite</a>
-      <a href="/shop" id="shop" >Shop</a>
-      <a href="/warenkorb" class="navbarSelected" id="warenkorb">Warenkorb</a>
-      <a href="/login" id="user">Account</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kasse</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/kasse.js" defer></script>
+    <!--<script src="./js/warenkorb.js" defer></script>-->
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSImage.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" class="navbarSelected" id="warenkorb">Warenkorb</a>
+        <a href="/login" id="user">Account</a>
+      </nav>
+    </header>
 
-  <div class="containerVertical">
-    <div>
-      <h2 id="makeOrder">Kasse</h2>
-      <table class="tableList tableListCheckout" id="waren">
-        <tr>
-          <th></th>
-          <th>Beschreibung</th>
-          <th>Menge</th>
-          <th>Preis</th>
-          <th></th>
-        </tr>
-
-      </table>
-    </div>
-  </div>
-
-
-
-  <div class="containerHorizontal containerHorizontalCheckout">
-    <div id="fixedPayment">
-      <h2>Zahlungsmethode</h2>
-      <form class="inputField1" id="paymentForm" action="/kasse" method="POST">
-        <table class="tableLogin Checkout">
-
+    <div class="containerVertical">
+      <div>
+        <h2 id="makeOrder">Kasse</h2>
+        <table class="tableList tableListCheckout" id="waren">
           <tr>
-            <td>
-              <label for="vorkasse">
-                <input type="radio" name="vorkasse" value="vorkasse" id="vor" onclick="changeRadion('vor')"> Vorkasse
-              </label>
-            </td>
-
-            <td>
-              <label for="rechnung">
-                <input type="radio" name="rechnung"  value="rechnung" id="rech" onclick="changeRadion('rech')"> Rechnung
-              </label>
-            </td>
-            <td>
-              <label for="bar">
-                <input type="radio" name="bar"  value="bar" id="bar" onclick="changeRadion('bar')"> Bar
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <h4>Vorkasse</h4>
-              <p>sadfghjkl</p>
-            </td>
-
+            <th></th>
+            <th>Beschreibung</th>
+            <th>Menge</th>
+            <th>Preis</th>
+            <th></th>
           </tr>
         </table>
-      </form>
+      </div>
     </div>
 
-    <div>
-      <h2>Ihre Daten</h2>
-      <form class="inputField1 Checkout">
-        <table class="tableLogin Checkout CheckoutRight tableAtMediaChanges">
-          <tr>
-            <td><label for="">Anrede</label></td>
-            <td><input type="text" id="anrede" readonly></td>
-            <td><label for="">Stadt</label></td>
-            <td><input type="text" id="adresse" readonly></td>
-          </tr>
+    <div class="containerHorizontal containerHorizontalCheckout">
+      <div id="fixedPayment">
+        <h2>Zahlungsmethode</h2>
+        <form
+          class="inputField1"
+          id="paymentForm"
+        >
+          <table class="tableLogin Checkout" id="tablePayment">
+            <tr id="tablePaymentTr">
+              <td>
+                <label for="vorkasse" id="labelvorkasse"> Vorkasse </label>
+                <input
+                  type="radio"
+                  name="vorkasse"
+                  value="vorkasse"
+                  id="vorkasse"
+                  onclick="changeRadion('vorkasse')"
+                  checked
+                />
+              </td>
 
+              <td>
+                <label for="rechnung" id="labelrechnung"> Rechnung </label>
+                <input
+                  type="radio"
+                  name="rechnung"
+                  value="rechnung"
+                  id="rechnung"
+                  onclick="changeRadion('rechnung')"
+                />
+              </td>
+              <td>
+                <label for="bar" id="labelbar"> Bar </label>
+                <input
+                  type="radio"
+                  name="bar"
+                  value="bar"
+                  id="bar"
+                  onclick="changeRadion('bar')"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" id="Infosatz">
+               
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+      <div>
+        <h2>Ihre Daten</h2>
+        <form class="inputField1 Checkout" id = "userForm">
+          <table class="tableLogin Checkout CheckoutRight tableAtMediaChanges">
+            <tr>
+              <td><label for="">Anrede</label></td>
+              <td><input type="text" id="anrede" readonly /></td>
+              <td><label for="">Plz</label></td>
+              <td><input type="text" id="plz" readonly /></td>
+            </tr>
+                <tr>
+                  <td><label for="">Vorname</label></td>
+                  <td><input type="text" id="vorname" readonly /></td>
+                  <td><label for="">Stadt</label></td>
+                  <td><input type="text" id="stadt" readonly /></td>
+                </tr>
+                <tr>
+                  <td><label for="">Nachname</label></td>
+                  <td><input type="text" id="nachname" readonly /></td>
+                  <td><label for="">Straße</label></td>
+                  <td><input type="text" id="strasse" readonly /></td>
+                </tr>
+                <tr>
+                  <td><label for="">Email</label></td>
+                  <td><input type="text" id="email" readonly /></td>
+                  <td><label for="">Hausnummer</label></td>
+                  <td><input type="text" id="hausnr" readonly /></td>
+                </tr>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <!-- Buttons + Preis -->
+    <div class="containerSmallright">
+      <div>
+        <table class="tableBuy Checkout">
           <tr>
-            <td><label for="">Vorname</label></td>
-            <td><input type="text" id="vorname" readonly></td>
-            <td><label for="">Straße</label></td>
-            <td><input type="text" id="adresse2" readonly></td>
+            <td>Gesamtsumme:</td>
+            <td id="gesamt">250</td>
           </tr>
           <tr>
-            <td><label for="">Nachname</label></td>
-            <td><input type="text" id="nachname" readonly></td>
-            <td><label for="">Email</label></td>
-            <td><input type="text" id="email" readonly ></td>
+            <td>Mehrwertsteuer:</td>
+            <td id="mehr">250</td>
+          </tr>
+          <tr>
+            <td>Nettosumme:</td>
+            <td id="sum">250</td>
+        </table>
+      </div>
+
+      <div id="makeHidden">
+        <table class="tableBuy Checkout tableBuyButtons">
+          <tr>
+            <td>
+              <button onclick="sendon()" class="button2 Change">
+                Ändern
+              </button>
+            </td>
+            <td>
+              <button onclick="sendOn()" class="button1">
+                <span> Bestellen </span>
+              </button>
+            </td>
           </tr>
         </table>
-      </form>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <!-- Buttons + Preis -->
-  <div class="containerSmallright">
-    <div>
-      <table class="tableBuy Checkout">
-        <tr>
-          <td>Summe: </td>
-          <td id="sum">250</td>
-        </tr>
-        <tr>
-          <td>Mehrwertsteuer:</td>
-          <td id="mehr">250</td>
-        </tr>
-        <tr>
-          <td>Gesamtsumme:</td>
-          <td id="gesamt">250</td>
-        </tr>
-      </table>
+      </div>
     </div>
 
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
 
-    <div id="makeHidden">
-      <table class="tableBuy Checkout tableBuyButtons">
-        <tr>
-          <td>
-            <button onclick="sendon('1')" class="button2 Change">
-              Ändern
-            </button>
-          </td>
-          <td>
-            <button  onclick="sendOn('0')" class="button1">
-              <span>
-                Bestellen
-              </span>
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-
-
-
-
-
-  <footer>
-
-
-    <div class="footerDiv">
-      <a href="/ueberUns">Über uns / AGB</a>
-      <a href="/impressum">Impressum</a>
-      <a href="/kontakt">Kontaktformular</a>
-    </div>
-
-    <div>
-      &copy;
-      Copyright 2021
-      Kuchen AG
-    </div>
-
-  </footer>
-
-
-</body>
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
 </html>

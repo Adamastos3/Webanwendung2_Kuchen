@@ -30,6 +30,16 @@ function getRequest(path, func) {
   request.send();
 }
 
+function getRequestWithData(path, daten) {
+  let request = new XMLHttpRequest();
+  requestPost.open("GET", path, true);
+  requestPost.setRequestHeader("Content-type", "application/json");
+  request.onload = function () {
+    console.log(request.responseText);
+  };
+  request.send(daten);
+}
+
 function postRequest(path, data, func = undefined) {
   console.log(data);
   let requestPost = new XMLHttpRequest();

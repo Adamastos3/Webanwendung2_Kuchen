@@ -1,7 +1,7 @@
 const benutzer = require("../Benutzer/benutzer");
 
 async function getAllgemein(req) {
-  const path = "http://localhost:8000/wba2api/benutzer/gib/";
+  //const path = "http://localhost:8000/wba2api/benutzer/gib/";
   console.log(req.session.username);
   if (req.session.username == undefined) {
     return JSON.stringify({

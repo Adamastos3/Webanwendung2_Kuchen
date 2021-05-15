@@ -1,19 +1,18 @@
-const getRequest = require("../Request/getRequest");
+const request = require("../Request/request");
 const validator = require("../../Module/Validator/validator");
-const postRequest = require("../Request/postRequest");
 
 const auth = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 
 async function getAllProdukt(art) {
   if (art == 1) {
     let path = "http://localhost:8000/wba2api/produkt/alle" + auth;
-    const b = await getRequest(path);
+    const b = await request.getRequest(path);
     return b;
   }
 
   if (art == 2) {
     let path = "http://localhost:8000/wba2api/individuelles/alle" + auth;
-    const b = await getRequest(path);
+    const b = await request.getRequest(path);
     return b;
   }
 }
@@ -24,13 +23,13 @@ async function getProduktById(art, id) {
   console.log(check);
   if (art == 1 && check.length < 1) {
     let path = "http://localhost:8000/wba2api/produkt/gib/" + id + auth;
-    const b = await getRequest(path);
+    const b = await request.getRequest(path);
     return b;
   }
 
   if (art == 2 && check.length < 1) {
     let path = "http://localhost:8000/wba2api/individuelles/gib/" + id + auth;
-    const b = await getRequest(path);
+    const b = await request.getRequest(path);
     return b;
   }
 
@@ -39,7 +38,7 @@ async function getProduktById(art, id) {
 
 async function createProdukt(data) {
   let path = "http://localhost:8000/wba2api/produkt" + auth;
-  const a = await postRequest(path, data);
+  const a = await request.postRequest(path, data);
   return a;
 }
 

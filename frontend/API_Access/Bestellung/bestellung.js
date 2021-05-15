@@ -1,7 +1,5 @@
-const postRequest = require("../Request/postRequest");
+const request = require("../Request/request");
 const validator = require("../../Module/Validator/validator");
-const getRequest = require("../Request/getRequest");
-const putRequest = require("../Request/putRequest");
 const produkt = require("../Sortiment/produkt");
 const benutzer = require("../Benutzer/benutzer");
 const zahlung = require("../Zahlung/zahlung");
@@ -38,7 +36,10 @@ async function createBestellung(body, id) {
       });
       console.log("daten bestellung");
       console.log(datenBestellung);
-      const postBestellung = await postRequest(pathBestellung, datenBestellung);
+      const postBestellung = await request.postRequest(
+        pathBestellung,
+        datenBestellung
+      );
       console.log("Bestellung fertig");
       console.log(postBestellung);
       if (postBestellung != null) {
@@ -67,7 +68,7 @@ async function checkZahlungsart(name) {
 
 async function setBestellposition(body) {
   let pro = [];
-  const indiDaten = await getRequest(pathIndi);
+  const indiDaten = await request.getRequest(pathIndi);
   console.log(indiDaten);
   for (let i = 0; i < body.produkt.length; i++) {
     let elem = body.produkt[i];
@@ -171,8 +172,8 @@ async function getBestellungByUserId(username) {
       daten: null,
     });
   } else {
-    const r = await getRequest(pathBes + pas);
-    const be = await getRequest(pathB + username + pas);
+    const r = await request.getRequest(pathBes + pas);
+    const be = await request.getRequest(pathB + username + pas);
     console.log(r);
     console.log(be);
     if (r.daten != null && be.daten != null) {
@@ -210,7 +211,7 @@ async function getBestellungByUserId(username) {
 
 async function getAusstehendeBestellungen() {
   const path = "http://localhost:8000/wba2api/bestellung/alle" + pas;
-  const r = await getRequest(path);
+  const r = await request.getRequest(path);
   let res = [];
   if (r.daten != null) {
     for (let i = 0; i < r.daten.length; i++) {
@@ -258,7 +259,7 @@ async function bestellungErledigt(body) {
       bestellpositionen: oldData.daten.bestellpositionen,
     });
     console.log(data);
-    const geaendert = await putRequest(path, data);
+    const geaendert = await request.putRequest(path, data);
     console.log(geaendert);
     if (geaendert != null) {
       return JSON.stringify({
@@ -277,7 +278,7 @@ async function bestellungErledigt(body) {
 
 async function getBestellungByID(id) {
   const pathID = "http://localhost:8000/wba2api/bestellung/gib/" + id + pas;
-  const a = await getRequest(pathID);
+  const a = await request.getRequest(pathID);
   return a;
 }
 

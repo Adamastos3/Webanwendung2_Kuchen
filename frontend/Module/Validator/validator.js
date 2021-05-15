@@ -219,6 +219,22 @@ async function checkText(body) {
   return error;
 }
 
+async function checkWarenkorbInhalt(body) {
+  let error = [];
+  let data = "0123456789/-";
+  for (let i = 0; i < body.text.length; i++) {
+    if (data.includes(body.text[i])) {
+      continue;
+    } else {
+      error.push({
+        bezeichnung: "Falsche Zeichen ",
+      });
+      return error;
+    }
+  }
+  return error;
+}
+
 async function checkKasseProdukt(body) {
   console.log(body.id);
   let checkOne = await validator.isNumeric("" + body.id);
@@ -290,6 +306,39 @@ async function checkPasswortVergessen(body) {
   let er = [];
   er.push(await checkLogin(body));
   er.push(await checkMail(body));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
+async function checkWarenkorbPost(body) {
+  let error = [];
+  let er = [];
+
+  er.push(checkID(body.benutzerid));
+  er.push(checkWarenkorbInhalt(body.warenkorb));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
+async function checkWarenkorb(body) {
+  let error = [];
+  let er = [];
+
+  er.push(checkID(body.id));
+  er.push(checkID(body.benutzerid));
+  er.push(checkWarenkorbInhalt(body.warenkorb));
 
   for (let i = 0; i < er.length; i++) {
     if (er[i].length == 1) {
@@ -402,4 +451,6 @@ module.exports = {
   checkKundenDaten,
   checkPasswortVergessen,
   checkKontakt,
+  checkWarenkorb,
+  checkWarenkorbPost,
 };

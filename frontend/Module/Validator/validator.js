@@ -190,12 +190,12 @@ async function checkProdukt(id) {
 
 async function checkID(id) {
   let error = [];
-  const b = await validator.isNumeric(id);
-  const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
+  const b = await validator.isNumeric("" + id);
+  const c = await validator.isLength("" + id, [{ min: 1, max: 4 }]);
   console.log(b);
   if (!b && !c) {
     error.push({
-      bezeichnung: "Keine Nummer ",
+      bezeichnung: "Keine gültige Nummer ",
     });
   }
 
@@ -220,10 +220,12 @@ async function checkText(body) {
 }
 
 async function checkWarenkorbInhalt(body) {
+  console.log(body);
   let error = [];
   let data = "0123456789/-";
-  for (let i = 0; i < body.text.length; i++) {
-    if (data.includes(body.text[i])) {
+  let str = body;
+  for (let i = 0; i < str.length; i++) {
+    if (data.includes(str.charAt(i))) {
       continue;
     } else {
       error.push({

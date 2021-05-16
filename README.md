@@ -23,8 +23,8 @@ A little intro about the installation.
 $ git clone https://github.com/Adamastos3/Webanwendung2_Kuchen.git
 $ cd ./frontend
 $ npm install
-$ node server.js
+$ npm start
 $ cd ../backend
 $ npm install
-$ node server.js
+$ npm start
 ```

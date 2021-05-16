@@ -6,6 +6,7 @@ const zahlung = require("../API_Access/Zahlung/zahlung");
 const benutzer = require("../API_Access/Benutzer/benutzer");
 const person = require("../API_Access/Person/person");
 const bestellung = require("../API_Access/Bestellung/bestellung");
+const warenkorb = require("../API_Access/Bestellung/warenkorb");
 
 //kasse
 
@@ -44,6 +45,8 @@ async function createBestellung(req, res) {
   let id = req.session.username;
   const a = await bestellung.createBestellung(req.body, id);
   if (a) {
+    const c = warenkorb.resetWarenkorb(id);
+    console.log(c);
     let daten = JSON.stringify({
       fehler: false,
     });

@@ -3,6 +3,8 @@ function logout() {
   let regular = sessionStorage.getItem("regular");
   let indi = sessionStorage.getItem("Individual");
   let se = regular + "-" + indi;
+  console.log("se");
+  console.log(se);
   sessionStorage.clear;
   deleteCookie("kc");
   deleteCookie("kn");
@@ -10,5 +12,11 @@ function logout() {
     benutzerid: null,
     warenkorb: se,
   });
-  getRequestWithData(path, daten);
+  console.log("daten");
+  console.log(daten);
+  postRequest(path, daten, setLogout);
+}
+
+function setLogout(data) {
+  location.href = "/login";
 }

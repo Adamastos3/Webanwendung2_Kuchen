@@ -30,15 +30,19 @@ function getRequest(path, func) {
   request.send();
 }
 
+/*
 function getRequestWithData(path, daten) {
+  console.log("daten");
+  console.log(daten);
   let request = new XMLHttpRequest();
-  requestPost.open("GET", path, true);
-  requestPost.setRequestHeader("Content-type", "application/json");
+  request.open("GET", path, true);
+  request.setRequestHeader("Content-type", "application/json");
   request.onload = function () {
     console.log(request.responseText);
   };
   request.send(daten);
 }
+*/
 
 function postRequest(path, data, func = undefined) {
   console.log(data);
@@ -70,7 +74,7 @@ function setzenHtml(data) {
     user.innerHTML = "" + usernamen;
     user.setAttribute("href", "/account");
     console.log("store");
-    storeAnzeigen();
+    setWarenkorb(data);
   } else if (be == 1) {
     console.log("admin");
     user.innerHTML = "Admin";
@@ -79,6 +83,8 @@ function setzenHtml(data) {
     waren.setAttribute("href", "/ausstehendeBestellungen");
     shop.innerHTML = "Kundendaten";
     shop.setAttribute("href", "/kundendaten");
+  } else {
+    console.log("Nicht angemeldet");
   }
 }
 
@@ -137,4 +143,27 @@ function storeAnzeigen() {
 
 function sendToStart() {
   location.href = "/";
+}
+
+function setWarenkorb(data) {
+  console.log("setzen Warenkorb");
+  console.log(data);
+  let re = sessionStorage.getItem("regular");
+  let indi = sessionStorage.getItem("Individual");
+  let benutzername = data.benutzername;
+  let path = "http://localhost:3000/allgemein/warenkorb/";
+
+  if (re == "" && indi == "") {
+    if (benutzername != undefined) {
+      getRequest(path, setWarenkorbSession);
+    }
+  }
+  storeAnzeigen();
+}
+
+function setWarenkorbSession(daten) {
+  let wareen = daten.warenkorb.split("-");
+  sessionStorage.setItem("regular", wareen[0]);
+  sessionStorage.setItem("Individual", wareen[1]);
+  storeAnzeigen();
 }

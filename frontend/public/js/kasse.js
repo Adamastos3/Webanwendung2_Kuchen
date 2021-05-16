@@ -274,6 +274,7 @@ function setzenPayment(data) {
 1;
 
 function benutzerSetzen(data) {
+  console.log(data);
   var email = data.email;
   var anrede = data.anrede;
   var vorname = data.vorname;

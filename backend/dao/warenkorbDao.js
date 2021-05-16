@@ -35,13 +35,16 @@ class WarenkorbDao {
   }
 
   exists(id) {
-    var sql = "SELECT COUNT(ID) AS cnt FROM Warenkorb WHERE BenutzerID=?";
+    var sql =
+      "SELECT COUNT(BenutzerID) AS cnt FROM Warenkorb WHERE BenutzerID=?";
     var statement = this._conn.prepare(sql);
     var result = statement.get(id);
 
-    if (result.cnt == 1) return true;
-
-    return false;
+    if (result.cnt >= 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   create(benutzerid = "", warenkorb = "") {
@@ -53,7 +56,7 @@ class WarenkorbDao {
     if (result.changes != 1)
       throw new Error("Could not insert new Record. Data: " + params);
 
-    var newObj = this.loadById(result.lastInsertRowid);
+    var newObj = this.loadById(benutzerid);
     return newObj;
   }
 
@@ -67,7 +70,7 @@ class WarenkorbDao {
     if (result.changes != 1)
       throw new Error("Could not update existing Record. Data: " + params);
 
-    var updatedObj = this.loadById(id);
+    var updatedObj = this.loadById(benutzerid);
     return updatedObj;
   }
 

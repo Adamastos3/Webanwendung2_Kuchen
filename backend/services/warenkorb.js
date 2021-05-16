@@ -67,7 +67,7 @@ serviceRouter.get(
     ) {
       const warenkorbDao = new WarenkorbDao(request.app.locals.dbConnection);
       try {
-        var result = warenkorbDao.exists(request.params.benutzerid);
+        var result = warenkorbDao.exists(request.params.id);
         helper.log(
           "Service Warenkorb: Check if record exists by benutzerid=" +
             request.params.id +
@@ -101,6 +101,8 @@ serviceRouter.post("/warenkorb/:zugang", function (request, response) {
       errorMsgs.push("benutzerid fehlt");
     if (helper.isUndefined(request.body.warenkorb))
       errorMsgs.push("warenkorb fehlt");
+
+    console.log(errorMsgs);
 
     if (errorMsgs.length > 0) {
       helper.log("Service Warenkorb: Creation not possible, data missing");

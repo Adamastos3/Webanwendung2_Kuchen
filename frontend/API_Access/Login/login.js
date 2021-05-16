@@ -1,5 +1,5 @@
 const benutzer = require("../Benutzer/benutzer");
-const validator = require("../../Module/Validator");
+const validator = require("../../Module/Validator/validator");
 
 async function checkDatenlogin(body) {
   const data = JSON.stringify({

@@ -16,7 +16,7 @@ function ids() {
 
 function setzenHtmlProdukt(data) {
   let text = "";
-  document.title = data.beschreibung;
+  document.title = data.bezeichnung;
   let div = document.getElementById("produktdiv");
 
   text +=
@@ -37,9 +37,9 @@ function setzenHtmlProdukt(data) {
     "<a href='#unten'>Klicke hier für die vollständige Beschreibung :)</a>" +
     "</td></tr><tr><td colspan='1'>" +
     //Preis
-    "<h4>Preis:" +
-    data.bruttopreis +
-    "€</h4></td>" +
+    "<h4>Preis: " +
+    setPreis(data.bruttopreis) +
+    " €</h4></td>" +
     "</tr><tr><td colspan='1'>" +
     //Datenblatt
     "<p><a href='" +
@@ -47,7 +47,7 @@ function setzenHtmlProdukt(data) {
     "'>Nährwerttabelle</a></p>" +
     "</td></tr><tr colspan='1' class='inputField2 inputField2Product'>" +
     //Buttons
-    "<td><label for='number'>Menge:<input type='number' 'name='menge' id='menge' onchange=checkChange() /> </label></td>" +
+    "<td><label for='number'>Menge:<input type='number' name='menge' id='menge' value='1' onchange=checkChange() /> </label></td>" +
     "</tr><tr><td colspan='2'><button class='button1 button1Product' onclick=addWarenkorb('" +
     data.id +
     "')>Warenkorb</button>" +
@@ -61,8 +61,8 @@ function setzenHtmlProdukt(data) {
 
 function checkChange() {
   let menge = document.getElementById("menge");
-  if (Number(menge.value) < 0) {
-    menge.value = 0;
+  if (Number(menge.value) < 1) {
+    menge.value = 1;
   }
 }
 

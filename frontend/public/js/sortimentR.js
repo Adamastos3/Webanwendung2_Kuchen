@@ -44,8 +44,9 @@ function setzenHtmlSR(data) {
       "</p></td></tr>" +
       //Preis
       "<tr><td><p>Preis: " +
-      data[i].bruttopreis +
-      "€</p></td></tr>" +
+      //data[i].bruttopreis +
+      setPreis(data[i].bruttopreis) +
+      " €</p></td></tr>" +
       "</table></div>" +
       //div2
       "<div id='" +

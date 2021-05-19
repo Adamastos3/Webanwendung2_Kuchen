@@ -98,19 +98,24 @@ function addsumm() {
   let wert = 0;
   for (let i = 0; i < a.length; i++) {
     //die Werte aufsummieren
-    let d = a[i].innerHTML.substring(0, 4);
+    let d = a[i].innerHTML.substring(0, 5).split(",");
     console.log(d);
+    let dr = "" + d[0] + "." + d[1];
+    console.log(dr);
     let counterNumber = ammountCounter[i].value;
     console.log(counterNumber);
-    wert = wert + Number(d) * Number(counterNumber);
+    wert = wert + Number(dr) * Number(counterNumber);
   }
   console.log("wert: " + wert);
-  gesamt.innerHTML = Math.round(wert * 100) / 100 + "€";
+  let ge = Math.round(wert * 100) / 100;
+  gesamt.innerHTML = setPreis("" + ge) + "€";
   //let steuer = Math.round(wert * 0.07 * 100) / 100;
-
-  sum.innerHTML = Math.round((wert / 1.07) * 100) / 100 + "€";
-  mehr.innerHTML =
-    Math.round((wert - Math.round(wert / 1.07)) * 100) / 100 + "€";
+  let su = Math.round((wert / 1.07) * 100) / 100;
+  console.log(su);
+  sum.innerHTML = setPreis("" + su) + "€";
+  let mehrw = Math.round((wert - Math.round(wert / 1.07)) * 100) / 100;
+  console.log(mehrw);
+  mehr.innerHTML = setPreis("" + mehrw) + "€";
 }
 
 function removeElem(id) {
@@ -268,8 +273,8 @@ function setzenWarenkorbReg(data) {
           "')>" +
           "</td>" +
           "<td><p class='preis'>" +
-          data[j].bruttopreis +
-          "€</p></td>" +
+          setPreis(data[j].bruttopreis) +
+          " €</p></td>" +
           "<td><button onclick=removeElem('" +
           elem +
           "')>" +
@@ -339,7 +344,7 @@ function setzenWarenkorbIndi(data) {
         "')>" +
         "</td>" +
         "<td><p class='preis'>" +
-        kosten +
+        setPreis(kosten) +
         "€</p></td>" +
         "<td><button onclick=removeElem('" +
         elem +

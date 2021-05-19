@@ -18,21 +18,33 @@ function addSum() {
   let mehr = document.getElementById("mehrwert");
   let gesamt = document.getElementById("gesamtsumme");
 
-  let a = Number(document.getElementById("select1").innerHTML.substr(-15, 5));
-  let b = Number(document.getElementById("select2").innerHTML.substr(-15, 5));
-  let c = Number(document.getElementById("select3").innerHTML.substr(-15, 5));
-  let d = Number(document.getElementById("select4").innerHTML.substr(-15, 5));
+  console.log("Preise von indi");
+  let a = changePreis(
+    document.getElementById("select1").innerHTML.substr(-16, 6)
+  );
+  console.log(a);
+  let b = changePreis(
+    document.getElementById("select2").innerHTML.substr(-16, 6)
+  );
+  console.log(b);
+  let c = changePreis(
+    document.getElementById("select3").innerHTML.substr(-16, 6)
+  );
+  console.log(c);
+  let d = changePreis(
+    document.getElementById("select4").innerHTML.substr(-16, 6)
+  );
 
   console.log(d);
-  result = Math.round((a + b + c + d) * 1000) / 1000;
+  result = Math.round((a + b + c + d) * 100) / 100;
 
-  sum = Math.round(((result * 100) / 107) * 1000) / 1000;
+  sum = Math.round(((result * 100) / 107) * 100) / 100;
   console.log(sum);
-  mehrwert = Math.round((result - sum) * 1000) / 1000;
+  mehrwert = Math.round((result - sum) * 100) / 100;
   console.log(mehrwert);
-  summ.innerHTML = sum + "€";
-  mehr.innerHTML = mehrwert + "€";
-  gesamt.innerHTML = result + "€";
+  summ.innerHTML = setPreis("" + sum) + "€";
+  mehr.innerHTML = setPreis("" + mehrwert) + "€";
+  gesamt.innerHTML = setPreis("" + result) + "€";
 }
 
 /*
@@ -129,7 +141,6 @@ function bildChange(a) {
 }
 */
 function blink(a) {
-  
   let bild = document.getElementById(a);
   if (timer1 != null) {
     clearInterval(timer1);
@@ -145,10 +156,7 @@ function blink(a) {
       bild.style.visibility = "visible";
     }
   }, 1000);
-  
 }
-
-//Prototype
 
 function sendOn() {
   store();
@@ -243,8 +251,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -265,8 +273,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -284,8 +292,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -303,8 +311,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 

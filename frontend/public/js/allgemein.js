@@ -167,3 +167,35 @@ function setWarenkorbSession(daten) {
   sessionStorage.setItem("Individual", wareen[1]);
   storeAnzeigen();
 }
+
+function setPreis(preis) {
+  let pf = Math.round(Number(preis) * 100) / 100;
+  let r = "" + pf;
+  let rf = r.split(".");
+  console.log(rf);
+  if (rf[1] != undefined) {
+    if (rf[1] < 10) {
+      let result = "" + rf[0] + "," + rf[1] + "0";
+      return result;
+    } else {
+      let result = "" + rf[0] + "," + rf[1];
+      return result;
+    }
+  } else {
+    let result = "" + rf[0] + ",00";
+    return result;
+  }
+}
+
+function changePreis(preis) {
+  let p = preis.split(",");
+  console.log(p);
+  let pr = "";
+  if (p[1] == undefined) {
+    pr += p[0] + ".00";
+  } else {
+    pr += p[0] + "." + p[1];
+  }
+
+  return Number(pr);
+}

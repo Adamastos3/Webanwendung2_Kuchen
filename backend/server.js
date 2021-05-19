@@ -102,9 +102,6 @@ try {
   serviceRouter = require("./services/bestellung.js");
   app.use(TOPLEVELPATH, serviceRouter);
 
-  serviceRouter = require("./services/bewertung.js");
-  app.use(TOPLEVELPATH, serviceRouter);
-
   serviceRouter = require("./services/benutzerrolle.js");
   app.use(TOPLEVELPATH, serviceRouter);
 

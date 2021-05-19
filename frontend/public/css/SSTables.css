@@ -225,6 +225,18 @@
   text-align: center;
 }
 
+.tableList.tableListConfirmation {
+  margin-bottom: 10px;
+}
+
+
+
+.tableList.tableListConfirmation td {
+  width: 33%;
+  text-align: center;
+  border: 0px solid rgba(0,0,0,0.2);
+}
+
 
 
 

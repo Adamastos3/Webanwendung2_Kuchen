@@ -384,13 +384,19 @@ function changeKasse(data) {
   let fixPayment = document.getElementById("fixedPayment");
   let paymenttext = document.getElementById("Infosatz").innerHTML;
 
+  bestell.style.display = "table";
   bestell.innerHTML =
-    "Vielen Dank für Ihre Bestellung.<br>" +
-    "Ihre Bestellnummer lautet " +
-    data.daten.id +
-    "<br>" +
-    "Ihr Bestelldatum ist " +
-    data.daten.zeitpunkt;
+    "<tr>"+
+      "<td>Vielen Dank für Ihre Bestellung</td>"+
+      "<td>"+
+        "Ihre Bestellnummer lautet: " +
+        data.daten.id +
+      "</td>"+
+      "<td>"+
+        "Bestelldatum: " +
+        data.daten.zeitpunkt; +
+      "</td>"+
+    "</tr>"
   changeDiv.style.display = "none";
   changeName.innerHTML = "Bestellbestätigung";
   changeForm.style.display = "none";

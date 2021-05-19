@@ -45,9 +45,19 @@ async function createBestellung(body, id) {
       if (postBestellung != null) {
         //Mail fehlt noch
         console.log("hat funktioniert");
-        return true;
+        let result = {
+          fehler: null,
+          daten: {
+            id: postBestellung.id,
+            zeitpunkt: postBestellung.bestellzeitpunkt,
+          },
+        };
+        return result;
       } else {
-        return false;
+        let result = {
+          fehler: true,
+        };
+        return result;
       }
     }
   }

@@ -44,17 +44,13 @@ async function getPerson(req, res) {
 async function createBestellung(req, res) {
   let id = req.session.username;
   const a = await bestellung.createBestellung(req.body, id);
-  if (a) {
-    const c = warenkorb.resetWarenkorb(id);
+  if (a.fehler == null) {
+    const c = await warenkorb.resetWarenkorb(id);
     console.log(c);
-    let daten = JSON.stringify({
-      fehler: false,
-    });
+    let daten = JSON.stringify(a);
     res.send(daten);
   } else {
-    let daten = JSON.stringify({
-      fehler: true,
-    });
+    let daten = JSON.stringify(a);
     res.send(daten);
   }
 }

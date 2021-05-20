@@ -11,6 +11,7 @@ const pathReg = "http://localhost:3000/warenkorb/api/reg";
 const pathIndi = "http://localhost:3000/warenkorb/api/indi";
 
 getRequest(pathReg, setzenWarenkorbReg);
+getRequest(pathIndi, setzenWarenkorbIndi);
 
 function checkAmmount(counterID, elem) {
   console.log("checkAmmount");
@@ -287,7 +288,6 @@ function setzenWarenkorbReg(data) {
         zahl += 1;
       }
     }
-    getRequest(pathIndi, setzenWarenkorbIndi);
   }
 } //addet die REGULÄREN kuchen
 

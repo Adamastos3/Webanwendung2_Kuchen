@@ -13,7 +13,7 @@ getRequest(pathAllgemein, setzenHtml);
 
 //Richtig
 //
-function getRequest(path, func) {
+function getRequest(path, func, info = undefined) {
   let request = new XMLHttpRequest();
   request.open("GET", path);
   request.onload = function () {
@@ -21,7 +21,11 @@ function getRequest(path, func) {
     let data = JSON.parse(request.responseText);
     console.log(data);
     if (data.daten != null) {
-      func(data.daten);
+      if (info == undefined) {
+        func(data.daten);
+      } else {
+        func(data.daten, info);
+      }
     } else {
       storeAnzeigen();
       console.log(data.fehler);

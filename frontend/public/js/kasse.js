@@ -386,17 +386,16 @@ function changeKasse(data) {
 
   bestell.style.display = "table";
   bestell.innerHTML =
-    "<tr>"+
-      "<td>Vielen Dank für Ihre Bestellung</td>"+
-      "<td>"+
-        "Ihre Bestellnummer lautet: " +
-        data.daten.id +
-      "</td>"+
-      "<td>"+
-        "Bestelldatum: " +
-        data.daten.zeitpunkt; +
-      "</td>"+
-    "</tr>"
+    "<tr>" +
+    "<td>Vielen Dank für Ihre Bestellung</td>" +
+    "<td>" +
+    "Ihre Bestellnummer lautet: " +
+    data.daten.id +
+    "</td>" +
+    "<td>" +
+    "Bestelldatum: " +
+    data.daten.zeitpunkt;
+  +"</td>" + "</tr>";
   changeDiv.style.display = "none";
   changeName.innerHTML = "Bestellbestätigung";
   changeForm.style.display = "none";

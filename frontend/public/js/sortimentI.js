@@ -141,6 +141,7 @@ function bildChange(a) {
 }
 */
 function blink(a) {
+  setInfoText(a);
   let bild = document.getElementById(a);
   if (timer1 != null) {
     clearInterval(timer1);
@@ -156,6 +157,23 @@ function blink(a) {
       bild.style.visibility = "visible";
     }
   }, 1000);
+}
+
+function setInfoText(info) {
+  let text = document.getElementById("infoText");
+  if (info == "topping") {
+    let s = "Sie bearbeiten gerade das Topping des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "topping2") {
+    let s = "Sie bearbeiten gerade die Außenschicht des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "middle") {
+    let s = "Sie bearbeiten gerade die Füllung des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "bottom") {
+    let s = "Sie bearbeiten gerade den Boden des Kuchens";
+    text.innerHTML = s;
+  }
 }
 
 function sendOn() {
@@ -206,7 +224,7 @@ function store() {
 function setzenHTMLIndi(data) {
   console.log("setze");
   let table = document.getElementById("tableIndi");
-  let bild = document.getElementById("bildMaterial");
+  //let bild = document.getElementById("bildMaterial");
 
   /*let top = [];
   let aussen = [];
@@ -241,10 +259,10 @@ function setzenHTMLIndi(data) {
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].kategorie.id == 1) {
-      if (bildid == 0) {
-        bild.src = data[i].bilder[0].bildpfad;
-      }
-      bildid++;
+      //if (bildid == 0) {
+      // bild.src = data[i].bilder[0].bildpfad;
+      //}
+      // bildid++;
       text +=
         "<option value='" +
         data[i].id +
@@ -326,17 +344,36 @@ function setzenHTMLIndi(data) {
 function start(a, id) {
   console.log(id);
   let path = "http://localhost:3000/sortimentI/api/" + id;
+
   console.log(a);
   blink(a);
   console.log(path);
-  getRequest(path, picturesChange);
+  getRequest(path, picturesChange, a);
 }
 
-function picturesChange(data) {
-  let x = document.getElementById("bildMaterial");
-  let s = data.bilder[0].bildpfad;
+function picturesChange(data, info) {
+  if (info == "topping") {
+    let x = document.getElementById("toppingPicture");
+    let s = data.bilder[0].bildpfad;
 
-  x.src = s;
+    x.src = s;
+  } else if (info == "topping2") {
+    let x = document.getElementById("aussenPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  } else if (info == "middle") {
+    let x = document.getElementById("fuellPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  } else if (info == "bottom") {
+    let x = document.getElementById("bottomPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  }
+
   //addSum();
 }
 

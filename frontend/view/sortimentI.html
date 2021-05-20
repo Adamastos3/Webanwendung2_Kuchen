@@ -61,6 +61,10 @@
             id="bottom"
           />
         </div>
+
+        <div>
+          <p id="infoText"></p>
+        </div>
       </div>
 
       <!--DIV 2---------->
@@ -71,44 +75,87 @@
         </form>
       </div>
       <!---DIV 3---------->
+
       <div class="imgIndividualComponent">
-        <img
+        <table class="table3x3">
+          <tr>
+            <td>
+              <img
+                src="./img/erdbeercremekuchen.jpg"
+                alt=""
+                class="tableImg3x3"
+                id="toppingPicture"
+              />
+              <p>Topping</p>
+            </td>
+            <td>
+              <img
+                src="./img/käsekuchen.jpg"
+                alt=""
+                class="tableImg3x3"
+                id="aussenPicture"
+              />
+              <p>Außenschicht</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="./img/schwarzwälder.jpg"
+                alt=""
+                class="tableImg3x3"
+                id="fuellPicture"
+              />
+              <p>Füllung</p>
+            </td>
+            <td>
+              <img
+                src="./img/bananenkuchen.jpg"
+                alt=""
+                class="tableImg3x3"
+                id="bottomPicture"
+              />
+              <p>Boden</p>
+            </td>
+          </tr>
+        </table>
+        <!--<img
           src="./img/erdbeeren2.png"
           alt="Italian Trulli"
           id="bildMaterial"
-        />
+        />-->
       </div>
     </div>
 
     <div class="containerSmallright">
-	    <div>
-      <table class="tableBuy Checkout">
-        <tr>
-          <td>Gesamtsumme:</td>
-          <td id="gesamtsumme"></td>
-        </tr>
-        <tr>
-          <td>davon Mehrwertsteuer:</td>
-          <td id="mehrwert"></td>
-        </tr>
-        <tr>
-          <td>Nettosumme:</td>
-          <td id="summe"></td>
-        </tr>
-      </table>
-	    </div>
-	  <div> 
-      <table class="tableBuy Checkout tableBuyButtons">
-        <tr>
-          <td>
-            <button class="button1" onclick="sendOn()">
-              <span> zum Warenkorb hinzufügen </span>
-            </button>
-          </td>
-        </tr>
-      </table>
+      <div>
+        <table class="tableBuy Checkout">
+          <tr>
+            <td>Gesamtsumme:</td>
+            <td id="gesamtsumme"></td>
+          </tr>
+          <tr>
+            <td>davon Mehrwertsteuer:</td>
+            <td id="mehrwert"></td>
+          </tr>
+          <tr>
+            <td>Nettosumme:</td>
+            <td id="summe"></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table class="tableBuy Checkout tableBuyButtons">
+          <tr>
+            <td>
+              <button class="button1" onclick="sendOn()">
+                <span> zum Warenkorb hinzufügen </span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
     <footer>
       <div class="footerDiv">
         <a href="/ueberUns">Über uns</a>

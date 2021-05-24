@@ -26,6 +26,25 @@
   max-width: 300px;
 }
 
+.table3x3 img {
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(0,0,0,.25);
+  padding: 0;
+  max-width: 300px;
+}
+
+.table3x3.tableIndi {
+  margin: 2%;
+  margin-top: 0;
+}
+
+.table3x3.tableIndi img {
+  max-width: 250px;
+}
+
 /*---------------LIST-----------------*/
 .tableList {
   margin:0;

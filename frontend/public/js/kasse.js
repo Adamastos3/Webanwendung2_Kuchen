@@ -383,6 +383,7 @@ function changeKasse(data) {
   let changeForm = document.getElementById("paymentForm");
   let fixPayment = document.getElementById("fixedPayment");
   let paymenttext = document.getElementById("Infosatz").innerHTML;
+  let inputFields = document.getElementById("userForm");
 
   bestell.style.display = "table";
   bestell.innerHTML =
@@ -400,6 +401,9 @@ function changeKasse(data) {
   changeName.innerHTML = "Bestellbestätigung";
   changeForm.style.display = "none";
   fixPayment.innerHTML += "<p>" + paymenttext + "</p>";
+
+
+  inputFields.classList.add("ChangeInputField");
 }
 
 function sendon() {

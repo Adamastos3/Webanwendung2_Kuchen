@@ -77,7 +77,16 @@
   width: auto;
   color: #333;
   font-size: 2vmin;
+}
 
+.inputField1.ChangeInputField input {
+  background: #333;
+  border: 0px;
+  color: rgba(255,255,255,1);
+}
+
+.inputField1.ChangeInputField input:focus {
+  outline-width: 0;
 }
 
 .inputField1.inputField1Reset input{

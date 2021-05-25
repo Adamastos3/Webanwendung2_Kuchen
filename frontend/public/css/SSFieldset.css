@@ -1,13 +1,11 @@
-
-
-.fieldset1  {
+.fieldset1 {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   vertical-align: center;
-  border: 2px solid rgba(0,0,0,1);
+  border: 2px solid rgba(0, 0, 0, 1);
   font-size: 2vmin;
   align-items: center;
   background-color: #333;
@@ -15,19 +13,19 @@
 }
 
 .fieldset1 table {
-  border: 0px solid rgba(0,0,0,0.2);
-  border-spacing:15px 5px;
+  border: 0px solid rgba(0, 0, 0, 0.2);
+  border-spacing: 15px 5px;
   text-align: right;
 }
 
 .fieldset1 form {
   float: none;
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   display: inline-block;
 }
 
 .fieldset1 > label {
-  border: 0px solid rgba(0,0,0,0.2);
+  border: 0px solid rgba(0, 0, 0, 0.2);
   font-size: 2vmin;
   display: inline-block;
 }
@@ -36,31 +34,28 @@
   font-size: 2.2vmin;
 }
 
-
-
-.fieldset2  {
+.fieldset2 {
   min-height: 200px;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   font-size: 2vmin;
   align-items: center;
   align-self: center;
   width: 50%;
-
 }
 
 .fieldset2 table {
-  border: 0px solid rgba(0,0,0,0.2);
-  border-spacing:15px 5px;
+  border: 0px solid rgba(0, 0, 0, 0.2);
+  border-spacing: 15px 5px;
   text-align: left;
 }
 
 .fieldset2 form {
-  border: 0px solid rgba(0,0,0,0.2);
+  border: 0px solid rgba(0, 0, 0, 0.2);
   display: inline-block;
 }
 
 .fieldset2 > label {
-  border: 0px solid rgba(0,0,0,0.2);
+  border: 0px solid rgba(0, 0, 0, 0.2);
   font-size: 2vmin;
   display: inline-block;
 }
@@ -69,27 +64,36 @@
   font-size: 2.2vmin;
 }
 
-
-
-.inputField1 input{
+.inputField1 input {
   border: 2px solid #ffffff;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   width: auto;
   color: #333;
+  font-size: 2vmin;
+}
+
+/*Test*/
+.inputFieldKasse input {
+  border: 2px solid #ffffff;
+  background-color: #333;
+  /*background: rgba(255,255,255,1);*/
+  width: auto;
+  /*color: #333;*/
+  color: #ffffff;
   font-size: 2vmin;
 }
 
 .inputField1.ChangeInputField input {
   background: #333;
   border: 0px;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .inputField1.ChangeInputField input:focus {
   outline-width: 0;
 }
 
-.inputField1.inputField1Reset input{
+.inputField1.inputField1Reset input {
   width: 100%;
 }
 
@@ -99,25 +103,23 @@
 
 .inputField2 input {
   border: 2px solid #ffffff;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   width: 200px;
 }
 
-
 .inputField1.inputField1ED input {
-    width: 22vmin;
-    font-size: 2vmin;
+  width: 22vmin;
+  font-size: 2vmin;
 }
 
-#tableLoginEDalign input{
-  width:20px;
+#tableLoginEDalign input {
+  width: 20px;
   align: middle;
 }
 
-#tableLoginEDalign{
+#tableLoginEDalign {
   display: inline-flex;
 }
-
 
 .inputField1 textarea {
   width: 33rem;
@@ -131,30 +133,25 @@
   height: 2rem;
   width: 4rem;
   border: 2px solid #000;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   margin: 0px;
-
 }
 
-
 @media only screen and (max-width: 1500px) {
-  .inputField1.Checkout input{
+  .inputField1.Checkout input {
     width: 80%;
     overflow: scroll;
   }
 
   .inputField1 textarea {
     width: 50vmin;
-    
   }
 }
 
 @media only screen and (max-width: 800px) {
-
   .inputField1 input {
     font-size: initial;
-}
-
+  }
 
   .inputField1 textarea {
     width: 100%;
@@ -168,17 +165,13 @@
   #inputAutoWidth input {
     width: auto;
   }
-
 }
 
 @media only screen and (max-width: 600px) {
-
-
   .inputField1 textarea {
     width: 100%;
     max-width: 100%;
   }
-
 
   .inputField1.inputField1Login input {
     width: 100%;
@@ -191,14 +184,9 @@
   .inputField1.inputField1ED input {
     width: 22vmin;
     font-size: initial;
+  }
+
+  #tableLoginEDalign {
+    display: inline-block;
+  }
 }
-
-
-#tableLoginEDalign{
-  display:inline-block
-}
-
-}
-
-
-

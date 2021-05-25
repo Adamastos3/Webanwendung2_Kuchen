@@ -3,7 +3,7 @@ const validator = require("../../Module/Validator/validator");
 const produkt = require("../Sortiment/produkt");
 const benutzer = require("../Benutzer/benutzer");
 const zahlung = require("../Zahlung/zahlung");
-const mail = require("../../Module/Nodemailer/mail");
+const mail = require("../../Module/Nodemailer/sendMail");
 
 const pas = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 const pathIndi = "http://localhost:8000/wba2api/individuelles/alle" + pas;
@@ -43,7 +43,8 @@ async function createBestellung(body, id) {
       console.log("Bestellung fertig");
       console.log(postBestellung);
       if (postBestellung != null) {
-        //Mail fehlt noch
+        //Mail muss aktiviert werden
+        //const info = await mail.sendBestellbestaetigung(postBestellung);
         console.log("hat funktioniert");
         let result = {
           fehler: null,
@@ -62,9 +63,6 @@ async function createBestellung(body, id) {
     }
   }
 }
-
-//fehlt noch
-function sendMail(person, bestellung) {}
 
 async function checkZahlungsart(name) {
   const a = await zahlung.getZahlungAll();

@@ -2,7 +2,7 @@ const md5 = require("md5");
 const benutzer = require("../Benutzer/benutzer");
 const validator = require("../../Module/Validator/validator");
 const passwortgenerator = require("../../Module/passwordGenerator/passwordGenerator");
-const mail = require("../../Module/Nodemailer/mail");
+const mail = require("../../Module/Nodemailer/sendMail");
 
 async function setNewPassword(body, id) {
   console.log(body);
@@ -72,12 +72,7 @@ async function resetPassword(body) {
 
           if (update != null) {
             //Muss manuel aktiviert werden
-            /*sendMailPassword(
-              benutzerdata.daten[i].benutzername,
-              pass,
-              benutzerdata.daten[i].person.email
-            );
-            */
+            //const info = await mail.sendPasswordVergessen(update, pass);
             return JSON.stringify({
               fehler: null,
             });
@@ -97,24 +92,6 @@ async function resetPassword(body) {
       fehler: a,
     });
   }
-}
-
-function sendMailPassword(username, pass, email) {
-  let text =
-    "Guten Tag " +
-    username +
-    "\n" +
-    "Anbei erhalten Sie ihr neues Passwort.\n" +
-    "\n" +
-    "Password: " +
-    pass +
-    "\n" +
-    "\n" +
-    "Mit freundleichen Grüßen \n" +
-    "Ihr Kuchenteam";
-  let subject = "Ihr Passwort wurde zurückgesetzt";
-  mail.main(email, subject, text);
-  console.log("Mail versendet");
 }
 
 module.exports = {

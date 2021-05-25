@@ -19,7 +19,7 @@ async function createBenutzer(data) {
   let pa = "/wba2api/benutzer" + pas;
   const b = await request.postRequest(pa, data);
   console.log(b);
-  return b.id;
+  return b;
 }
 
 async function checkBenutzer(data) {

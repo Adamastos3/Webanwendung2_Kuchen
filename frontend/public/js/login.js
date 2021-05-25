@@ -11,6 +11,8 @@ function setInfo(data) {
     if (data.an == "a") {
       location.href = "/accountAdmin";
     } else if (data.an == "b") {
+      location.href = "/accountMitarbeiter";
+    } else if (data.an == "c") {
       location.href = "/account";
     }
   }

@@ -74,11 +74,18 @@ function setzenHtml(data) {
   let be = data.benutzerrolle.id;
   console.log(be);
   let usernamen = data.benutzername;
-  if (be != 1) {
+  if (be == 3) {
     user.innerHTML = "" + usernamen;
     user.setAttribute("href", "/account");
     console.log("store");
     setWarenkorb(data);
+  } else if (be == 2) {
+    user.innerHTML = "" + usernamen;
+    user.setAttribute("href", "/accountMitarbeiter");
+    waren.innerHTML = "offene Bestellungen";
+    waren.setAttribute("href", "/ausstehendeBestellungen");
+    shop.innerHTML = "Ihre Daten";
+    shop.setAttribute("href", "/ihreDaten");
   } else if (be == 1) {
     console.log("admin");
     user.innerHTML = "Admin";

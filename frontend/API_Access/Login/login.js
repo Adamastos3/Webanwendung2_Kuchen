@@ -32,6 +32,7 @@ async function getLogin(req) {
         req.session.authenticated = true;
         req.authenticated = true;
         req.session.username = b.daten.id;
+        req.session.rolle = b.daten.benutzerrolle.id;
         console.log(req.session.authenticated + "" + req.authenticated);
         if (b.daten.benutzerrolle.id == 1) {
           let data = JSON.stringify({
@@ -39,10 +40,16 @@ async function getLogin(req) {
             an: "a",
           });
           return data;
-        } else {
+        } else if (b.daten.benutzerrolle.id == 2) {
           let data = JSON.stringify({
             fehler: [],
             an: "b",
+          });
+          return data;
+        } else {
+          let data = JSON.stringify({
+            fehler: [],
+            an: "c",
           });
           return data;
         }

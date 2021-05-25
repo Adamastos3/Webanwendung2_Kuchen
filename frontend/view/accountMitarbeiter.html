@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Mitarbeiter</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/accountAdmin.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/accountMitarbeiter" class="navbarSelected" id="user"
+          >Account</a
+        >
+      </nav>
+    </header>
+
+    <div class="containerVertical accountButtonsDiv">
+      <button><a href="/passwortAendern">Passwort ändern</a></button>
+      <button>
+        <a href="/ausstehendeBestellungen">ausstehende Bestellungen</a>
+      </button>
+      <button><a href="/ihreDatenMitarbeiter">Ihre Daten</a></button>
+      <button><a onclick="logout()">Abmelden</a></button>
+    </div>
+
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns / AGB</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
+
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
+</html>

@@ -10,6 +10,11 @@ const pathIndi = "http://localhost:8000/wba2api/individuelles/alle" + pas;
 const pathBestellung = "http://localhost:8000/wba2api/bestellung" + pas;
 
 async function createBestellung(body, id) {
+  function toGerman(date) {
+    let a = date.split("-");
+    return a[2] + "." + a[1] + "." + a[0];
+  }
+
   console.log(body);
   const a = await validator.checkKasse(body);
 
@@ -33,6 +38,7 @@ async function createBestellung(body, id) {
           id: await checkZahlungsart(body.bezahlung),
         },
         bestellpositionen: pro,
+        lieferdatum: toGerman(body.lieferdatum),
       });
       console.log("daten bestellung");
       console.log(datenBestellung);
@@ -51,6 +57,7 @@ async function createBestellung(body, id) {
           daten: {
             id: postBestellung.id,
             zeitpunkt: postBestellung.bestellzeitpunkt,
+            lieferzeitpunkt: postBestellung.lieferzeitpunkt,
           },
         };
         return result;
@@ -265,6 +272,7 @@ async function bestellungErledigt(body) {
         id: oldData.daten.zahlungsart.id,
       },
       bestellpositionen: oldData.daten.bestellpositionen,
+      lieferdatum: oldData.daten.lieferzeitpunkt,
     });
     console.log(data);
     const geaendert = await request.putRequest(path, data);

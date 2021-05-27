@@ -43,6 +43,8 @@ async function getPerson(req, res) {
 
 async function createBestellung(req, res) {
   let id = req.session.username;
+  console.log("create Bestellung");
+  console.log(req.body);
   const a = await bestellung.createBestellung(req.body, id);
   if (a.fehler == null) {
     const c = await warenkorb.resetWarenkorb(id);

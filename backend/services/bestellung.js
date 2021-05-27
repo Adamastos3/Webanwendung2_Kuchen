@@ -107,6 +107,17 @@ serviceRouter.post("/bestellung/:zugang", function (request, response) {
         request.body.bestellzeitpunkt
       );
     }
+    if (helper.isUndefined(request.body.lieferdatum)) {
+      request.body.bestelldatum = helper.getNowPlusTwo();
+    } else if (!helper.isGermanDateTimeFormat(request.body.lieferdatum)) {
+      errorMsgs.push(
+        "Lieferzeitpunkt hat das falsche Format, erlaubt: dd.mm.jjjj hh.mm.ss"
+      );
+    } else {
+      request.body.lieferdatum = helper.parseGermanDateTimeString(
+        request.body.lieferdatum
+      );
+    }
     if (helper.isUndefined(request.body.besteller)) {
       request.body.besteller = null;
     } else if (helper.isUndefined(request.body.besteller.id)) {
@@ -147,7 +158,8 @@ serviceRouter.post("/bestellung/:zugang", function (request, response) {
         request.body.bestellzeitpunkt,
         request.body.besteller,
         request.body.zahlungsart.id,
-        request.body.bestellpositionen
+        request.body.bestellpositionen,
+        request.body.lieferdatum
       );
       helper.log("Service Bestellung: Record inserted");
       response.status(200).json(helper.jsonMsgOK(result));

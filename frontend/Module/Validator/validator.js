@@ -42,6 +42,19 @@ async function checkPassword(body) {
   return error;
 }
 
+async function checkDate(date) {
+  let error = [];
+  const b = await validator.isDate(date);
+  console.log(b);
+  if (!b) {
+    error.push({
+      bezeichnung: "Datum ist nicht richtig formatiert",
+    });
+  }
+
+  return error;
+}
+
 async function checkVorname(body) {
   let error = [];
   const b = await validator.isAlpha(body.vorname);
@@ -286,8 +299,9 @@ async function checkKasse(body) {
   for (let i = 0; i < elem.length; i++) {
     let a = await checkKasseProdukt(body.produkt[i]);
     let b = await checkKasseZahlung(body);
+    let c = await checkDate(body.lieferdatum);
     console.log("test validator");
-    if (a && b) {
+    if (a && b && c) {
       res.push(true);
     } else {
       res.push(false);

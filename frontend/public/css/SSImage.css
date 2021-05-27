@@ -1,42 +1,55 @@
 
 .overlappingImages {
   min-width: 400px;
-  height: 375px;
+  height: 100%;
+  min-height: 450px;
   position: relative;
   padding: 1%;
 }
 
 
+.infoTextDiv {
+  position:absolute;
+  top: 0px;
+  z-index: 6;
+  height: 20px;
+  width:100%;
+}
+
+
+.infoTextDiv p {
+  text-align: center;
+}
 
 .overlappingItemFrame {
+  z-index: 5;
+  top: 70px;
   position:absolute;
-      top: 5px;
-      z-index: 4;
 }
 
 .overlappingItemTOP-Topping {
+  z-index: 4;
   position:absolute;
-      top: 5px;
-      z-index: 4;
+  top: 70px;
 }
 
 
 .overlappingItemTOP {
+  z-index: 3;
   position:absolute;
-      top: 5px;
-      z-index: 3;
+  top: 70px;
 }
 
 .overlappingItemsMIDDLE {
+  z-index: 2;
   position:absolute;
-   top: 5px;
-   z-index: 2;
+  top: 70px;
 }
 
 .overlappingItemsBOTTOM {
-  position:absolute;
-   top: 5px;
    z-index: 1;
+   position:absolute;
+  top: 70px;
 }
 
 
@@ -54,7 +67,7 @@
 .overlappingImages {
   border: 5px solid rgba(0,0,0,0.2);
 }
-
+/*
 .overlappingItemTOP-Topping img {
   filter: brightness(0%) invert(14%) sepia(47%) saturate(5789%) hue-rotate(353deg) brightness(106%) contrast(82%);
 }
@@ -71,18 +84,26 @@
 
   filter: brightness(0%) invert(62%) sepia(98%) saturate(301%) hue-rotate(338deg) brightness(99%) contrast(93%)
 }
-
+*/
 .imgIndividualComponent {
   width: auto;
+  max-height: 450px;
+  display: initial !important;
+  align-items: center;
   height: 100%;
-  max-height: 375px;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+}
+
+.imgIndividualComponent table {
+  width: 100%;
+  
 }
 
 
 .imgIndividualComponent img{
-  display: flex;
-  flex-wrap:nowrap;
+  display: initial;
   width: auto;
   border: 2px solid rgba(0,0,0,0.2);
   border-radius: 00px;
@@ -94,12 +115,24 @@
 
 
 
+
+@media only screen and (max-width: 1200px) {
+  .overlappingImages {
+    height: 450px;
+    width: 100%;
+  }
+
+}
+
+
+
 @media only screen and (max-width: 800px) {
   .overlappingImages {
     min-width: 300px;
-  height: 265px;
-  position: relative;
-  padding: 1%;
+    min-height: 350px;
+    height: 350px;
+    position: relative;
+    padding: 1%;
   }
 
   .overlappingImages img {
@@ -108,7 +141,4 @@
     border: 0px solid rgba(0,0,0,0.2);
   }
 
-
-
 }
-

@@ -89,6 +89,10 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.inputField1.ChangeInputField.ChangeInputFieldCentered input {
+  text-align: center;
+}
+
 .inputField1.ChangeInputField input:focus {
   outline-width: 0;
 }

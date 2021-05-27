@@ -26,23 +26,27 @@
   max-width: 300px;
 }
 
-.table3x3 img {
-  display: flex;
-  flex-wrap:wrap;
-  width: 100%;
-  height: auto;
-  border: 2px solid rgba(0,0,0,.25);
-  padding: 0;
-  max-width: 300px;
-}
+
 
 .table3x3.tableIndi {
-  margin: 2%;
-  margin-top: 0;
+  margin: 0%;
+  pointer-events: none;
+  text-align: center;
+  color: #fff;
+
+  height: 100%;
 }
 
+.table3x3.tableIndi td {
+  border: 0px solid rgba(0,0,0,.25);
+}
+
+
+
 .table3x3.tableIndi img {
-  max-width: 250px;
+  width: 26vmin;
+  height: 26vmin;
+  
 }
 
 /*---------------LIST-----------------*/
@@ -115,6 +119,13 @@
   width: 5%;
   text-align: center;
   border: 2px solid rgba(255,255,255,0.25);
+}
+
+.tableList.tableListHistory td:nth-child(6) {
+  width: 10%;
+  text-align: center;
+  border: 2px solid rgba(255,255,255,0.25);
+  padding: 5px;
 }
 
 .tableList.tableListHistory.tableHistoryUserdata td:nth-child(4) {
@@ -206,7 +217,7 @@
   background-color: #00CED1;
 }
 
-.tableList.tableListHistory td:nth-child(5) button:hover {
+.tableList.tableListHistory td:nth-child(6) button:hover {
   background-color: #ff1493;
 }
 
@@ -577,6 +588,12 @@
     content:'';
     height:0;
 }
+
+.table3x3.tableIndi {
+  border-spacing: 5px;
+}
+
+
 }
 
 
@@ -639,3 +656,4 @@
     height:4em;
   }
 }
+

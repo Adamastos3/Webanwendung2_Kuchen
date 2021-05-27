@@ -97,7 +97,7 @@
       <div>
         <h2>Ihre Daten</h2>
         <!--inputField1-->
-        <form class=" inputFieldKasse Checkout" id = "userForm">
+        <form class=" inputField1 Checkout ChangeInputField" id = "userForm">
           <table class="tableLogin Checkout CheckoutRight tableAtMediaChanges">
             <tr>
               <td><label for="">Anrede</label></td>
@@ -130,60 +130,63 @@
       </div>
     </div>
 
-<div class="containerHorizontal containerHorizontalCheckout">
-      <div id="fixedPayment">
+    <div class="container50">
+      <div id="deliveryDate" class="container50LeftDiv">
         <h2>Lieferdatum</h2>
-        <form
-          class="inputField1"
-          id="lieferForm"
-        >
-           <table class="tableLogin Checkout" id="tablePayment">
-            <tr id="tablePaymentTr">
+          <form
+            class="inputField1"
+            id="lieferForm"
+          >
+            <table class="tableLogin Checkout" id="tablePayment">
+              <tr id="tablePaymentTr">
+                <td>
+                  <input type="date" name="lieferdatum" id="lieferdatum" required>
+                </td>
+                </tr>
+                <tr>
+                <td><p>Wenn Sie das Lieferdatum auf einen Sonn- oder Feiertag legen, wird am nächsten Tag geliefert</p></td>
+                </tr>
+                </table>
+          </form>
+      </div>
+
+
+    
+
+      <!-- Buttons + Preis -->
+      <div class="container50RightDiv">
+        <div>
+          <table class="tableBuy Checkout">
+            <tr>
+              <td>Gesamtsumme:</td>
+              <td id="gesamt">250</td>
+            </tr>
+            <tr>
+              <td>Mehrwertsteuer:</td>
+              <td id="mehr">250</td>
+            </tr>
+            <tr>
+              <td>Nettosumme:</td>
+              <td id="sum">250</td>
+          </table>
+        </div>
+
+        <div id="makeHidden">
+          <table class="tableBuy Checkout tableBuyButtons">
+            <tr>
               <td>
-                <input type="date" name="lieferdatum" id="lieferdatum" required>
+                <button onclick="sendon()" class="button2 Change">
+                  Ändern
+                </button>
               </td>
-              </tr>
-              <tr>
-              <td><p>Wenn Sie das Lieferdatum auf einen Sonn- oder Feiertag legen, wird am nächsten Tag geliefert</p></td>
-              </tr>
-              </table>
-        </form>
-        
-      </div>
-
-    <!-- Buttons + Preis -->
-    <div class="containerSmallright">
-      <div>
-        <table class="tableBuy Checkout">
-          <tr>
-            <td>Gesamtsumme:</td>
-            <td id="gesamt">250</td>
-          </tr>
-          <tr>
-            <td>Mehrwertsteuer:</td>
-            <td id="mehr">250</td>
-          </tr>
-          <tr>
-            <td>Nettosumme:</td>
-            <td id="sum">250</td>
-        </table>
-      </div>
-
-      <div id="makeHidden">
-        <table class="tableBuy Checkout tableBuyButtons">
-          <tr>
-            <td>
-              <button onclick="sendon()" class="button2 Change">
-                Ändern
-              </button>
-            </td>
-            <td>
-              <button onclick="sendOn()" class="button1">
-                <span> Bestellen </span>
-              </button>
-            </td>
-          </tr>
-        </table>
+              <td>
+                <button onclick="sendOn()" class="button1 button1Checkout">
+                  <span> Bestellen </span>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
 

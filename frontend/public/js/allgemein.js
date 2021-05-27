@@ -85,7 +85,7 @@ function setzenHtml(data) {
     waren.innerHTML = "offene Bestellungen";
     waren.setAttribute("href", "/ausstehendeBestellungen");
     shop.innerHTML = "Ihre Daten";
-    shop.setAttribute("href", "/ihreDaten");
+    shop.setAttribute("href", "/ihreDatenMitarbeiter");
   } else if (be == 1) {
     console.log("admin");
     user.innerHTML = "Admin";

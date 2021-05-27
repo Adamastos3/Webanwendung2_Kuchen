@@ -1,5 +1,6 @@
 const form = document.getElementById("paymentForm");
 const form1 = document.getElementById("userForm");
+const form2 = document.getElementById("lieferForm");
 var zahl = 0;
 
 const pathZahlung = "http://localhost:3000/kasse/api/zahlung";
@@ -295,9 +296,50 @@ function benutzerSetzen(data) {
   document.getElementById("hausnr").value = hausnr;
 }
 
+function setLieferdatum() {
+  let elem = document.getElementById("lieferdatum");
+  let t = new Date();
+  let duration = 2;
+  t.setTime(t.getTime() + duration * 24 * 60 * 60 * 1000);
+
+  console.log(t);
+  let d = t.getDate();
+  let m = t.getMonth() + 1;
+  let j = t.getFullYear();
+
+  if (t < 10) {
+    d = "0" + d;
+  }
+  if (m < 10) {
+    m = "0" + m;
+  }
+  let result = "" + d + "-" + m + "-" + j;
+
+  elem.setAttribute("value", result);
+}
+
+function checkDatum() {
+  let elem = document.getElementById("lieferdatum");
+  if (elem.value == "") {
+    alert("Datum ist nicht eingefügt");
+    return false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum > 0) {
+      alert("Datum liegt in der Vergangenheit");
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 function sendOn() {
   console.log("SendOn Kasse zur Bestellbestätigung");
-  makeBestellung();
+  if (checkDatum()) {
+    makeBestellung();
+  }
   //changeKasse();
 }
 
@@ -345,8 +387,11 @@ function makeBestellung() {
   let daten = JSON.stringify({
     produkt: reg,
     bezahlung: findBezahlung(),
+    lieferdatum: document.getElementById("lieferdatum").value,
   });
 
+  console.log("daten");
+  console.log(daten);
   postRequest(pathBestellung, daten, killStorage);
 }
 
@@ -377,6 +422,7 @@ function findBezahlung() {
 }
 
 function changeKasse(data) {
+  let lieferdatum = document.getElementById("lieferdatum");
   let bestell = document.getElementById("Bestellnr");
   let changeDiv = document.getElementById("makeHidden");
   let changeName = document.getElementById("makeOrder");
@@ -401,7 +447,7 @@ function changeKasse(data) {
   changeName.innerHTML = "Bestellbestätigung";
   changeForm.style.display = "none";
   fixPayment.innerHTML += "<p>" + paymenttext + "</p>";
-
+  lieferdatum.setAttribute("readonly", true);
 
   inputFields.classList.add("ChangeInputField");
 }
@@ -413,6 +459,7 @@ function sendon() {
 getRequest(pathReg, setzenWarenkorbReg);
 getRequest(pathZahlung, setzenPayment);
 getRequest(pathbenutzer, benutzerSetzen);
+setLieferdatum();
 
 /*
 benutzerSetzen();

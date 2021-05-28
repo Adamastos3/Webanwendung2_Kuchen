@@ -180,12 +180,14 @@ function setWarenkorbSession(daten) {
 }
 
 function setPreis(preis) {
+  console.log(preis);
   let pf = Math.round(Number(preis) * 100) / 100;
+  console.log(pf);
   let r = "" + pf;
   let rf = r.split(".");
   console.log(rf);
   if (rf[1] != undefined) {
-    if (rf[1] < 10) {
+    if (rf[1] < 10 && rf[1].length < 2) {
       let result = "" + rf[0] + "," + rf[1] + "0";
       return result;
     } else {

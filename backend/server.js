@@ -87,6 +87,9 @@ try {
   serviceRouter = require("./services/zahlungsart.js");
   app.use(TOPLEVELPATH, serviceRouter);
 
+  serviceRouter = require("./services/warenkorb.js");
+  app.use(TOPLEVELPATH, serviceRouter);
+
   serviceRouter = require("./services/mehrwertsteuer.js");
   app.use(TOPLEVELPATH, serviceRouter);
 
@@ -97,9 +100,6 @@ try {
   app.use(TOPLEVELPATH, serviceRouter);
 
   serviceRouter = require("./services/bestellung.js");
-  app.use(TOPLEVELPATH, serviceRouter);
-
-  serviceRouter = require("./services/bewertung.js");
   app.use(TOPLEVELPATH, serviceRouter);
 
   serviceRouter = require("./services/benutzerrolle.js");

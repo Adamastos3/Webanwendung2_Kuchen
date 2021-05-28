@@ -43,9 +43,19 @@ function setzenHtmlBestell(data) {
     if (data[i].lieferzeitpunkt == null) {
       text += "Nicht geliefert";
     } else {
-      text += data[i].bestellzeitpunkt.substring(0, 10);
+      text += data[i].lieferzeitpunkt.substring(0, 10);
     }
 
+    text +=
+      "</p></td>" +
+      //geliefert
+      "<td><p>";
+
+    if (data[i].status == 0) {
+      text += "nicht geliefert, wird am Lieferdatum geliefert";
+    } else {
+      text += "geliefert";
+    }
     text += "</p></td>";
 
     console.log(table1);

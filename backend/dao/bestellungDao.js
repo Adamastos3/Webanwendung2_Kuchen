@@ -29,6 +29,9 @@ class BestellungDao {
     result.bestellzeitpunkt = helper.formatToGermanDateTime(
       helper.parseSQLDateTimeString(result.bestellzeitpunkt)
     );
+    result.lieferzeitpunkt = helper.formatToGermanDateTime(
+      helper.parseSQLDateTimeString(result.lieferzeitpunkt)
+    );
 
     if (helper.isNull(result.bestellerid)) {
       result.besteller = null;
@@ -77,6 +80,10 @@ class BestellungDao {
     for (var i = 0; i < result.length; i++) {
       result[i].bestellzeitpunkt = helper.formatToGermanDateTime(
         helper.parseSQLDateTimeString(result[i].bestellzeitpunkt)
+      );
+
+      result[i].lieferzeitpunkt = helper.formatToGermanDateTime(
+        helper.parseSQLDateTimeString(result[i].lieferzeitpunkt)
       );
 
       if (helper.isNull(result[i].bestellerid)) {
@@ -136,19 +143,21 @@ class BestellungDao {
     bestellzeitpunkt = null,
     bestellerid = null,
     zahlungsartid = null,
-    bestellpositionen = []
+    bestellpositionen = [],
+    lieferdatum = null
   ) {
     const bestellpositionDao = new BestellpositionDao(this._conn);
 
     if (helper.isNull(bestellzeitpunkt)) bestellzeitpunkt = helper.getNow();
-
+    if (helper.isNull(lieferdatum)) lieferdatum = helper.getNowPlusTwo();
     var sql =
-      "INSERT INTO Bestellung (Bestellzeitpunkt,BestellerID,ZahlungsartID) VALUES (?,?,?)";
+      "INSERT INTO Bestellung (Bestellzeitpunkt,BestellerID,ZahlungsartID,Lieferzeitpunkt) VALUES (?,?,?,?)";
     var statement = this._conn.prepare(sql);
     var params = [
       helper.formatToSQLDateTime(bestellzeitpunkt),
       bestellerid,
       zahlungsartid,
+      helper.formatToSQLDateTime(lieferdatum),
     ];
     var result = statement.run(params);
 
@@ -174,22 +183,24 @@ class BestellungDao {
     bestellzeitpunkt = null,
     bestellerid = null,
     zahlungsartid = null,
-    bestellpositionen = []
+    bestellpositionen = [],
+    lieferdatum = null
   ) {
     const bestellpositionDao = new BestellpositionDao(this._conn);
     bestellpositionDao.deleteByParent(id);
 
     if (helper.isNull(bestellzeitpunkt)) bestellzeitpunkt = helper.getNow();
+    if (helper.isNull(lieferdatum)) lieferdatum = helper.getNowPlusTwo();
 
     var sql =
-      "UPDATE Bestellung SET Bestellzeitpunkt=?,BestellerID=?,ZahlungsartID=?, Status=?, lieferzeitpunkt=? WHERE ID=?";
+      "UPDATE Bestellung SET Bestellzeitpunkt=?,BestellerID=?,ZahlungsartID=?, Status=?, Lieferzeitpunkt=? WHERE ID=?";
     var statement = this._conn.prepare(sql);
     var params = [
       helper.formatToSQLDateTime(bestellzeitpunkt),
       bestellerid,
       zahlungsartid,
       1,
-      helper.formatToSQLDateTime(helper.getNow()),
+      helper.formatToSQLDateTime(lieferdatum),
       id,
     ];
     var result = statement.run(params);

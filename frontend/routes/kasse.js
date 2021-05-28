@@ -6,6 +6,7 @@ const zahlung = require("../API_Access/Zahlung/zahlung");
 const benutzer = require("../API_Access/Benutzer/benutzer");
 const person = require("../API_Access/Person/person");
 const bestellung = require("../API_Access/Bestellung/bestellung");
+const warenkorb = require("../API_Access/Bestellung/warenkorb");
 
 //kasse
 
@@ -42,16 +43,16 @@ async function getPerson(req, res) {
 
 async function createBestellung(req, res) {
   let id = req.session.username;
+  console.log("create Bestellung");
+  console.log(req.body);
   const a = await bestellung.createBestellung(req.body, id);
-  if (a) {
-    let daten = JSON.stringify({
-      fehler: false,
-    });
+  if (a.fehler == null) {
+    const c = await warenkorb.resetWarenkorb(id);
+    console.log(c);
+    let daten = JSON.stringify(a);
     res.send(daten);
   } else {
-    let daten = JSON.stringify({
-      fehler: true,
-    });
+    let daten = JSON.stringify(a);
     res.send(daten);
   }
 }

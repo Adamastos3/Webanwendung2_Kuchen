@@ -4,6 +4,33 @@ const person = require("./../Person/person");
 const validator = require("./../../Module/Validator/validator");
 
 async function setIhreDaten(body, id) {
+  function geb(body) {
+    //bug
+    let a = body.geb.split("-");
+    console.log("geb " + a);
+    if (a.length == 1) {
+      return a[0];
+    } else {
+      let r = "" + a[2] + "." + a[1] + "." + a[0];
+      console.log(r);
+      return r;
+    }
+  }
+
+  function checkForSS(text) {
+    let str = "";
+    if (text.includes("ß")) {
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] == "ß") {
+          str += "ss";
+        } else {
+          str += text[i];
+        }
+      }
+    }
+    return str;
+  }
+
   //Holen der Daten für den benutzer
   console.log(body);
   console.log(id);
@@ -90,33 +117,6 @@ function setAnrede(anrede) {
   }
 }
 */
-
-function geb(body) {
-  //bug
-  let a = body.geb.split("-");
-  console.log("geb " + a);
-  if (a.length == 1) {
-    return a[0];
-  } else {
-    let r = "" + a[2] + "." + a[1] + "." + a[0];
-    console.log(r);
-    return r;
-  }
-}
-
-function checkForSS(text) {
-  let str = "";
-  if (text.includes("ß")) {
-    for (let i = 0; i < text.length; i++) {
-      if (text[i] == "ß") {
-        str += "ss";
-      } else {
-        str += text[i];
-      }
-    }
-  }
-  return str;
-}
 
 async function getBenutzerDaten(id) {
   const b = await benutzer.getBenutzerbyId(id);

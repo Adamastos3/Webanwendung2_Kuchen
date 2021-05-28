@@ -36,6 +36,10 @@ function setzenHtmlAusstehendeBestellung(data) {
       "<td><p>" +
       data[i].bestellzeitpunkt.substring(0, 10) +
       "</p></td>" +
+      //Lieferzeitpunkt
+      "<td><p>" +
+      data[i].lieferzeitpunkt.substring(0, 10) +
+      "</p></td>" +
       "<td>" +
       "<button onclick=erledigt('" +
       elem +
@@ -52,7 +56,7 @@ function erledigt(id) {
   console.log(id);
   let path = "http://localhost:3000/ausstehendeBestellungen";
   let element = document.getElementById(id);
-  //console.log(element)
+  console.log(element);
   element.parentNode.removeChild(element);
   let data = JSON.stringify({
     id: id,

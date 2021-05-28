@@ -110,6 +110,14 @@ async function setKunde(body) {
   }
 }
 
+async function deleteKunden(req) {
+  const a = validator.checkID(req.params.id);
+  if (a.length < 1) {
+    const b = benutzer.deleteBenutzer(req.params.id);
+    console.log(b);
+  }
+}
+
 function checkForSS(text) {
   let str = "";
   if (text.includes("ß")) {
@@ -124,4 +132,4 @@ function checkForSS(text) {
   return str;
 }
 
-module.exports = { getKunden, getKunde, setKunde };
+module.exports = { getKunden, getKunde, setKunde, deleteKunden };

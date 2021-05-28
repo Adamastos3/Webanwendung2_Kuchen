@@ -13,7 +13,7 @@ getRequest(pathAllgemein, setzenHtml);
 
 //Richtig
 //
-function getRequest(path, func) {
+function getRequest(path, func, info = undefined) {
   let request = new XMLHttpRequest();
   request.open("GET", path);
   request.onload = function () {
@@ -21,7 +21,11 @@ function getRequest(path, func) {
     let data = JSON.parse(request.responseText);
     console.log(data);
     if (data.daten != null) {
-      func(data.daten);
+      if (info == undefined) {
+        func(data.daten);
+      } else {
+        func(data.daten, info);
+      }
     } else {
       storeAnzeigen();
       console.log(data.fehler);
@@ -29,6 +33,20 @@ function getRequest(path, func) {
   };
   request.send();
 }
+
+/*
+function getRequestWithData(path, daten) {
+  console.log("daten");
+  console.log(daten);
+  let request = new XMLHttpRequest();
+  request.open("GET", path, true);
+  request.setRequestHeader("Content-type", "application/json");
+  request.onload = function () {
+    console.log(request.responseText);
+  };
+  request.send(daten);
+}
+*/
 
 function postRequest(path, data, func = undefined) {
   console.log(data);
@@ -56,11 +74,18 @@ function setzenHtml(data) {
   let be = data.benutzerrolle.id;
   console.log(be);
   let usernamen = data.benutzername;
-  if (be != 1) {
+  if (be == 3) {
     user.innerHTML = "" + usernamen;
     user.setAttribute("href", "/account");
     console.log("store");
-    storeAnzeigen();
+    setWarenkorb(data);
+  } else if (be == 2) {
+    user.innerHTML = "" + usernamen;
+    user.setAttribute("href", "/accountMitarbeiter");
+    waren.innerHTML = "offene Bestellungen";
+    waren.setAttribute("href", "/ausstehendeBestellungen");
+    shop.innerHTML = "Ihre Daten";
+    shop.setAttribute("href", "/ihreDatenMitarbeiter");
   } else if (be == 1) {
     console.log("admin");
     user.innerHTML = "Admin";
@@ -69,6 +94,8 @@ function setzenHtml(data) {
     waren.setAttribute("href", "/ausstehendeBestellungen");
     shop.innerHTML = "Kundendaten";
     shop.setAttribute("href", "/kundendaten");
+  } else {
+    console.log("Nicht angemeldet");
   }
 }
 
@@ -127,4 +154,61 @@ function storeAnzeigen() {
 
 function sendToStart() {
   location.href = "/";
+}
+
+function setWarenkorb(data) {
+  console.log("setzen Warenkorb");
+  console.log(data);
+  let re = sessionStorage.getItem("regular");
+  let indi = sessionStorage.getItem("Individual");
+  let benutzername = data.benutzername;
+  let path = "http://localhost:3000/allgemein/warenkorb/";
+
+  if (re == "" && indi == "") {
+    if (benutzername != undefined) {
+      getRequest(path, setWarenkorbSession);
+    }
+  }
+  storeAnzeigen();
+}
+
+function setWarenkorbSession(daten) {
+  let wareen = daten.warenkorb.split("-");
+  sessionStorage.setItem("regular", wareen[0]);
+  sessionStorage.setItem("Individual", wareen[1]);
+  storeAnzeigen();
+}
+
+function setPreis(preis) {
+  console.log(preis);
+  let pf = Math.round(Number(preis) * 100) / 100;
+  console.log(pf);
+  let r = "" + pf;
+  let rf = r.split(".");
+  console.log(rf);
+  if (rf[1] != undefined) {
+    if (rf[1] < 10 && rf[1].length < 2) {
+      let result = "" + rf[0] + "," + rf[1] + "0";
+      return result;
+    } else {
+      let result = "" + rf[0] + "," + rf[1];
+      return result;
+    }
+  } else {
+    let result = "" + rf[0] + ",00";
+    return result;
+  }
+}
+
+function changePreis(preis) {
+  let p = preis.split(",");
+  console.log(p);
+  let pr = "";
+  if (p[1] == undefined) {
+    pr += p[0] + ".00";
+  } else {
+    pr += p[0] + "." + p[1];
+  }
+
+  return Number(pr);
 }

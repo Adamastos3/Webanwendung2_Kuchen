@@ -18,21 +18,33 @@ function addSum() {
   let mehr = document.getElementById("mehrwert");
   let gesamt = document.getElementById("gesamtsumme");
 
-  let a = Number(document.getElementById("select1").innerHTML.substr(-15, 5));
-  let b = Number(document.getElementById("select2").innerHTML.substr(-15, 5));
-  let c = Number(document.getElementById("select3").innerHTML.substr(-15, 5));
-  let d = Number(document.getElementById("select4").innerHTML.substr(-15, 5));
+  console.log("Preise von indi");
+  let a = changePreis(
+    document.getElementById("select1").innerHTML.substr(-16, 6)
+  );
+  console.log(a);
+  let b = changePreis(
+    document.getElementById("select2").innerHTML.substr(-16, 6)
+  );
+  console.log(b);
+  let c = changePreis(
+    document.getElementById("select3").innerHTML.substr(-16, 6)
+  );
+  console.log(c);
+  let d = changePreis(
+    document.getElementById("select4").innerHTML.substr(-16, 6)
+  );
 
   console.log(d);
-  result = Math.round((a + b + c + d) * 1000) / 1000;
+  result = Math.round((a + b + c + d) * 100) / 100;
 
-  sum = Math.round(((result * 100) / 107) * 1000) / 1000;
+  sum = Math.round(((result * 100) / 107) * 100) / 100;
   console.log(sum);
-  mehrwert = Math.round((result - sum) * 1000) / 1000;
+  mehrwert = Math.round((result - sum) * 100) / 100;
   console.log(mehrwert);
-  summ.innerHTML = sum + "€";
-  mehr.innerHTML = mehrwert + "€";
-  gesamt.innerHTML = result + "€";
+  summ.innerHTML = setPreis("" + sum) + "€";
+  mehr.innerHTML = setPreis("" + mehrwert) + "€";
+  gesamt.innerHTML = setPreis("" + result) + "€";
 }
 
 /*
@@ -129,8 +141,11 @@ function bildChange(a) {
 }
 */
 function blink(a) {
-  
+  setInfoText(a);
   let bild = document.getElementById(a);
+  let b = document.getElementById("bilder");
+  b.style.backgroundColor = "grey";
+  console.log(bild);
   if (timer1 != null) {
     clearInterval(timer1);
     document.getElementById("topping").style.visibility = "visible";
@@ -145,10 +160,26 @@ function blink(a) {
       bild.style.visibility = "visible";
     }
   }, 1000);
-  
 }
 
-//Prototype
+function setInfoText(info) {
+  let text = document.getElementById("infoText");
+  text.style.color = "white";
+  text.style.fontSize = "110%";
+  if (info == "topping") {
+    let s = "Sie bearbeiten gerade das Topping des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "topping2") {
+    let s = "Sie bearbeiten gerade die Außenschicht des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "middle") {
+    let s = "Sie bearbeiten gerade die Füllung des Kuchens";
+    text.innerHTML = s;
+  } else if (info == "bottom") {
+    let s = "Sie bearbeiten gerade den Boden des Kuchens";
+    text.innerHTML = s;
+  }
+}
 
 function sendOn() {
   store();
@@ -198,7 +229,7 @@ function store() {
 function setzenHTMLIndi(data) {
   console.log("setze");
   let table = document.getElementById("tableIndi");
-  let bild = document.getElementById("bildMaterial");
+  //let bild = document.getElementById("bildMaterial");
 
   /*let top = [];
   let aussen = [];
@@ -233,18 +264,18 @@ function setzenHTMLIndi(data) {
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].kategorie.id == 1) {
-      if (bildid == 0) {
-        bild.src = data[i].bilder[0].bildpfad;
-      }
-      bildid++;
+      //if (bildid == 0) {
+      // bild.src = data[i].bilder[0].bildpfad;
+      //}
+      // bildid++;
       text +=
         "<option value='" +
         data[i].id +
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -265,8 +296,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -284,8 +315,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -303,8 +334,8 @@ function setzenHTMLIndi(data) {
         "'><p>" +
         data[i].bezeichnung +
         "  " +
-        data[i].bruttopreis +
-        "€</p></option>";
+        setPreis(data[i].bruttopreis) +
+        " €</p></option>";
     }
   }
 
@@ -318,17 +349,36 @@ function setzenHTMLIndi(data) {
 function start(a, id) {
   console.log(id);
   let path = "http://localhost:3000/sortimentI/api/" + id;
+
   console.log(a);
   blink(a);
   console.log(path);
-  getRequest(path, picturesChange);
+  getRequest(path, picturesChange, a);
 }
 
-function picturesChange(data) {
-  let x = document.getElementById("bildMaterial");
-  let s = data.bilder[0].bildpfad;
+function picturesChange(data, info) {
+  if (info == "topping") {
+    let x = document.getElementById("toppingPicture");
+    let s = data.bilder[0].bildpfad;
 
-  x.src = s;
+    x.src = s;
+  } else if (info == "topping2") {
+    let x = document.getElementById("aussenPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  } else if (info == "middle") {
+    let x = document.getElementById("fuellPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  } else if (info == "bottom") {
+    let x = document.getElementById("bottomPicture");
+    let s = data.bilder[0].bildpfad;
+
+    x.src = s;
+  }
+
   //addSum();
 }
 

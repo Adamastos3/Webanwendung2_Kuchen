@@ -1,19 +1,5 @@
 const validator = require("validator");
 
-function checkForSS(text) {
-  let str = "";
-  if (text.includes("ß")) {
-    for (let i = 0; i < text.length; i++) {
-      if (text[i] == "ß") {
-        str += "ss";
-      } else {
-        str += text[i];
-      }
-    }
-  }
-  return str;
-}
-
 async function checkLogin(body) {
   let error = [];
   const b = await validator.isAlphanumeric(body.username);
@@ -56,6 +42,19 @@ async function checkPassword(body) {
   return error;
 }
 
+async function checkDate(date) {
+  let error = [];
+  const b = await validator.isDate(date);
+  console.log(b);
+  if (!b) {
+    error.push({
+      bezeichnung: "Datum ist nicht richtig formatiert",
+    });
+  }
+
+  return error;
+}
+
 async function checkVorname(body) {
   let error = [];
   const b = await validator.isAlpha(body.vorname);
@@ -87,6 +86,20 @@ async function checkNachname(body) {
 }
 
 async function checkStrasse(body) {
+  function checkForSS(text) {
+    let str = "";
+    if (text.includes("ß")) {
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] == "ß") {
+          str += "ss";
+        } else {
+          str += text[i];
+        }
+      }
+    }
+    return str;
+  }
+
   let error = [];
   const str = checkForSS(body.strasse);
   const b = await validator.isAlpha(str);
@@ -190,12 +203,12 @@ async function checkProdukt(id) {
 
 async function checkID(id) {
   let error = [];
-  const b = await validator.isNumeric(id);
-  const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
+  const b = await validator.isNumeric("" + id);
+  const c = await validator.isLength("" + id, [{ min: 1, max: 4 }]);
   console.log(b);
   if (!b && !c) {
     error.push({
-      bezeichnung: "Keine Nummer ",
+      bezeichnung: "Keine gültige Nummer ",
     });
   }
 
@@ -208,6 +221,24 @@ async function checkText(body) {
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?. ";
   for (let i = 0; i < body.text.length; i++) {
     if (data.includes(body.text[i])) {
+      continue;
+    } else {
+      error.push({
+        bezeichnung: "Falsche Zeichen ",
+      });
+      return error;
+    }
+  }
+  return error;
+}
+
+async function checkWarenkorbInhalt(body) {
+  console.log(body);
+  let error = [];
+  let data = "0123456789/-";
+  let str = body;
+  for (let i = 0; i < str.length; i++) {
+    if (data.includes(str.charAt(i))) {
       continue;
     } else {
       error.push({
@@ -268,8 +299,9 @@ async function checkKasse(body) {
   for (let i = 0; i < elem.length; i++) {
     let a = await checkKasseProdukt(body.produkt[i]);
     let b = await checkKasseZahlung(body);
+    let c = await checkDate(body.lieferdatum);
     console.log("test validator");
-    if (a && b) {
+    if (a && b && c) {
       res.push(true);
     } else {
       res.push(false);
@@ -290,6 +322,39 @@ async function checkPasswortVergessen(body) {
   let er = [];
   er.push(await checkLogin(body));
   er.push(await checkMail(body));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
+async function checkWarenkorbPost(body) {
+  let error = [];
+  let er = [];
+
+  er.push(checkID(body.benutzerid));
+  er.push(checkWarenkorbInhalt(body.warenkorb));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  return error;
+}
+
+async function checkWarenkorb(body) {
+  let error = [];
+  let er = [];
+
+  er.push(checkID(body.id));
+  er.push(checkID(body.benutzerid));
+  er.push(checkWarenkorbInhalt(body.warenkorb));
 
   for (let i = 0; i < er.length; i++) {
     if (er[i].length == 1) {
@@ -402,4 +467,6 @@ module.exports = {
   checkKundenDaten,
   checkPasswortVergessen,
   checkKontakt,
+  checkWarenkorb,
+  checkWarenkorbPost,
 };

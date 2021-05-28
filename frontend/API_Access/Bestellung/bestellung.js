@@ -1,17 +1,20 @@
-const postRequest = require("../Request/postRequest");
+const request = require("../Request/request");
 const validator = require("../../Module/Validator/validator");
-const getRequest = require("../Request/getRequest");
-const putRequest = require("../Request/putRequest");
 const produkt = require("../Sortiment/produkt");
 const benutzer = require("../Benutzer/benutzer");
 const zahlung = require("../Zahlung/zahlung");
-const mail = require("../../Module/Nodemailer/mail");
+const mail = require("../../Module/Nodemailer/sendMail");
 
 const pas = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 const pathIndi = "http://localhost:8000/wba2api/individuelles/alle" + pas;
 const pathBestellung = "http://localhost:8000/wba2api/bestellung" + pas;
 
 async function createBestellung(body, id) {
+  function toGerman(date) {
+    let a = date.split("-");
+    return a[2] + "." + a[1] + "." + a[0];
+  }
+
   console.log(body);
   const a = await validator.checkKasse(body);
 
@@ -35,25 +38,38 @@ async function createBestellung(body, id) {
           id: await checkZahlungsart(body.bezahlung),
         },
         bestellpositionen: pro,
+        lieferdatum: toGerman(body.lieferdatum),
       });
       console.log("daten bestellung");
       console.log(datenBestellung);
-      const postBestellung = await postRequest(pathBestellung, datenBestellung);
+      const postBestellung = await request.postRequest(
+        pathBestellung,
+        datenBestellung
+      );
       console.log("Bestellung fertig");
       console.log(postBestellung);
       if (postBestellung != null) {
-        //Mail fehlt noch
+        //Mail muss aktiviert werden
+        //const info = await mail.sendBestellbestaetigung(postBestellung);
         console.log("hat funktioniert");
-        return true;
+        let result = {
+          fehler: null,
+          daten: {
+            id: postBestellung.id,
+            zeitpunkt: postBestellung.bestellzeitpunkt,
+            lieferzeitpunkt: postBestellung.lieferzeitpunkt,
+          },
+        };
+        return result;
       } else {
-        return false;
+        let result = {
+          fehler: true,
+        };
+        return result;
       }
     }
   }
 }
-
-//fehlt noch
-function sendenMail(person, bestellung) {}
 
 async function checkZahlungsart(name) {
   const a = await zahlung.getZahlungAll();
@@ -67,7 +83,7 @@ async function checkZahlungsart(name) {
 
 async function setBestellposition(body) {
   let pro = [];
-  const indiDaten = await getRequest(pathIndi);
+  const indiDaten = await request.getRequest(pathIndi);
   console.log(indiDaten);
   for (let i = 0; i < body.produkt.length; i++) {
     let elem = body.produkt[i];
@@ -171,8 +187,8 @@ async function getBestellungByUserId(username) {
       daten: null,
     });
   } else {
-    const r = await getRequest(pathBes + pas);
-    const be = await getRequest(pathB + username + pas);
+    const r = await request.getRequest(pathBes + pas);
+    const be = await request.getRequest(pathB + username + pas);
     console.log(r);
     console.log(be);
     if (r.daten != null && be.daten != null) {
@@ -210,7 +226,7 @@ async function getBestellungByUserId(username) {
 
 async function getAusstehendeBestellungen() {
   const path = "http://localhost:8000/wba2api/bestellung/alle" + pas;
-  const r = await getRequest(path);
+  const r = await request.getRequest(path);
   let res = [];
   if (r.daten != null) {
     for (let i = 0; i < r.daten.length; i++) {
@@ -256,9 +272,10 @@ async function bestellungErledigt(body) {
         id: oldData.daten.zahlungsart.id,
       },
       bestellpositionen: oldData.daten.bestellpositionen,
+      lieferdatum: oldData.daten.lieferzeitpunkt,
     });
     console.log(data);
-    const geaendert = await putRequest(path, data);
+    const geaendert = await request.putRequest(path, data);
     console.log(geaendert);
     if (geaendert != null) {
       return JSON.stringify({
@@ -277,7 +294,7 @@ async function bestellungErledigt(body) {
 
 async function getBestellungByID(id) {
   const pathID = "http://localhost:8000/wba2api/bestellung/gib/" + id + pas;
-  const a = await getRequest(pathID);
+  const a = await request.getRequest(pathID);
   return a;
 }
 

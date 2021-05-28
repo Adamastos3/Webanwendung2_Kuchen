@@ -1,5 +1,6 @@
 const form = document.getElementById("paymentForm");
 const form1 = document.getElementById("userForm");
+const form2 = document.getElementById("lieferForm");
 var zahl = 0;
 
 const pathZahlung = "http://localhost:3000/kasse/api/zahlung";
@@ -48,19 +49,24 @@ function addsumm() {
   let wert = 0;
   for (let i = 0; i < a.length; i++) {
     //die Werte aufsummieren
-    let d = a[i].innerHTML.substring(0, 4);
+    let d = a[i].innerHTML.substring(0, 5).split(",");
     console.log(d);
+    let dr = "" + d[0] + "." + d[1];
+    console.log(dr);
     let counterNumber = ammountCounter[i].value;
     console.log(counterNumber);
-    wert = wert + Number(d) * Number(counterNumber);
+    wert = wert + Number(dr) * Number(counterNumber);
   }
   console.log("wert: " + wert);
-  gesamt.innerHTML = Math.round(wert * 100) / 100 + "€";
+  let ge = Math.round(wert * 100) / 100;
+  gesamt.innerHTML = setPreis("" + ge) + "€";
   //let steuer = Math.round(wert * 0.07 * 100) / 100;
-
-  sum.innerHTML = Math.round((wert / 1.07) * 100) / 100 + "€";
-  mehr.innerHTML =
-    Math.round((wert - Math.round(wert / 1.07)) * 100) / 100 + "€";
+  let su = Math.round((wert / 1.07) * 100) / 100;
+  console.log(su);
+  sum.innerHTML = setPreis("" + su) + "€";
+  let mehrw = Math.round((wert - Math.round(wert / 1.07)) * 100) / 100;
+  console.log(mehrw);
+  mehr.innerHTML = setPreis("" + mehrw) + "€";
 }
 
 function setzenWarenkorbReg(data) {
@@ -104,12 +110,8 @@ function setzenWarenkorbReg(data) {
           "'  readonly>" +
           "</td>" +
           "<td><p class='preis'>" +
-          data[j].bruttopreis +
+          setPreis(data[j].bruttopreis) +
           "€</p></td>" +
-          "<td><button onclick=removeElem('" +
-          elem +
-          "')>" +
-          "<img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
           "</tr>";
         console.log("counterID: " + counterID);
         console.log("elem: " + elem);
@@ -118,8 +120,8 @@ function setzenWarenkorbReg(data) {
         zahl += 1;
       }
     }
-    getRequest(pathIndi, setzenWarenkorbIndi);
   }
+  getRequest(pathIndi, setzenWarenkorbIndi);
 } //addet die REGULÄREN kuchen
 
 //fehlrt noch
@@ -171,11 +173,8 @@ function setzenWarenkorbIndi(data) {
         "' readonly >" +
         "</td>" +
         "<td><p class='preis'>" +
-        kosten +
+        setPreis(kosten) +
         "€</p></td>" +
-        "<td><button onclick=removeElem('" +
-        elem +
-        "')><img src='./img/shoppingCartCancel.png' alt=''></button></td>" +
         "</tr>";
       console.log("counterID: " + counterID);
 
@@ -274,6 +273,7 @@ function setzenPayment(data) {
 1;
 
 function benutzerSetzen(data) {
+  console.log(data);
   var email = data.email;
   var anrede = data.anrede;
   var vorname = data.vorname;
@@ -296,10 +296,51 @@ function benutzerSetzen(data) {
   document.getElementById("hausnr").value = hausnr;
 }
 
+function setLieferdatum() {
+  let elem = document.getElementById("lieferdatum");
+  let t = new Date();
+  let duration = 2;
+  t.setTime(t.getTime() + duration * 24 * 60 * 60 * 1000);
+
+  console.log(t);
+  let d = t.getDate();
+  let m = t.getMonth() + 1;
+  let j = t.getFullYear();
+
+  if (t < 10) {
+    d = "0" + d;
+  }
+  if (m < 10) {
+    m = "0" + m;
+  }
+  let result = "" + d + "-" + m + "-" + j;
+
+  elem.setAttribute("value", result);
+}
+
+function checkDatum() {
+  let elem = document.getElementById("lieferdatum");
+  if (elem.value == "") {
+    alert("Datum ist nicht eingefügt");
+    return false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum > 0) {
+      alert("Datum liegt in der Vergangenheit");
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 function sendOn() {
   console.log("SendOn Kasse zur Bestellbestätigung");
-  makeBestellung();
-  changeKasse();
+  if (checkDatum()) {
+    makeBestellung();
+  }
+  //changeKasse();
 }
 
 function makeBestellung() {
@@ -346,15 +387,19 @@ function makeBestellung() {
   let daten = JSON.stringify({
     produkt: reg,
     bezahlung: findBezahlung(),
+    lieferdatum: document.getElementById("lieferdatum").value,
   });
 
+  console.log("daten");
+  console.log(daten);
   postRequest(pathBestellung, daten, killStorage);
 }
 
 function killStorage(data) {
   let e = data.fehler;
   console.log(e);
-  if (!e) {
+  if (e == null) {
+    changeKasse(data);
     console.log("clear");
     sessionStorage.clear();
     initStorage();
@@ -376,17 +421,35 @@ function findBezahlung() {
   }
 }
 
-function changeKasse() {
-  var changeDiv = document.getElementById("makeHidden");
-  var changeName = document.getElementById("makeOrder");
-  var changeForm = document.getElementById("paymentForm");
-  var fixPayment = document.getElementById("fixedPayment");
-  var paymenttext = document.getElementById("Infosatz").innerHTML;
+function changeKasse(data) {
+  let lieferdatum = document.getElementById("lieferdatum");
+  let bestell = document.getElementById("Bestellnr");
+  let changeDiv = document.getElementById("makeHidden");
+  let changeName = document.getElementById("makeOrder");
+  let changeForm = document.getElementById("paymentForm");
+  let fixPayment = document.getElementById("fixedPayment");
+  let paymenttext = document.getElementById("Infosatz").innerHTML;
+  let inputFields = document.getElementById("userForm");
 
+  bestell.style.display = "table";
+  bestell.innerHTML =
+    "<tr>" +
+    "<td>Vielen Dank für Ihre Bestellung</td>" +
+    "<td>" +
+    "Ihre Bestellnummer lautet: " +
+    data.daten.id +
+    "</td>" +
+    "<td>" +
+    "Bestelldatum: " +
+    data.daten.zeitpunkt;
+  +"</td>" + "</tr>";
   changeDiv.style.display = "none";
   changeName.innerHTML = "Bestellbestätigung";
   changeForm.style.display = "none";
   fixPayment.innerHTML += "<p>" + paymenttext + "</p>";
+  lieferdatum.setAttribute("readonly", true);
+
+  inputFields.classList.add("ChangeInputField");
 }
 
 function sendon() {
@@ -396,6 +459,7 @@ function sendon() {
 getRequest(pathReg, setzenWarenkorbReg);
 getRequest(pathZahlung, setzenPayment);
 getRequest(pathbenutzer, benutzerSetzen);
+setLieferdatum();
 
 /*
 benutzerSetzen();

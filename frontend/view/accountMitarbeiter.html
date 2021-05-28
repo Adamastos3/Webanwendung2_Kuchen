@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ausstehende Bestellungen</title>
+    <title>Account Mitarbeiter</title>
     <script src="./js/allgemein.js" defer></script>
-    <script src="./js/ausstehendeBestellungen.js" defer></script>
+    <script src="./js/accountAdmin.js" defer></script>
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
     <link href="./css/SSButtons.css" rel="stylesheet" />
-    <link href="./css/SSFieldset.css" rel="stylesheet" />
-    <link href="./css/SSTables.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -19,25 +17,20 @@
         <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
         <a href="/">Startseite</a>
         <a href="/shop" id="shop">Shop</a>
-        <a href="/warenkorb" class="navbarSelected" id="warenkorb">Warenkorb</a>
-        <a href="/account" id="user">Account</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/accountMitarbeiter" class="navbarSelected" id="user"
+          >Account</a
+        >
       </nav>
     </header>
 
-    <div class="containerVertical">
-      <div>
-        <h2>Ausstehende Bestellungen</h2>
-        <table class="tableList tableListHistory" id="tableAus">
-          <tr>
-            <th>Bestellnummer</th>
-            <th>Beschreibung</th>
-            <th>Rechnungsbetrag</th>
-            <th>Bestelldatum</th>
-            <th>Lieferdatum</th>
-            <th>Erledigt</th>
-          </tr>
-        </table>
-      </div>
+    <div class="containerVertical accountButtonsDiv">
+      <button><a href="/passwortAendern">Passwort ändern</a></button>
+      <button>
+        <a href="/ausstehendeBestellungen">ausstehende Bestellungen</a>
+      </button>
+      <button><a href="/ihreDatenMitarbeiter">Ihre Daten</a></button>
+      <button><a onclick="logout()">Abmelden</a></button>
     </div>
 
     <footer>

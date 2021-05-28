@@ -2,6 +2,7 @@ const person = require("../Person/person");
 const adresse = require("../Adresse/adresse");
 const benutzer = require("../Benutzer/benutzer");
 const validator = require("../../Module/Validator/validator");
+const mail = require("../../Module/Nodemailer/sendMail");
 
 async function register(body) {
   try {
@@ -17,8 +18,8 @@ async function register(body) {
       const excist = await benutzer.checkBenutzer(checkData);
       console.log(excist);
       if (excist) {
-        const id = await InputNewUser(body);
-        if (id > 0) {
+        const bdata = await InputNewUser(body);
+        if (bdata.id > 0) {
           return JSON.stringify({
             fehler: null,
           });
@@ -120,6 +121,8 @@ async function InputNewUser(body) {
   console.log(dataUser);
   const benutzerid = await benutzer.createBenutzer(dataUser);
   console.log(benutzerid);
+  //MAil muss aktivert werden
+  //const info = await mail.sendRegistrierung(benutzerid);
   return benutzerid;
 }
 

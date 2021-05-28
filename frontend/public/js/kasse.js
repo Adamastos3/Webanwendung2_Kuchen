@@ -120,8 +120,8 @@ function setzenWarenkorbReg(data) {
         zahl += 1;
       }
     }
-    getRequest(pathIndi, setzenWarenkorbIndi);
   }
+  getRequest(pathIndi, setzenWarenkorbIndi);
 } //addet die REGULÄREN kuchen
 
 //fehlrt noch

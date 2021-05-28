@@ -143,6 +143,9 @@ function bildChange(a) {
 function blink(a) {
   setInfoText(a);
   let bild = document.getElementById(a);
+  let b = document.getElementById("bilder");
+  b.style.backgroundColor = "grey";
+  console.log(bild);
   if (timer1 != null) {
     clearInterval(timer1);
     document.getElementById("topping").style.visibility = "visible";
@@ -161,6 +164,8 @@ function blink(a) {
 
 function setInfoText(info) {
   let text = document.getElementById("infoText");
+  text.style.color = "white";
+  text.style.fontSize = "110%";
   if (info == "topping") {
     let s = "Sie bearbeiten gerade das Topping des Kuchens";
     text.innerHTML = s;

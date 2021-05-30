@@ -14,9 +14,7 @@ server.get("/logout", isAuth, (req, res) => {
 
 async function saveWarenkorb(req, res) {
   req.body.benutzerid = req.session.username;
-  console.log(req.body);
   const a = await warenkorb.saveWarenkorb(req.body);
-  console.log(a);
   if (JSON.parse(a).fehler == null) {
     let daten = JSON.stringify({
       fehler: null,

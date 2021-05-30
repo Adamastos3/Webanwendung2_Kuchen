@@ -5,18 +5,12 @@ const passwortgenerator = require("../../Module/passwordGenerator/passwordGenera
 const mail = require("../../Module/Nodemailer/sendMail");
 
 async function setNewPassword(body, id) {
-  console.log(body);
   const user = await benutzer.getBenutzerbyId(id);
   const userPassHtml = md5(body.passOld);
-  console.log("User + new oas");
-  console.log(user);
-  console.log(userPassHtml);
 
   if (user.daten.passwort == userPassHtml) {
-    console.log("test");
-    let a = [1]; //await validator.checkPassword(body.passNew)
-    if (1 == 1) {
-      console.log("ändern");
+    let a = await validator.checkPassword(body.passNew);
+    if (a.length < 1) {
       let daten = JSON.stringify({
         id: user.daten.id,
         benutzername: user.daten.benutzername,
@@ -28,10 +22,7 @@ async function setNewPassword(body, id) {
           id: user.daten.person.id,
         },
       });
-      console.log("daten");
-      console.log(daten);
       const neues = await benutzer.updateBenutzer(daten);
-      console.log(neues);
       if (neues != null) {
         return JSON.stringify({
           fehler: null,
@@ -67,7 +58,6 @@ async function resetPassword(body) {
               id: benutzerdata.daten[i].person.id,
             },
           });
-          console.log(daten);
           const update = await benutzer.updateBenutzer(daten);
 
           if (update != null) {

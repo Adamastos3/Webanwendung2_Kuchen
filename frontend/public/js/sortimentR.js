@@ -1,22 +1,8 @@
-//ZUm Test ist nur Produkt 13 ausgewählt
-
 const pathSR = "http://localhost:3000/sortimentR/api";
-//const pathSRTest = "http://localhost:3000/sortimentR/api/13";
 var zahl = 1;
 
 function setzenHtmlSR(data) {
-  console.log(data);
   var div = document.getElementById("textdiv");
-  console.log(div);
-  console.log("row");
-
-  /*
-  var id = "id" + zahl;
-  var divBId = "divB" + zahl;
-  var divAId = "divA" + zahl;
-*/
-
-  //for (let i = 0; i < data.length; i++) {
   for (let i = 0; i <= data.length; i++) {
     let text = "";
     var id = "id" + zahl;
@@ -67,7 +53,7 @@ function setzenHtmlSR(data) {
       "</table></div></div>";
 
     div.innerHTML += text;
-    console.log(div);
+
     text = "";
     zahl++;
 
@@ -105,8 +91,7 @@ function sendOn(id) {
 function addWarenkorb(idP) {
   let regular = sessionStorage.getItem("regular");
   let pro = regular.split(",");
-  console.log(pro.length);
-  console.log(typeof pro[0]);
+
   let check = 1;
   if (pro[0] == "") {
     check = 3;
@@ -143,54 +128,8 @@ function addWarenkorb(idP) {
 
   regular = pro;
   sessionStorage.setItem("regular", regular);
-  console.log(sessionStorage);
+
   storeAnzeigen();
 }
 
 getRequest(pathSR, setzenHtmlSR);
-
-/*
-
-function store(a) {
-    let elem = a.value;
-    if(sessionStorage.getItem("regular")=="n" || sessionStorage.getItem("regular")=="n," || sessionStorage.getItem("regular") == "undefined" || sessionStorage.getItem("regular") == ""){
-        sessionStorage.setItem("regular", elem)
-    }
-    else{
-        let individual = sessionStorage.getItem("regular").split(",")
-        individual.push(elem);
-        sessionStorage.setItem("regular", individual)
-    }
-    console.log("sortiment")
-    console.log(sessionStorage)
-    storeAnzeigen()
-    
-}
-store("test")
-*/
-
-//Später einsetzen
-/*
-var request = new XMLHttpRequest();
-request.open('GET', 'http://localhost/8000/api/produkte/alle')
-request.onload=function() {
-    var data = JSON.parse(request.responseText);
-    console.log(data);
-}
-request.send();
-
-function setzenHtml(){
-
-}
-
-function store(a) {
-    let elem = document.getElementById(a).value;
-    let regular = sessionStorage.getItem("regular").split(",")
-    regular.push(elem);
-    sessionStorage.setItem("regular", regular)
-    
-}
-
-
-
-*/

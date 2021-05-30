@@ -43,21 +43,7 @@ async function checkPlz() {
   } else {
     plzW = true;
   }
-
-  console.log("plz");
 }
-/*
-function checkSefehler() {
-  if (anredeH.checked == true || anredeF.checked == true) {
-    sexW = true;
-  } else {
-    alert("Bitte geben Sie ein Geschlecht an");
-    sexW = false;
-  }
-
-  console.log("sefehler")
-}
-*/
 
 function checkPassword() {
   if (password1.value != password2.value) {
@@ -75,8 +61,6 @@ function checkPassword() {
       passW = true;
     }
   }
-
-  console.log("passwort");
 }
 
 function checkUser(data) {
@@ -114,13 +98,12 @@ async function requestReg() {
       email: document.getElementById("email").value,
     });
 
-    console.log(daten);
     var requestReg = new XMLHttpRequest();
     requestReg.open("Post", "http://localhost:3000/registrieren/api");
     requestReg.setRequestHeader("Content-type", "application/json");
     requestReg.onload = function () {
       let data = JSON.parse(requestReg.responseText);
-      console.log(data);
+
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
@@ -164,9 +147,7 @@ function druckFehler() {
 async function sendOnReg() {
   const a = await check();
 
-  console.log("a ist " + a);
   if (a && passW && plzW && userW && emailW) {
-    console.log("submit");
     let path = "http://localhost:3000/registrieren";
     let data = JSON.stringify({
       email: email.value,
@@ -182,7 +163,6 @@ async function sendOnReg() {
       hausnr: document.getElementById("hausnr").value,
     });
 
-    console.log(data);
     let b = await postRequest(path, data, requestServer);
   } else {
     druckFehler();
@@ -190,7 +170,6 @@ async function sendOnReg() {
     plzW = false;
     userW = false;
     mailW = false;
-    console.log("reset");
   }
 }
 

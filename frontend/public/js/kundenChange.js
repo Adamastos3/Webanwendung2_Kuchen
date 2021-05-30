@@ -9,11 +9,8 @@ var emailW = false;
 var feldW = false;
 var passW = false;
 
-console.log(pathKundenChange);
-
 function ids() {
   let a = document.cookie;
-  console.log(a);
   let id = Number(
     a
       .split("; ")
@@ -26,7 +23,6 @@ function ids() {
 
 function setzenHTMLKundenChange(data) {
   let person = data.person;
-  console.log(person);
 
   if (person.anrede == "Herr") {
     document.getElementById("Herr").checked = true;
@@ -50,16 +46,6 @@ function setzenHTMLKundenChange(data) {
 }
 
 function hideButton(id) {
-  /*
-  function hide(x) {
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-  */
-
   if (id == 0) {
     document.getElementById("b2").style.display = "block";
     document.getElementById("b1").style.display = "none";
@@ -193,7 +179,6 @@ function checkFields() {
     result = false;
   }
 
-  console.log("Vorname ist " + typeof document.getElementById("vorname").value);
   if (document.getElementById("vorname").value == "") {
     result = false;
   }
@@ -243,7 +228,6 @@ async function requestUserMail() {
     requestUser.setRequestHeader("Content-type", "application/json");
     requestUser.onload = function () {
       var data = JSON.parse(requestUser.responseText);
-      console.log(data);
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
@@ -262,9 +246,8 @@ async function requestUserMail() {
 
 async function sendData() {
   const a = await requestUserMail();
-  console.log("a ist " + a);
+
   if (a && sexW && plzW && userW && emailW && feldW && passW) {
-    console.log("submit");
     let daten = JSON.stringify({
       id: id,
       email: document.getElementById("email").value,
@@ -282,7 +265,6 @@ async function sendData() {
 
     let b = await postRequest(pathPostKunden, daten, aendernData);
   } else {
-    console.log("refresh");
     druckFehler();
     sexW = false;
     plzW = false;
@@ -328,9 +310,8 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
-  console.log(fehler);
+
   if (fehler == null) {
-    console.log("erledigt");
     getRequest(pathKundenChange, setzenHTMLKundenChange);
   } else {
     let text = "";

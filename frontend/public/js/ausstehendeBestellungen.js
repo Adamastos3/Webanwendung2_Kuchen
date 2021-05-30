@@ -2,7 +2,6 @@ const pathAussthendeBestellung =
   "http://localhost:3000/ausstehendeBestellungen/api";
 
 function setzenHtmlAusstehendeBestellung(data) {
-  console.log(data[0]);
   let table = document.getElementById("tableAus");
   let text = "";
 
@@ -53,10 +52,8 @@ function setzenHtmlAusstehendeBestellung(data) {
 }
 
 function erledigt(id) {
-  console.log(id);
   let path = "http://localhost:3000/ausstehendeBestellungen";
   let element = document.getElementById(id);
-  console.log(element);
   element.parentNode.removeChild(element);
   let data = JSON.stringify({
     id: id,
@@ -65,7 +62,6 @@ function erledigt(id) {
 }
 
 function showInfo(data) {
-  console.log(data);
   if (data.fehler == null) {
     alert("Bestellung ist erledigt");
   } else {

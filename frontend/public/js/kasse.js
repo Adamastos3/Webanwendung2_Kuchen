@@ -37,12 +37,10 @@ function changeRadion(a) {
 }
 
 function addsumm() {
-  console.log("addsum Funktion");
   let sum = document.getElementById("sum");
   let mehr = document.getElementById("mehr");
   let gesamt = document.getElementById("gesamt");
   let a = document.getElementsByClassName("preis");
-  console.log(a);
   let ammountCounter = document.getElementsByClassName("menge");
   //console.log("ammountCounter: " + ammountCounter[0].value); //Anzahl Kuchen im Warenkorb
 
@@ -50,41 +48,39 @@ function addsumm() {
   for (let i = 0; i < a.length; i++) {
     //die Werte aufsummieren
     let d = a[i].innerHTML.substring(0, 5).split(",");
-    console.log(d);
+
     let dr = "" + d[0] + "." + d[1];
-    console.log(dr);
+
     let counterNumber = ammountCounter[i].value;
-    console.log(counterNumber);
+
     wert = wert + Number(dr) * Number(counterNumber);
   }
-  console.log("wert: " + wert);
+
   let ge = Math.round(wert * 100) / 100;
   gesamt.innerHTML = setPreis("" + ge) + "€";
   //let steuer = Math.round(wert * 0.07 * 100) / 100;
   let su = Math.round((wert / 1.07) * 100) / 100;
-  console.log(su);
+
   sum.innerHTML = setPreis("" + su) + "€";
   let mehrw = Math.round((wert - Math.round(wert / 1.07)) * 100) / 100;
-  console.log(mehrw);
+
   mehr.innerHTML = setPreis("" + mehrw) + "€";
 }
 
 function setzenWarenkorbReg(data) {
-  console.log("Funktion: setzenWarenkorb");
   let art = document.getElementById("waren");
   let regular = sessionStorage.getItem("regular");
   var re = []; // Array für reguläre Kuchen
 
   if (regular != "") {
     re = regular.split(",");
-    console.log(re);
   }
 
   for (let i = 0; i < re.length; i++) {
     let id = Number(re[i].substring(0, 4));
-    console.log("id des regulären kuchen: " + id);
+
     let anzahl = Number(re[i].substring(4, 8));
-    console.log(anzahl);
+
     for (let j = 0; j < data.length; j++) {
       if (data[j].id == id) {
         let elem = "reElem" + id;
@@ -113,8 +109,7 @@ function setzenWarenkorbReg(data) {
           setPreis(data[j].bruttopreis) +
           "€</p></td>" +
           "</tr>";
-        console.log("counterID: " + counterID);
-        console.log("elem: " + elem);
+
         art.innerHTML += a;
 
         zahl += 1;
@@ -126,20 +121,17 @@ function setzenWarenkorbReg(data) {
 
 //fehlrt noch
 function setzenWarenkorbIndi(data) {
-  console.log(data);
   let art = document.getElementById("waren");
   let indivi = sessionStorage.getItem("Individual");
   if (indivi != "") {
     let indi = indivi.split(",");
-    console.log("indi");
-    console.log(indi);
-    console.log(indi[0]);
+
     for (let i = 0; i < indi.length; i++) {
       let element = indi[i].split("/");
       let anzahl = element[element.length - 1];
       let kosten = 0;
       let elem = "inElem" + indi[i];
-      console.log(elem);
+
       let counterID = "counter" + zahl;
       let b =
         "<tr id='" +
@@ -150,13 +142,10 @@ function setzenWarenkorbIndi(data) {
         "<p>Individueller Kuchen nach Ihrer Konfiguration<br>";
 
       for (let j = 0; j < element.length - 1; j++) {
-        console.log(element);
         let n = Number(element[j]);
-        console.log(n);
 
         for (let k = 0; k < data.length; k++) {
           if (data[k].id == n) {
-            console.log("test");
             b += data[k].beschreibung + "<br>";
             kosten += data[k].bruttopreis;
           }
@@ -176,7 +165,6 @@ function setzenWarenkorbIndi(data) {
         setPreis(kosten) +
         "€</p></td>" +
         "</tr>";
-      console.log("counterID: " + counterID);
 
       art.innerHTML += b;
 
@@ -214,66 +202,9 @@ function setzenPayment(data) {
       data[2].beschreibung +
       "</p>";
   }
-
-  /*
-  let tr = document.getElementById("tablePaymentTr");
-  let zahl = 0;
-  let elemId = "elem" + zahl;
-  for (let i = 0; i < data.length; i++) {
-    let text = "";
-
-    text +=
-      "<td>" +
-      "<label for='payment" +
-      data[i].id +
-      "' id='labelPayment" +
-      data[i].id +
-      "'> Vorkasse </label>" +
-      "<input type='radio' name='" +
-      data[i].bezeichnung +
-      "'" +
-      "value='" +
-      data[i].bezeichnung +
-      "'" +
-      "id='" +
-      elemId +
-      "'" +
-      "onclick=changeRadion('" +
-      elemId +
-      "', '" +
-      elemId +
-      "L')" +
-      "checked/> </td>";
-
-    zahl++;
-  }
-
-  let table = document.getElementById("tablePayment");
-  zahl = 0;
-  for (let i = 0; i < data.length; i++) {
-    let text = "";
-
-    text +=
-      "<tr id='" +
-      elemId +
-      "L'> <td colspan='3'>" +
-      "<h4>" +
-      data[i].bezeichnung +
-      "</h4>" +
-      "<p>" +
-      data[i].beschreibung +
-      "</p>" +
-      "</td> </tr>";
-
-    table.innerHTML += text;
-    zahl++;
-  }
-  */
 }
-1;
 
 function benutzerSetzen(data) {
-  console.log(data);
   var email = data.email;
   var anrede = data.anrede;
   var vorname = data.vorname;
@@ -302,7 +233,6 @@ function setLieferdatum() {
   let duration = 2;
   t.setTime(t.getTime() + duration * 24 * 60 * 60 * 1000);
 
-  console.log(t);
   let d = t.getDate();
   let m = t.getMonth() + 1;
   let j = t.getFullYear();
@@ -336,7 +266,6 @@ function checkDatum() {
 }
 
 function sendOn() {
-  console.log("SendOn Kasse zur Bestellbestätigung");
   if (checkDatum()) {
     makeBestellung();
   }
@@ -348,33 +277,29 @@ function makeBestellung() {
   let indi = sessionStorage.getItem("Individual");
   let reg = [];
 
-  console.log(sessionStorage);
-  console.log("Start reg");
   if (regular != "") {
     let pro = regular.split(",");
     for (let i = 0; i < pro.length; i++) {
-      console.log(pro[i].substring(0, 4));
       let text = {
         bezeichnung: "regular",
         id: Number(pro[i].substring(0, 4)),
         menge: Number(pro[i].substring(4, 10)),
       };
-      console.log(text);
+
       reg.push(text);
     }
   }
 
   if (indi != "") {
     let pro = indi.split(",");
-    console.log(pro);
+
     for (let i = 0; i < pro.length; i++) {
       let t = pro[i].split("/");
       let d = "";
       for (let j = 0; j < t.length - 1; j++) {
         d += t[j];
       }
-      console.log("ids indi");
-      console.log(d);
+
       let text = {
         bezeichnung: "individuel",
         id: d,
@@ -390,17 +315,15 @@ function makeBestellung() {
     lieferdatum: document.getElementById("lieferdatum").value,
   });
 
-  console.log("daten");
-  console.log(daten);
   postRequest(pathBestellung, daten, killStorage);
 }
 
 function killStorage(data) {
   let e = data.fehler;
-  console.log(e);
+
   if (e == null) {
     changeKasse(data);
-    console.log("clear");
+
     sessionStorage.clear();
     initStorage();
     storeAnzeigen();

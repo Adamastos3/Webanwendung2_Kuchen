@@ -21,7 +21,6 @@ server.post("/ausstehendeBestellungen", isAuth, (req, res) => {
 
 async function ausstehendeBestellungenGet(req, res) {
   const a = await bestellung.getAusstehendeBestellungen();
-  console.log(a);
   res.send(a);
 }
 

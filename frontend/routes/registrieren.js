@@ -11,12 +11,10 @@ server.get("/registrieren", (req, res) => {
 });
 
 server.post("/registrieren/api", (req, res) => {
-  console.log("reg api");
   checkReg(req, res);
 });
 
 server.post("/registrieren", (req, res) => {
-  console.log(req.body);
   regist(req, res);
 });
 
@@ -27,7 +25,6 @@ async function regist(req, res) {
 
 async function checkReg(req, res) {
   const data = await register.checkBenutzerMail(req.body);
-  console.log(data);
 
   res.send(data);
 }

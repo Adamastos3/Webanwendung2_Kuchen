@@ -6,17 +6,13 @@ const mail = require("../../Module/Nodemailer/sendMail");
 
 async function register(body) {
   try {
-    console.log("body register");
-    console.log(body);
     const check = await validator.checkRegister(body);
-    console.log(check);
     if (check.length < 1) {
       const checkData = JSON.stringify({
         benutzername: body.username,
       });
-      console.log(checkData);
       const excist = await benutzer.checkBenutzer(checkData);
-      console.log(excist);
+
       if (excist) {
         const bdata = await InputNewUser(body);
         if (bdata.id > 0) {
@@ -72,7 +68,6 @@ async function InputNewUser(body) {
   function geb(body) {
     let a = body.geb.split("-");
     let r = "" + a[2] + "." + a[1] + "." + a[0];
-    console.log(r);
     return r;
   }
 
@@ -87,9 +82,7 @@ async function InputNewUser(body) {
     },
   });
 
-  console.log(dataAdresse);
   const adressId = await adresse.createAddress(dataAdresse);
-  console.log(adressId);
 
   const dataPerson = JSON.stringify({
     anrede: body.anrede,
@@ -103,9 +96,7 @@ async function InputNewUser(body) {
     geburtstag: geb(body),
   });
 
-  console.log(dataAdresse);
   const personId = await person.createPerson(dataPerson);
-  console.log(personId);
 
   const dataUser = JSON.stringify({
     id: 1,
@@ -118,9 +109,8 @@ async function InputNewUser(body) {
       id: personId,
     },
   });
-  console.log(dataUser);
+
   const benutzerid = await benutzer.createBenutzer(dataUser);
-  console.log(benutzerid);
   //MAil muss aktivert werden
   //const info = await mail.sendRegistrierung(benutzerid);
   return benutzerid;
@@ -132,20 +122,12 @@ async function checkBenutzerMail(body) {
     user: false,
   });
   try {
-    console.log("body");
-    console.log(body);
-    console.log(body.username);
     let a = await benutzer.getBenutzerAll();
     let cb = await validator.checkLogin(body);
     let cm = await validator.checkMail(body);
-    console.log(a);
-    console.log(cb);
-    console.log(cm);
+
     if (cb.length < 1 && cm.length < 1) {
-      console.log("register 1");
       if (a.daten != null) {
-        console.log("register2");
-        console.log(a.daten);
         let b = true;
         let e = true;
         for (let i = 0; i < a.daten.length; i++) {
@@ -169,7 +151,6 @@ async function checkBenutzerMail(body) {
       return resp;
     }
   } catch {
-    console.log("catch");
     return resp;
   }
 }

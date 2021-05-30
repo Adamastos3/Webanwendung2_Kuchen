@@ -20,7 +20,6 @@ async function getKunden() {
 }
 
 async function getKunde(id) {
-  console.log("getKunde");
   const a = await validator.checkID(id);
   if (a.length < 1) {
     const b = benutzer.getBenutzerbyId(id);
@@ -30,14 +29,12 @@ async function getKunde(id) {
 
 async function setKunde(body) {
   const benutzerData = await benutzer.getBenutzerbyId(body.id);
-  console.log("BenutzerData");
-  console.log(benutzerData);
+
   const vali = await validator.checkKundenDaten(body);
-  console.log(vali);
-  //const check = await console.log("benutzer geholt");
+
   if (vali.length < 1) {
     const personData = await person.getPersonbyId(benutzerData.daten.person.id);
-    console.log(personData);
+
     const dataAdresse = JSON.stringify({
       id: personData.daten.adresse.id,
       strasse: checkForSS(body.strasse),
@@ -50,13 +47,9 @@ async function setKunde(body) {
       },
     });
 
-    console.log(dataAdresse);
-    console.log("dataAdress fertig");
-
     //ändern Adresse
     const adresseId = await adresse.updateAddress(dataAdresse);
 
-    console.log("adresse geändert");
     //Daten PErson
     const dataPerson = JSON.stringify({
       id: benutzerData.daten.person.id,
@@ -71,11 +64,7 @@ async function setKunde(body) {
       geburtstag: geb(body),
     });
 
-    console.log(dataPerson);
-    console.log("daten person");
     const personId = await person.updatePerson(dataPerson);
-
-    console.log("person geändert");
 
     const dataBenutzer = JSON.stringify({
       id: benutzerData.daten.id,
@@ -88,9 +77,6 @@ async function setKunde(body) {
         id: personId,
       },
     });
-
-    console.log(dataBenutzer);
-    console.log("benutzer daten");
 
     const benutzerID = await benutzer.updateBenutzer(dataBenutzer);
     if (benutzerID != null) {

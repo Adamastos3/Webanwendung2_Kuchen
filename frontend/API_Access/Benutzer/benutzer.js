@@ -5,7 +5,7 @@ const pas = "/6IyJY6Ri18lhIgNvT-_ec.zJfXz3bkEKnan0zEy_tjfUtPO~7A4nCje9GMFa";
 async function getBenutzerbyId(id) {
   let pa = "/wba2api/benutzer/gib/" + id + pas;
   const b = await request.getRequest(pa);
-  console.log(b);
+
   return b;
 }
 
@@ -18,7 +18,7 @@ async function getBenutzerAll() {
 async function createBenutzer(data) {
   let pa = "/wba2api/benutzer" + pas;
   const b = await request.postRequest(pa, data);
-  console.log(b);
+
   return b;
 }
 

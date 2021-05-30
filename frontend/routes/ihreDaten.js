@@ -23,7 +23,6 @@ server.post("/ihreDaten", isAuth, (req, res) => {
 
 async function setData(req, res) {
   const b = await ihreDaten.setIhreDaten(req.body, req.session.username);
-  console.log("Sendet");
   res.send(b);
 }
 
@@ -34,7 +33,6 @@ async function getData(req, res) {
 
 async function checkData(req, res) {
   const data = await ihreDaten.checkBenutzer(req.body, req.session.username);
-  console.log(data);
 
   res.send(data);
 }

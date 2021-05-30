@@ -5,7 +5,6 @@ function getRequest(path, data = undefined) {
     //let url ="http://localhost:8000/wba2api/"+urlEnd;
     var daten = "";
     var options;
-    //console.log(data)
 
     if (data != undefined) {
       options = {
@@ -27,8 +26,6 @@ function getRequest(path, data = undefined) {
       };
     }
 
-    //console.log(options)
-
     const req = http.request(options, (res) => {
       console.log(`statusCode: ${res.statusCode}`);
 
@@ -39,9 +36,7 @@ function getRequest(path, data = undefined) {
       });
       res.on("end", () => {
         let da = JSON.parse(daten);
-        //console.log("Test")
-        //console.log(da)
-        //console.log("da")
+
         resolve(da);
       });
     });
@@ -52,7 +47,6 @@ function getRequest(path, data = undefined) {
     });
 
     if (data != undefined) {
-      //console.log("test")
       req.write(data);
     }
 
@@ -64,7 +58,6 @@ function postRequest(path, data) {
   return new Promise((resolve, reject) => {
     //let url ="http://localhost:8000/wba2api/"+urlEnd;
     var daten = "";
-    //console.log(data)
 
     const options = {
       hostname: "localhost",
@@ -89,15 +82,13 @@ function postRequest(path, data) {
       });
       res.on("end", () => {
         let da = JSON.parse(daten);
-        //console.log("Test")
-        //console.log(da)
-        //console.log("da")
+
         resolve(da.daten);
       });
     });
 
     req.on("error", (error) => {
-      console.error(error);
+      //console.error(error);
       reject(error);
     });
 
@@ -110,7 +101,6 @@ function putRequest(path, data) {
   return new Promise((resolve, reject) => {
     //let url ="http://localhost:8000/wba2api/"+urlEnd;
     var daten = "";
-    //console.log(data)
 
     const options = {
       hostname: "localhost",
@@ -135,9 +125,7 @@ function putRequest(path, data) {
       });
       res.on("end", () => {
         let da = JSON.parse(daten);
-        //console.log("Test")
-        //console.log(da)
-        //console.log("da")
+
         resolve(da.daten);
       });
     });
@@ -161,7 +149,6 @@ function deleteRequest(path) {
       path: path,
       method: "DELETE",
     };
-    //console.log(options)
 
     const req = http.request(options, (res) => {
       console.log(`statusCode: ${res.statusCode}`);
@@ -173,9 +160,7 @@ function deleteRequest(path) {
       });
       res.on("end", () => {
         let da = JSON.parse(daten);
-        //console.log("Test")
-        //console.log(da)
-        //console.log("da")
+
         resolve(da);
       });
     });
@@ -186,7 +171,6 @@ function deleteRequest(path) {
     });
 
     if (data != undefined) {
-      //console.log("test")
       req.write(data);
     }
 

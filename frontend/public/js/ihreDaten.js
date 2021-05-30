@@ -152,7 +152,6 @@ function checkFields() {
     result = false;
   }
 
-  console.log("Vorname ist " + typeof document.getElementById("vorname").value);
   if (document.getElementById("vorname").value == "") {
     result = false;
   }
@@ -193,7 +192,7 @@ async function requestUserMail() {
     requestUser.setRequestHeader("Content-type", "application/json");
     requestUser.onload = function () {
       var data = JSON.parse(requestUser.responseText);
-      console.log(data);
+
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
@@ -211,9 +210,8 @@ async function requestUserMail() {
 
 async function sendData() {
   const a = await requestUserMail();
-  console.log("a ist " + a);
+
   if (a && sexW && plzW && userW && emailW && feldW) {
-    console.log("submit");
     let daten = JSON.stringify({
       email: document.getElementById("email").value,
       username: document.getElementById("username").value,
@@ -229,7 +227,6 @@ async function sendData() {
 
     let b = await postRequest(pathPostIhreDaten, daten, aendernData);
   } else {
-    console.log("refresh");
     druckFehler();
     sexW = false;
     plzW = false;
@@ -288,9 +285,8 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
-  console.log(fehler);
+
   if (fehler == null) {
-    console.log("erledigt");
     getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
   } else {
     let text = "";

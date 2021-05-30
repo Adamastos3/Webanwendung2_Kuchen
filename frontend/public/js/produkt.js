@@ -3,7 +3,7 @@ const pathProdukt = "http://localhost:3000/produkt/api/" + id;
 
 function ids() {
   let a = document.cookie;
-  console.log(a);
+
   let id = Number(
     a
       .split("; ")
@@ -70,8 +70,7 @@ function checkChange() {
 function addWarenkorb(idP) {
   let menge = document.getElementById("menge").value;
   let regular = sessionStorage.getItem("regular");
-  console.log(sessionStorage);
-  console.log(menge);
+
   if (regular == "") {
     let idS = "";
     if (idP < 10) {
@@ -86,8 +85,7 @@ function addWarenkorb(idP) {
     regular = idS + menge;
   } else {
     let pro = regular.split(",");
-    console.log(pro.length);
-    console.log(typeof pro[0]);
+
     let check = 1;
     if (pro[0] == "") {
       check = 3;
@@ -125,10 +123,9 @@ function addWarenkorb(idP) {
     regular = pro;
   }
   sessionStorage.setItem("regular", regular);
-  console.log(sessionStorage);
+
   location.href = "/sortimentR";
   storeAnzeigen();
 }
 
-console.log(pathProdukt);
 getRequest(pathProdukt, setzenHtmlProdukt);

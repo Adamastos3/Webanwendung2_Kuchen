@@ -10,14 +10,14 @@ async function getAddressbyId(id) {
 async function createAddress(data) {
   let pa = "/wba2api/adresse" + auth;
   const b = await request.postRequest(pa, data);
-  console.log(b);
+
   return b.id;
 }
 
 async function updateAddress(data) {
   let pa = "/wba2api/adresse" + auth;
   const b = await request.putRequest(pa, data);
-  console.log(b);
+
   return b.id;
 }
 

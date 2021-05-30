@@ -17,8 +17,6 @@ server.post("/passwortAendern", isAuth, (req, res) => {
 
 async function setNewPassword(req, res) {
   const a = await passwort.setNewPassword(req.body, req.session.username);
-  console.log("Änderung fertig");
-  console.log(a);
   if (a.fehler == null) {
     req.session.authenticated = false;
   }

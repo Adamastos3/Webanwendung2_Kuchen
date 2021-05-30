@@ -5,6 +5,7 @@ function checkAuth(dbConnection, id) {
   var sql = "SELECT * FROM Zugang WHERE ZugangID=?";
   var statement = dbConnection.prepare(sql);
   var result = statement.get(md5(id));
+  console.log(result);
   if (helper.isUndefined(result)) {
     return false;
   } else {

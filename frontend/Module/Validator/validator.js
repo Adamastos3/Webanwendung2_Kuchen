@@ -4,7 +4,7 @@ async function checkLogin(body) {
   let error = [];
   const b = await validator.isAlphanumeric(body.username);
   const c = await validator.isLength(body.username, [{ min: 3, max: 20 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -18,7 +18,7 @@ async function checkLogin(body) {
 async function checkMail(body) {
   let error = [];
   const b = await validator.isEmail(body.email);
-  console.log(b);
+
   if (!b) {
     error.push({
       bezeichnung: "Email is not a Mail",
@@ -31,7 +31,7 @@ async function checkMail(body) {
 async function checkPassword(body) {
   let error = [];
   const b = await validator.isStrongPassword(body.pass);
-  console.log(b);
+
   if (!b) {
     error.push({
       bezeichnung:
@@ -45,7 +45,7 @@ async function checkPassword(body) {
 async function checkDate(date) {
   let error = [];
   const b = await validator.isDate(date);
-  console.log(b);
+
   if (!b) {
     error.push({
       bezeichnung: "Datum ist nicht richtig formatiert",
@@ -59,7 +59,7 @@ async function checkVorname(body) {
   let error = [];
   const b = await validator.isAlpha(body.vorname);
   const c = await validator.isLength(body.vorname, [{ min: 3, max: 50 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -74,7 +74,7 @@ async function checkNachname(body) {
   let error = [];
   const b = await validator.isAlpha(body.nachname);
   const c = await validator.isLength(body.nachname, [{ min: 3, max: 50 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -104,7 +104,7 @@ async function checkStrasse(body) {
   const str = checkForSS(body.strasse);
   const b = await validator.isAlpha(str);
   const c = await validator.isLength(str, [{ min: 3, max: 50 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -119,7 +119,7 @@ async function checkStadt(body) {
   let error = [];
   const b = await validator.isAlpha(body.stadt);
   const c = await validator.isLength(body.stadt, [{ min: 3, max: 50 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -134,7 +134,7 @@ async function checkAnrede(body) {
   let error = [];
   const b = await validator.isAlpha(body.anrede);
   const c = await validator.isLength(body.anrede, [{ min: 4, max: 5 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung:
@@ -149,7 +149,6 @@ async function checkGeb(body) {
   let error = [];
   const b = await validator.isDate(body.geb);
 
-  console.log(b);
   if (!b) {
     error.push({
       bezeichnung: "Geburtsdatum ist kein Datum",
@@ -163,7 +162,7 @@ async function checkHausnr(body) {
   let error = [];
   const b = await validator.isNumeric(body.hausnr);
   const c = await validator.isLength(body.hausnr, [{ min: 1, max: 5 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung: "Hausnummer muss eine Zahl sein ",
@@ -177,7 +176,6 @@ async function checkPLZ(body) {
   let error = [];
   const b = await validator.isNumeric(body.plz);
   const c = await validator.isLength(body.plz, [{ min: 5, max: 5 }]);
-  console.log(b);
   if (!b && !c) {
     error.push({
       bezeichnung: "PLZ muss eine Zahl mit 5 Stellen sein ",
@@ -191,7 +189,7 @@ async function checkProdukt(id) {
   let error = [];
   const b = await validator.isNumeric(id);
   const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung: "Keine Nummer ",
@@ -205,7 +203,7 @@ async function checkID(id) {
   let error = [];
   const b = await validator.isNumeric("" + id);
   const c = await validator.isLength("" + id, [{ min: 1, max: 4 }]);
-  console.log(b);
+
   if (!b && !c) {
     error.push({
       bezeichnung: "Keine gültige Nummer ",
@@ -233,7 +231,6 @@ async function checkText(body) {
 }
 
 async function checkWarenkorbInhalt(body) {
-  console.log(body);
   let error = [];
   let data = "0123456789/-";
   let str = body;
@@ -251,20 +248,14 @@ async function checkWarenkorbInhalt(body) {
 }
 
 async function checkKasseProdukt(body) {
-  console.log(body.id);
   let checkOne = await validator.isNumeric("" + body.id);
   let checkTwo = await validator.isNumeric("" + body.menge);
-
-  console.log("checkasseProdukt");
-  console.log(checkOne);
-  console.log(checkTwo);
 
   let checkThree = false;
   if (body.bezeichnung === "regular" || body.bezeichnung === "individuel") {
     checkThree = true;
   }
 
-  console.log(checkThree);
   if (checkOne && checkThree && checkTwo) {
     return true;
   } else {
@@ -274,8 +265,7 @@ async function checkKasseProdukt(body) {
 
 async function checkKasseZahlung(body) {
   let a = await validator.isAlpha(body.bezahlung);
-  console.log("checkZahlung");
-  console.log(a);
+
   let b = false;
   if (
     body.bezahlung === "Vorkasse" ||
@@ -285,7 +275,6 @@ async function checkKasseZahlung(body) {
     b = true;
   }
 
-  console.log(b);
   if (a && b) {
     return true;
   } else {
@@ -300,7 +289,6 @@ async function checkKasse(body) {
     let a = await checkKasseProdukt(body.produkt[i]);
     let b = await checkKasseZahlung(body);
     let c = await checkDate(body.lieferdatum);
-    console.log("test validator");
     if (a && b && c) {
       res.push(true);
     } else {
@@ -309,7 +297,6 @@ async function checkKasse(body) {
   }
 
   for (let j = 0; j < res.length; j++) {
-    console.log("Test ergebnis");
     if (res[j] == false) {
       return false;
     }

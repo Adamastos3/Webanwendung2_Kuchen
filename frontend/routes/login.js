@@ -11,8 +11,6 @@ server.get("/login", (req, res) => {
 });
 
 server.post("/login", (req, res) => {
-  console.log("login");
-  console.log(req.body);
   logins(req, res);
 });
 

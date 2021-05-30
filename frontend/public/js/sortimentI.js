@@ -2,14 +2,6 @@ const form = document.getElementById("form");
 var timer1 = null;
 const pathIndi = "http://localhost:3000/sortimentI/api";
 
-/*
-function start(a, b) {
-  console.log(b);
-  blink(a);
-  bildChange(b);
-}
-*/
-
 function addSum() {
   let result = 0;
   let mehrwert = 0;
@@ -18,134 +10,38 @@ function addSum() {
   let mehr = document.getElementById("mehrwert");
   let gesamt = document.getElementById("gesamtsumme");
 
-  console.log("Preise von indi");
   let a = changePreis(
     document.getElementById("select1").innerHTML.substr(-16, 6)
   );
-  console.log(a);
+
   let b = changePreis(
     document.getElementById("select2").innerHTML.substr(-16, 6)
   );
-  console.log(b);
+
   let c = changePreis(
     document.getElementById("select3").innerHTML.substr(-16, 6)
   );
-  console.log(c);
+
   let d = changePreis(
     document.getElementById("select4").innerHTML.substr(-16, 6)
   );
 
-  console.log(d);
   result = Math.round((a + b + c + d) * 100) / 100;
 
   sum = Math.round(((result * 100) / 107) * 100) / 100;
-  console.log(sum);
+
   mehrwert = Math.round((result - sum) * 100) / 100;
-  console.log(mehrwert);
+
   summ.innerHTML = setPreis("" + sum) + "€";
   mehr.innerHTML = setPreis("" + mehrwert) + "€";
   gesamt.innerHTML = setPreis("" + result) + "€";
 }
 
-/*
-function bildChange(a) {
-  let bild = document.getElementById("bildMaterial");
-  let topping = document.getElementById("topping");
-  let topping2 = document.getElementById("topping2");
-  let middle = document.getElementById("middle");
-  let bottom = document.getElementById("bottom");
-  //Top
-  if (a == "01") {
-    bild.src = "../public/img/erdbeeren2.png";
-    topping.style.filter =
-      "brightness(0%) invert(14%) sepia(47%) saturate(5789%) hue-rotate(353deg) brightness(106%) contrast(82%)";
-  }
-  if (a == "02") {
-    bild.src = "../public/img/himbeeren.jpeg";
-    topping.style.filter =
-      "brightness(0%) invert(53%) sepia(19%) saturate(1585%) hue-rotate(282deg) brightness(104%) contrast(103%)";
-  }
-  if (a == "03") {
-    bild.src = "../public/img/schokolade.png";
-    topping.style.filter =
-      "brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%)";
-  }
-  if (a == "04") {
-    bild.src = "../public/img/sahne.jpeg";
-    topping.style.filter =
-      "brightness(0%) invert(97%) sepia(2%) saturate(3603%) hue-rotate(179deg) brightness(100%) contrast(101%)";
-  }
-  //Top2
-  if (a == "05") {
-    bild.src = "../public/img/schokolade.png";
-    topping2.style.filter =
-      "brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contrast(95%)";
-  }
-  if (a == "06") {
-    bild.src = "../public/img/weißeSchokolade.jpeg";
-    topping2.style.filter =
-      "brightness(0%) invert(93%) sepia(10%) saturate(1230%) hue-rotate(318deg) brightness(105%) contrast(103%)";
-  }
-  if (a == "07") {
-    bild.src = "../public/img/creme.jpeg";
-    topping2.style.filter =
-      "brightness(0%) invert(89%) sepia(6%) saturate(1414%) hue-rotate(348deg) brightness(115%) contrast(96%)";
-  }
-  if (a == "08") {
-    bild.src = "../public/img/schokolade.png";
-    topping2.style.filter =
-      "brightness(0%) invert(33%) sepia(53%) saturate(1313%) hue-rotate(355deg) brightness(98%) contrast(89%)";
-  }
-  //Middle
-  if (a == "09") {
-    bild.src = "../public/img/schokolade.png";
-    middle.style.filter =
-      "brightness(0%) invert(26%) sepia(76%) saturate(552%) hue-rotate(344deg) brightness(101%) contra";
-  }
-  if (a == "10") {
-    bild.src = "../public/img/weißeSchokolade.jpeg";
-    middle.style.filter =
-      "brightness(0%) invert(93%) sepia(10%) saturate(1230%) hue-rotate(318deg) brightness(105%) contrast(103%)";
-  }
-  if (a == "11") {
-    bild.src = "../public/img/erdbeercreme.jpeg";
-    middle.style.filter =
-      "brightness(0%) invert(90%) sepia(13%) saturate(4986%) hue-rotate(305deg) brightness(96%) contrast(89%)";
-  }
-  if (a == "12") {
-    bild.src = "../public/img/erdbeercreme.jpeg";
-    middle.style.filter =
-      "brightness(0%) invert(80%) sepia(91%) saturate(6168%) hue-rotate(288deg) brightness(104%) contrast(121%)";
-  }
-  //Bottom
-  if (a == "13") {
-    bild.src = "../public/img/kuchenboden.jpeg";
-    bottom.style.filter =
-      "brightness(0%) invert(62%) sepia(98%) saturate(301%) hue-rotate(338deg) brightness(99%) contrast(93%)";
-  }
-  if (a == "14") {
-    bild.src = "../public/img/kuchenboden.jpeg";
-    bottom.style.filter =
-      "brightness(0%) invert(62%) sepia(98%) saturate(301%) hue-rotate(338deg) brightness(99%) contrast(93%)";
-  }
-  if (a == "15") {
-    bild.src = "../public/img/schokoladenboden.jpeg";
-    bottom.style.filter =
-      "brightness(0%) invert(38%) sepia(49%) saturate(743%) hue-rotate(334deg) brightness(86%) contrast(88%)";
-  }
-  if (a == "16") {
-    bild.src = "../public/img/schokoladenboden.jpeg";
-    bottom.style.filter =
-      "brightness(0%) invert(38%) sepia(49%) saturate(743%) hue-rotate(334deg) brightness(86%) contrast(88%)";
-  }
-}
-*/
 function blink(a) {
   setInfoText(a);
   let bild = document.getElementById(a);
   let b = document.getElementById("bilder");
   b.style.backgroundColor = "grey";
-  console.log(bild);
   if (timer1 != null) {
     clearInterval(timer1);
     document.getElementById("topping").style.visibility = "visible";
@@ -219,40 +115,13 @@ function store() {
     individual.push(elem);
     sessionStorage.setItem("Individual", individual);
   }
-  console.log(sessionStorage);
+
   storeAnzeigen();
 }
 
-///test
-
-//Zu viel speicher benötigt
+//Kann zu viel speicher benötigen
 function setzenHTMLIndi(data) {
-  console.log("setze");
   let table = document.getElementById("tableIndi");
-  //let bild = document.getElementById("bildMaterial");
-
-  /*let top = [];
-  let aussen = [];
-  let fuel = [];
-  let boden = [];
-  console.log("testtest");
-
-  for (let i = 0; i < data.length; i < 0) {
-    if (data[i].kategorie.id == 1) {
-      top.push(data[i]);
-    }
-    if (data[i].kategorie.id == 2) {
-      aussen.push(data[i]);
-    }
-    if (data[i].kategorie.id == 3) {
-      fuel.push(data[i]);
-    }
-    if (data[i].kategorie.id == 4) {
-      boden.push(data[i]);
-    }
-  }
-*/
-  console.log("testtest");
   let bildid = 0;
   let text = "";
   text +=
@@ -278,8 +147,6 @@ function setzenHTMLIndi(data) {
         " €</p></option>";
     }
   }
-
-  console.log("testetstst");
 
   text +=
     "</select> </td> </tr>" +
@@ -347,12 +214,10 @@ function setzenHTMLIndi(data) {
 }
 
 function start(a, id) {
-  console.log(id);
   let path = "http://localhost:3000/sortimentI/api/" + id;
 
-  console.log(a);
   blink(a);
-  console.log(path);
+
   getRequest(path, picturesChange, a);
 }
 
@@ -388,7 +253,7 @@ async function requestIndi(id) {
     requestIndi.open("GET", "http://localhost:3000/sortimentI/api/" + id);
     requestIndi.onload = function () {
       let data = JSON.parse(requestIndi.responseText);
-      console.log(data);
+
       if (data.daten != null) {
         resolve(data.daten);
       } else {

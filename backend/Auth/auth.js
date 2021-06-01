@@ -5,12 +5,11 @@ function checkAuth(dbConnection, id) {
   var sql = "SELECT * FROM Zugang WHERE ZugangID=?";
   var statement = dbConnection.prepare(sql);
   var result = statement.get(md5(id));
-  console.log(result);
   if (helper.isUndefined(result)) {
     return false;
   } else {
-    helper.log("Auf die API zugreifen will " + result.bezeichnung);
-    helper.log("Die ID ist " + result.id);
+    helper.log("Auf die API zugreifen will " + result.Bezeichner);
+    helper.log("Die ID ist " + result.ID);
     return true;
   }
 }

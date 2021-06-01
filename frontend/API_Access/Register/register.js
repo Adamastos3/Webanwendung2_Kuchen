@@ -12,7 +12,6 @@ async function register(body) {
         benutzername: body.username,
       });
       const excist = await benutzer.checkBenutzer(checkData);
-
       if (excist) {
         const bdata = await InputNewUser(body);
         if (bdata.id > 0) {
@@ -61,6 +60,8 @@ async function InputNewUser(body) {
           str += text[i];
         }
       }
+    } else {
+      return text;
     }
     return str;
   }

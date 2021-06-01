@@ -9,12 +9,12 @@ async function setNewPassword(body, id) {
   const userPassHtml = md5(body.passOld);
 
   if (user.daten.passwort == userPassHtml) {
-    let a = await validator.checkPassword(body.passNew);
+    let a = await validator.checkPassword(body);
     if (a.length < 1) {
       let daten = JSON.stringify({
         id: user.daten.id,
         benutzername: user.daten.benutzername,
-        neuespasswort: body.passNew,
+        neuespasswort: body.pass,
         benutzerrolle: {
           id: user.daten.benutzerrolle.id,
         },
@@ -75,7 +75,7 @@ async function resetPassword(body) {
       }
     }
     return JSON.stringify({
-      fehler: [{ bezeichnung: "Mail existiert nicht" }],
+      fehler: [{ bezeichnung: "Mail oder Benutzer existiert nicht" }],
     });
   } else {
     return JSON.stringify({

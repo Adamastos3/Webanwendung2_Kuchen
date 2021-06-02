@@ -3,6 +3,7 @@ var passW = false;
 var plzW = false;
 var userW = false;
 var mailW = false;
+var gebW = false;
 
 let email = document.getElementById("email");
 let username = document.getElementById("username");
@@ -91,6 +92,23 @@ function checkMail(data) {
   }
 }
 
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
+  }
+}
+
 async function requestReg() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
@@ -109,6 +127,7 @@ async function requestReg() {
         checkMail(data.email);
         checkPassword();
         checkPlz();
+        checkDatum();
         //checkSefehler();
         resolve(true);
       } else {
@@ -138,7 +157,11 @@ function druckFehler() {
       "Beide Passwörter müssen gleich sein \n";
   }
   if (!plzW) {
-    text += "Die Plz muss aus 5 Zahlen bestehen";
+    text += "Die Plz muss aus 5 Zahlen bestehen \n";
+  }
+
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen";
   }
 
   alert(text);
@@ -147,7 +170,7 @@ function druckFehler() {
 async function sendOnReg() {
   const a = await check();
 
-  if (a && passW && plzW && userW && emailW) {
+  if (a && passW && plzW && userW && emailW && gebW) {
     let path = "http://localhost:3000/registrieren";
     let data = JSON.stringify({
       email: email.value,
@@ -170,6 +193,7 @@ async function sendOnReg() {
     plzW = false;
     userW = false;
     mailW = false;
+    gebW = false;
   }
 }
 

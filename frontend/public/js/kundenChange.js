@@ -6,6 +6,7 @@ var sexW = false;
 var plzW = false;
 var userW = false;
 var emailW = false;
+var gebW = false;
 var feldW = false;
 var passW = false;
 
@@ -122,6 +123,23 @@ function checkPlz() {
   }
 }
 
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
+  }
+}
+
 function checkSex() {
   if (
     document.getElementById("Frau").checked == true ||
@@ -233,11 +251,12 @@ async function requestUserMail() {
         checkMail(data.email);
         checkPlz();
         checkSex();
+        checkDatum();
         checkFields();
         checkPass();
         resolve(true);
       } else {
-        reject("data.fehler");
+        reject(data.fehler);
       }
     };
     requestUser.send(daten);
@@ -271,6 +290,7 @@ async function sendData() {
     userW = false;
     emailW = false;
     feldW = false;
+    gebW = false;
     passW = false;
   }
 }
@@ -294,6 +314,10 @@ function druckFehler() {
 
   if (!sexW) {
     text += "Bitte wählen Sie ein Geschlecht\n";
+  }
+
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen \n";
   }
 
   if (!feldW) {

@@ -6,6 +6,7 @@ var plzW = false;
 var userW = false;
 var emailW = false;
 var feldW = false;
+var gebW = false;
 
 function HTMLIhreDatenSetzen(data) {
   let person = data.person;
@@ -181,6 +182,23 @@ function checkFields() {
   }
 }
 
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
+  }
+}
+
 async function requestUserMail() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
@@ -198,10 +216,11 @@ async function requestUserMail() {
         checkMail(data.email);
         checkPlz();
         checkSex();
+        checkDatum();
         checkFields();
         resolve(true);
       } else {
-        reject("data.fehler");
+        reject(data.fehler);
       }
     };
     requestUser.send(daten);
@@ -211,7 +230,7 @@ async function requestUserMail() {
 async function sendData() {
   const a = await requestUserMail();
 
-  if (a && sexW && plzW && userW && emailW && feldW) {
+  if (a && sexW && plzW && userW && emailW && feldW && gebW) {
     let daten = JSON.stringify({
       email: document.getElementById("email").value,
       username: document.getElementById("username").value,
@@ -232,6 +251,7 @@ async function sendData() {
     plzW = false;
     userW = false;
     emailW = false;
+    gebW = false;
     feldW = false;
   }
 }
@@ -274,6 +294,9 @@ function druckFehler() {
 
   if (!sexW) {
     text += "Bitte wählen Sie ein Geschlecht\n";
+  }
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen \n";
   }
 
   if (!feldW) {

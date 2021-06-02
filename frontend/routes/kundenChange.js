@@ -26,6 +26,7 @@ async function getKunde(req, res) {
 
 async function setKunde(req, res) {
   const a = await kunde.setKunde(req.body);
+  console.log(a);
 }
 
 module.exports = server;

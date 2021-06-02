@@ -1,4 +1,6 @@
 const benutzer = require("../Benutzer/benutzer");
+const person = require("../Person/person");
+const adresse = require("../Adresse/adresse");
 const validator = require("../../Module/Validator/validator");
 
 async function getKunden() {
@@ -28,8 +30,20 @@ async function getKunde(id) {
 }
 
 async function setKunde(body) {
+  console.log(body);
+  let pN = false;
+  function setPassToOld(body) {
+    if (body.pass == "") {
+      body.pass = "123456789Ab.";
+      pN = true;
+    }
+  }
+  console.log("pn");
+  console.log(pN);
   const benutzerData = await benutzer.getBenutzerbyId(body.id);
-
+  gebToUSA(body);
+  setPassToOld(body);
+  console.log(body);
   const vali = await validator.checkKundenDaten(body);
 
   if (vali.length < 1) {
@@ -61,23 +75,37 @@ async function setKunde(body) {
       },
       telefonnummer: "",
       email: body.email,
-      geburtstag: geb(body),
+      geburtstag: gebToGerman(body),
     });
 
     const personId = await person.updatePerson(dataPerson);
-
-    const dataBenutzer = JSON.stringify({
-      id: benutzerData.daten.id,
-      neuespasswort: body.pass,
-      benutzername: body.username,
-      benutzerrolle: {
-        id: benutzerData.daten.benutzerrolle.id,
-      },
-      person: {
-        id: personId,
-      },
-    });
-
+    let dataBenutzer = "";
+    if (pN) {
+      dataBenutzer = JSON.stringify({
+        id: benutzerData.daten.id,
+        benutzername: body.username,
+        benutzerrolle: {
+          id: benutzerData.daten.benutzerrolle.id,
+        },
+        person: {
+          id: personId,
+        },
+      });
+    } else {
+      dataBenutzer = JSON.stringify({
+        id: benutzerData.daten.id,
+        neuespasswort: body.pass,
+        benutzername: body.username,
+        benutzerrolle: {
+          id: benutzerData.daten.benutzerrolle.id,
+        },
+        person: {
+          id: personId,
+        },
+      });
+    }
+    console.log("data benutzer");
+    console.log(dataBenutzer);
     const benutzerID = await benutzer.updateBenutzer(dataBenutzer);
     if (benutzerID != null) {
       return JSON.stringify({
@@ -116,6 +144,21 @@ function checkForSS(text) {
     }
   }
   return str;
+}
+
+function gebToGerman(body) {
+  let a = body.geb.split("-");
+  if (a.length == 1) {
+    return a[0];
+  } else {
+    let r = "" + a[2] + "." + a[1] + "." + a[0];
+    return r;
+  }
+}
+
+function gebToUSA(body) {
+  let a = body.geb.split("-");
+  body.geb = "" + a[2] + "-" + a[1] + "-" + a[0];
 }
 
 module.exports = { getKunden, getKunde, setKunde, deleteKunden };

@@ -63,15 +63,34 @@ function changeRadion(a) {
 }
 
 function changeElem(id) {
+  console.log(id);
   let a = document.getElementById(id);
-  a.removeAttribute("readonly");
-  if (id != "Herr" && id != "Frau") {
-    a.value = "";
+  console.log(a);
+  console.log(a.getAttributeNames());
+  if (!a.getAttributeNames().includes("readonly")) {
+    if (id != "Herr" && id != "Frau") {
+      a.value = "";
+    } else {
+      if (id == "Herr") {
+        document.getElementById("Frau").checked = false;
+      } else {
+        document.getElementById("Herr").checked = false;
+      }
+      a.checked = true;
+    }
+    hideButton(0);
   } else {
-    a.checked = false;
-    document.getElementById("Frau").checked = false;
+    if (id == "Herr") {
+      if (!document.getElementById("Herr").checked) {
+        document.getElementById("Frau").checked = true;
+        a.checked = false;
+      }
+    } else {
+      if (!document.getElementById("Frau").checked)
+        document.getElementById("Herr").checked = true;
+      a.checked = false;
+    }
   }
-  hideButton(0);
 }
 
 function checkPlz() {
@@ -244,6 +263,8 @@ async function sendData() {
       hausnr: document.getElementById("hausnummer").value,
     });
 
+    console.log(daten);
+
     let b = await postRequest(pathPostIhreDaten, daten, aendernData);
   } else {
     druckFehler();
@@ -308,13 +329,15 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
-
+  console.log("fehler");
+  console.log(fehler);
   if (fehler == null) {
     getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
   } else {
     let text = "";
     for (let i = 0; i < fehler.length; i++) {
-      text += fehler[i].bezeichnung + "\n";
+      for (let j = 0; j < fehler[i].length; j++)
+        text += fehler[i][j].bezeichnung + "\n";
     }
     alert(text);
   }
@@ -322,7 +345,7 @@ function aendernData(daten) {
 
 function setGeb() {
   let x = document.getElementById("geb").value;
-  let ar = x.split(".");
+  let ar = x.split("-");
   let result = "" + ar[2] + "-" + ar[1] + "-" + ar[0];
   return result;
 }

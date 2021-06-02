@@ -4,7 +4,8 @@ const person = require("./../Person/person");
 const validator = require("./../../Module/Validator/validator");
 
 async function setIhreDaten(body, id) {
-  function geb(body) {
+  console.log("Datum ändern");
+  function gebToGerman(body) {
     let a = body.geb.split("-");
     if (a.length == 1) {
       return a[0];
@@ -12,6 +13,11 @@ async function setIhreDaten(body, id) {
       let r = "" + a[2] + "." + a[1] + "." + a[0];
       return r;
     }
+  }
+
+  function gebToUSA(body) {
+    let a = body.geb.split("-");
+    body.geb = "" + a[2] + "-" + a[1] + "-" + a[0];
   }
 
   function checkForSS(text) {
@@ -31,8 +37,10 @@ async function setIhreDaten(body, id) {
   //Holen der Daten für den benutzer
 
   const benutzerData = await benutzer.getBenutzerbyId(id);
-
+  gebToUSA(body);
   const vali = await validator.checkIhreDaten(body);
+  console.log("vali");
+  console.log(vali);
 
   if (vali.length < 1) {
     const personData = await person.getPersonbyId(benutzerData.daten.person.id);
@@ -63,8 +71,11 @@ async function setIhreDaten(body, id) {
       },
       telefonnummer: "",
       email: body.email,
-      geburtstag: geb(body),
+      geburtstag: gebToGerman(body),
     });
+
+    console.log("persomn");
+    console.log(dataPerson);
 
     const personId = await person.updatePerson(dataPerson);
 
@@ -80,13 +91,20 @@ async function setIhreDaten(body, id) {
     });
 
     const benutzerID = await benutzer.updateBenutzer(dataBenutzer);
-    return JSON.stringify({
-      fehler: null,
-    });
+    if (benutzerID == undefined) {
+      return JSON.stringify({
+        fehler: [{ bezeichnung: "Serverfehler" }],
+      });
+    } else {
+      return JSON.stringify({
+        fehler: null,
+      });
+    }
   } else {
     let data = JSON.stringify({
       fehler: vali,
     });
+    console.log(data);
     return data;
   }
 }
@@ -97,7 +115,13 @@ async function getBenutzerDaten(id) {
   return b;
 }
 
-async function checkBenutzer(body, id) {
+async function checkBenutzer(body, idUser, iden = undefined) {
+  console.log(body);
+  id = idUser;
+  if (iden != undefined) {
+    id = body.id;
+  }
+
   const resp = JSON.stringify({
     email: false,
     user: false,
@@ -106,8 +130,9 @@ async function checkBenutzer(body, id) {
     let a = await benutzer.getBenutzerAll();
     let cb = await validator.checkLogin(body);
     let cm = await validator.checkMail(body);
+    let ci = await validator.checkID(id);
 
-    if (cb.length < 1 && cm.length < 1) {
+    if (cb.length < 1 && cm.length < 1 && ci.length < 1) {
       if (a.daten != null) {
         let b = true;
         let e = true;
@@ -117,6 +142,11 @@ async function checkBenutzer(body, id) {
               b = false;
             }
             if (a.daten[i].person != null) {
+              console.log("prüfen nutzer");
+              console.log(a.daten[i].id);
+              console.log(id);
+              console.log(a.daten[i].person.email);
+              console.log(body.email);
               if (a.daten[i].person.email == body.email) {
                 e = false;
               }

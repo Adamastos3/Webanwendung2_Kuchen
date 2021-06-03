@@ -155,6 +155,7 @@
 @media only screen and (max-width: 800px) {
   .inputField1 input {
     font-size: initial;
+    width: 100%;
   }
 
   .inputField1 textarea {

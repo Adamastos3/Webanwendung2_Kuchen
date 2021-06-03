@@ -41,7 +41,7 @@ function blink(a) {
   setInfoText(a);
   let bild = document.getElementById(a);
   let b = document.getElementById("bilder");
-  b.style.backgroundColor = "grey";
+  
   if (timer1 != null) {
     clearInterval(timer1);
     document.getElementById("topping").style.visibility = "visible";

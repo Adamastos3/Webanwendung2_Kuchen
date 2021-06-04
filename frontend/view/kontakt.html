@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakt</title>
     <script src="./js/allgemein.js" defer></script>
-    <script src="./js/kontakt.js"></script>
+    <script src="./js/kontakt.js" defer></script>
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
@@ -28,7 +28,11 @@
     <div class="containerSmallCenter smallCenterColumns">
       <div>
         <h2>Kontaktformular</h2>
-        <form action="/kontakt" class="inputField1 inputField1Contact">
+        <form
+          action="/kontakt"
+          class="inputField1 inputField1Contact"
+          id="form"
+        >
           <table class="tableLogin tableLoginContact tableMaxWidthWhenSmall">
             <tr>
               <td><label for="">Anrede</label></td>

@@ -589,9 +589,23 @@
 }
 
 .table3x3.tableIndi {
-  border-spacing: 5px;
+    border-spacing: 5px;
 }
 
+.tableAtMediaChangesUeberUns {
+    border-collapse:collapse;
+    page-break-inside: avoid;
+}
+
+.tableAtMediaChangesUeberUns td {
+    white-space:normal;
+    display:inline;
+    text-align: center !important;
+}
+
+.tableAtMediaChangesUeberUns p {
+  text-align: center !important;
+}
 
 }
 
@@ -627,6 +641,10 @@
 
 .tableLogin.Checkout.CheckoutRight {
   table-layout: fixed;
+}
+
+.UeberUnsTable img {
+  width: 200px;
 }
 
 }

@@ -489,6 +489,10 @@ body > h1 {
     width: 100%;
   }
 
+  .containerHorizontal.containerHorizontalUeberU > div {
+    width: 100%;
+  }
+
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 66%;
   }

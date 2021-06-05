@@ -17,13 +17,16 @@ server.post("/ihreDaten/api", isAuth, (req, res) => {
   checkData(req, res);
 });
 
+server.post("/ihreDaten/api/kundenchange", isAuth, (req, res) => {
+  checkData(req, res, 1);
+});
+
 server.post("/ihreDaten", isAuth, (req, res) => {
   setData(req, res);
 });
 
 async function setData(req, res) {
   const b = await ihreDaten.setIhreDaten(req.body, req.session.username);
-  console.log("Sendet");
   res.send(b);
 }
 
@@ -32,11 +35,18 @@ async function getData(req, res) {
   res.send(a);
 }
 
-async function checkData(req, res) {
-  const data = await ihreDaten.checkBenutzer(req.body, req.session.username);
-  console.log(data);
-
-  res.send(data);
+async function checkData(req, res, iden = undefined) {
+  if (iden == undefined) {
+    const data = await ihreDaten.checkBenutzer(req.body, req.session.username);
+    res.send(data);
+  } else {
+    const data = await ihreDaten.checkBenutzer(
+      req.body,
+      req.session.username,
+      "kunde"
+    );
+    res.send(data);
+  }
 }
 
 module.exports = server;

@@ -6,6 +6,7 @@ var plzW = false;
 var userW = false;
 var emailW = false;
 var feldW = false;
+var gebW = false;
 
 function HTMLIhreDatenSetzen(data) {
   let person = data.person;
@@ -62,15 +63,34 @@ function changeRadion(a) {
 }
 
 function changeElem(id) {
+  console.log(id);
   let a = document.getElementById(id);
-  a.removeAttribute("readonly");
-  if (id != "Herr" && id != "Frau") {
-    a.value = "";
+  console.log(a);
+  console.log(a.getAttributeNames());
+  if (!a.getAttributeNames().includes("readonly")) {
+    if (id != "Herr" && id != "Frau") {
+      a.value = "";
+    } else {
+      if (id == "Herr") {
+        document.getElementById("Frau").checked = false;
+      } else {
+        document.getElementById("Herr").checked = false;
+      }
+      a.checked = true;
+    }
+    hideButton(0);
   } else {
-    a.checked = false;
-    document.getElementById("Frau").checked = false;
+    if (id == "Herr") {
+      if (!document.getElementById("Herr").checked) {
+        document.getElementById("Frau").checked = true;
+        a.checked = false;
+      }
+    } else {
+      if (!document.getElementById("Frau").checked)
+        document.getElementById("Herr").checked = true;
+      a.checked = false;
+    }
   }
-  hideButton(0);
 }
 
 function checkPlz() {
@@ -152,7 +172,6 @@ function checkFields() {
     result = false;
   }
 
-  console.log("Vorname ist " + typeof document.getElementById("vorname").value);
   if (document.getElementById("vorname").value == "") {
     result = false;
   }
@@ -182,6 +201,23 @@ function checkFields() {
   }
 }
 
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
+  }
+}
+
 async function requestUserMail() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
@@ -193,16 +229,17 @@ async function requestUserMail() {
     requestUser.setRequestHeader("Content-type", "application/json");
     requestUser.onload = function () {
       var data = JSON.parse(requestUser.responseText);
-      console.log(data);
+
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
         checkPlz();
         checkSex();
+        checkDatum();
         checkFields();
         resolve(true);
       } else {
-        reject("data.fehler");
+        reject(data.fehler);
       }
     };
     requestUser.send(daten);
@@ -211,9 +248,8 @@ async function requestUserMail() {
 
 async function sendData() {
   const a = await requestUserMail();
-  console.log("a ist " + a);
-  if (a && sexW && plzW && userW && emailW && feldW) {
-    console.log("submit");
+
+  if (a && sexW && plzW && userW && emailW && feldW && gebW) {
     let daten = JSON.stringify({
       email: document.getElementById("email").value,
       username: document.getElementById("username").value,
@@ -227,14 +263,16 @@ async function sendData() {
       hausnr: document.getElementById("hausnummer").value,
     });
 
+    console.log(daten);
+
     let b = await postRequest(pathPostIhreDaten, daten, aendernData);
   } else {
-    console.log("refresh");
     druckFehler();
     sexW = false;
     plzW = false;
     userW = false;
     emailW = false;
+    gebW = false;
     feldW = false;
   }
 }
@@ -278,6 +316,9 @@ function druckFehler() {
   if (!sexW) {
     text += "Bitte wählen Sie ein Geschlecht\n";
   }
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen \n";
+  }
 
   if (!feldW) {
     text += "Bitte füllen Sie alle Felder aus";
@@ -288,14 +329,15 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
+  console.log("fehler");
   console.log(fehler);
   if (fehler == null) {
-    console.log("erledigt");
     getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
   } else {
     let text = "";
     for (let i = 0; i < fehler.length; i++) {
-      text += fehler[i].bezeichnung + "\n";
+      for (let j = 0; j < fehler[i].length; j++)
+        text += fehler[i][j].bezeichnung + "\n";
     }
     alert(text);
   }
@@ -303,7 +345,7 @@ function aendernData(daten) {
 
 function setGeb() {
   let x = document.getElementById("geb").value;
-  let ar = x.split(".");
+  let ar = x.split("-");
   let result = "" + ar[2] + "-" + ar[1] + "-" + ar[0];
   return result;
 }

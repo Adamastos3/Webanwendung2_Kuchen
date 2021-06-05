@@ -19,8 +19,6 @@ async function getAllProdukt(art) {
 
 async function getProduktById(art, id) {
   const check = await validator.checkProdukt(id);
-  console.log("Validator");
-  console.log(check);
   if (art == 1 && check.length < 1) {
     let path = "http://localhost:8000/wba2api/produkt/gib/" + id + auth;
     const b = await request.getRequest(path);

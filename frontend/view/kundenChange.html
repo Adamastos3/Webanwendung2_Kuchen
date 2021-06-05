@@ -24,102 +24,143 @@
       </nav>
     </header>
 
-<div class="containerSmallCenter">
-  <div>
-    <form action="" class="inputField1 inputField1ED" id="form" name="form">
-        <table class="tableLogin tableLoginED tableMaxWidthWhenSmall tableAtMediaChanges600">
-          <!--Z1, Z5, Z10-->
-          <tr>
-            <td><label for="email">E-Mail</label></td>
-            <td><label for="">Anrede</label></td>
-            <td><label for="plz">PLZ</label></td>
-          </tr>
-          <tr>
-            <td><input type="email" required id="email" name="email" /></td>
+    <div class="containerSmallCenter">
+      <div>
+        <form action="" class="inputField1 inputField1ED" id="form" name="form">
+          <table
+            class="
+              tableLogin
+              tableLoginED
+              tableMaxWidthWhenSmall
+              tableAtMediaChanges600
+            "
+          >
+            <!--Z1, Z5, Z10-->
+            <tr>
+              <td><label for="email">E-Mail</label></td>
+              <td><label for="">Anrede</label></td>
+              <td><label for="plz">PLZ</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="email" required id="email" name="email" readonly />
+              </td>
 
-            <td id="tableLoginEDalign">
-                    <input
-                      type="radio"
-                      name="Herr"
-                      id="Herr"
-                      onclick="changeElem('Herr')"
-                      checked
-                    />Herr
-                    <input
-                      type="radio"
-                      name="Frau"
-                      id="Frau"
-                      onclick="changeElem('Frau')"
-                    />Frau
-                </td>
-            <td><input type="text" id="plz" name="plz" required /></td>
-          </tr>
+              <td id="tableLoginEDalign">
+                <input
+                  type="radio"
+                  name="Herr"
+                  id="Herr"
+                  onclick="changeElem('Herr')"
+                  readonly
+                />Herr
+                <input
+                  type="radio"
+                  name="Frau"
+                  id="Frau"
+                  onclick="changeElem('Frau')"
+                  readonly
+                />Frau
+              </td>
+              <td>
+                <input type="text" id="plz" name="plz" required readonly />
+              </td>
+            </tr>
 
+            <!--Z2, Z6, Z11-->
+            <tr>
+              <td><label for="username">Username</label></td>
+              <td><label for="vorname">Vorname</label></td>
+              <td><label for="stadt">Stadt</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  required
+                  id="username"
+                  name="username"
+                  readonly
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="vorname"
+                  name="vorname"
+                  required
+                  readonly
+                />
+              </td>
+              <td>
+                <input type="text" name="stadt" id="stadt" required readonly />
+              </td>
+            </tr>
 
-          <!--Z2, Z6, Z11-->
-          <tr>
-            <td><label for="username">Username</label></td>
-            <td><label for="vorname">Vorname</label></td>
-            <td><label for="stadt">Stadt</label></td>
-          </tr>
-          <tr>
-            <td>
-              <input type="text" required id="username" name="username" />
-            </td>
-            <td>
-              <input type="text" id="vorname" name="vorname" required />
-            </td>
-            <td>
-              <input type="text" name="stadt" id="stadt" required />
-            </td>
-          </tr>
+            <!--Z3-->
+            <tr>
+              <td><label for="pass1">Neues Passwort</label></td>
+              <td><label for="nachname">Nachname</label></td>
+              <td><label for="strasse">Strasse</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="password"
+                  required
+                  id="pass1"
+                  name="pass1"
+                  readonly
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="nachname"
+                  name="nachname"
+                  required
+                  readonly
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="strasse"
+                  name="strasse"
+                  required
+                  readonly
+                />
+              </td>
+            </tr>
 
-
-          <!--Z3-->
-          <tr>
-            <td><label for="pass1">Neues Passwort</label></td>
-            <td><label for="nachname">Nachname</label></td>
-            <td><label for="strasse">Strasse</label></td>
-          </tr>
-          <tr>
-            <td>
-              <input type="password" required id="pass1" name="pass1" />
-            </td>
-            <td>
-              <input type="text" id="nachname" name="nachname" required />
-            </td>
-            <td>
-              <input type="text" id="strasse" name="strasse" required />
-            </td>
-          </tr>
-
-
-
-          <!--Z4-->
-          <tr>
-            <td><label for="pas2">Neues Passwort wiederholen</label></td>
-            <td><label for="geb">Geburtstag</label></td>
-            <td><label for="hausnr">Hausnummer</label></td>
-          </tr>
-          <tr>
-            <td>
-              <input type="password" required id="pass2" name="pass2" />
-            </td>
-            <td><input type="date" id="geb" name="geb" required /></td>
-            <td><input type="text" id="hausnr" name="hausnr" required /></td>
-          </tr>
-
-
-
-
-        </table>
-      </form>
-      <button onclick="changeData()" class="button2 button2login" id="b2">
-        Daten ändern</button>
-      <button onclick="sendData()" class="button2 button2login" id="b1" style="display: none">
-        Daten speichern</button>
+            <!--Z4-->
+            <tr>
+              <td><label for="pas2">Neues Passwort wiederholen</label></td>
+              <td><label for="geb">Geburtstag</label></td>
+              <td><label for="hausnr">Hausnummer</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="password" required id="pass2" name="pass2" />
+              </td>
+              <td><input type="date" id="geb" name="geb" required /></td>
+              <td><input type="text" id="hausnr" name="hausnr" required /></td>
+            </tr>
+          </table>
+        </form>
+        <button onclick="changeData()" class="button2 button2login" id="b2">
+          Daten ändern
+        </button>
+        <button
+          onclick="sendData()"
+          class="button2 button2login"
+          id="b1"
+          style="display: none"
+        >
+          Daten speichern
+        </button>
+      </div>
     </div>
-  </div>
 
     <footer>
       <div class="footerDiv">

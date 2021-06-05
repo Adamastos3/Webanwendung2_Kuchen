@@ -12,7 +12,6 @@ server.get("/kundenChange", isAuth, (req, res) => {
 });
 
 server.get("/kundenChange/api/:id", isAuth, (req, res) => {
-  console.log("Hallo");
   getKunde(req, res);
 });
 
@@ -27,6 +26,7 @@ async function getKunde(req, res) {
 
 async function setKunde(req, res) {
   const a = await kunde.setKunde(req.body);
+  console.log(a);
 }
 
 module.exports = server;

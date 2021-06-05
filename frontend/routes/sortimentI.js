@@ -18,14 +18,11 @@ server.get("/sortimentI/api/:id", (req, res) => {
 
 async function getProdukte(req, res) {
   const b = await produkt.getAllProdukt(2);
-  console.log(b);
   res.send(b);
 }
 
 async function getProdukt(req, res) {
   let id = req.params.id;
-  console.log("id Sortiment i");
-  console.log(id);
   const b = await produkt.getProduktById(2, id);
   res.send(b);
 }

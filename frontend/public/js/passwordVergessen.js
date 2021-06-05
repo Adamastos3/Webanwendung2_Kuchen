@@ -7,7 +7,7 @@ form.addEventListener("submit", (e) => {
 
 function submitten() {
   let path = "http://localhost:3000/passwordVergessen";
-  console.log("submit");
+
   let data = JSON.stringify({
     username: document.getElementById("username").value,
     email: document.getElementById("email").value,
@@ -16,7 +16,6 @@ function submitten() {
 }
 
 function setInfo(data) {
-  console.log(data);
   if (data.fehler == null) {
     alert("Eine Mail mit dem Passwort wurde gesendet");
   } else {

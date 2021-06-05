@@ -15,8 +15,6 @@ async function getPersonnAll() {
 }
 
 async function createPerson(data) {
-  //console.log("start");
-  //console.log(data);
   let pa = "/wba2api/person" + auth;
   const b = await request.postRequest(pa, data);
   return b.id;

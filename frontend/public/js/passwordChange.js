@@ -10,7 +10,7 @@ async function sendOn() {
   if (checkPassword()) {
     let daten = JSON.stringify({
       passOld: document.getElementById("passwordOld").value,
-      passNew: document.getElementById("passwordNew").value,
+      pass: document.getElementById("passwordNew").value,
     });
     let a = postRequest(pathPass, daten, setErg);
   }

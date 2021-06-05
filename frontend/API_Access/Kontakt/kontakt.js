@@ -4,8 +4,9 @@ const validator = require("../../Module/Validator/validator");
 async function sendKontakt(body) {
   const a = await validator.checkKontakt(body);
   if (a.length < 1) {
-    await sendToEmployee(body);
-    await sendToKontakt(body);
+    //Muss aktiviert werden
+    //await sendToEmployee(body);
+    //await sendToKontakt(body);
     return JSON.stringify({
       fehler: null,
     });
@@ -18,39 +19,42 @@ async function sendKontakt(body) {
 
 async function sendToKontakt(body) {
   let text =
+    "<p>" +
     "Guten Tag " +
     body.anrede +
     " " +
     body.nachname +
-    ",\n" +
-    "\n vielen Dank das Sie uns Kontaktiert haben. Ein Mitarbeiter wird sich in Kürze mit Ihnen in Verbindung setzen.\n\n" +
-    "Mit freundlichen Grüßen\n" +
-    "Ihr Kuchenteam";
+    ", <br />" +
+    "<br />" +
+    "vielen Dank das Sie uns Kontaktiert haben. Ein Mitarbeiter wird sich in Kürze mit Ihnen in Verbindung setzen. <br />  <br />" +
+    "Mit freundlichen Grüßen <br />" +
+    "Ihr Kuchenteam     </p>";
 
-  let subject = "Kontaktaufnahme";
+  let subject = "Vielen Dank für Ihre Kontaktaufnahme";
 
   await mail.main(body.email, subject, text);
 }
 
 async function sendToEmployee(body) {
-  let internMail = "info@kuchen.de"; //Mail muss angepast werden
+  let internMail = "info@kuchen.de"; //muss angepasst werden
   let text =
-    "Folgender KOntakt wurde zu uns gesendet\n" +
+    "<p>" +
+    "Folgender Kontakt wurde zu uns gesendet: <br /> <br />" +
     "Anrede: " +
     body.anrede +
-    "\n" +
+    "<br />" +
     "Vorname: " +
     body.vorname +
-    "\n" +
+    "<br />" +
     "Nachname: " +
     body.nachname +
-    "\n" +
+    "<br />" +
     "Email: " +
     body.email +
-    "\n" +
+    "<br />" +
     "Text: " +
     body.text +
-    "\n";
+    "<br /> </p>";
 
   let subject = "Kontaktaufname " + body.vorname + " " + body.nachname;
 

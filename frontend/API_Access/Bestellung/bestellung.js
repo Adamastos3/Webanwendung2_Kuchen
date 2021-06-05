@@ -15,21 +15,14 @@ async function createBestellung(body, id) {
     return a[2] + "." + a[1] + "." + a[0];
   }
 
-  console.log(body);
   const a = await validator.checkKasse(body);
 
-  console.log("ergebnis");
-  console.log(a);
   if (a) {
     const benutzerDaten = await benutzer.getBenutzerbyId(id);
-    console.log(benutzerDaten);
+
     const pro = await setBestellposition(body);
-    console.log(pro);
 
     if (benutzerDaten != null && pro.length > 0) {
-      console.log("test daten");
-      console.log(benutzerDaten);
-      console.log(pro);
       let datenBestellung = JSON.stringify({
         besteller: {
           id: benutzerDaten.daten.person.id,
@@ -40,18 +33,13 @@ async function createBestellung(body, id) {
         bestellpositionen: pro,
         lieferdatum: toGerman(body.lieferdatum),
       });
-      console.log("daten bestellung");
-      console.log(datenBestellung);
       const postBestellung = await request.postRequest(
         pathBestellung,
         datenBestellung
       );
-      console.log("Bestellung fertig");
-      console.log(postBestellung);
       if (postBestellung != null) {
         //Mail muss aktiviert werden
         //const info = await mail.sendBestellbestaetigung(postBestellung);
-        console.log("hat funktioniert");
         let result = {
           fehler: null,
           daten: {
@@ -84,10 +72,10 @@ async function checkZahlungsart(name) {
 async function setBestellposition(body) {
   let pro = [];
   const indiDaten = await request.getRequest(pathIndi);
-  console.log(indiDaten);
+
   for (let i = 0; i < body.produkt.length; i++) {
     let elem = body.produkt[i];
-    console.log(elem);
+
     if (elem.bezeichnung == "regular") {
       let text = {
         produkt: {
@@ -98,9 +86,7 @@ async function setBestellposition(body) {
       pro.push(text);
     }
     if (elem.bezeichnung == "individuel") {
-      console.log("hallo");
       const i = getIndiDaten(elem, indiDaten);
-      console.log(i);
 
       let daten = JSON.stringify({
         bezeichnung: "Individueller Kuchen",
@@ -113,12 +99,9 @@ async function setBestellposition(body) {
           id: 2,
         },
       });
-      console.log("Daten für produkt");
-      console.log(daten);
 
       const prodIndi = await produkt.createProdukt(daten);
-      console.log("Produkt individuel");
-      console.log(prodIndi);
+
       let prodid = prodIndi.id;
       let text = {
         produkt: {
@@ -142,10 +125,7 @@ function getIndiDaten(elem, indiDaten) {
   let preis = 0;
 
   try {
-    console.log(indiDaten.daten.length);
     for (let j = 0; j <= indiDaten.daten.length; j++) {
-      console.log("Tetet");
-      console.log(j);
       if (j == indiDaten.daten.length) {
         let p = [];
         p.push(beschreibung);
@@ -180,7 +160,6 @@ async function getBestellungByUserId(username) {
   const pathBes = "http://localhost:8000/wba2api/bestellung/alle";
   const pathB = "http://localhost:8000/wba2api/benutzer/gib/";
   let data = "";
-  console.log(username);
   if (username == undefined) {
     return JSON.stringify({
       fehler: "Authorisierung needed",
@@ -189,12 +168,10 @@ async function getBestellungByUserId(username) {
   } else {
     const r = await request.getRequest(pathBes + pas);
     const be = await request.getRequest(pathB + username + pas);
-    console.log(r);
-    console.log(be);
+
     if (r.daten != null && be.daten != null) {
       let daten = [];
       for (let i = 0; i < r.daten.length; i++) {
-        console.log(r.daten[i]);
         if (r.daten[i].besteller != null) {
           if (r.daten[i].besteller.id == be.daten.person.id) {
             daten.push(r.daten[i]);
@@ -235,15 +212,11 @@ async function getAusstehendeBestellungen() {
       }
     }
 
-    console.log(res);
-
     let data = JSON.stringify({
       fehler: null,
       daten: res,
     });
 
-    console.log("data");
-    console.log(data);
     return data;
   } else {
     return JSON.stringify({
@@ -255,13 +228,11 @@ async function getAusstehendeBestellungen() {
 
 async function bestellungErledigt(body) {
   const a = await validator.checkID(body.id);
-  console.log("validator");
-  console.log(a);
+
   if (a.length < 1) {
     const path = "http://localhost:8000/wba2api/bestellung" + pas;
     const oldData = await getBestellungByID(body.id);
-    console.log("oldData");
-    console.log(oldData);
+
     let data = JSON.stringify({
       id: oldData.daten.id,
       besteller: {
@@ -274,9 +245,9 @@ async function bestellungErledigt(body) {
       bestellpositionen: oldData.daten.bestellpositionen,
       lieferdatum: oldData.daten.lieferzeitpunkt,
     });
-    console.log(data);
+
     const geaendert = await request.putRequest(path, data);
-    console.log(geaendert);
+
     if (geaendert != null) {
       return JSON.stringify({
         fehler: null,

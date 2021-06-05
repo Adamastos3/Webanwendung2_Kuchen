@@ -489,6 +489,10 @@ body > h1 {
     width: 100%;
   }
 
+  .containerHorizontal.containerHorizontalUeberU > div {
+    width: 100%;
+  }
+
   .containerSmallCenter.containerSmallCenterReset{
     max-width: 66%;
   }
@@ -560,7 +564,7 @@ body > h1 {
   }
 
   .containerVertical{
-    margin: 0;
+    margin: 10px 0 10px;
   }
 
   .containerHorizontal{
@@ -582,6 +586,10 @@ body > h1 {
   .containerSmallLeft{
     margin: 0px 0 10px;
     gap: 10px;
+  }
+
+  .container50RightDiv.container50RightDivCart{
+    margin: 10px 0 10px;
   }
 
   .container50RightDiv  button {

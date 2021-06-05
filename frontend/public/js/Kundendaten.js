@@ -53,22 +53,17 @@ function setzenHtmlKundenDaten(data) {
       "," +
       ids +
       ")><img src='./img/bin.png' alt=''></button></td>";
-    console.log(table1);
-    console.log(text);
+
     let rw = table1.insertRow(counter);
     rw.setAttribute("id", elem);
     rw.innerHTML += text;
-    console.log(table1);
+
     text = "";
     counter++;
   }
 }
 
 function erledigt(id, idU) {
-  console.log("erledigt");
-  console.log(id);
-  console.log(idU);
-
   let element = id;
   let ids = idU.innerHTML;
   deleteRequest(ids);
@@ -77,19 +72,15 @@ function erledigt(id, idU) {
 
 function sendOn(id) {
   setCookie("kc", id);
-  console.log(id);
+
   location.href = "/kundenChange";
 }
 
 function deleteRequest(id) {
-  console.log("ids");
-  console.log(id);
   var request = new XMLHttpRequest();
   request.open("DELETE", "http://localhost:3000/kundendaten/" + id);
   request.onload = function () {
     var data = JSON.parse(request.responseText);
-    console.log("delete");
-    console.log(data);
   };
   request.send();
 }

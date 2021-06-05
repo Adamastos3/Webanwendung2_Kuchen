@@ -24,7 +24,6 @@ server.get("/kasse/api/benutzer", isAuth, (req, res) => {
 });
 
 server.post("/kasse", isAuth, (req, res) => {
-  console.log("Teeeets");
   createBestellung(req, res);
 });
 
@@ -43,12 +42,9 @@ async function getPerson(req, res) {
 
 async function createBestellung(req, res) {
   let id = req.session.username;
-  console.log("create Bestellung");
-  console.log(req.body);
   const a = await bestellung.createBestellung(req.body, id);
   if (a.fehler == null) {
     const c = await warenkorb.resetWarenkorb(id);
-    console.log(c);
     let daten = JSON.stringify(a);
     res.send(daten);
   } else {

@@ -23,6 +23,38 @@ function HTMLMitarbeiterSetzen(data) {
   document.getElementById("strasse").value = person.adresse.strasse;
   document.getElementById("hausnummer").value = person.adresse.hausnummer;
 }
+
+function changeElem(id) {
+  console.log(id);
+  let a = document.getElementById(id);
+  console.log(a);
+  console.log(a.getAttributeNames());
+  if (!a.getAttributeNames().includes("readonly")) {
+    if (id != "Herr" && id != "Frau") {
+      a.value = "";
+    } else {
+      if (id == "Herr") {
+        document.getElementById("Frau").checked = false;
+      } else {
+        document.getElementById("Herr").checked = false;
+      }
+      a.checked = true;
+    }
+    hideButton(0);
+  } else {
+    if (id == "Herr") {
+      if (!document.getElementById("Herr").checked) {
+        document.getElementById("Frau").checked = true;
+        a.checked = false;
+      }
+    } else {
+      if (!document.getElementById("Frau").checked)
+        document.getElementById("Herr").checked = true;
+      a.checked = false;
+    }
+  }
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });

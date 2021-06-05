@@ -18,7 +18,6 @@ server.get("/sortimentR/api/:id", (req, res) => {
 
 async function getProdukte(req, res) {
   const b = await produkt.getAllProdukt(1);
-  console.log(b);
   res.send(b);
 }
 

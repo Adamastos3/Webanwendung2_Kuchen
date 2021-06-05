@@ -3,6 +3,7 @@ var passW = false;
 var plzW = false;
 var userW = false;
 var mailW = false;
+var gebW = false;
 
 let email = document.getElementById("email");
 let username = document.getElementById("username");
@@ -43,21 +44,7 @@ async function checkPlz() {
   } else {
     plzW = true;
   }
-
-  console.log("plz");
 }
-/*
-function checkSefehler() {
-  if (anredeH.checked == true || anredeF.checked == true) {
-    sexW = true;
-  } else {
-    alert("Bitte geben Sie ein Geschlecht an");
-    sexW = false;
-  }
-
-  console.log("sefehler")
-}
-*/
 
 function checkPassword() {
   if (password1.value != password2.value) {
@@ -75,8 +62,6 @@ function checkPassword() {
       passW = true;
     }
   }
-
-  console.log("passwort");
 }
 
 function checkUser(data) {
@@ -107,6 +92,23 @@ function checkMail(data) {
   }
 }
 
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
+  }
+}
+
 async function requestReg() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
@@ -114,18 +116,18 @@ async function requestReg() {
       email: document.getElementById("email").value,
     });
 
-    console.log(daten);
     var requestReg = new XMLHttpRequest();
     requestReg.open("Post", "http://localhost:3000/registrieren/api");
     requestReg.setRequestHeader("Content-type", "application/json");
     requestReg.onload = function () {
       let data = JSON.parse(requestReg.responseText);
-      console.log(data);
+
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
         checkPassword();
         checkPlz();
+        checkDatum();
         //checkSefehler();
         resolve(true);
       } else {
@@ -155,7 +157,11 @@ function druckFehler() {
       "Beide Passwörter müssen gleich sein \n";
   }
   if (!plzW) {
-    text += "Die Plz muss aus 5 Zahlen bestehen";
+    text += "Die Plz muss aus 5 Zahlen bestehen \n";
+  }
+
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen";
   }
 
   alert(text);
@@ -164,9 +170,7 @@ function druckFehler() {
 async function sendOnReg() {
   const a = await check();
 
-  console.log("a ist " + a);
-  if (a && passW && plzW && userW && emailW) {
-    console.log("submit");
+  if (a && passW && plzW && userW && emailW && gebW) {
     let path = "http://localhost:3000/registrieren";
     let data = JSON.stringify({
       email: email.value,
@@ -182,7 +186,6 @@ async function sendOnReg() {
       hausnr: document.getElementById("hausnr").value,
     });
 
-    console.log(data);
     let b = await postRequest(path, data, requestServer);
   } else {
     druckFehler();
@@ -190,7 +193,7 @@ async function sendOnReg() {
     plzW = false;
     userW = false;
     mailW = false;
-    console.log("reset");
+    gebW = false;
   }
 }
 

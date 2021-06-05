@@ -10,7 +10,6 @@ async function createWarenkorb(body) {
       benutzerid: body.benutzerid,
       warenkorb: body.warenkorb,
     });
-    console.log(daten);
 
     const c = await request.postRequest(path, daten);
     if (c != null) {
@@ -59,7 +58,6 @@ async function existWarenkorb(body) {
   if (a.length < 1) {
     const b = await request.getRequest(path);
     if (b.daten != null) {
-      console.log(b.daten);
       return JSON.stringify({
         fehler: null,
         daten: b.daten,
@@ -81,8 +79,7 @@ async function updateWarenkorb(body) {
   const a = await validator.checkWarenkorb(body);
   if (a.length < 1) {
     const ids = await request.getRequest(p);
-    console.log("ids");
-    console.log(ids);
+
     if (ids.fehler == false) {
       let daten = JSON.stringify({
         id: ids.daten.id,
@@ -125,14 +122,10 @@ async function resetWarenkorb(id) {
 }
 
 async function saveWarenkorb(body) {
-  console.log("Body");
-  console.log(body);
   const a = await existWarenkorb(body);
   let ad = JSON.parse(a);
-  console.log(ad);
+
   if (ad.fehler == null) {
-    console.log("exister");
-    console.log(ad);
     if (ad.daten.existiert) {
       const b = await updateWarenkorb(body);
       return b;

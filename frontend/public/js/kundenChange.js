@@ -1,19 +1,18 @@
 const form = document.getElementById("form");
 const id = ids();
+const pathAllKunde = "http://localhost:3000/ihreDaten/api/kundenchange";
 const pathKundenChange = "http://localhost:3000/kundenChange/api/" + id;
 const pathPostKunden = "http://localhost:3000/kundenChange";
 var sexW = false;
 var plzW = false;
 var userW = false;
 var emailW = false;
+var gebW = false;
 var feldW = false;
 var passW = false;
 
-console.log(pathKundenChange);
-
 function ids() {
   let a = document.cookie;
-  console.log(a);
   let id = Number(
     a
       .split("; ")
@@ -26,7 +25,6 @@ function ids() {
 
 function setzenHTMLKundenChange(data) {
   let person = data.person;
-  console.log(person);
 
   if (person.anrede == "Herr") {
     document.getElementById("Herr").checked = true;
@@ -50,16 +48,6 @@ function setzenHTMLKundenChange(data) {
 }
 
 function hideButton(id) {
-  /*
-  function hide(x) {
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-  */
-
   if (id == 0) {
     document.getElementById("b2").style.display = "block";
     document.getElementById("b1").style.display = "none";
@@ -85,7 +73,7 @@ function changeData() {
   document.getElementById("plz").removeAttribute("readonly");
   document.getElementById("stadt").removeAttribute("readonly");
   document.getElementById("strasse").removeAttribute("readonly");
-  document.getElementById("hausnummer").removeAttribute("readonly");
+  document.getElementById("hausnr").removeAttribute("readonly");
 }
 
 function gebChange() {
@@ -104,15 +92,34 @@ function changeRadion(a) {
 }
 
 function changeElem(id) {
+  console.log(id);
   let a = document.getElementById(id);
-  a.removeAttribute("readonly");
-  if (id != "Herr" && id != "Frau") {
-    a.value = "";
+  console.log(a);
+  console.log(a.getAttributeNames());
+  if (!a.getAttributeNames().includes("readonly")) {
+    if (id != "Herr" && id != "Frau") {
+      a.value = "";
+    } else {
+      if (id == "Herr") {
+        document.getElementById("Frau").checked = false;
+      } else {
+        document.getElementById("Herr").checked = false;
+      }
+      a.checked = true;
+    }
+    hideButton(0);
   } else {
-    a.checked = false;
-    document.getElementById("Frau").checked = false;
+    if (id == "Herr") {
+      if (!document.getElementById("Herr").checked) {
+        document.getElementById("Frau").checked = true;
+        a.checked = false;
+      }
+    } else {
+      if (!document.getElementById("Frau").checked)
+        document.getElementById("Herr").checked = true;
+      a.checked = false;
+    }
   }
-  hideButton(0);
 }
 
 function checkPlz() {
@@ -133,6 +140,23 @@ function checkPlz() {
     //alert("Die Plz muss aus 5 Zahlen bestehen");
   } else {
     plzW = true;
+  }
+}
+
+function checkDatum() {
+  let elem = document.getElementById("geb");
+  if (elem.value == "") {
+    //alert("Datum ist nicht eingefügt");
+    gebW = false;
+  } else {
+    let now = new Date();
+    let datum = new Date(elem.value);
+    if (now - datum <= 0) {
+      //alert("Datum muss in der Vergangenheit liegen");
+      gebW = false;
+    } else {
+      gebW = true;
+    }
   }
 }
 
@@ -193,7 +217,6 @@ function checkFields() {
     result = false;
   }
 
-  console.log("Vorname ist " + typeof document.getElementById("vorname").value);
   if (document.getElementById("vorname").value == "") {
     result = false;
   }
@@ -209,7 +232,7 @@ function checkFields() {
   if (document.getElementById("stadt").value == "") {
     result = false;
   }
-  if (document.getElementById("hausnummer").value == "") {
+  if (document.getElementById("hausnr").value == "") {
     result = false;
   }
   if (document.getElementById("plz").value == "") {
@@ -226,34 +249,39 @@ function checkFields() {
 function checkPass() {
   let pass1 = document.getElementById("pass1").value;
   let pass2 = document.getElementById("pass2").value;
-  if (pass1.length >= 8)
-    if (pass1 == pass2) {
-      passW = true;
-    }
+  if (pass1 != "" && pass2 != "") {
+    if (pass1.length >= 8)
+      if (pass1 == pass2) {
+        passW = true;
+      }
+  } else {
+    passW = true;
+  }
 }
 
 async function requestUserMail() {
   return new Promise((resolve, reject) => {
     let daten = JSON.stringify({
+      id: id,
       username: document.getElementById("username").value,
       email: document.getElementById("email").value,
     });
     let requestUser = new XMLHttpRequest();
-    requestUser.open("Post", "http://localhost:3000/ihreDaten/api");
+    requestUser.open("Post", pathAllKunde);
     requestUser.setRequestHeader("Content-type", "application/json");
     requestUser.onload = function () {
       var data = JSON.parse(requestUser.responseText);
-      console.log(data);
       if (data.user != null) {
         checkUser(data.user);
         checkMail(data.email);
         checkPlz();
         checkSex();
+        checkDatum();
         checkFields();
         checkPass();
         resolve(true);
       } else {
-        reject("data.fehler");
+        reject(data.fehler);
       }
     };
     requestUser.send(daten);
@@ -261,10 +289,12 @@ async function requestUserMail() {
 }
 
 async function sendData() {
+  console.log("test d");
   const a = await requestUserMail();
-  console.log("a ist " + a);
-  if (a && sexW && plzW && userW && emailW && feldW && passW) {
-    console.log("submit");
+  console.log("test a");
+  console.log(a);
+  if (a && sexW && plzW && userW && emailW && gebW && feldW && passW) {
+    console.log("test");
     let daten = JSON.stringify({
       id: id,
       email: document.getElementById("email").value,
@@ -277,18 +307,20 @@ async function sendData() {
       plz: document.getElementById("plz").value,
       stadt: document.getElementById("stadt").value,
       strasse: document.getElementById("strasse").value,
-      hausnr: document.getElementById("hausnummer").value,
+      hausnr: document.getElementById("hausnr").value,
     });
+    console.log("daten");
+    console.log(daten);
 
     let b = await postRequest(pathPostKunden, daten, aendernData);
   } else {
-    console.log("refresh");
     druckFehler();
     sexW = false;
     plzW = false;
     userW = false;
     emailW = false;
     feldW = false;
+    gebW = false;
     passW = false;
   }
 }
@@ -314,11 +346,15 @@ function druckFehler() {
     text += "Bitte wählen Sie ein Geschlecht\n";
   }
 
+  if (!gebW) {
+    text += "Datum muss in der Vergangenheit liegen \n";
+  }
+
   if (!feldW) {
     text += "Bitte füllen Sie alle Felder aus\n";
   }
 
-  if (!passw) {
+  if (!passW) {
     text +=
       "Das Password muss 8 Zeichen haben und zweimal gleich eingegeben werden";
   }
@@ -328,14 +364,15 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
-  console.log(fehler);
+
   if (fehler == null) {
-    console.log("erledigt");
     getRequest(pathKundenChange, setzenHTMLKundenChange);
   } else {
     let text = "";
     for (let i = 0; i < fehler.length; i++) {
-      text += fehler[i].bezeichnung + "\n";
+      for (let j = 0; i < fehler.length; i++) {
+        text += fehler[i].bezeichnung + "\n";
+      }
     }
     alert(text);
   }
@@ -343,7 +380,7 @@ function aendernData(daten) {
 
 function setGeb() {
   let x = document.getElementById("geb").value;
-  let ar = x.split(".");
+  let ar = x.split("-");
   let result = "" + ar[2] + "-" + ar[1] + "-" + ar[0];
   return result;
 }

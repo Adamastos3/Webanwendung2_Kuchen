@@ -7,6 +7,7 @@ async function getAllProdukt(art, ka = undefined) {
   if (art == 1) {
     let path = "http://localhost:8000/wba2api/produkt/alle" + auth;
     const b = await request.getRequest(path);
+    console.log(b);
     if (ka != undefined) {
       return getKategorieEins(b);
     }
@@ -71,6 +72,7 @@ async function changeDatenblatt(data) {
 async function deleteProdukt(id) {
   let path = "http://localhost:8000/wba2api/produkt/" + id + auth;
   const a = await request.deleteRequest(path);
+  console.log(a);
   return a;
 }
 
@@ -79,7 +81,7 @@ function getKategorieEins(data) {
   console.log(data);
   let daten = [];
   for (let i = 0; i < data.daten.length; i++) {
-    if (data.daten[i].kategorie.id == 1) {
+    if (data.daten[i].kategorie.id == 1 && data.daten[i].geloescht == 0) {
       daten.push(data.daten[i]);
     }
   }

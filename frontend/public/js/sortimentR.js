@@ -38,7 +38,7 @@ function setzenHtmlSR(data) {
       "<div id='" +
       divAId +
       "'>" +
-      "<table class='tableProduct tableProductReg'>" +
+      "<table class='tableProduct tableProductReg tableOnHover'>" +
       //Bild
       "<tr><td class='tableProductImage'><img src='" +
       data[i].bilder[0].bildpfad +

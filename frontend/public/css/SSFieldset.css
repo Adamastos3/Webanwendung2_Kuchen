@@ -170,6 +170,15 @@
   #inputAutoWidth input {
     width: auto;
   }
+
+  .inputField1.inputField1EDNewProd textarea{
+    width: initial;
+    
+  }
+
+  .inputField1.inputField1EDNewProd input{
+    width: 70%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -193,5 +202,9 @@
 
   #tableLoginEDalign {
     display: inline-block;
+  }
+
+  .inputField1.inputField1EDNewProd input{
+    width: 75%;
   }
 }

@@ -63,10 +63,10 @@ function changeRadion(a) {
 }
 
 function changeElem(id) {
-  console.log(id);
+  //console.log(id);
   let a = document.getElementById(id);
-  console.log(a);
-  console.log(a.getAttributeNames());
+  //console.log(a);
+  // console.log(a.getAttributeNames());
   if (!a.getAttributeNames().includes("readonly")) {
     if (id != "Herr" && id != "Frau") {
       a.value = "";
@@ -263,7 +263,7 @@ async function sendData() {
       hausnr: document.getElementById("hausnummer").value,
     });
 
-    console.log(daten);
+    //console.log(daten);
 
     let b = await postRequest(pathPostIhreDaten, daten, aendernData);
   } else {
@@ -329,8 +329,8 @@ function druckFehler() {
 
 function aendernData(daten) {
   let fehler = daten.fehler;
-  console.log("fehler");
-  console.log(fehler);
+  //console.log("fehler");
+  //console.log(fehler);
   if (fehler == null) {
     getRequest(pathIhreDaten, HTMLIhreDatenSetzen);
   } else {

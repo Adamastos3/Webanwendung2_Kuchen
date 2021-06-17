@@ -48,8 +48,8 @@ function postRequest(path, data, func = undefined) {
 }
 
 function putRequest(path, data, func = undefined) {
-  console.log(path);
-  console.log(data);
+  //console.log(path);
+  //console.log(data);
   let requestPost = new XMLHttpRequest();
   requestPost.open("PUT", path, true);
   requestPost.setRequestHeader("Content-type", "application/json");

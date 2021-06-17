@@ -10,9 +10,9 @@ async function createProdukt(body) {
       dateipfad: body.datenblatt,
     });
 
-    console.log(datenblatt);
+    //console.log(datenblatt);
     const da = await produkt.createDatenblatt(datenblatt);
-    console.log(da);
+    //console.log(da);
 
     let produktdata = JSON.stringify({
       bezeichnung: body.bezeichnung,
@@ -32,7 +32,7 @@ async function createProdukt(body) {
       bilder: [{ bildpfad: body.bildpfad }],
     });
 
-    console.log(produktdata);
+    // console.log(produktdata);
 
     const pro = await produkt.createProdukt(produktdata);
 
@@ -47,13 +47,13 @@ async function createProdukt(body) {
 }
 
 async function changeProdukt(body) {
-  console.log("Change Produkt");
-  console.log(body);
+  //console.log("Change Produkt");
+  //console.log(body);
   const a = await validator.checkProduktAdmin(body);
 
   if (a.length < 1) {
     const a = await produkt.getProduktById(1, body.id);
-    console.log(a);
+    // console.log(a);
     let datenblattdata = JSON.stringify({
       id: a.daten.datenblatt.id,
       bezeichnung: a.daten.datenblatt.bezeichnung,
@@ -62,7 +62,7 @@ async function changeProdukt(body) {
     });
 
     const a2 = await produkt.changeDatenblatt(datenblattdata);
-    console.log(a2);
+    // console.log(a2);
 
     let produktdata = JSON.stringify({
       id: body.id,
@@ -82,14 +82,14 @@ async function changeProdukt(body) {
       bilder: [{ bildpfad: body.bildpfad }],
     });
 
-    console.log(produktdata);
+    //console.log(produktdata);
     const a3 = await produkt.changeProdukt(produktdata);
 
     return JSON.stringify({
       fehler: null,
     });
   } else {
-    console.log("Back");
+    //console.log("Back");
     return JSON.stringify({
       fehler: a,
     });
@@ -119,14 +119,14 @@ async function deleteProdukt(id) {
       bilder: [{ bildpfad: pro.daten.bilder[0].bildpfad }],
     });
 
-    console.log(daten);
+    //console.log(daten);
     const a3 = await produkt.changeProdukt(daten);
 
     return JSON.stringify({
       fehler: null,
     });
   } else {
-    console.log("Back");
+    //console.log("Back");
     return JSON.stringify({
       fehler: a,
     });
@@ -134,11 +134,11 @@ async function deleteProdukt(id) {
 }
 
 function setPreis(body) {
-  console.log("Preis");
+  //console.log("Preis");
   let a = body.nettopreis.split(",");
-  console.log(a);
+  // console.log(a);
   let d = Number(a[0] + "." + a[1]);
-  console.log(d);
+  // console.log(d);
   return d;
 }
 

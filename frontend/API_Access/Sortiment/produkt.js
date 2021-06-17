@@ -72,20 +72,20 @@ async function changeDatenblatt(data) {
 async function deleteProdukt(id) {
   let path = "http://localhost:8000/wba2api/produkt/" + id + auth;
   const a = await request.deleteRequest(path);
-  console.log(a);
+  //console.log(a);
   return a;
 }
 
 function getKategorieEins(data) {
-  console.log("TEst");
-  console.log(data);
+  //console.log("TEst");
+  // console.log(data);
   let daten = [];
   for (let i = 0; i < data.daten.length; i++) {
     if (data.daten[i].kategorie.id == 1 && data.daten[i].geloescht == 0) {
       daten.push(data.daten[i]);
     }
   }
-  console.log(daten);
+  //console.log(daten);
   return JSON.stringify({ daten: daten });
 }
 

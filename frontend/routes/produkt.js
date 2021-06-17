@@ -34,7 +34,7 @@ server.get("/produkt/api/alle", isAuth, (req, res) => {
 });
 
 server.get("/produkt/api/:id", (req, res) => {
-  console.log("ID");
+  //console.log("ID");
   const a = getProdukt(req, res);
 });
 
@@ -62,22 +62,22 @@ async function getProdukt(req, res) {
 }
 
 async function createProdukt(req, res) {
-  console.log(req.body);
+  //console.log(req.body);
   const b = await produktAdmin.createProdukt(req.body);
   res.send(b);
 }
 
 async function changeProdukt(req, res) {
-  console.log("Body");
-  console.log(req.body);
+  //console.log("Body");
+  //console.log(req.body);
   const b = await produktAdmin.changeProdukt(req.body);
   res.send(b);
 }
 
 async function deleteProdukt(req, res) {
   let id = req.params.id;
-  console.log("Delete");
-  console.log(id);
+  //console.log("Delete");
+  //console.log(id);
   const s = await produktAdmin.deleteProdukt(id);
   res.send(s);
 }

@@ -92,10 +92,10 @@ function changeRadion(a) {
 }
 
 function changeElem(id) {
-  console.log(id);
+  //console.log(id);
   let a = document.getElementById(id);
-  console.log(a);
-  console.log(a.getAttributeNames());
+  //console.log(a);
+  //console.log(a.getAttributeNames());
   if (!a.getAttributeNames().includes("readonly")) {
     if (id != "Herr" && id != "Frau") {
       a.value = "";
@@ -289,12 +289,12 @@ async function requestUserMail() {
 }
 
 async function sendData() {
-  console.log("test d");
+  //console.log("test d");
   const a = await requestUserMail();
-  console.log("test a");
-  console.log(a);
+  // console.log("test a");
+  //console.log(a);
   if (a && sexW && plzW && userW && emailW && gebW && feldW && passW) {
-    console.log("test");
+    // console.log("test");
     let daten = JSON.stringify({
       id: id,
       email: document.getElementById("email").value,
@@ -309,8 +309,8 @@ async function sendData() {
       strasse: document.getElementById("strasse").value,
       hausnr: document.getElementById("hausnr").value,
     });
-    console.log("daten");
-    console.log(daten);
+    //console.log("daten");
+    //console.log(daten);
 
     let b = await postRequest(pathPostKunden, daten, aendernData);
   } else {

@@ -6,7 +6,7 @@ function setzenHtmlProduktDaten(data) {
   var text = "";
 
   for (let i = 0; i < data.length; i++) {
-    console.log(data[i]);
+    //console.log(data[i]);
     let elem = data[i].id;
     //id
     text +=
@@ -43,7 +43,7 @@ function setzenHtmlProduktDaten(data) {
 }
 
 function erledigt(id) {
-  console.log(id);
+  //console.log(id);
   let element = document.getElementById(id);
   deleteRequest(id);
   element.parentNode.removeChild(element);
@@ -59,8 +59,8 @@ function sendToNewProduct() {
 }
 
 function deleteRequest(id) {
-  console.log("Delete");
-  console.log(id);
+  // console.log("Delete");
+  // console.log(id);
   var request = new XMLHttpRequest();
   request.open("DELETE", "http://localhost:3000/produkt/" + id);
   request.onload = function () {

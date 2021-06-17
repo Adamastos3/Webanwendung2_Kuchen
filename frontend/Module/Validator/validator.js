@@ -355,7 +355,7 @@ async function checkWarenkorb(body) {
 async function checkPreis(preis) {
   let error = [];
   let elem = preis.split(",");
-  console.log(elem);
+  //console.log(elem);
   let b = false;
   let c = await validator.isNumeric(elem[0]);
   let d = false;
@@ -371,8 +371,8 @@ async function checkPreis(preis) {
     });
   }
 
-  console.log("checkPreis");
-  console.log(error);
+  //console.log("checkPreis");
+  //console.log(error);
 
   return error;
 }
@@ -429,7 +429,7 @@ async function checkProduktAdmin(body) {
     }
   }
 
-  console.log(error);
+  //console.log(error);
 
   return error;
 }

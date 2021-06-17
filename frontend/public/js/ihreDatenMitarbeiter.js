@@ -25,10 +25,10 @@ function HTMLMitarbeiterSetzen(data) {
 }
 
 function changeElem(id) {
-  console.log(id);
+  //console.log(id);
   let a = document.getElementById(id);
-  console.log(a);
-  console.log(a.getAttributeNames());
+  //console.log(a);
+  // console.log(a.getAttributeNames());
   if (!a.getAttributeNames().includes("readonly")) {
     if (id != "Herr" && id != "Frau") {
       a.value = "";

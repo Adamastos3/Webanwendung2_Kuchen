@@ -16,7 +16,7 @@ function ids() {
 }
 
 function setzenHtmlProduktDaten(data) {
-  console.log(data);
+  //console.log(data);
   document.getElementById("bezeichnung").value = data.bezeichnung;
   document.getElementById("beschreibung").value = data.beschreibung;
   document.getElementById("nettopreis").value = setPreis(data.nettopreis);
@@ -68,7 +68,7 @@ form.addEventListener("submit", (e) => {
 
 function requestServer(data) {
   let fehler = data.fehler;
-  console.log(fehler);
+  //console.log(fehler);
   if (fehler == null) {
     location.href = "/produktdaten";
   } else {

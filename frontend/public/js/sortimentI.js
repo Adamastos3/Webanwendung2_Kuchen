@@ -133,7 +133,7 @@ function setzenHTMLIndi(data) {
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].kategorie.id == 1) {
-      console.log(data[i]);
+      //console.log(data[i]);
       //if (bildid == 0) {
       // bild.src = data[i].bilder[0].bildpfad;
       //}

@@ -50,7 +50,7 @@ function setzenHtmlProdukt(data) {
     "<td><label for='number'>Menge:<input type='number' name='menge' id='menge' value='1' onchange=checkChange() /> </label></td>" +
     "</tr><tr><td colspan='2'><button class='button1 button1Product' onclick=addWarenkorb('" +
     data.id +
-    "')>Warenkorb</button>" +
+    "')>zum Warenkorb hinzufügen</button>" +
     "</td></tr></table></div><div><table class='tableProduct tableProductDescription'><tr><td>" +
     "<a name='unten'><p>Beschreibung<br /><br />" +
     data.details +

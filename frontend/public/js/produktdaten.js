@@ -59,10 +59,17 @@ function sendToNewProduct() {
 }
 
 function deleteRequest(id) {
+  console.log("Delete");
+  console.log(id);
   var request = new XMLHttpRequest();
   request.open("DELETE", "http://localhost:3000/produkt/" + id);
   request.onload = function () {
     var data = JSON.parse(request.responseText);
+    if (data.fehler == null) {
+      alert("Produkt wurde gelöscht");
+    } else {
+      alert("Produkt wurde nicht gelöscht.");
+    }
   };
   request.send();
 }

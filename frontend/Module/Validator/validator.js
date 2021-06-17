@@ -367,7 +367,7 @@ async function checkPreis(preis) {
   }
   if (!b || !c || !d) {
     error.push({
-      bezeichnung: "Der Nettopreis muss folgendes format haben: 12,20 ",
+      bezeichnung: "Der Nettopreis muss folgendes Format haben: 12,20 ",
     });
   }
 

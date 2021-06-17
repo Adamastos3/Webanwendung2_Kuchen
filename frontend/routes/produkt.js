@@ -76,8 +76,10 @@ async function changeProdukt(req, res) {
 
 async function deleteProdukt(req, res) {
   let id = req.params.id;
-  const s = await produkt.deleteProdukt(id);
-  return s;
+  console.log("Delete");
+  console.log(id);
+  const s = await produktAdmin.deleteProdukt(id);
+  res.send(s);
 }
 
 module.exports = server;

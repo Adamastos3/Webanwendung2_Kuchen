@@ -19,6 +19,7 @@ async function createProdukt(body) {
       beschreibung: body.beschreibung,
       details: body.details,
       nettopreis: setPreis(body),
+      geloescht: 0,
       datenblatt: {
         id: da.id,
       },
@@ -95,6 +96,43 @@ async function changeProdukt(body) {
   }
 }
 
+async function deleteProdukt(id) {
+  const a = await validator.checkID(id);
+  if (a.length < 1) {
+    const pro = await produkt.getProduktById(1, id);
+    const daten = JSON.stringify({
+      id: pro.daten.id,
+      bezeichnung: pro.daten.bezeichnung,
+      beschreibung: pro.daten.beschreibung,
+      details: pro.daten.details,
+      nettopreis: pro.daten.nettopreis,
+      geloescht: 1,
+      datenblatt: {
+        id: pro.daten.datenblatt.id,
+      },
+      kategorie: {
+        id: 1,
+      },
+      mehrwertsteuer: {
+        id: pro.daten.mehrwertsteuer.id,
+      },
+      bilder: [{ bildpfad: pro.daten.bilder[0].bildpfad }],
+    });
+
+    console.log(daten);
+    const a3 = await produkt.changeProdukt(daten);
+
+    return JSON.stringify({
+      fehler: null,
+    });
+  } else {
+    console.log("Back");
+    return JSON.stringify({
+      fehler: a,
+    });
+  }
+}
+
 function setPreis(body) {
   console.log("Preis");
   let a = body.nettopreis.split(",");
@@ -104,4 +142,4 @@ function setPreis(body) {
   return d;
 }
 
-module.exports = { createProdukt, changeProdukt };
+module.exports = { createProdukt, changeProdukt, deleteProdukt };

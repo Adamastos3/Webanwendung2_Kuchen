@@ -176,7 +176,7 @@ function setzenWarenkorbReg(data) {
           data[j].beschreibung +
           "</p></td>" +
           "<td>" +
-          "<input class='menge' type='number' value='" +
+          "<input class='menge' type='number' min='1' value='" +
           anzahl +
           "' name='counter' id='" +
           counterID +

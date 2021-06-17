@@ -395,13 +395,17 @@ async function checkBezeichnung(elem) {
 async function checkTexteNettopreis(elem, text) {
   let error = [];
   let data =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöüÄÖÜ0123456789!?. /";
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöüÄÖÜ0123456789!?., /_-ß";
   for (let i = 0; i < elem.length; i++) {
     if (data.includes(elem[i])) {
       continue;
     } else {
       error.push({
-        bezeichnung: text + " enthält falsche Zeiten oder Zeilenumbrüche",
+        bezeichnung:
+          text +
+          " enthält dieses Zeichen: " +
+          elem[i] +
+          ". Sehen Sie kein Zeichen, dann sind einen oder mehrere Zeilenumbrüche enthalten, die entfernt werden sollten",
       });
       return error;
     }

@@ -180,6 +180,10 @@ serviceRouter.put("/produkt/:zugang", function (request, response) {
       errorMsgs.push("nettopreis fehlt");
     if (!helper.isNumeric(request.body.nettopreis))
       errorMsgs.push("nettopreis muss eine Zahl sein");
+    if (helper.isUndefined(request.body.geloescht))
+      errorMsgs.push("geloescht fehlt");
+    if (!helper.isNumeric(request.body.geloescht))
+      errorMsgs.push("geloescht muss eine Zahl sein");
     if (helper.isUndefined(request.body.kategorie)) {
       errorMsgs.push("kategorie fehlt");
     } else if (helper.isUndefined(request.body.kategorie.id)) {
@@ -223,6 +227,7 @@ serviceRouter.put("/produkt/:zugang", function (request, response) {
         request.body.details,
         request.body.nettopreis,
         request.body.datenblatt,
+        request.body.geloescht,
         request.body.bilder
       );
       helper.log("Service Produkt: Record updated, id=" + request.body.id);

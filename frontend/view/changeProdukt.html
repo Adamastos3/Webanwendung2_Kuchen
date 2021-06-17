@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produkt ändern</title>
+    <script src="./js/allgemein.js" defer></script>
+    <script src="./js/changeProdukt.js" defer></script>
+    <link href="./css/SSMain.css" rel="stylesheet" />
+    <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
+    <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSButtons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./img/Cake.png" alt="" id="logo" onclick="sendToStart()" />
+        <a href="/">Startseite</a>
+        <a href="/shop" id="shop">Shop</a>
+        <a href="/warenkorb" id="warenkorb">Warenkorb</a>
+        <a href="/login" class="navbarSelected" id="user">Account</a>
+      </nav>
+    </header>
+
+    <div class="containerSmallCenter">
+    <div>
+      <h2>Produkt ändern</h2>
+
+      <form action="/produkt" method="put" class="inputField1 inputField1ED " id="form" name="form">
+        <table class="tableLogin tableLoginED tableAtMediaChanges600">
+          <tr>
+            <td><label for="bezeichnung">Bezeichnung</label></td>
+            <td ><label for="nettopreis">Nettopreis</label></td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" required id="bezeichnung" name="bezeichnung" />
+            </td>
+            <td><input type="text" required id="nettopreis" name="nettopreis" /></td>
+          </tr>
+        </table>
+
+
+        <table class="tableLogin tableLoginED tableAtMediaChanges600 tableMaxWidthWhenSmall">
+          <!--Z1, Z5, Z10-->
+          <tr>
+            <td><label for="datenblatt">Datenblattpfad</label></td>
+            <td><label for="bildpfad">Bildpfad</label></td>
+          </tr>
+          <tr>
+            <td><input type="text" name="datenblatt" id="datenblatt" required /> </td>
+            <td><input type="text" id="bildpfad" name="bildpfad" required /></td>
+          </tr>
+          </tr>
+
+          <!--Z2, Z6, Z11-->
+          <tr>
+            <td rowspan="2"><label for="beschreibung">Beschreibung</label>
+              <textarea name="beschreibung" id="beschreibung"></textarea></td>
+          </tr>
+
+          <tr>
+             <td rowspan="2"><label for="details">Details</label>
+              <textarea name="details" id="details"></textarea></td>
+          </tr>
+
+        </table>
+      </form>
+      <button onclick="changeData()" >
+        Produkt ändern</button>
+
+    </div>
+  </div>
+
+    <footer>
+      <div class="footerDiv">
+        <a href="/ueberUns">Über uns</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/kontakt">Kontaktformular</a>
+      </div>
+
+      <div>&copy; Copyright 2021 Kuchen AG</div>
+    </footer>
+  </body>
+</html>

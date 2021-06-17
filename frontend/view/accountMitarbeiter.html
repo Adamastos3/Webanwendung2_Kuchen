@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Mitarbeiter</title>
     <script src="./js/allgemein.js" defer></script>
-    <script src="./js/accountAdmin.js" defer></script>
+    <script src="./js/accountMitarbeiter.js" defer></script>
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
@@ -25,12 +25,16 @@
     </header>
 
     <div class="containerVertical accountButtonsDiv">
-      <button><a href="/passwortAendern">Passwort ändern</a></button>
-      <button>
+      <button onclick="change('1')">
+        <a href="/passwortAendern">Passwort ändern</a>
+      </button>
+      <button onclick="change('2')">
+        <a href="/ihreDatenMitarbeiter">Ihre Daten</a>
+      </button>
+      <button onclick="change('3')">
         <a href="/ausstehendeBestellungen">ausstehende Bestellungen</a>
       </button>
-      <button><a href="/ihreDatenMitarbeiter">Ihre Daten</a></button>
-      <button><a onclick="logout()">Abmelden</a></button>
+      <button onclick="logout()"><a onclick="logout()">Abmelden</a></button>
     </div>
 
     <footer>

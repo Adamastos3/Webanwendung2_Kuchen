@@ -18,3 +18,13 @@ function logout() {
 function setLogout(data) {
   location.href = "/login";
 }
+
+function change(id) {
+  if (id == 1) {
+    location.href = "/passwortAendern";
+  } else if (id == 2) {
+    location.href = "/bestellhistorie";
+  } else if (id == 3) {
+    location.href = "/ihreDaten";
+  }
+}

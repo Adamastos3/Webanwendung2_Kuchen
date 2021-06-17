@@ -23,13 +23,19 @@
     </header>
 
     <div class="containerVertical accountButtonsDiv">
-      <button><a href="/passwortAendern">Passwort ändern</a></button>
-      <button>
-        <a href="/ausstehendeBestellungen">ausstehende Bestellungen</a>
+      <button onclick="change('1')">
+        <a href="/passwortAendern">Passwort ändern</a>
       </button>
-      <button><a href="/kundendaten">Kundendaten</a></button>
-      <button><a href="/produktdaten">Produktdaten</a></button>
-      <button><a onclick="logout()">Abmelden</a></button>
+      <button onclick="change('2')">
+        <a href="/ausstehendeBestellungen">offene Bestellungen</a>
+      </button>
+      <button onclick="change('3')">
+        <a href="/kundendaten">Kundendaten</a>
+      </button>
+      <button onclick="change('4')">
+        <a href="/produktdaten">Produktdaten</a>
+      </button>
+      <button onclick="logout()"><a onclick="logout()">Abmelden</a></button>
     </div>
 
     <footer>

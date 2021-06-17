@@ -140,9 +140,10 @@ function putRequest(path, data) {
   });
 }
 
-function deleteRequest(path) {
+function deleteRequest(path, data = undefined) {
   return new Promise((resolve, reject) => {
     //let url ="http://localhost:8000/wba2api/"+urlEnd;
+    var data = "";
     var options = {
       hostname: "localhost",
       port: 8000,

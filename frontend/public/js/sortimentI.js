@@ -41,7 +41,7 @@ function blink(a) {
   setInfoText(a);
   let bild = document.getElementById(a);
   let b = document.getElementById("bilder");
-  
+
   if (timer1 != null) {
     clearInterval(timer1);
     document.getElementById("topping").style.visibility = "visible";
@@ -133,6 +133,7 @@ function setzenHTMLIndi(data) {
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].kategorie.id == 1) {
+      console.log(data[i]);
       //if (bildid == 0) {
       // bild.src = data[i].bilder[0].bildpfad;
       //}

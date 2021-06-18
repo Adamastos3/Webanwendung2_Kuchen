@@ -66,9 +66,9 @@ If you want to activate the mail functions, you have to do the following:
 
 All data in the database are sample data and do not correspond to reality. The database structure can be used without any problems. However, the data cannot be used for productive use and we therefore advise against it.
 
-### Imprint, Conditions & Nutritional table
+### Imprint, terms and conditions, data protection declaration, & nutritional table
 
-The imprint, the terms and conditions and all nutritional tables for the products in the supplied database and in the ./frontend/public/pdf directory are demo versions and should be replaced accordingly
+The imprint, the terms and conditions, the data protection declaration and all nutritional tables for the products in the supplied database and in the ./frontend/public/pdf directory are demo versions and should be replaced accordingly
 
 ### Language
 

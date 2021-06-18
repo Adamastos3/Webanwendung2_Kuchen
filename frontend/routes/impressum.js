@@ -16,4 +16,16 @@ server.get("/impressum/agb", (req, res) => {
   });
 });
 
+server.get("/impressum/datenschutzerklaerung", (req, res) => {
+  let tempFile = path.join(
+    __dirname,
+    "../public/pdf",
+    "muster_datenschutzerklaerung.pdf"
+  );
+  fs.readFile(tempFile, function (err, data) {
+    res.contentType("application/pdf");
+    res.send(data);
+  });
+});
+
 module.exports = server;

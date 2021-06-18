@@ -23,10 +23,14 @@
     </header>
 
     <div class="containerVertical accountButtonsDiv">
-      <button><a href="/passwortAendern">Passwort ändern</a></button>
-      <button><a href="/bestellhistorie">Bestellhistorie</a></button>
-      <button><a href="/ihreDaten">Ihre Daten</a></button>
-      <button><a onclick="logout()">Abmelden</a></button>
+      <button onclick="change('1')">
+        <a href="/passwortAendern">Passwort ändern</a>
+      </button>
+      <button onclick="change('2')">
+        <a href="/bestellhistorie">Bestellhistorie</a>
+      </button>
+      <button onclick="change('3')"><a href="/ihreDaten">Ihre Daten</a></button>
+      <button onclick="logout()"><a onclick="logout()">Abmelden</a></button>
     </div>
 
     <footer>

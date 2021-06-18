@@ -17,7 +17,7 @@ function setzenHtmlKundenDaten(data) {
         "<td><p> Mail: " +
         person.email +
         "</p>" +
-        "Username: " +
+        "<p>Username: " +
         data[i].benutzername +
         "</p>" +
         "<p>Name: " +

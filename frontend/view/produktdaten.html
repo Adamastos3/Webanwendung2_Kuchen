@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account Admin</title>
+    <title>Produktdaten</title>
     <script src="./js/allgemein.js" defer></script>
-    <script src="./js/accountAdmin.js" defer></script>
+    <script src="./js/produktdaten.js" defer></script>
     <link href="./css/SSMain.css" rel="stylesheet" />
     <link href="./css/SSNavBarAndFooter.css" rel="stylesheet" />
     <link href="./css/SSBackgroundsAndContainers.css" rel="stylesheet" />
     <link href="./css/SSButtons.css" rel="stylesheet" />
+    <link href="./css/SSFieldset.css" rel="stylesheet" />
+    <link href="./css/SSTables.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -18,24 +20,27 @@
         <a href="/">Startseite</a>
         <a href="/shop" id="shop">Shop</a>
         <a href="/warenkorb" id="warenkorb">Warenkorb</a>
-        <a href="/accountAdmin" class="navbarSelected" id="user">Account</a>
+        <a href="/account" class="navbarSelected" id="user">Account</a>
       </nav>
     </header>
 
-    <div class="containerVertical accountButtonsDiv">
-      <button onclick="change('1')">
-        <a href="/passwortAendern">Passwort ändern</a>
-      </button>
-      <button onclick="change('2')">
-        <a href="/ausstehendeBestellungen">offene Bestellungen</a>
-      </button>
-      <button onclick="change('3')">
-        <a href="/kundendaten">Kundendaten</a>
-      </button>
-      <button onclick="change('4')">
-        <a href="/produktdaten">Produktdaten</a>
-      </button>
-      <button onclick="logout()"><a onclick="logout()">Abmelden</a></button>
+    <div class="containerVertical">
+      <div>
+        <h2>Produktdaten</h2>
+        <table
+          class="tableList tableListHistory tableHistoryUserdata tableHistoryProductData"
+          id="tableProdukt"
+        >
+          <tr>
+            <th>Produktnummer</th>
+            <th>Beschreibung</th>
+            <th>DatenblattID</th>
+            <th>Ändern</th>
+            <th>Löschen</th>
+          </tr>
+        </table>
+        <button onclick="sendToNewProduct()" class="button2 button2login button2NewProd">Neues Produkt erstellen</button>
+      </div>
     </div>
 
     <footer>

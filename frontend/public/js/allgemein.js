@@ -47,6 +47,24 @@ function postRequest(path, data, func = undefined) {
   requestPost.send(data);
 }
 
+function putRequest(path, data, func = undefined) {
+  //console.log(path);
+  //console.log(data);
+  let requestPost = new XMLHttpRequest();
+  requestPost.open("PUT", path, true);
+  requestPost.setRequestHeader("Content-type", "application/json");
+  //request.setRequestHeader("Content-Length", data.length);
+
+  requestPost.onload = function () {
+    let dataPost = JSON.parse(requestPost.responseText);
+    if (func != undefined) {
+      func(dataPost);
+    }
+  };
+
+  requestPost.send(data);
+}
+
 function setzenHtml(data) {
   let waren = document.getElementById("warenkorb");
   let user = document.getElementById("user");

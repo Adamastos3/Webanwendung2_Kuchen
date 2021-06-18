@@ -211,7 +211,7 @@ function checkSex() {
 
 function requestServer(data) {
   let fehler = data.fehler;
-  console.log(fehler);
+  //console.log(fehler);
   if (fehler == null) {
     location.href = "/login";
   } else {

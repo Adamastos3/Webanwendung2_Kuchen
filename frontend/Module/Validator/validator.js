@@ -58,7 +58,7 @@ async function checkDate(date) {
 async function checkVorname(body) {
   let error = [];
   const b = await validator.isAlpha(body.vorname);
-  const c = await validator.isLength(body.vorname, [{ min: 3, max: 50 }]);
+  const c = await validator.isLength(body.vorname, [{ min: 3, max: 5 }]);
 
   if (!b && !c) {
     error.push({
@@ -187,8 +187,8 @@ async function checkPLZ(body) {
 
 async function checkProdukt(id) {
   let error = [];
-  const b = await validator.isNumeric(id);
-  const c = await validator.isLength(id, [{ min: 1, max: 4 }]);
+  const b = await validator.isNumeric("" + id);
+  const c = await validator.isLength("" + id, [{ min: 1, max: 4 }]);
 
   if (!b && !c) {
     error.push({
@@ -216,7 +216,7 @@ async function checkID(id) {
 async function checkText(body) {
   let error = [];
   let data =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?. ";
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?. /";
   for (let i = 0; i < body.text.length; i++) {
     if (data.includes(body.text[i])) {
       continue;
@@ -352,6 +352,88 @@ async function checkWarenkorb(body) {
   return error;
 }
 
+async function checkPreis(preis) {
+  let error = [];
+  let elem = preis.split(",");
+  //console.log(elem);
+  let b = false;
+  let c = await validator.isNumeric(elem[0]);
+  let d = false;
+  if (elem.length == 2) {
+    if (elem[1].length == 2) {
+      d = true;
+      b = await validator.isNumeric(elem[1]);
+    }
+  }
+  if (!b || !c || !d) {
+    error.push({
+      bezeichnung: "Der Nettopreis muss folgendes Format haben: 12,20 ",
+    });
+  }
+
+  //console.log("checkPreis");
+  //console.log(error);
+
+  return error;
+}
+
+async function checkBezeichnung(elem) {
+  let error = [];
+  const b = await validator.isAlpha(elem);
+  const c = await validator.isLength(elem, [{ min: 1, max: 50 }]);
+
+  if (!b && !c) {
+    error.push({
+      bezeichnung:
+        elemText +
+        " Bezeichnung muss aus Buchstaben bestehen und mindestens einen Buchstaben besitzen",
+    });
+  }
+  return error;
+}
+
+async function checkTexteNettopreis(elem, text) {
+  let error = [];
+  let data =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöüÄÖÜ0123456789!?., /_-ß";
+  for (let i = 0; i < elem.length; i++) {
+    if (data.includes(elem[i])) {
+      continue;
+    } else {
+      error.push({
+        bezeichnung:
+          text +
+          " enthält dieses Zeichen: " +
+          elem[i] +
+          ". Sehen Sie kein Zeichen, dann sind einen oder mehrere Zeilenumbrüche enthalten, die entfernt werden sollten",
+      });
+      return error;
+    }
+  }
+  return error;
+}
+
+async function checkProduktAdmin(body) {
+  let error = [];
+  let er = [];
+  er.push(await checkBezeichnung(body.bezeichnung));
+  er.push(await checkTexteNettopreis(body.bildpfad, "Bildpfad"));
+  er.push(await checkTexteNettopreis(body.datenblatt, "Datenpfad"));
+  er.push(await checkTexteNettopreis(body.beschreibung, "Beschreibung"));
+  er.push(await checkTexteNettopreis(body.details, "Details"));
+  er.push(await checkPreis(body.nettopreis));
+
+  for (let i = 0; i < er.length; i++) {
+    if (er[i].length == 1) {
+      error.push(er[i]);
+    }
+  }
+
+  //console.log(error);
+
+  return error;
+}
+
 async function checkRegister(body) {
   let error = [];
   let er = [];
@@ -456,4 +538,5 @@ module.exports = {
   checkKontakt,
   checkWarenkorb,
   checkWarenkorbPost,
+  checkProduktAdmin,
 };

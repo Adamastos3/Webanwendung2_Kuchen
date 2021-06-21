@@ -33,9 +33,9 @@ jobs:
       - name: install dependencies APi
         run: npm install
         working-directory: backend
-      - name: start API
-        run: npm start
-        working-directory: backend
+      #- name: start API
+      # run: npm start
+      #  working-directory: backend
       - name: test
         run: npm test
         working-directory: frontend

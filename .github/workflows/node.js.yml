@@ -4,9 +4,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [CI]
   pull_request:
-    branches: [main]
+    branches: [CI]
 
 jobs:
   build:
@@ -25,13 +25,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install dependencies API
         run: npm ci
-        working-directory: ./backend
+        working-directory: ../../backend
       - name: install dependencies
         run: npm ci
-        working-directory: ./frontend
+        working-directory: ../../frontend
       - name: start API
         run: npm start
-        working-directory: ./backend
+        working-directory: ../../backend
       - name: test
         run: npm test
-        working-directory: ./frontend
+        working-directory: ../../frontend

@@ -26,13 +26,13 @@ jobs:
       #- run: npm ci
       #- run: npm run build --if-present
       # - run: npm test
-      - name: install dependencies API
-        run: npm ci
-        working-directory: backend
-      #  echo:
-      - name: install dependencies
-        run: npm ci
+      - name: install dependencies front
+        run: npm install
         working-directory: frontend
+      #  echo:
+      - name: install dependencies APi
+        run: npm install
+        working-directory: backend
       - name: start API
         run: npm start
         working-directory: backend

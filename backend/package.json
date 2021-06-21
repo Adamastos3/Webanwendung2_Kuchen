@@ -1,6 +1,6 @@
 {
   "name": "webanw2backend",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Backend for WebAnwendungen2 SS2021, mit Dateiupload",
   "main": "server.js",
   "scripts": {

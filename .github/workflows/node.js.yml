@@ -23,19 +23,19 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
-      #- name: install dependencies API
-      #  run: npm ci
-      #  working-directory: ./backend
+      #- run: npm ci
+      #- run: npm run build --if-present
+      # - run: npm test
+      - name: install dependencies API
+        run: npm ci
+        working-directory: ./backend
       #  echo:
-      #- name: install dependencies
-      #  run: npm ci
-      #  working-directory: ./frontend
-      #- name: start API
-      #  run: npm start
-      #  working-directory: ./backend
-      #- name: test
-      #  run: npm test
-      #  working-directory: ./frontend
+      - name: install dependencies
+        run: npm ci
+        working-directory: ./frontend
+      - name: start API
+        run: npm start
+        working-directory: ./backend
+      - name: test
+        run: npm test
+        working-directory: ./frontend

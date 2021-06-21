@@ -4,6 +4,7 @@
   "description": "Frondserver",
   "main": "server.js",
   "scripts": {
+    "testN": "cd ../backend, node server.js",
     "devStart": "nodemon server.js",
     "start": "node server.js",
     "test": "jest --coverage"

@@ -9,7 +9,7 @@
   "author": "Robert Kuti",
   "license": "ISC",
   "dependencies": {
-    "better-sqlite3": "5.4.3",
+    "better-sqlite3": "^5.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "crypto-random-string": "^4.0.0",

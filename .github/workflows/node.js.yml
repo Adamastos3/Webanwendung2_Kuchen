@@ -30,9 +30,9 @@ jobs:
         run: npm install
         working-directory: frontend
       #  echo:
-      - name: install dependencies APi
-        run: npm install
-        working-directory: backend
+      #- name: install dependencies APi
+      # run: npm install
+      # working-directory: backend
       #- name: start API
       # run: npm start
       #  working-directory: backend

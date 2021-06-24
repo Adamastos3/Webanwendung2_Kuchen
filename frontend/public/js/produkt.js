@@ -15,6 +15,8 @@ function ids() {
 }
 
 function setzenHtmlProdukt(data) {
+  console.log("Daten der Produkte");
+  console.log(data);
   let text = "";
   document.title = data.bezeichnung;
   let div = document.getElementById("produktdiv");
@@ -43,7 +45,7 @@ function setzenHtmlProdukt(data) {
     "</tr><tr><td colspan='1'>" +
     //Datenblatt
     "<p><a href='" +
-    data.datenblatt.bildpfad +
+    data.datenblatt.dateipfad +
     "'>Nährwerttabelle</a></p>" +
     "</td></tr><tr colspan='1' class='inputField2 inputField2Product'>" +
     //Buttons

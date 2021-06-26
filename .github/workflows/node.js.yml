@@ -23,15 +23,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install dependencies API
-        run: npm ci
-        working-directory: ./backend
       - name: install dependencies
-        run: npm ci
+        run: npm install
         working-directory: ./frontend
-      - name: start API
-        run: npm start
-        working-directory: ./backend
       - name: test
         run: npm test
         working-directory: ./frontend

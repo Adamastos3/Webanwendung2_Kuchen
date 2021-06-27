@@ -239,7 +239,7 @@ function setzenWarenkorbIndi(data) {
       b +=
         "</p></td>" +
         "<td>" +
-        "<input class='menge' type='number'  value='" +
+        "<input class='menge' type='number' min='1' value='" +
         Number(anzahl) +
         "' name='counter' id='" +
         counterID +

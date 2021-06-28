@@ -180,8 +180,7 @@ serviceRouter.put("/produkt/:zugang", function (request, response) {
       errorMsgs.push("nettopreis fehlt");
     if (!helper.isNumeric(request.body.nettopreis))
       errorMsgs.push("nettopreis muss eine Zahl sein");
-    if (helper.isUndefined(request.body.geloescht))
-      errorMsgs.push("geloescht fehlt");
+    if (helper.isUndefined(request.body.geloescht)) request.body.geloescht = 0;
     if (!helper.isNumeric(request.body.geloescht))
       errorMsgs.push("geloescht muss eine Zahl sein");
     if (helper.isUndefined(request.body.kategorie)) {
@@ -202,6 +201,8 @@ serviceRouter.put("/produkt/:zugang", function (request, response) {
       request.body.datenblatt = request.body.datenblatt.id;
     }
     if (helper.isUndefined(request.body.bilder)) request.body.bilder = [];
+
+    console.log(errorMsgs);
 
     if (errorMsgs.length > 0) {
       helper.log("Service Produkt: Update not possible, data missing");

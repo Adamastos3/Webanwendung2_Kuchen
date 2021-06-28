@@ -5,17 +5,17 @@ const isAuth = require("../middleware/controller");
 const kundendaten = require("../API_Access/IhreDaten/kundendaten");
 
 //kundendaten
-server.get("/kundendaten", isAuth, (req, res) => {
+server.get("/kundendaten", isAuth.isAuthAdmin, (req, res) => {
   res.sendFile("kundendaten.html", {
     root: path.join(__dirname, "..", "view"),
   });
 });
 
-server.get("/kundendaten/api", isAuth, (req, res) => {
+server.get("/kundendaten/api", isAuth.isAuthAdmin, (req, res) => {
   getKunden(req, res);
 });
 
-server.delete("/kundendaten/:id", isAuth, (req, res) => {
+server.delete("/kundendaten/:id", isAuth.isAuthAdmin, (req, res) => {
   deleteKunden(req, res);
 });
 

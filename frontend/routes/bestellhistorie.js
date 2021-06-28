@@ -5,13 +5,13 @@ const isAuth = require("../middleware/controller");
 const bestellung = require("../API_Access/Bestellung/bestellung");
 
 //bestellhistorie
-server.get("/bestellhistorie", isAuth, (req, res) => {
+server.get("/bestellhistorie", isAuth.isAuth, (req, res) => {
   res.sendFile("bestellhistorie.html", {
     root: path.join(__dirname, "..", "view"),
   });
 });
 
-server.get("/bestellhistorie/api", isAuth, (req, res) => {
+server.get("/bestellhistorie/api", isAuth.isAuth, (req, res) => {
   bestellhistorieGet(req, res);
 });
 

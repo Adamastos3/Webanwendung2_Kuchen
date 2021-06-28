@@ -5,23 +5,23 @@ const isAuth = require("../middleware/controller");
 const ihreDaten = require("../API_Access/IhreDaten/ihreDaten");
 
 //ihreDaten
-server.get("/ihreDaten", isAuth, (req, res) => {
+server.get("/ihreDaten", isAuth.isAuth, (req, res) => {
   res.sendFile("ihreDaten.html", { root: path.join(__dirname, "..", "view") });
 });
 
-server.get("/ihreDaten/api", isAuth, (req, res) => {
+server.get("/ihreDaten/api", isAuth.isAuth, (req, res) => {
   getData(req, res);
 });
 
-server.post("/ihreDaten/api", isAuth, (req, res) => {
+server.post("/ihreDaten/api", isAuth.isAuth, (req, res) => {
   checkData(req, res);
 });
 
-server.post("/ihreDaten/api/kundenchange", isAuth, (req, res) => {
+server.post("/ihreDaten/api/kundenchange", isAuth.isAuth, (req, res) => {
   checkData(req, res, 1);
 });
 
-server.post("/ihreDaten", isAuth, (req, res) => {
+server.post("/ihreDaten", isAuth.isAuth, (req, res) => {
   setData(req, res);
 });
 

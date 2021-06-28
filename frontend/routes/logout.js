@@ -4,11 +4,11 @@ const warenkorb = require("../API_Access/Bestellung/warenkorb");
 const isAuth = require("../middleware/controller");
 
 //login
-server.post("/logout", isAuth, (req, res) => {
+server.post("/logout", isAuth.isAuth, (req, res) => {
   saveWarenkorb(req, res);
 });
 
-server.get("/logout", isAuth, (req, res) => {
+server.get("/logout", isAuth.isAuth, (req, res) => {
   logout(req, res);
 });
 

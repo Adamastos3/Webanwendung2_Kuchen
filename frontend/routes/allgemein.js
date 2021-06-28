@@ -9,7 +9,7 @@ server.get("/allgemein/", (req, res) => {
   allgemeinGet(req, res);
 });
 
-server.get("/allgemein/warenkorb/", isAuth, (req, res) => {
+server.get("/allgemein/warenkorb/", isAuth.isAuth, (req, res) => {
   getWarenkorb(req, res);
 });
 

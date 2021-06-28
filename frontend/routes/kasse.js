@@ -11,19 +11,19 @@ const warenkorb = require("../API_Access/Bestellung/warenkorb");
 //kasse
 
 //Auth fehlt noch
-server.get("/kasse", isAuth, (req, res) => {
+server.get("/kasse", isAuth.isAuth, (req, res) => {
   res.sendFile("kasse.html", { root: path.join(__dirname, "..", "view") });
 });
 
-server.get("/kasse/api/zahlung", isAuth, (req, res) => {
+server.get("/kasse/api/zahlung", isAuth.isAuth, (req, res) => {
   getZahlung(req, res);
 });
 
-server.get("/kasse/api/benutzer", isAuth, (req, res) => {
+server.get("/kasse/api/benutzer", isAuth.isAuth, (req, res) => {
   getPerson(req, res);
 });
 
-server.post("/kasse", isAuth, (req, res) => {
+server.post("/kasse", isAuth.isAuth, (req, res) => {
   createBestellung(req, res);
 });
 

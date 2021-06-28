@@ -28,7 +28,7 @@ server.get("/produktAendern", (req, res) => {
   });
 });
 
-server.get("/produkt/api/alle", isAuth, (req, res) => {
+server.get("/produkt/api/alle", isAuth.isAuth, (req, res) => {
   console.log("Alle");
   getProdukte(req, res);
 });
@@ -38,15 +38,15 @@ server.get("/produkt/api/:id", (req, res) => {
   const a = getProdukt(req, res);
 });
 
-server.post("/produkt", isAuth, (req, res) => {
+server.post("/produkt", isAuth.isAuthAdmin, (req, res) => {
   createProdukt(req, res);
 });
 
-server.put("/produkt", isAuth, (req, res) => {
+server.put("/produkt", isAuth.isAuthAdmin, (req, res) => {
   changeProdukt(req, res);
 });
 
-server.delete("/produkt/:id", isAuth, (req, res) => {
+server.delete("/produkt/:id", isAuth.isAuthAdmin, (req, res) => {
   deleteProdukt(req, res);
 });
 

@@ -5,13 +5,13 @@ const server = express();
 const passwort = require("../API_Access/IhreDaten/password");
 
 //passwordAendern
-server.get("/passwortAendern", isAuth, (req, res) => {
+server.get("/passwortAendern", isAuth.isAuth, (req, res) => {
   res.sendFile("passwortAendern.html", {
     root: path.join(__dirname, "..", "view"),
   });
 });
 
-server.post("/passwortAendern", isAuth, (req, res) => {
+server.post("/passwortAendern", isAuth.isAuth, (req, res) => {
   setNewPassword(req, res);
 });
 

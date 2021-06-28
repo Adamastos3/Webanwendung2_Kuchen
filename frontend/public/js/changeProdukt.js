@@ -36,8 +36,9 @@ async function changeData() {
       datenblatt: document.getElementById("datenblatt").value,
       bildpfad: document.getElementById("bildpfad").value,
       details: document.getElementById("details").value,
+      geloescht: 0,
     });
-
+    console.log(data);
     putRequest(path, data, requestServer);
   } else {
     alert("Bitte füllen Sie alle Felder aus");
